@@ -15,7 +15,6 @@
 		1F174B2622CD6D19004E2089 /* XcodeRelease+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F174B2522CD6D19004E2089 /* XcodeRelease+Identifiable.swift */; };
 		1F30766322CCC7B4006A49C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F30766222CCC7B4006A49C3 /* AppDelegate.swift */; };
 		1F30766522CCC7B4006A49C3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F30766422CCC7B4006A49C3 /* SceneDelegate.swift */; };
-		1F30766822CCC7B4006A49C3 /* XcodeReleases.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F30766622CCC7B4006A49C3 /* XcodeReleases.xcdatamodeld */; };
 		1F30766A22CCC7B4006A49C3 /* XcodeReleaseList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F30766922CCC7B4006A49C3 /* XcodeReleaseList.swift */; };
 		1F30766C22CCC7B6006A49C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F30766B22CCC7B6006A49C3 /* Assets.xcassets */; };
 		1F30766F22CCC7B6006A49C3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F30766E22CCC7B6006A49C3 /* Preview Assets.xcassets */; };
@@ -50,7 +49,6 @@
 		1F30765F22CCC7B4006A49C3 /* XcodeReleases.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XcodeReleases.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F30766222CCC7B4006A49C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F30766422CCC7B4006A49C3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		1F30766722CCC7B4006A49C3 /* XcodeReleases.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = XcodeReleases.xcdatamodel; sourceTree = "<group>"; };
 		1F30766922CCC7B4006A49C3 /* XcodeReleaseList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeReleaseList.swift; sourceTree = "<group>"; };
 		1F30766B22CCC7B6006A49C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F30766E22CCC7B6006A49C3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -147,7 +145,6 @@
 		1F30766122CCC7B4006A49C3 /* XcodeReleases */ = {
 			isa = PBXGroup;
 			children = (
-				1F5827D322CCF9FA00FAA665 /* CoreData */,
 				1F174B2422CD6CFD004E2089 /* Extensions */,
 				1FEFFCDA22CCF9D00060DA61 /* Launch */,
 				1F30766D22CCC7B6006A49C3 /* Preview Content */,
@@ -186,14 +183,6 @@
 				1F30767022CCC7B6006A49C3 /* LaunchScreen.storyboard */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		1F5827D322CCF9FA00FAA665 /* CoreData */ = {
-			isa = PBXGroup;
-			children = (
-				1F30766622CCC7B4006A49C3 /* XcodeReleases.xcdatamodeld */,
-			);
-			path = CoreData;
 			sourceTree = "<group>";
 		};
 		1F5827D422CCFA0200FAA665 /* View */ = {
@@ -351,7 +340,6 @@
 				1FB14CD522CCE680000D7552 /* XcodeReleaseDetail.swift in Sources */,
 				1FF7622722CD477D0091EAC3 /* SafariView.swift in Sources */,
 				1FEFFCD922CCEF800060DA61 /* AppState.swift in Sources */,
-				1F30766822CCC7B4006A49C3 /* XcodeReleases.xcdatamodeld in Sources */,
 				1F174B2622CD6D19004E2089 /* XcodeRelease+Identifiable.swift in Sources */,
 				1F30766322CCC7B4006A49C3 /* AppDelegate.swift in Sources */,
 				1F174B1F22CD5E52004E2089 /* SDKSection.swift in Sources */,
@@ -625,19 +613,6 @@
 			productName = XcodeReleasesKit;
 		};
 /* End XCSwiftPackageProductDependency section */
-
-/* Begin XCVersionGroup section */
-		1F30766622CCC7B4006A49C3 /* XcodeReleases.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				1F30766722CCC7B4006A49C3 /* XcodeReleases.xcdatamodel */,
-			);
-			currentVersion = 1F30766722CCC7B4006A49C3 /* XcodeReleases.xcdatamodel */;
-			path = XcodeReleases.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 1F30765722CCC7B4006A49C3 /* Project object */;
 }

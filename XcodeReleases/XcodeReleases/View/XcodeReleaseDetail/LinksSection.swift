@@ -14,13 +14,6 @@ struct LinksSection : View {
     
     var body: some View {
         Section(header: Text("Links")) {
-            //                if release.links?.notes?.url != nil {
-            //                    NavigationLink(destination: WebView(request: URLRequest(url: URL(string: release.links!.notes!.url)!))) {
-            //                        Text("Release Notes Push")
-            //                    }
-            //                } else {
-            //                    EmptyView()
-            //                }
             if release.links?.notes?.url != nil {
                 PresentationLink(destination: SafariView(url: URL(string: release.links!.notes!.url)!)) {
                     Text("Release Notes")
