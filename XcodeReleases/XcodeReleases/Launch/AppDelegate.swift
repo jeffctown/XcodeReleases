@@ -7,19 +7,23 @@
 //
 
 import UIKit
+import SwiftUI
+import XcodeReleasesKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
+    let appState = AppState()
+    var userNotifications: UserNotifications!
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        userNotifications = UserNotifications()
+        userNotifications.registerForAppLifecycle()
+        application.registerForRemoteNotifications()
         return true
     }
 
-    func applicationWillTerminate(_ application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-        // Saves changes in the application's managed object context before the application terminates.
-    }
+    func applicationWillTerminate(_ application: UIApplication) {}
 
     // MARK: UISceneSession Lifecycle
 
@@ -35,5 +39,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
+    // MARK: Push Notifications
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let token = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
+        self.appState.pushToken = token
+        userNotifications.registeredWithToken(token: token)
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        userNotifications.failedToRegister(error: error)
+    }
+    
 }
-

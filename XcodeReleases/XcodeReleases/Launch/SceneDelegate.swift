@@ -20,7 +20,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            let rootView = XcodeReleaseList().environmentObject(AppState())
+            let userNotifications = (UIApplication.shared.delegate as? AppDelegate)!.userNotifications
+            let appState = (UIApplication.shared.delegate as? AppDelegate)!.appState
+            let rootView = XcodeReleaseList(userNotifications: userNotifications!).environmentObject(appState)
             window.rootViewController = UIHostingController(rootView: rootView)
             self.window = window
             window.makeKeyAndVisible()

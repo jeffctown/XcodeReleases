@@ -20,4 +20,10 @@ class AppState: BindableObject {
         }
     }
     
+    var pushToken: String? = nil {
+        didSet {
+            didChange.send(self)
+        }
+    }
+    
 }

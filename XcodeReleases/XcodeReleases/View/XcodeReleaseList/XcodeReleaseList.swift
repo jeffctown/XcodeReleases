@@ -12,6 +12,8 @@ import XcodeReleasesKit
 
 struct XcodeReleaseList : View {
     @EnvironmentObject private var appState: AppState
+    let userNotifications: UserNotifications
+    
     var service: XcodeReleasesService {
         XcodeReleasesService(releases: $appState.releases)
     }
@@ -23,11 +25,15 @@ struct XcodeReleaseList : View {
                     XcodeReleaseRow(release: release)
                 }
             }.navigationBarTitle("Xcode Releases")
+                .navigationBarItems(trailing:
+                    PresentationLink(destination: SettingsView(userNotifications: userNotifications).environmentObject(appState), label: {
+                        Image(systemName: "gear")
+                    }))
         }.onAppear() {
             self.service.refresh()
+            print("onAppear #file")
         }
     }
-    
 }
 
 #if DEBUG
@@ -35,7 +41,7 @@ struct XcodeReleaseList_Previews : PreviewProvider {
     static var previews: some View {
         let state = AppState()
         state.releases = Array(mockReleases[0..<10])
-        return XcodeReleaseList().environmentObject(state)
+        return XcodeReleaseList(userNotifications: UserNotifications()).environmentObject(state)
     }
 }
 #endif
