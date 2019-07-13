@@ -13,18 +13,13 @@ import UserNotifications
 struct NotificationSection : View {
     @Binding var pushToken: String?
     @Binding var authorizationStatus: UNAuthorizationStatus
-//    @Binding var notificationsEnabled: Bool
     @Binding var showingAlert: Bool
-    let register: () -> Void
+    @Binding var notificationsEnabled: Bool
     
     var body: some View {
         Section(header: Text("Notifications")) {
-//            NotificationToggleRow(notificationsEnabled: $notificationsEnabled)
-            NotificationRegisterRow(authorizationStatus: $authorizationStatus) {
-                self.register()
-            }
-            NotificationDeniedRow(authorizationStatus: $authorizationStatus, showingAlert: $showingAlert)
-            NotificationTokenRow(pushToken: pushToken ?? "None", authorizationStatus: $authorizationStatus, showingAlert: $showingAlert)
+            NotificationToggleRow(notificationsEnabled: $notificationsEnabled)
+            NotificationTokenRow(pushToken: pushToken, authorizationStatus: $authorizationStatus, showingAlert: $showingAlert)
         }
     }
 }
@@ -36,9 +31,9 @@ struct NotificationSection_Previews : PreviewProvider {
             NotificationSection(
                 pushToken: .constant("1234"),
                 authorizationStatus: .constant(.notDetermined),
-//                notificationsEnabled: .constant(true),
-                showingAlert: .constant(true)
-            ) {}
+                showingAlert: .constant(true),
+                notificationsEnabled: .constant(true)
+            )
         }
     }
 }

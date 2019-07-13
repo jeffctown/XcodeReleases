@@ -12,12 +12,11 @@ import XcodeReleasesKit
 
 struct XcodeReleaseList : View {
     @EnvironmentObject private var appState: AppState
-    let userNotifications: UserNotifications
     
     var service: XcodeReleasesService {
         XcodeReleasesService(releases: $appState.releases)
     }
-    
+
     var body: some View {
         NavigationView {
             List(appState.releases) { release in
@@ -26,9 +25,14 @@ struct XcodeReleaseList : View {
                 }
             }.navigationBarTitle("Xcode Releases")
                 .navigationBarItems(trailing:
-                    PresentationLink(destination: SettingsView(userNotifications: userNotifications).environmentObject(appState), label: {
+                        PresentationLink(
+                            destination: SettingsView(userNotifications: appState.userNotifications)
+                                .environmentObject(appState), label: {
                         Image(systemName: "gear")
-                    }))
+                            .imageScale(.large)
+                            .font(.headline)
+                    })
+            ).padding()
         }.onAppear() {
             self.service.refresh()
             print("onAppear #file")
@@ -41,7 +45,7 @@ struct XcodeReleaseList_Previews : PreviewProvider {
     static var previews: some View {
         let state = AppState()
         state.releases = Array(mockReleases[0..<10])
-        return XcodeReleaseList(userNotifications: UserNotifications()).environmentObject(state)
+        return XcodeReleaseList().environmentObject(state)
     }
 }
 #endif

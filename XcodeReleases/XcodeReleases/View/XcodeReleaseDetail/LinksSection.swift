@@ -13,10 +13,10 @@ struct LinksSection : View {
     let release: XcodeRelease
     
     var body: some View {
-        Section(header: Text("Links")) {
+        Group {
             if release.links?.notes?.url != nil {
-                PresentationLink(destination: SafariView(url: URL(string: release.links!.notes!.url)!)) {
-                    Text("Release Notes")
+                Section(header: Text("Links")) {
+                    PresentationLink("Release Notes", destination: SafariView(url: URL(string: release.links!.notes!.url)!))
                 }
             } else {
                 EmptyView()

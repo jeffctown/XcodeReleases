@@ -12,22 +12,18 @@ import XcodeReleasesKit
 
 struct XcodeReleasesService {
     @Binding var releases: [XcodeRelease]
-    let loader = XcodeReleasesLoader()
+    let loader = try! XcodeReleasesLoader(url: "https://www.jefflett.com/xcode-data.json")
     
     func refresh() {
-        do {
-            try loader.releases { (result) in
-                switch result {
-                case .success(let releases):
-                    DispatchQueue.main.async {
-                        self.releases = releases
-                    }
-                case .failure(let error):
-                    print("Error Loading Releases: \((error as Error).localizedDescription)")
+        loader.releases { (result) in
+            switch result {
+            case .success(let releases):
+                DispatchQueue.main.async {
+                    self.releases = releases
                 }
+            case .failure(let error):
+                print("Error Loading Releases: \((error as Error).localizedDescription)")
             }
-        } catch {
-            print("Error Loading Releases: \(error.localizedDescription)")
         }
     }
     

@@ -10,19 +10,19 @@ import Foundation
 import SwiftUI
 
 struct NotificationTokenRow: View {
-    let pushToken: String
+    let pushToken: String?
     @Binding var authorizationStatus: UNAuthorizationStatus
     @Binding var showingAlert: Bool
     
     var body: some View {
         Group {
-            if authorizationStatus == .authorized {
-                SettingsButton(showingAlert: $showingAlert, title: "Notifications Enabled")
+            if authorizationStatus == .authorized && pushToken != nil {
+//                SettingsButton(showingAlert: $showingAlert, title: "Notifications Enabled")
                 Button(action: {
                     UIPasteboard.general.string = self.pushToken
                     self.showingAlert = true
                 }) {
-                    Text("Token: \(pushToken)").lineLimit(3)
+                    Text("Token: \(pushToken!)").lineLimit(3)
                 }.presentation($showingAlert) {
                     Alert(title: Text("Token Copied!"))
                 }
