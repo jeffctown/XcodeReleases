@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1F130C4F22D21EB200A525CE /* Device+Debugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F130C4E22D21EB200A525CE /* Device+Debugging.swift */; };
+		1F130E8922D22F0B00A525CE /* SettingsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F130E8822D22F0B00A525CE /* SettingsButton.swift */; };
 		1F174B1922CD5ACB004E2089 /* ReleaseInfoSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F174B1822CD5ACB004E2089 /* ReleaseInfoSection.swift */; };
 		1F174B1B22CD5BC2004E2089 /* MockReleases.json in Resources */ = {isa = PBXBuildFile; fileRef = 1F174B1A22CD5BC2004E2089 /* MockReleases.json */; };
 		1F174B1D22CD5BD6004E2089 /* MockReleases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F174B1C22CD5BD6004E2089 /* MockReleases.swift */; };
@@ -53,6 +54,7 @@
 
 /* Begin PBXFileReference section */
 		1F130C4E22D21EB200A525CE /* Device+Debugging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Device+Debugging.swift"; sourceTree = "<group>"; };
+		1F130E8822D22F0B00A525CE /* SettingsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsButton.swift; sourceTree = "<group>"; };
 		1F174B1822CD5ACB004E2089 /* ReleaseInfoSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseInfoSection.swift; sourceTree = "<group>"; };
 		1F174B1A22CD5BC2004E2089 /* MockReleases.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MockReleases.json; sourceTree = "<group>"; };
 		1F174B1C22CD5BD6004E2089 /* MockReleases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockReleases.swift; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 				1FF9F09322D208D600DBD6D3 /* NotificationRegisterRow.swift */,
 				1F3A225922D20719006B778D /* NotificationToggleRow.swift */,
 				1F3A225722D206D0006B778D /* NotificationTokenRow.swift */,
+				1F130E8822D22F0B00A525CE /* SettingsButton.swift */,
 			);
 			path = Notification;
 			sourceTree = "<group>";
@@ -403,6 +406,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F6A985D22D03BAF005785EA /* XcodeReleasesApi.swift in Sources */,
+				1F130E8922D22F0B00A525CE /* SettingsButton.swift in Sources */,
 				1FE2ACBE22CD82C300A8B239 /* UserDefault.swift in Sources */,
 				1F34989D22D0E4960000E4E8 /* NotificationSection.swift in Sources */,
 				1F5827D722CCFCCE00FAA665 /* XcodeReleaseRow.swift in Sources */,
