@@ -14,11 +14,11 @@ import XcodeReleasesKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let appState = AppState()
-    var userNotifications: UserNotifications!
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        userNotifications = UserNotifications()
-        userNotifications.registerForAppLifecycle()
+        print("Launch Options: \(launchOptions ?? [:])")
+        appState.userNotifications.registerForAppLifecycle()
+        appState.launchNotification = launchOptions?[.remoteNotification] as? [AnyHashable: Any]
         application.registerForRemoteNotifications()
         return true
     }
@@ -43,12 +43,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let token = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
-        self.appState.pushToken = token
-        userNotifications.registeredWithToken(token: token)
+        appState.pushToken = token
+        appState.userNotifications.registeredWithToken(token: token)
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        userNotifications.failedToRegister(error: error)
+        appState.userNotifications.failedToRegister(error: error)
     }
     
 }

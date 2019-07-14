@@ -12,15 +12,16 @@ import UIKit
 import UserNotifications
 import XcodeReleasesKit
 
-class UserNotifications {
+class UserNotifications: NSObject {
     
-    let api = XcodeReleasesApi()
     var authorizationStatus = CurrentValueSubject<UNAuthorizationStatus, Never>(.notDetermined)
+    private let api = XcodeReleasesApi()
     
     @UserDefault("pushIdentifier", defaultValue: nil)
     var pushIdentifier: Int?
     
     func registerForAppLifecycle() {
+        UNUserNotificationCenter.current().delegate = self
         _ = NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification).sink { _ in
             self.checkAuthorizationStatus()
         }
@@ -33,10 +34,6 @@ class UserNotifications {
                 self.authorizationStatus.send(settings.authorizationStatus)
             }
         }
-    }
-    
-    func register() {
-        self.register {}
     }
     
     func register(completion: @escaping () -> Void) {
@@ -86,5 +83,17 @@ class UserNotifications {
     func failedToRegister(error: Error) {
         print("\(#function) \(error)")
     }
+    
+}
 
+extension UserNotifications: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler(.alert)
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+//        deepLinkHandler.launchNotification = response.notification.request.content.userInfo
+//        deepLinkHandler.handle(/*userInfo: response.notification.request.content.userInfo*/)
+        completionHandler()
+    }
 }
