@@ -11,6 +11,6 @@ import XcodeReleasesKit
 
 extension XcodeRelease: Identifiable {
     public var id: String {
-        return "\(self.date.year)-\(self.date.month)-\(self.date.day)"
+        return "\(self.date.year)-\(self.date.month)-\(self.date.day)-\(self.version.build)-\(self.version.number ?? "-1")"
     }
 }

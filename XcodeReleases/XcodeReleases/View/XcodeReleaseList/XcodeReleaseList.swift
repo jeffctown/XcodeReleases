@@ -26,7 +26,7 @@ struct XcodeReleaseList : View {
             }.navigationBarTitle("Xcode Releases")
                 .navigationBarItems(trailing:
                         PresentationLink(
-                            destination: SettingsView(userNotifications: appState.userNotifications)
+                            destination: SettingsView()
                                 .environmentObject(appState), label: {
                         Image(systemName: "gear")
                             .imageScale(.large)

@@ -10,15 +10,28 @@ import UIKit
 import SwiftUI
 import XcodeReleasesKit
 
+extension UIViewController {
+    var appDelegate: AppDelegate {
+        return UIApplication.shared.delegate as! AppDelegate
+    }
+}
+extension View {
+    var appDelegate: AppDelegate {
+        return UIApplication.shared.delegate as! AppDelegate
+    }
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let appState = AppState()
+    var userNotifications: UserNotifications!
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         print("Launch Options: \(launchOptions ?? [:])")
-        appState.userNotifications.registerForAppLifecycle()
-        appState.launchNotification = launchOptions?[.remoteNotification] as? [AnyHashable: Any]
+        self.userNotifications = UserNotifications(appState: appState)
+        userNotifications.registerForAppLifecycle()
+        userNotifications.launchNotification = launchOptions?[.remoteNotification] as? [AnyHashable: Any]
         application.registerForRemoteNotifications()
         return true
     }
@@ -44,11 +57,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let token = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
         appState.pushToken = token
-        appState.userNotifications.registeredWithToken(token: token)
+        userNotifications.registeredWithToken(token: token)
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        appState.userNotifications.failedToRegister(error: error)
+        userNotifications.failedToRegister(error: error)
     }
     
 }

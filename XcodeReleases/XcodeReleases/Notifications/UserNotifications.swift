@@ -14,11 +14,24 @@ import XcodeReleasesKit
 
 class UserNotifications: NSObject {
     
+    let appState: AppState
     var authorizationStatus = CurrentValueSubject<UNAuthorizationStatus, Never>(.notDetermined)
     private let api = XcodeReleasesApi()
     
     @UserDefault("pushIdentifier", defaultValue: nil)
     var pushIdentifier: Int?
+    
+    var launchNotification: [AnyHashable: Any]? = nil {
+        didSet {
+            print("Notification Received! \(launchNotification.debugDescription)")
+            self.handle()
+        }
+    }
+    
+    init(appState: AppState) {
+        self.appState = appState
+        super.init()
+    }
     
     func registerForAppLifecycle() {
         UNUserNotificationCenter.current().delegate = self
@@ -36,7 +49,7 @@ class UserNotifications: NSObject {
         }
     }
     
-    func register(completion: @escaping () -> Void) {
+    func register() {
         print("NON Provisionally Registering For Push Notifications.")
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
             print("UNUserNotificationCenter Authorized: \(granted)")
@@ -44,7 +57,6 @@ class UserNotifications: NSObject {
                 print("UNUserNotificationCenter Error: \(error)")
             }
             self.checkAuthorizationStatus()
-            completion()
         }
     }
     
@@ -65,7 +77,7 @@ class UserNotifications: NSObject {
         let device = Device(type: UIDevice.current.name, token: token)
         if let pushIdentifier = pushIdentifier {
             device.id = pushIdentifier
-            register() {}
+            register()
         } else {
             registerProvisionally()
         }
@@ -84,6 +96,27 @@ class UserNotifications: NSObject {
         print("\(#function) \(error)")
     }
     
+    func handle() {
+        guard let extra = launchNotification?["extra"] as? [AnyHashable: Any] else {
+            print("No Extra Found In Push UserInfo.")
+            return
+        }
+        guard let releaseNotesUrl = extra["notes"] as? String else {
+            print("No Release Notes URL Found In Push Notification.")
+            return
+        }
+
+        self.handle(urlString: releaseNotesUrl)
+    }
+    
+    private func handle(urlString: String) {
+        print(urlString)
+        UIApplication.shared.connectedScenes.forEach { (scene) in
+            (scene.delegate as? SceneDelegate)?.deeplink(urlString: urlString)
+        }
+        self.launchNotification = nil
+    }
+    
 }
 
 extension UserNotifications: UNUserNotificationCenterDelegate {
@@ -92,8 +125,9 @@ extension UserNotifications: UNUserNotificationCenterDelegate {
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-//        deepLinkHandler.launchNotification = response.notification.request.content.userInfo
-//        deepLinkHandler.handle(/*userInfo: response.notification.request.content.userInfo*/)
+//        launchNotification.se
+        launchNotification = response.notification.request.content.userInfo
+        print(response.notification.request.content.userInfo)
         completionHandler()
     }
 }

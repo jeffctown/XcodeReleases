@@ -12,7 +12,7 @@ import XcodeReleasesKit
 
 struct XcodeReleasesService {
     @Binding var releases: [XcodeRelease]
-    let loader = try! XcodeReleasesLoader(url: "https://www.jefflett.com/xcode-data.json")
+    let loader = try! XcodeReleasesLoader(url: "https://xcodereleases.jefflett.com/release")
     
     func refresh() {
         loader.releases { (result) in
