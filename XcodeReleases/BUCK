@@ -11,10 +11,7 @@ apple_binary(
   deps = [
     "//XcodeReleasesKit:XcodeReleasesKit"
   ],
-  #entitlements_file = "XcodeReleasesDebug.entitlements",
-  compiler_flags = [
-    "LD_VERIFY_BITCODE=NO"
-  ],
+  #entitlements_file = "//XcodeReleases/XcodeReleases/XcodeReleasesDebug.entitlements",
   frameworks = [
     '$SDKROOT/System/Library/Frameworks/Foundation.framework',
     '$SDKROOT/System/Library/Frameworks/UIKit.framework',
@@ -32,6 +29,7 @@ apple_bundle(
   info_plist_substitutions = {
       'PRODUCT_BUNDLE_IDENTIFIER': 'com.jefflett.XcodeReleases',
       'CURRENT_PROJECT_VERSION': '1',
+      'DEVELOPMENT_TEAM': 'NTX63W5EU6',
   },
   visibility = [
     "//XcodeReleases:",

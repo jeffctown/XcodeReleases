@@ -5,9 +5,8 @@
 
 [swift]
   version = 5
-  #-whole-module-optimization
-  compiler_flags = -DBUCK  -enable-testing -suppress-warnings
-
+  compiler_flags = -DBUCK  -enable-testing -suppress-warnings -LD_VERIFY_BITCODE=NO
+  LD_VERIFY_BITCODE = NO
 
 [project]
   ide_force_kill = always
