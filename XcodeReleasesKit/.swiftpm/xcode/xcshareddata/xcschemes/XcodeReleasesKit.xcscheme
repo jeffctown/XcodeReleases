@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1F30765E22CCC7B4006A49C3"
-               BuildableName = "XcodeReleases.app"
-               BlueprintName = "XcodeReleases"
-               ReferencedContainer = "container:XcodeReleases.xcodeproj">
+               BlueprintIdentifier = "XcodeReleasesKit"
+               BuildableName = "XcodeReleasesKit"
+               BlueprintName = "XcodeReleasesKit"
+               ReferencedContainer = "container:">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -26,8 +26,13 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      codeCoverageEnabled = "YES">
       <TestPlans>
+         <TestPlanReference
+            reference = "container:XcodeReleasesKitTestPlan.xctestplan"
+            default = "YES">
+         </TestPlanReference>
       </TestPlans>
    </TestAction>
    <LaunchAction
@@ -40,16 +45,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1F30765E22CCC7B4006A49C3"
-            BuildableName = "XcodeReleases.app"
-            BlueprintName = "XcodeReleases"
-            ReferencedContainer = "container:XcodeReleases.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -57,16 +52,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1F30765E22CCC7B4006A49C3"
-            BuildableName = "XcodeReleases.app"
-            BlueprintName = "XcodeReleases"
-            ReferencedContainer = "container:XcodeReleases.xcodeproj">
+            BlueprintIdentifier = "XcodeReleasesKit"
+            BuildableName = "XcodeReleasesKit"
+            BlueprintName = "XcodeReleasesKit"
+            ReferencedContainer = "container:">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

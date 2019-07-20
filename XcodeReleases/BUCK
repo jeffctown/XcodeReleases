@@ -1,0 +1,40 @@
+
+apple_binary(
+  name = 'XcodeReleasesBinary',
+  visibility = [
+    "//XcodeReleases:",
+    "//XcodeReleases/...",
+  ],
+  srcs = glob([
+    'XcodeReleases/**/*.swift'
+  ]),
+  deps = [
+    "//XcodeReleasesKit:XcodeReleasesKit"
+  ],
+  #entitlements_file = "XcodeReleasesDebug.entitlements",
+  compiler_flags = [
+    "LD_VERIFY_BITCODE=NO"
+  ],
+  frameworks = [
+    '$SDKROOT/System/Library/Frameworks/Foundation.framework',
+    '$SDKROOT/System/Library/Frameworks/UIKit.framework',
+    '$SDKROOT/System/Library/Frameworks/SwiftUI.framework',
+    '$SDKROOT/System/Library/Frameworks/Combine.framework',
+  ],
+)
+
+apple_bundle(
+  name = 'XcodeReleases',
+  extension = 'app',
+  binary = ':XcodeReleasesBinary',
+  product_name = "Xcode Releases",
+  info_plist = 'XcodeReleases/Resources/Info.plist',
+  info_plist_substitutions = {
+      'PRODUCT_BUNDLE_IDENTIFIER': 'com.jefflett.XcodeReleases',
+      'CURRENT_PROJECT_VERSION': '1',
+  },
+  visibility = [
+    "//XcodeReleases:",
+    "//XcodeReleases/...",
+  ],
+)

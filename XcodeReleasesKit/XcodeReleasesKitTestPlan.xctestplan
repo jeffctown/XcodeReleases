@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "XcodeReleasesKitTests",
+        "name" : "XcodeReleasesKitTests"
+      }
+    }
+  ],
+  "version" : 1
+}

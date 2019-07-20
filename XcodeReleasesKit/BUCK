@@ -1,0 +1,15 @@
+apple_library(
+  name = "XcodeReleasesKit",
+  visibility = [
+    'PUBLIC',
+    "//XcodeReleases:",
+  ],
+  within_view = [],
+  modular = True,
+  preferred_linkage = "shared",
+  srcs = glob(['Sources/**/*.swift']),
+  frameworks = [
+    '$SDKROOT/System/Library/Frameworks/Foundation.framework',
+    '$SDKROOT/System/Library/Frameworks/UIKit.framework',
+  ],
+)
