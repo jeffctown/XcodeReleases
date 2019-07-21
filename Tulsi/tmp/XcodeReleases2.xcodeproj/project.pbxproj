@@ -1,0 +1,1336 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		28FC0AF304CDD57400000000 /* XcodeReleasesApi.swift in Service */ = {isa = PBXBuildFile; fileRef = 79F6E36804CDD57400000000 /* XcodeReleasesApi.swift */; };
+		28FC0AF304CDD57400000001 /* XcodeReleasesApi.swift in Service */ = {isa = PBXBuildFile; fileRef = 79F6E36804CDD57400000000 /* XcodeReleasesApi.swift */; };
+		28FC0AF30D0EB20400000000 /* WebView.swift in Webviews */ = {isa = PBXBuildFile; fileRef = 79F6E3680D0EB20400000000 /* WebView.swift */; };
+		28FC0AF30D0EB20400000001 /* WebView.swift in Webviews */ = {isa = PBXBuildFile; fileRef = 79F6E3680D0EB20400000000 /* WebView.swift */; };
+		28FC0AF310E9B72000000000 /* ReleaseInfoSection.swift in XcodeReleaseDetail */ = {isa = PBXBuildFile; fileRef = 79F6E36810E9B72000000000 /* ReleaseInfoSection.swift */; };
+		28FC0AF310E9B72000000001 /* ReleaseInfoSection.swift in XcodeReleaseDetail */ = {isa = PBXBuildFile; fileRef = 79F6E36810E9B72000000000 /* ReleaseInfoSection.swift */; };
+		28FC0AF31719CC4C00000000 /* XcodeReleasesLoader.swift in XcodeReleasesKit */ = {isa = PBXBuildFile; fileRef = 79F6E3681719CC4C00000000 /* XcodeReleasesLoader.swift */; };
+		28FC0AF31719CC4C00000001 /* XcodeReleasesLoader.swift in XcodeReleasesKit */ = {isa = PBXBuildFile; fileRef = 79F6E3681719CC4C00000000 /* XcodeReleasesLoader.swift */; };
+		28FC0AF317699A7900000000 /* NotificationSection.swift in Settings */ = {isa = PBXBuildFile; fileRef = 79F6E36817699A7900000000 /* NotificationSection.swift */; };
+		28FC0AF317699A7900000001 /* NotificationSection.swift in Settings */ = {isa = PBXBuildFile; fileRef = 79F6E36817699A7900000000 /* NotificationSection.swift */; };
+		28FC0AF3196B313A00000000 /* SettingsButton.swift in Notification */ = {isa = PBXBuildFile; fileRef = 79F6E368196B313A00000000 /* SettingsButton.swift */; };
+		28FC0AF3196B313A00000001 /* SettingsButton.swift in Notification */ = {isa = PBXBuildFile; fileRef = 79F6E368196B313A00000000 /* SettingsButton.swift */; };
+		28FC0AF3233A993600000000 /* Device+Debugging.swift in Extensions */ = {isa = PBXBuildFile; fileRef = 79F6E368233A993600000000 /* Device+Debugging.swift */; };
+		28FC0AF3233A993600000001 /* Device+Debugging.swift in Extensions */ = {isa = PBXBuildFile; fileRef = 79F6E368233A993600000000 /* Device+Debugging.swift */; };
+		28FC0AF3300976D100000000 /* UserNotifications.swift in Notifications */ = {isa = PBXBuildFile; fileRef = 79F6E368300976D100000000 /* UserNotifications.swift */; };
+		28FC0AF3300976D100000001 /* UserNotifications.swift in Notifications */ = {isa = PBXBuildFile; fileRef = 79F6E368300976D100000000 /* UserNotifications.swift */; };
+		28FC0AF335339F3300000000 /* NotificationTokenRow.swift in Notification */ = {isa = PBXBuildFile; fileRef = 79F6E36835339F3300000000 /* NotificationTokenRow.swift */; };
+		28FC0AF335339F3300000001 /* NotificationTokenRow.swift in Notification */ = {isa = PBXBuildFile; fileRef = 79F6E36835339F3300000000 /* NotificationTokenRow.swift */; };
+		28FC0AF35651D3D500000000 /* SDKSection.swift in XcodeReleaseDetail */ = {isa = PBXBuildFile; fileRef = 79F6E3685651D3D500000000 /* SDKSection.swift */; };
+		28FC0AF35651D3D500000001 /* SDKSection.swift in XcodeReleaseDetail */ = {isa = PBXBuildFile; fileRef = 79F6E3685651D3D500000000 /* SDKSection.swift */; };
+		28FC0AF35DCDC09200000000 /* SettingsView.swift in Settings */ = {isa = PBXBuildFile; fileRef = 79F6E3685DCDC09200000000 /* SettingsView.swift */; };
+		28FC0AF35DCDC09200000001 /* SettingsView.swift in Settings */ = {isa = PBXBuildFile; fileRef = 79F6E3685DCDC09200000000 /* SettingsView.swift */; };
+		28FC0AF363F5E27200000000 /* XcodeReleasesService.swift in Service */ = {isa = PBXBuildFile; fileRef = 79F6E36863F5E27200000000 /* XcodeReleasesService.swift */; };
+		28FC0AF363F5E27200000001 /* XcodeReleasesService.swift in Service */ = {isa = PBXBuildFile; fileRef = 79F6E36863F5E27200000000 /* XcodeReleasesService.swift */; };
+		28FC0AF367B998A900000000 /* UserDefault.swift in Persistence */ = {isa = PBXBuildFile; fileRef = 79F6E36867B998A900000000 /* UserDefault.swift */; };
+		28FC0AF367B998A900000001 /* UserDefault.swift in Persistence */ = {isa = PBXBuildFile; fileRef = 79F6E36867B998A900000000 /* UserDefault.swift */; };
+		28FC0AF36CCA157C00000000 /* AboutSection.swift in Settings */ = {isa = PBXBuildFile; fileRef = 79F6E3686CCA157C00000000 /* AboutSection.swift */; };
+		28FC0AF36CCA157C00000001 /* AboutSection.swift in Settings */ = {isa = PBXBuildFile; fileRef = 79F6E3686CCA157C00000000 /* AboutSection.swift */; };
+		28FC0AF36CD6DCE400000000 /* XcodeReleaseDetail.swift in XcodeReleaseDetail */ = {isa = PBXBuildFile; fileRef = 79F6E3686CD6DCE400000000 /* XcodeReleaseDetail.swift */; };
+		28FC0AF36CD6DCE400000001 /* XcodeReleaseDetail.swift in XcodeReleaseDetail */ = {isa = PBXBuildFile; fileRef = 79F6E3686CD6DCE400000000 /* XcodeReleaseDetail.swift */; };
+		28FC0AF36F101E3D00000000 /* LinksSection.swift in XcodeReleaseDetail */ = {isa = PBXBuildFile; fileRef = 79F6E3686F101E3D00000000 /* LinksSection.swift */; };
+		28FC0AF36F101E3D00000001 /* LinksSection.swift in XcodeReleaseDetail */ = {isa = PBXBuildFile; fileRef = 79F6E3686F101E3D00000000 /* LinksSection.swift */; };
+		28FC0AF36F53534900000000 /* AppDelegate.swift in Launch */ = {isa = PBXBuildFile; fileRef = 79F6E3686F53534900000000 /* AppDelegate.swift */; };
+		28FC0AF36F53534900000001 /* AppDelegate.swift in Launch */ = {isa = PBXBuildFile; fileRef = 79F6E3686F53534900000000 /* AppDelegate.swift */; };
+		28FC0AF3802E887100000000 /* Version.swift in XcodeReleasesKit */ = {isa = PBXBuildFile; fileRef = 79F6E368802E887100000000 /* Version.swift */; };
+		28FC0AF3802E887100000001 /* Version.swift in XcodeReleasesKit */ = {isa = PBXBuildFile; fileRef = 79F6E368802E887100000000 /* Version.swift */; };
+		28FC0AF38B11B9DB00000000 /* Date.swift in XcodeReleasesKit */ = {isa = PBXBuildFile; fileRef = 79F6E3688B11B9DB00000000 /* Date.swift */; };
+		28FC0AF38B11B9DB00000001 /* Date.swift in XcodeReleasesKit */ = {isa = PBXBuildFile; fileRef = 79F6E3688B11B9DB00000000 /* Date.swift */; };
+		28FC0AF39D23A04A00000000 /* MockReleases.swift in Preview Content */ = {isa = PBXBuildFile; fileRef = 79F6E3689D23A04A00000000 /* MockReleases.swift */; };
+		28FC0AF39D23A04A00000001 /* MockReleases.swift in Preview Content */ = {isa = PBXBuildFile; fileRef = 79F6E3689D23A04A00000000 /* MockReleases.swift */; };
+		28FC0AF39E9E16F900000000 /* SceneDelegate.swift in Launch */ = {isa = PBXBuildFile; fileRef = 79F6E3689E9E16F900000000 /* SceneDelegate.swift */; };
+		28FC0AF39E9E16F900000001 /* SceneDelegate.swift in Launch */ = {isa = PBXBuildFile; fileRef = 79F6E3689E9E16F900000000 /* SceneDelegate.swift */; };
+		28FC0AF3A3344E9900000000 /* SDKs.swift in XcodeReleasesKit */ = {isa = PBXBuildFile; fileRef = 79F6E368A3344E9900000000 /* SDKs.swift */; };
+		28FC0AF3A3344E9900000001 /* SDKs.swift in XcodeReleasesKit */ = {isa = PBXBuildFile; fileRef = 79F6E368A3344E9900000000 /* SDKs.swift */; };
+		28FC0AF3B143F57000000000 /* NotificationToggleRow.swift in Notification */ = {isa = PBXBuildFile; fileRef = 79F6E368B143F57000000000 /* NotificationToggleRow.swift */; };
+		28FC0AF3B143F57000000001 /* NotificationToggleRow.swift in Notification */ = {isa = PBXBuildFile; fileRef = 79F6E368B143F57000000000 /* NotificationToggleRow.swift */; };
+		28FC0AF3BBF0A5C700000000 /* ReleaseType.swift in XcodeReleasesKit */ = {isa = PBXBuildFile; fileRef = 79F6E368BBF0A5C700000000 /* ReleaseType.swift */; };
+		28FC0AF3BBF0A5C700000001 /* ReleaseType.swift in XcodeReleasesKit */ = {isa = PBXBuildFile; fileRef = 79F6E368BBF0A5C700000000 /* ReleaseType.swift */; };
+		28FC0AF3BC2B634F00000000 /* InfoPList.swift in XcodeReleases */ = {isa = PBXBuildFile; fileRef = 79F6E368BC2B634F00000000 /* InfoPList.swift */; };
+		28FC0AF3BC2B634F00000001 /* InfoPList.swift in XcodeReleases */ = {isa = PBXBuildFile; fileRef = 79F6E368BC2B634F00000000 /* InfoPList.swift */; };
+		28FC0AF3C501A99100000000 /* XcodeRelease.swift in XcodeReleasesKit */ = {isa = PBXBuildFile; fileRef = 79F6E368C501A99100000000 /* XcodeRelease.swift */; };
+		28FC0AF3C501A99100000001 /* XcodeRelease.swift in XcodeReleasesKit */ = {isa = PBXBuildFile; fileRef = 79F6E368C501A99100000000 /* XcodeRelease.swift */; };
+		28FC0AF3C90C1EEE00000000 /* XcodeRelease+Identifiable.swift in Extensions */ = {isa = PBXBuildFile; fileRef = 79F6E368C90C1EEE00000000 /* XcodeRelease+Identifiable.swift */; };
+		28FC0AF3C90C1EEE00000001 /* XcodeRelease+Identifiable.swift in Extensions */ = {isa = PBXBuildFile; fileRef = 79F6E368C90C1EEE00000000 /* XcodeRelease+Identifiable.swift */; };
+		28FC0AF3CE44B1F300000000 /* XcodeReleaseList.swift in XcodeReleaseList */ = {isa = PBXBuildFile; fileRef = 79F6E368CE44B1F300000000 /* XcodeReleaseList.swift */; };
+		28FC0AF3CE44B1F300000001 /* XcodeReleaseList.swift in XcodeReleaseList */ = {isa = PBXBuildFile; fileRef = 79F6E368CE44B1F300000000 /* XcodeReleaseList.swift */; };
+		28FC0AF3CE70509600000000 /* AppState.swift in State */ = {isa = PBXBuildFile; fileRef = 79F6E368CE70509600000000 /* AppState.swift */; };
+		28FC0AF3CE70509600000001 /* AppState.swift in State */ = {isa = PBXBuildFile; fileRef = 79F6E368CE70509600000000 /* AppState.swift */; };
+		28FC0AF3D20C396700000000 /* NotificationRegisterRow.swift in Notification */ = {isa = PBXBuildFile; fileRef = 79F6E368D20C396700000000 /* NotificationRegisterRow.swift */; };
+		28FC0AF3D20C396700000001 /* NotificationRegisterRow.swift in Notification */ = {isa = PBXBuildFile; fileRef = 79F6E368D20C396700000000 /* NotificationRegisterRow.swift */; };
+		28FC0AF3E4CBEBD600000000 /* Links.swift in XcodeReleasesKit */ = {isa = PBXBuildFile; fileRef = 79F6E368E4CBEBD600000000 /* Links.swift */; };
+		28FC0AF3E4CBEBD600000001 /* Links.swift in XcodeReleasesKit */ = {isa = PBXBuildFile; fileRef = 79F6E368E4CBEBD600000000 /* Links.swift */; };
+		28FC0AF3F23EF8BE00000000 /* XcodeReleaseRow.swift in XcodeReleaseList */ = {isa = PBXBuildFile; fileRef = 79F6E368F23EF8BE00000000 /* XcodeReleaseRow.swift */; };
+		28FC0AF3F23EF8BE00000001 /* XcodeReleaseRow.swift in XcodeReleaseList */ = {isa = PBXBuildFile; fileRef = 79F6E368F23EF8BE00000000 /* XcodeReleaseRow.swift */; };
+		28FC0AF3F94BB49400000000 /* SafariView.swift in Webviews */ = {isa = PBXBuildFile; fileRef = 79F6E368F94BB49400000000 /* SafariView.swift */; };
+		28FC0AF3F94BB49400000001 /* SafariView.swift in Webviews */ = {isa = PBXBuildFile; fileRef = 79F6E368F94BB49400000000 /* SafariView.swift */; };
+		28FC0AF3FDEA6E1C00000000 /* Device.swift in XcodeReleasesKit */ = {isa = PBXBuildFile; fileRef = 79F6E368FDEA6E1C00000000 /* Device.swift */; };
+		28FC0AF3FDEA6E1C00000001 /* Device.swift in XcodeReleasesKit */ = {isa = PBXBuildFile; fileRef = 79F6E368FDEA6E1C00000000 /* Device.swift */; };
+		28FC0AF3FF1A001C00000000 /* NotificationDeniedRow.swift in Notification */ = {isa = PBXBuildFile; fileRef = 79F6E368FF1A001C00000000 /* NotificationDeniedRow.swift */; };
+		28FC0AF3FF1A001C00000001 /* NotificationDeniedRow.swift in Notification */ = {isa = PBXBuildFile; fileRef = 79F6E368FF1A001C00000000 /* NotificationDeniedRow.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		74ACEECE01EC133500000000 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D0020737713F36D900000000 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7A0575AA01EC133400000000;
+		};
+		74ACEECE9EAE9A0100000000 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D0020737713F36D900000000 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0118C72D9EAE9A0000000000;
+		};
+		74ACEECE9F12AF5900000000 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D0020737713F36D900000000 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0118C72D9F12AF5800000000;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		79F6E36804CDD57400000000 /* XcodeReleasesApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = XcodeReleasesApi.swift; path = XcodeReleases/XcodeReleases/Service/XcodeReleasesApi.swift; sourceTree = "<group>"; };
+		79F6E3680D0EB20400000000 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WebView.swift; path = XcodeReleases/XcodeReleases/View/Webviews/WebView.swift; sourceTree = "<group>"; };
+		79F6E36810E9B72000000000 /* ReleaseInfoSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReleaseInfoSection.swift; path = XcodeReleases/XcodeReleases/View/XcodeReleaseDetail/ReleaseInfoSection.swift; sourceTree = "<group>"; };
+		79F6E3681719CC4C00000000 /* XcodeReleasesLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = XcodeReleasesLoader.swift; path = XcodeReleasesKit/Sources/XcodeReleasesKit/XcodeReleasesLoader.swift; sourceTree = "<group>"; };
+		79F6E36817699A7900000000 /* NotificationSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NotificationSection.swift; path = XcodeReleases/XcodeReleases/View/Settings/NotificationSection.swift; sourceTree = "<group>"; };
+		79F6E368196B313A00000000 /* SettingsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsButton.swift; path = XcodeReleases/XcodeReleases/View/Settings/Notification/SettingsButton.swift; sourceTree = "<group>"; };
+		79F6E368233A993600000000 /* Device+Debugging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Device+Debugging.swift"; path = "XcodeReleases/XcodeReleases/Extensions/Device+Debugging.swift"; sourceTree = "<group>"; };
+		79F6E36829D71D1200000000 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = XcodeReleases/XcodeReleases/Resources/Info.plist; sourceTree = "<group>"; };
+		79F6E368300976D100000000 /* UserNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserNotifications.swift; path = XcodeReleases/XcodeReleases/Notifications/UserNotifications.swift; sourceTree = "<group>"; };
+		79F6E368336997E800000000 /* _idx_XcodeReleasesKit_54967911_ios_min12.2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = _idx_XcodeReleasesKit_54967911_ios_min12.2.framework; path = _idx_XcodeReleasesKit_54967911_ios_min12.2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		79F6E36835339F3300000000 /* NotificationTokenRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NotificationTokenRow.swift; path = XcodeReleases/XcodeReleases/View/Settings/Notification/NotificationTokenRow.swift; sourceTree = "<group>"; };
+		79F6E36836D1AF8200000000 /* lib-XcodeReleasesKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; name = "lib-XcodeReleasesKit.a"; path = "lib-XcodeReleasesKit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		79F6E36848E2F12700000000 /* Info.plist */ = {isa = PBXFileReference; explicitFileType = text.plist; name = Info.plist; path = "tulsi-workspace/_tulsi-includes/x/x/XcodeReleases-intermediates/Info.plist"; sourceTree = "<group>"; };
+		79F6E3685651D3D500000000 /* SDKSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SDKSection.swift; path = XcodeReleases/XcodeReleases/View/XcodeReleaseDetail/SDKSection.swift; sourceTree = "<group>"; };
+		79F6E3685DCDC09200000000 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = XcodeReleases/XcodeReleases/View/Settings/SettingsView.swift; sourceTree = "<group>"; };
+		79F6E36863F5E27200000000 /* XcodeReleasesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = XcodeReleasesService.swift; path = XcodeReleases/XcodeReleases/Service/XcodeReleasesService.swift; sourceTree = "<group>"; };
+		79F6E36867B998A900000000 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDefault.swift; path = XcodeReleases/XcodeReleases/Persistence/UserDefault.swift; sourceTree = "<group>"; };
+		79F6E36869BB2B4000000000 /* lib-XcodeReleasesLib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; name = "lib-XcodeReleasesLib.a"; path = "lib-XcodeReleasesLib.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		79F6E3686CCA157C00000000 /* AboutSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AboutSection.swift; path = XcodeReleases/XcodeReleases/View/Settings/AboutSection.swift; sourceTree = "<group>"; };
+		79F6E3686CD6DCE400000000 /* XcodeReleaseDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = XcodeReleaseDetail.swift; path = XcodeReleases/XcodeReleases/View/XcodeReleaseDetail/XcodeReleaseDetail.swift; sourceTree = "<group>"; };
+		79F6E3686F101E3D00000000 /* LinksSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LinksSection.swift; path = XcodeReleases/XcodeReleases/View/XcodeReleaseDetail/LinksSection.swift; sourceTree = "<group>"; };
+		79F6E3686F53534900000000 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = XcodeReleases/XcodeReleases/Launch/AppDelegate.swift; sourceTree = "<group>"; };
+		79F6E3687A02752900000000 /* BUILD */ = {isa = PBXFileReference; lastKnownFileType = text; name = BUILD; path = "tulsi-workspace//BUILD"; sourceTree = "<group>"; };
+		79F6E368802E887100000000 /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Version.swift; path = XcodeReleasesKit/Sources/XcodeReleasesKit/Version.swift; sourceTree = "<group>"; };
+		79F6E3688B11B9DB00000000 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Date.swift; path = XcodeReleasesKit/Sources/XcodeReleasesKit/Date.swift; sourceTree = "<group>"; };
+		79F6E3689D23A04A00000000 /* MockReleases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MockReleases.swift; path = "XcodeReleases/XcodeReleases/Preview Content/MockReleases.swift"; sourceTree = "<group>"; };
+		79F6E3689E9E16F900000000 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SceneDelegate.swift; path = XcodeReleases/XcodeReleases/Launch/SceneDelegate.swift; sourceTree = "<group>"; };
+		79F6E3689E9EDBC400000000 /* _idx_XcodeReleasesLib_6125840A_ios_min12.0.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = _idx_XcodeReleasesLib_6125840A_ios_min12.0.framework; path = _idx_XcodeReleasesLib_6125840A_ios_min12.0.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		79F6E368A3344E9900000000 /* SDKs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SDKs.swift; path = XcodeReleasesKit/Sources/XcodeReleasesKit/SDKs.swift; sourceTree = "<group>"; };
+		79F6E368A445E63A00000000 /* XcodeReleases.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; name = XcodeReleases.app; path = XcodeReleases.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		79F6E368B143F57000000000 /* NotificationToggleRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NotificationToggleRow.swift; path = XcodeReleases/XcodeReleases/View/Settings/Notification/NotificationToggleRow.swift; sourceTree = "<group>"; };
+		79F6E368BBF0A5C700000000 /* ReleaseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReleaseType.swift; path = XcodeReleasesKit/Sources/XcodeReleasesKit/ReleaseType.swift; sourceTree = "<group>"; };
+		79F6E368BC2B634F00000000 /* InfoPList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InfoPList.swift; path = XcodeReleases/XcodeReleases/InfoPList.swift; sourceTree = "<group>"; };
+		79F6E368C501A99100000000 /* XcodeRelease.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = XcodeRelease.swift; path = XcodeReleasesKit/Sources/XcodeReleasesKit/XcodeRelease.swift; sourceTree = "<group>"; };
+		79F6E368C90C1EEE00000000 /* XcodeRelease+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "XcodeRelease+Identifiable.swift"; path = "XcodeReleases/XcodeReleases/Extensions/XcodeRelease+Identifiable.swift"; sourceTree = "<group>"; };
+		79F6E368CE44B1F300000000 /* XcodeReleaseList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = XcodeReleaseList.swift; path = XcodeReleases/XcodeReleases/View/XcodeReleaseList/XcodeReleaseList.swift; sourceTree = "<group>"; };
+		79F6E368CE70509600000000 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppState.swift; path = XcodeReleases/XcodeReleases/State/AppState.swift; sourceTree = "<group>"; };
+		79F6E368D20C396700000000 /* NotificationRegisterRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NotificationRegisterRow.swift; path = XcodeReleases/XcodeReleases/View/Settings/Notification/NotificationRegisterRow.swift; sourceTree = "<group>"; };
+		79F6E368E4CBEBD600000000 /* Links.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Links.swift; path = XcodeReleasesKit/Sources/XcodeReleasesKit/Links.swift; sourceTree = "<group>"; };
+		79F6E368F23EF8BE00000000 /* XcodeReleaseRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = XcodeReleaseRow.swift; path = XcodeReleases/XcodeReleases/View/XcodeReleaseList/XcodeReleaseRow.swift; sourceTree = "<group>"; };
+		79F6E368F6C56A9600000000 /* _idx_XcodeReleasesLib_6125840A_ios_min12.2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = _idx_XcodeReleasesLib_6125840A_ios_min12.2.framework; path = _idx_XcodeReleasesLib_6125840A_ios_min12.2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		79F6E368F94BB49400000000 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SafariView.swift; path = XcodeReleases/XcodeReleases/View/Webviews/SafariView.swift; sourceTree = "<group>"; };
+		79F6E368FA750F8A00000000 /* _idx_XcodeReleasesKit_54967911_ios_min12.0.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = _idx_XcodeReleasesKit_54967911_ios_min12.0.framework; path = _idx_XcodeReleasesKit_54967911_ios_min12.0.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		79F6E368FDEA6E1C00000000 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Device.swift; path = XcodeReleasesKit/Sources/XcodeReleasesKit/Device.swift; sourceTree = "<group>"; };
+		79F6E368FF1A001C00000000 /* NotificationDeniedRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NotificationDeniedRow.swift; path = XcodeReleases/XcodeReleases/View/Settings/Notification/NotificationDeniedRow.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		45A2529002865C4F00000000 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				79F6E36867B998A900000000 /* UserDefault.swift */,
+			);
+			name = Persistence;
+			sourceTree = "<group>";
+		};
+		45A25290065F307800000000 /* Webviews */ = {
+			isa = PBXGroup;
+			children = (
+				79F6E368F94BB49400000000 /* SafariView.swift */,
+				79F6E3680D0EB20400000000 /* WebView.swift */,
+			);
+			name = Webviews;
+			sourceTree = "<group>";
+		};
+		45A25290098FC8F900000000 /* XcodeReleaseDetail */ = {
+			isa = PBXGroup;
+			children = (
+				79F6E3686F101E3D00000000 /* LinksSection.swift */,
+				79F6E36810E9B72000000000 /* ReleaseInfoSection.swift */,
+				79F6E3685651D3D500000000 /* SDKSection.swift */,
+				79F6E3686CD6DCE400000000 /* XcodeReleaseDetail.swift */,
+			);
+			name = XcodeReleaseDetail;
+			sourceTree = "<group>";
+		};
+		45A25290222E2E4700000000 /* XcodeReleaseList */ = {
+			isa = PBXGroup;
+			children = (
+				79F6E368CE44B1F300000000 /* XcodeReleaseList.swift */,
+				79F6E368F23EF8BE00000000 /* XcodeReleaseRow.swift */,
+			);
+			name = XcodeReleaseList;
+			sourceTree = "<group>";
+		};
+		45A2529022622B5200000000 /* x */ = {
+			isa = PBXGroup;
+			children = (
+				45A2529022622B5200000001 /* x */,
+			);
+			name = x;
+			sourceTree = "<group>";
+		};
+		45A2529022622B5200000001 /* x */ = {
+			isa = PBXGroup;
+			children = (
+				45A252909ED02E1A00000000 /* XcodeReleases-intermediates */,
+			);
+			name = x;
+			sourceTree = "<group>";
+		};
+		45A25290236DAA2300000000 /* Indexer */ = {
+			isa = PBXGroup;
+			children = (
+				79F6E368FA750F8A00000000 /* _idx_XcodeReleasesKit_54967911_ios_min12.0.framework */,
+				79F6E368336997E800000000 /* _idx_XcodeReleasesKit_54967911_ios_min12.2.framework */,
+				79F6E3689E9EDBC400000000 /* _idx_XcodeReleasesLib_6125840A_ios_min12.0.framework */,
+				79F6E368F6C56A9600000000 /* _idx_XcodeReleasesLib_6125840A_ios_min12.2.framework */,
+			);
+			name = Indexer;
+			sourceTree = "<group>";
+		};
+		45A2529026A8D7BD00000000 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				45A2529087362ACF00000001 /* XcodeReleasesKit */,
+			);
+			name = Sources;
+			sourceTree = "<group>";
+		};
+		45A252903637FE8C00000000 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				79F6E368FF1A001C00000000 /* NotificationDeniedRow.swift */,
+				79F6E368D20C396700000000 /* NotificationRegisterRow.swift */,
+				79F6E368B143F57000000000 /* NotificationToggleRow.swift */,
+				79F6E36835339F3300000000 /* NotificationTokenRow.swift */,
+				79F6E368196B313A00000000 /* SettingsButton.swift */,
+			);
+			name = Notification;
+			sourceTree = "<group>";
+		};
+		45A252903937C9E600000000 /* mainGroup */ = {
+			isa = PBXGroup;
+			children = (
+				45A25290B93FD0C500000000 /* / */,
+				45A2529088CBB22D00000000 /* Products */,
+				45A252906A2A785700000000 /* XcodeReleases */,
+				45A2529087362ACF00000000 /* XcodeReleasesKit */,
+			);
+			name = mainGroup;
+			path = ../..;
+			sourceTree = SOURCE_ROOT;
+		};
+		45A252904B02D43E00000000 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				79F6E36804CDD57400000000 /* XcodeReleasesApi.swift */,
+				79F6E36863F5E27200000000 /* XcodeReleasesService.swift */,
+			);
+			name = Service;
+			sourceTree = "<group>";
+		};
+		45A2529051E6E6D300000000 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				79F6E3689D23A04A00000000 /* MockReleases.swift */,
+			);
+			name = "Preview Content";
+			sourceTree = "<group>";
+		};
+		45A2529064A3899800000000 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				79F6E36829D71D1200000000 /* Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		45A2529068E5D2BC00000000 /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				79F6E3686F53534900000000 /* AppDelegate.swift */,
+				79F6E3689E9E16F900000000 /* SceneDelegate.swift */,
+			);
+			name = Launch;
+			sourceTree = "<group>";
+		};
+		45A252906A2A785700000000 /* XcodeReleases */ = {
+			isa = PBXGroup;
+			children = (
+				45A252906A2A785700000001 /* XcodeReleases */,
+			);
+			name = XcodeReleases;
+			sourceTree = "<group>";
+		};
+		45A252906A2A785700000001 /* XcodeReleases */ = {
+			isa = PBXGroup;
+			children = (
+				45A25290C7330E3C00000000 /* Extensions */,
+				79F6E368BC2B634F00000000 /* InfoPList.swift */,
+				45A2529068E5D2BC00000000 /* Launch */,
+				45A2529084748FA300000000 /* Notifications */,
+				45A2529002865C4F00000000 /* Persistence */,
+				45A2529051E6E6D300000000 /* Preview Content */,
+				45A2529064A3899800000000 /* Resources */,
+				45A252904B02D43E00000000 /* Service */,
+				45A25290FF5FF50700000000 /* State */,
+				45A25290DCDD814700000000 /* View */,
+			);
+			name = XcodeReleases;
+			sourceTree = "<group>";
+		};
+		45A252907725C8B100000000 /* _tulsi-includes */ = {
+			isa = PBXGroup;
+			children = (
+				45A2529022622B5200000000 /* x */,
+			);
+			name = "_tulsi-includes";
+			sourceTree = "<group>";
+		};
+		45A2529084748FA300000000 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				79F6E368300976D100000000 /* UserNotifications.swift */,
+			);
+			name = Notifications;
+			sourceTree = "<group>";
+		};
+		45A2529087362ACF00000000 /* XcodeReleasesKit */ = {
+			isa = PBXGroup;
+			children = (
+				45A2529026A8D7BD00000000 /* Sources */,
+			);
+			name = XcodeReleasesKit;
+			sourceTree = "<group>";
+		};
+		45A2529087362ACF00000001 /* XcodeReleasesKit */ = {
+			isa = PBXGroup;
+			children = (
+				79F6E3688B11B9DB00000000 /* Date.swift */,
+				79F6E368FDEA6E1C00000000 /* Device.swift */,
+				79F6E368E4CBEBD600000000 /* Links.swift */,
+				79F6E368BBF0A5C700000000 /* ReleaseType.swift */,
+				79F6E368A3344E9900000000 /* SDKs.swift */,
+				79F6E368802E887100000000 /* Version.swift */,
+				79F6E368C501A99100000000 /* XcodeRelease.swift */,
+				79F6E3681719CC4C00000000 /* XcodeReleasesLoader.swift */,
+			);
+			name = XcodeReleasesKit;
+			sourceTree = "<group>";
+		};
+		45A2529088CBB22D00000000 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				45A25290236DAA2300000000 /* Indexer */,
+				79F6E368A445E63A00000000 /* XcodeReleases.app */,
+				45A252907725C8B100000000 /* _tulsi-includes */,
+				79F6E36836D1AF8200000000 /* lib-XcodeReleasesKit.a */,
+				79F6E36869BB2B4000000000 /* lib-XcodeReleasesLib.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		45A252909ED02E1A00000000 /* XcodeReleases-intermediates */ = {
+			isa = PBXGroup;
+			children = (
+				79F6E36848E2F12700000000 /* Info.plist */,
+			);
+			name = "XcodeReleases-intermediates";
+			sourceTree = "<group>";
+		};
+		45A25290B93FD0C500000000 /* / */ = {
+			isa = PBXGroup;
+			children = (
+				79F6E3687A02752900000000 /* BUILD */,
+			);
+			name = /;
+			sourceTree = "<group>";
+		};
+		45A25290C7330E3C00000000 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				79F6E368233A993600000000 /* Device+Debugging.swift */,
+				79F6E368C90C1EEE00000000 /* XcodeRelease+Identifiable.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		45A25290DCDD814700000000 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				45A25290F7DB28D200000000 /* Settings */,
+				45A25290065F307800000000 /* Webviews */,
+				45A25290098FC8F900000000 /* XcodeReleaseDetail */,
+				45A25290222E2E4700000000 /* XcodeReleaseList */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		45A25290F7DB28D200000000 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				79F6E3686CCA157C00000000 /* AboutSection.swift */,
+				45A252903637FE8C00000000 /* Notification */,
+				79F6E36817699A7900000000 /* NotificationSection.swift */,
+				79F6E3685DCDC09200000000 /* SettingsView.swift */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		45A25290FF5FF50700000000 /* State */ = {
+			isa = PBXGroup;
+			children = (
+				79F6E368CE70509600000000 /* AppState.swift */,
+			);
+			name = State;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXLegacyTarget section */
+		7A0575AA01EC133400000000 /* _bazel_clean_ */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "\"/usr/local/bin/bazel\" \"bazel-bin\"";
+			buildConfigurationList = 46B6D7298F88AB5F00000000 /* Build configuration list for PBXLegacyTarget "_bazel_clean_" */;
+			buildPhases = (
+			);
+			buildToolPath = "${PROJECT_FILE_PATH}/.tulsi/Scripts/bazel_clean.sh";
+			buildWorkingDirectory = "${SRCROOT}/../..";
+			dependencies = (
+			);
+			name = _bazel_clean_;
+			passBuildSettingsInEnvironment = 1;
+			productName = _bazel_clean_;
+		};
+/* End PBXLegacyTarget section */
+
+/* Begin PBXNativeTarget section */
+		0118C72D0F1650B400000000 /* _idx_XcodeReleasesLib_6125840A_ios_min12.0 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 46B6D7293A47887800000000 /* Build configuration list for PBXNativeTarget "_idx_XcodeReleasesLib_6125840A_ios_min12.0" */;
+			buildPhases = (
+				42F584450000000000000002 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C2E2244101EC133500000000 /* PBXTargetDependency */,
+				C2E224419EAE9A0100000000 /* PBXTargetDependency */,
+			);
+			name = _idx_XcodeReleasesLib_6125840A_ios_min12.0;
+			productName = _idx_XcodeReleasesLib_6125840A_ios_min12.0;
+			productReference = 79F6E3689E9EDBC400000000 /* _idx_XcodeReleasesLib_6125840A_ios_min12.0.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		0118C72D3DF2627600000000 /* _idx_XcodeReleasesLib_6125840A_ios_min12.2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 46B6D7292469925B00000000 /* Build configuration list for PBXNativeTarget "_idx_XcodeReleasesLib_6125840A_ios_min12.2" */;
+			buildPhases = (
+				42F584450000000000000003 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C2E2244101EC133500000000 /* PBXTargetDependency */,
+				C2E224419F12AF5900000000 /* PBXTargetDependency */,
+			);
+			name = _idx_XcodeReleasesLib_6125840A_ios_min12.2;
+			productName = _idx_XcodeReleasesLib_6125840A_ios_min12.2;
+			productReference = 79F6E368F6C56A9600000000 /* _idx_XcodeReleasesLib_6125840A_ios_min12.2.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		0118C72D419F4EC200000000 /* -XcodeReleasesLib */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 46B6D729CEE25D6200000000 /* Build configuration list for PBXNativeTarget "-XcodeReleasesLib" */;
+			buildPhases = (
+				F3CB17BD3B06FAE200000000 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C2E2244101EC133500000000 /* PBXTargetDependency */,
+			);
+			name = "-XcodeReleasesLib";
+			productName = "-XcodeReleasesLib";
+			productReference = 79F6E36869BB2B4000000000 /* lib-XcodeReleasesLib.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		0118C72D9EAE9A0000000000 /* _idx_XcodeReleasesKit_54967911_ios_min12.0 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 46B6D729F228530900000000 /* Build configuration list for PBXNativeTarget "_idx_XcodeReleasesKit_54967911_ios_min12.0" */;
+			buildPhases = (
+				42F584450000000000000000 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C2E2244101EC133500000000 /* PBXTargetDependency */,
+			);
+			name = _idx_XcodeReleasesKit_54967911_ios_min12.0;
+			productName = _idx_XcodeReleasesKit_54967911_ios_min12.0;
+			productReference = 79F6E368FA750F8A00000000 /* _idx_XcodeReleasesKit_54967911_ios_min12.0.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		0118C72D9F12AF5800000000 /* _idx_XcodeReleasesKit_54967911_ios_min12.2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 46B6D729178E1F6100000000 /* Build configuration list for PBXNativeTarget "_idx_XcodeReleasesKit_54967911_ios_min12.2" */;
+			buildPhases = (
+				42F584450000000000000001 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C2E2244101EC133500000000 /* PBXTargetDependency */,
+			);
+			name = _idx_XcodeReleasesKit_54967911_ios_min12.2;
+			productName = _idx_XcodeReleasesKit_54967911_ios_min12.2;
+			productReference = 79F6E368336997E800000000 /* _idx_XcodeReleasesKit_54967911_ios_min12.2.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		0118C72DD06F006200000000 /* -XcodeReleasesKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 46B6D72962CD885900000000 /* Build configuration list for PBXNativeTarget "-XcodeReleasesKit" */;
+			buildPhases = (
+				F3CB17BD629C4D1C00000000 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C2E2244101EC133500000000 /* PBXTargetDependency */,
+			);
+			name = "-XcodeReleasesKit";
+			productName = "-XcodeReleasesKit";
+			productReference = 79F6E36836D1AF8200000000 /* lib-XcodeReleasesKit.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		0118C72DD454F0AE00000000 /* XcodeReleases */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 46B6D729E67AEF1D00000000 /* Build configuration list for PBXNativeTarget "XcodeReleases" */;
+			buildPhases = (
+				F3CB17BD4B3EE11E00000000 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C2E2244101EC133500000000 /* PBXTargetDependency */,
+			);
+			name = XcodeReleases;
+			productName = XcodeReleases;
+			productReference = 79F6E368A445E63A00000000 /* XcodeReleases.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D0020737713F36D900000000 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0710;
+				LastUpgradeCheck = 1000;
+			};
+			buildConfigurationList = 46B6D729D95D4E9D00000000 /* Build configuration list for PBXProject "XcodeReleases2" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 45A252903937C9E600000000 /* mainGroup */;
+			targets = (
+				0118C72DD06F006200000000 /* -XcodeReleasesKit */,
+				0118C72D419F4EC200000000 /* -XcodeReleasesLib */,
+				0118C72DD454F0AE00000000 /* XcodeReleases */,
+				7A0575AA01EC133400000000 /* _bazel_clean_ */,
+				0118C72D9EAE9A0000000000 /* _idx_XcodeReleasesKit_54967911_ios_min12.0 */,
+				0118C72D9F12AF5800000000 /* _idx_XcodeReleasesKit_54967911_ios_min12.2 */,
+				0118C72D0F1650B400000000 /* _idx_XcodeReleasesLib_6125840A_ios_min12.0 */,
+				0118C72D3DF2627600000000 /* _idx_XcodeReleasesLib_6125840A_ios_min12.2 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		F3CB17BD3B06FAE200000000 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 0;
+			files = (
+			);
+			inputPaths = (
+				"$(TARGET_BUILD_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "set -e\ncd \"${SRCROOT}/../..\"\nexec \"${PROJECT_FILE_PATH}/.tulsi/Scripts/bazel_build.py\" //:XcodeReleasesLib --bazel \"/usr/local/bin/bazel\" --bazel_bin_path \"bazel-bin\" --verbose ";
+			showEnvVarsInLog = 1;
+		};
+		F3CB17BD4B3EE11E00000000 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 0;
+			files = (
+			);
+			inputPaths = (
+				"$(TARGET_BUILD_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "set -e\ncd \"${SRCROOT}/../..\"\nexec \"${PROJECT_FILE_PATH}/.tulsi/Scripts/bazel_build.py\" //:XcodeReleases --bazel \"/usr/local/bin/bazel\" --bazel_bin_path \"bazel-bin\" --verbose ";
+			showEnvVarsInLog = 1;
+		};
+		F3CB17BD629C4D1C00000000 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 0;
+			files = (
+			);
+			inputPaths = (
+				"$(TARGET_BUILD_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "set -e\ncd \"${SRCROOT}/../..\"\nexec \"${PROJECT_FILE_PATH}/.tulsi/Scripts/bazel_build.py\" //:XcodeReleasesKit --bazel \"/usr/local/bin/bazel\" --bazel_bin_path \"bazel-bin\" --verbose ";
+			showEnvVarsInLog = 1;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		42F584450000000000000000 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				28FC0AF38B11B9DB00000000 /* Date.swift in XcodeReleasesKit */,
+				28FC0AF3FDEA6E1C00000000 /* Device.swift in XcodeReleasesKit */,
+				28FC0AF3E4CBEBD600000000 /* Links.swift in XcodeReleasesKit */,
+				28FC0AF3BBF0A5C700000000 /* ReleaseType.swift in XcodeReleasesKit */,
+				28FC0AF3A3344E9900000000 /* SDKs.swift in XcodeReleasesKit */,
+				28FC0AF3802E887100000000 /* Version.swift in XcodeReleasesKit */,
+				28FC0AF3C501A99100000000 /* XcodeRelease.swift in XcodeReleasesKit */,
+				28FC0AF31719CC4C00000000 /* XcodeReleasesLoader.swift in XcodeReleasesKit */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		42F584450000000000000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				28FC0AF38B11B9DB00000001 /* Date.swift in XcodeReleasesKit */,
+				28FC0AF3FDEA6E1C00000001 /* Device.swift in XcodeReleasesKit */,
+				28FC0AF3E4CBEBD600000001 /* Links.swift in XcodeReleasesKit */,
+				28FC0AF3BBF0A5C700000001 /* ReleaseType.swift in XcodeReleasesKit */,
+				28FC0AF3A3344E9900000001 /* SDKs.swift in XcodeReleasesKit */,
+				28FC0AF3802E887100000001 /* Version.swift in XcodeReleasesKit */,
+				28FC0AF3C501A99100000001 /* XcodeRelease.swift in XcodeReleasesKit */,
+				28FC0AF31719CC4C00000001 /* XcodeReleasesLoader.swift in XcodeReleasesKit */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		42F584450000000000000002 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				28FC0AF3233A993600000000 /* Device+Debugging.swift in Extensions */,
+				28FC0AF3C90C1EEE00000000 /* XcodeRelease+Identifiable.swift in Extensions */,
+				28FC0AF3BC2B634F00000000 /* InfoPList.swift in XcodeReleases */,
+				28FC0AF36F53534900000000 /* AppDelegate.swift in Launch */,
+				28FC0AF39E9E16F900000000 /* SceneDelegate.swift in Launch */,
+				28FC0AF3300976D100000000 /* UserNotifications.swift in Notifications */,
+				28FC0AF367B998A900000000 /* UserDefault.swift in Persistence */,
+				28FC0AF39D23A04A00000000 /* MockReleases.swift in Preview Content */,
+				28FC0AF304CDD57400000000 /* XcodeReleasesApi.swift in Service */,
+				28FC0AF363F5E27200000000 /* XcodeReleasesService.swift in Service */,
+				28FC0AF3CE70509600000000 /* AppState.swift in State */,
+				28FC0AF36CCA157C00000000 /* AboutSection.swift in Settings */,
+				28FC0AF3FF1A001C00000000 /* NotificationDeniedRow.swift in Notification */,
+				28FC0AF3D20C396700000000 /* NotificationRegisterRow.swift in Notification */,
+				28FC0AF3B143F57000000000 /* NotificationToggleRow.swift in Notification */,
+				28FC0AF335339F3300000000 /* NotificationTokenRow.swift in Notification */,
+				28FC0AF3196B313A00000000 /* SettingsButton.swift in Notification */,
+				28FC0AF317699A7900000000 /* NotificationSection.swift in Settings */,
+				28FC0AF35DCDC09200000000 /* SettingsView.swift in Settings */,
+				28FC0AF3F94BB49400000000 /* SafariView.swift in Webviews */,
+				28FC0AF30D0EB20400000000 /* WebView.swift in Webviews */,
+				28FC0AF36F101E3D00000000 /* LinksSection.swift in XcodeReleaseDetail */,
+				28FC0AF310E9B72000000000 /* ReleaseInfoSection.swift in XcodeReleaseDetail */,
+				28FC0AF35651D3D500000000 /* SDKSection.swift in XcodeReleaseDetail */,
+				28FC0AF36CD6DCE400000000 /* XcodeReleaseDetail.swift in XcodeReleaseDetail */,
+				28FC0AF3CE44B1F300000000 /* XcodeReleaseList.swift in XcodeReleaseList */,
+				28FC0AF3F23EF8BE00000000 /* XcodeReleaseRow.swift in XcodeReleaseList */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		42F584450000000000000003 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				28FC0AF3233A993600000001 /* Device+Debugging.swift in Extensions */,
+				28FC0AF3C90C1EEE00000001 /* XcodeRelease+Identifiable.swift in Extensions */,
+				28FC0AF3BC2B634F00000001 /* InfoPList.swift in XcodeReleases */,
+				28FC0AF36F53534900000001 /* AppDelegate.swift in Launch */,
+				28FC0AF39E9E16F900000001 /* SceneDelegate.swift in Launch */,
+				28FC0AF3300976D100000001 /* UserNotifications.swift in Notifications */,
+				28FC0AF367B998A900000001 /* UserDefault.swift in Persistence */,
+				28FC0AF39D23A04A00000001 /* MockReleases.swift in Preview Content */,
+				28FC0AF304CDD57400000001 /* XcodeReleasesApi.swift in Service */,
+				28FC0AF363F5E27200000001 /* XcodeReleasesService.swift in Service */,
+				28FC0AF3CE70509600000001 /* AppState.swift in State */,
+				28FC0AF36CCA157C00000001 /* AboutSection.swift in Settings */,
+				28FC0AF3FF1A001C00000001 /* NotificationDeniedRow.swift in Notification */,
+				28FC0AF3D20C396700000001 /* NotificationRegisterRow.swift in Notification */,
+				28FC0AF3B143F57000000001 /* NotificationToggleRow.swift in Notification */,
+				28FC0AF335339F3300000001 /* NotificationTokenRow.swift in Notification */,
+				28FC0AF3196B313A00000001 /* SettingsButton.swift in Notification */,
+				28FC0AF317699A7900000001 /* NotificationSection.swift in Settings */,
+				28FC0AF35DCDC09200000001 /* SettingsView.swift in Settings */,
+				28FC0AF3F94BB49400000001 /* SafariView.swift in Webviews */,
+				28FC0AF30D0EB20400000001 /* WebView.swift in Webviews */,
+				28FC0AF36F101E3D00000001 /* LinksSection.swift in XcodeReleaseDetail */,
+				28FC0AF310E9B72000000001 /* ReleaseInfoSection.swift in XcodeReleaseDetail */,
+				28FC0AF35651D3D500000001 /* SDKSection.swift in XcodeReleaseDetail */,
+				28FC0AF36CD6DCE400000001 /* XcodeReleaseDetail.swift in XcodeReleaseDetail */,
+				28FC0AF3CE44B1F300000001 /* XcodeReleaseList.swift in XcodeReleaseList */,
+				28FC0AF3F23EF8BE00000001 /* XcodeReleaseRow.swift in XcodeReleaseList */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C2E2244101EC133500000000 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			targetProxy = 74ACEECE01EC133500000000 /* PBXContainerItemProxy */;
+		};
+		C2E224419EAE9A0100000000 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			targetProxy = 74ACEECE9EAE9A0100000000 /* PBXContainerItemProxy */;
+		};
+		C2E224419F12AF5900000000 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			targetProxy = 74ACEECE9F12AF5900000000 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		A302E9A6350F061B00000000 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGN_IDENTITY = "";
+				DONT_RUN_SWIFT_STDLIB_TOOL = YES;
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
+				GCC_PREPROCESSOR_DEFINITIONS = "NDEBUG=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(TULSI_BWRS) $(TULSI_WR)/bazel-bin $(TULSI_WR)/bazel-genfiles $(TULSI_BWRS)/_tulsi-includes/x/x";
+				ONLY_ACTIVE_ARCH = YES;
+				PYTHONIOENCODING = utf8;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TULSI_BWRS = "${TULSI_WR}/tulsi-workspace";
+				TULSI_PROJECT = XcodeReleases2;
+				TULSI_VERSION = 0.20190710.88;
+				TULSI_WR = "${SRCROOT}/../..";
+			};
+			name = Release;
+		};
+		A302E9A6350F061B00000001 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Stub Launch Image";
+				BAZEL_TARGET = "//:XcodeReleasesKit";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_PREPROCESSOR_DEFINITIONS = "NDEBUG=1";
+				INFOPLIST_FILE = "${PROJECT_FILE_PATH}/.tulsi/Resources/StubInfoPlist.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				PRODUCT_NAME = "-XcodeReleasesKit";
+				SDKROOT = iphoneos;
+				TULSI_BUILD_PATH = "";
+				TULSI_XCODE_VERSION = 10.2.1.10E1001;
+			};
+			name = Release;
+		};
+		A302E9A6350F061B00000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Stub Launch Image";
+				BAZEL_TARGET = "//:XcodeReleasesLib";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_PREPROCESSOR_DEFINITIONS = "NDEBUG=1";
+				INFOPLIST_FILE = "${PROJECT_FILE_PATH}/.tulsi/Resources/StubInfoPlist.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				PRODUCT_NAME = "-XcodeReleasesLib";
+				SDKROOT = iphoneos;
+				TULSI_BUILD_PATH = "";
+				TULSI_XCODE_VERSION = 10.2.1.10E1001;
+			};
+			name = Release;
+		};
+		A302E9A6350F061B00000003 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Stub Launch Image";
+				BAZEL_TARGET = "//:XcodeReleases";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_PREPROCESSOR_DEFINITIONS = "NDEBUG=1";
+				INFOPLIST_FILE = "${PROJECT_FILE_PATH}/.tulsi/Resources/StubInfoPlist.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jefflett.XcodeReleases;
+				PRODUCT_NAME = XcodeReleases;
+				SDKROOT = iphoneos;
+				TULSI_BUILD_PATH = "";
+				TULSI_XCODE_VERSION = 10.2.1.10E1001;
+			};
+			name = Release;
+		};
+		A302E9A6350F061B00000004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = "NDEBUG=1";
+				HEADER_SEARCH_PATHS = "$(inherited) $(TULSI_WR)/_tulsi-includes/x/x/ $(TULSI_BWRS)/_tulsi-includes/x/x/ ";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				OTHER_CFLAGS = "-D_FORTIFY_SOURCE=1 -D__DATE__=\"redacted\" -D__TIMESTAMP__=\"redacted\" -D__TIME__=\"redacted\"";
+				PRODUCT_NAME = _idx_XcodeReleasesKit_54967911_ios_min12.0;
+				SDKROOT = iphoneos;
+				SWIFT_INCLUDE_PATHS = "$(inherited) $(TULSI_BWRS)/_tulsi-includes/x/x";
+			};
+			name = Release;
+		};
+		A302E9A6350F061B00000005 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = "NDEBUG=1";
+				HEADER_SEARCH_PATHS = "$(inherited) $(TULSI_WR)/_tulsi-includes/x/x/ $(TULSI_BWRS)/_tulsi-includes/x/x/ ";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				OTHER_CFLAGS = "-D_FORTIFY_SOURCE=1 -D__DATE__=\"redacted\" -D__TIMESTAMP__=\"redacted\" -D__TIME__=\"redacted\"";
+				PRODUCT_NAME = _idx_XcodeReleasesKit_54967911_ios_min12.2;
+				SDKROOT = iphoneos;
+				SWIFT_INCLUDE_PATHS = "$(inherited) $(TULSI_BWRS)/_tulsi-includes/x/x";
+			};
+			name = Release;
+		};
+		A302E9A6350F061B00000006 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = "NDEBUG=1";
+				HEADER_SEARCH_PATHS = "$(inherited) $(TULSI_WR)/_tulsi-includes/x/x/ $(TULSI_BWRS)/_tulsi-includes/x/x/ $(TULSI_BWRS)/_tulsi-includes/x/x/XcodeReleasesKit.modulemaps ";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				OTHER_CFLAGS = "-D_FORTIFY_SOURCE=1 -D__DATE__=\"redacted\" -D__TIMESTAMP__=\"redacted\" -D__TIME__=\"redacted\"";
+				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(TULSI_BWRS)/_tulsi-includes/x/x/XcodeReleasesKit.modulemaps/module.modulemap";
+				PRODUCT_NAME = _idx_XcodeReleasesLib_6125840A_ios_min12.0;
+				SDKROOT = iphoneos;
+				SWIFT_INCLUDE_PATHS = "$(inherited) $(TULSI_BWRS)/_tulsi-includes/x/x";
+			};
+			name = Release;
+		};
+		A302E9A6350F061B00000007 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = "NDEBUG=1";
+				HEADER_SEARCH_PATHS = "$(inherited) $(TULSI_WR)/_tulsi-includes/x/x/ $(TULSI_BWRS)/_tulsi-includes/x/x/ $(TULSI_BWRS)/_tulsi-includes/x/x/XcodeReleasesKit.modulemaps ";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				OTHER_CFLAGS = "-D_FORTIFY_SOURCE=1 -D__DATE__=\"redacted\" -D__TIMESTAMP__=\"redacted\" -D__TIME__=\"redacted\"";
+				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(TULSI_BWRS)/_tulsi-includes/x/x/XcodeReleasesKit.modulemaps/module.modulemap";
+				PRODUCT_NAME = _idx_XcodeReleasesLib_6125840A_ios_min12.2;
+				SDKROOT = iphoneos;
+				SWIFT_INCLUDE_PATHS = "$(inherited) $(TULSI_BWRS)/_tulsi-includes/x/x";
+			};
+			name = Release;
+		};
+		A302E9A6553C383500000000 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGN_IDENTITY = "";
+				DONT_RUN_SWIFT_STDLIB_TOOL = YES;
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PLATFORM_DIR)/Developer/Library/Frameworks";
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(TULSI_BWRS) $(TULSI_WR)/bazel-bin $(TULSI_WR)/bazel-genfiles $(TULSI_BWRS)/_tulsi-includes/x/x";
+				ONLY_ACTIVE_ARCH = YES;
+				PYTHONIOENCODING = utf8;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TULSI_BWRS = "${TULSI_WR}/tulsi-workspace";
+				TULSI_PROJECT = XcodeReleases2;
+				TULSI_VERSION = 0.20190710.88;
+				TULSI_WR = "${SRCROOT}/../..";
+			};
+			name = Debug;
+		};
+		A302E9A6553C383500000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Stub Launch Image";
+				BAZEL_TARGET = "//:XcodeReleasesKit";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
+				INFOPLIST_FILE = "${PROJECT_FILE_PATH}/.tulsi/Resources/StubInfoPlist.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				PRODUCT_NAME = "-XcodeReleasesKit";
+				SDKROOT = iphoneos;
+				TULSI_BUILD_PATH = "";
+				TULSI_XCODE_VERSION = 10.2.1.10E1001;
+			};
+			name = Debug;
+		};
+		A302E9A6553C383500000002 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Stub Launch Image";
+				BAZEL_TARGET = "//:XcodeReleasesLib";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
+				INFOPLIST_FILE = "${PROJECT_FILE_PATH}/.tulsi/Resources/StubInfoPlist.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				PRODUCT_NAME = "-XcodeReleasesLib";
+				SDKROOT = iphoneos;
+				TULSI_BUILD_PATH = "";
+				TULSI_XCODE_VERSION = 10.2.1.10E1001;
+			};
+			name = Debug;
+		};
+		A302E9A6553C383500000003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Stub Launch Image";
+				BAZEL_TARGET = "//:XcodeReleases";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
+				INFOPLIST_FILE = "${PROJECT_FILE_PATH}/.tulsi/Resources/StubInfoPlist.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jefflett.XcodeReleases;
+				PRODUCT_NAME = XcodeReleases;
+				SDKROOT = iphoneos;
+				TULSI_BUILD_PATH = "";
+				TULSI_XCODE_VERSION = 10.2.1.10E1001;
+			};
+			name = Debug;
+		};
+		A302E9A6553C383500000004 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
+				HEADER_SEARCH_PATHS = "$(inherited) $(TULSI_WR)/_tulsi-includes/x/x/ $(TULSI_BWRS)/_tulsi-includes/x/x/ ";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				OTHER_CFLAGS = "-D_FORTIFY_SOURCE=1 -D__DATE__=\"redacted\" -D__TIMESTAMP__=\"redacted\" -D__TIME__=\"redacted\"";
+				PRODUCT_NAME = _idx_XcodeReleasesKit_54967911_ios_min12.0;
+				SDKROOT = iphoneos;
+				SWIFT_INCLUDE_PATHS = "$(inherited) $(TULSI_BWRS)/_tulsi-includes/x/x";
+			};
+			name = Debug;
+		};
+		A302E9A6553C383500000005 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
+				HEADER_SEARCH_PATHS = "$(inherited) $(TULSI_WR)/_tulsi-includes/x/x/ $(TULSI_BWRS)/_tulsi-includes/x/x/ ";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				OTHER_CFLAGS = "-D_FORTIFY_SOURCE=1 -D__DATE__=\"redacted\" -D__TIMESTAMP__=\"redacted\" -D__TIME__=\"redacted\"";
+				PRODUCT_NAME = _idx_XcodeReleasesKit_54967911_ios_min12.2;
+				SDKROOT = iphoneos;
+				SWIFT_INCLUDE_PATHS = "$(inherited) $(TULSI_BWRS)/_tulsi-includes/x/x";
+			};
+			name = Debug;
+		};
+		A302E9A6553C383500000006 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
+				HEADER_SEARCH_PATHS = "$(inherited) $(TULSI_WR)/_tulsi-includes/x/x/ $(TULSI_BWRS)/_tulsi-includes/x/x/ $(TULSI_BWRS)/_tulsi-includes/x/x/XcodeReleasesKit.modulemaps ";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				OTHER_CFLAGS = "-D_FORTIFY_SOURCE=1 -D__DATE__=\"redacted\" -D__TIMESTAMP__=\"redacted\" -D__TIME__=\"redacted\"";
+				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(TULSI_BWRS)/_tulsi-includes/x/x/XcodeReleasesKit.modulemaps/module.modulemap";
+				PRODUCT_NAME = _idx_XcodeReleasesLib_6125840A_ios_min12.0;
+				SDKROOT = iphoneos;
+				SWIFT_INCLUDE_PATHS = "$(inherited) $(TULSI_BWRS)/_tulsi-includes/x/x";
+			};
+			name = Debug;
+		};
+		A302E9A6553C383500000007 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
+				HEADER_SEARCH_PATHS = "$(inherited) $(TULSI_WR)/_tulsi-includes/x/x/ $(TULSI_BWRS)/_tulsi-includes/x/x/ $(TULSI_BWRS)/_tulsi-includes/x/x/XcodeReleasesKit.modulemaps ";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				OTHER_CFLAGS = "-D_FORTIFY_SOURCE=1 -D__DATE__=\"redacted\" -D__TIMESTAMP__=\"redacted\" -D__TIME__=\"redacted\"";
+				OTHER_SWIFT_FLAGS = "$(inherited) -Xcc -fmodule-map-file=$(TULSI_BWRS)/_tulsi-includes/x/x/XcodeReleasesKit.modulemaps/module.modulemap";
+				PRODUCT_NAME = _idx_XcodeReleasesLib_6125840A_ios_min12.2;
+				SDKROOT = iphoneos;
+				SWIFT_INCLUDE_PATHS = "$(inherited) $(TULSI_BWRS)/_tulsi-includes/x/x";
+			};
+			name = Debug;
+		};
+		A302E9A65EE81BFA00000000 /* __TulsiTestRunner_Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGN_IDENTITY = "";
+				DONT_RUN_SWIFT_STDLIB_TOOL = YES;
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_PREPROCESSOR_DEFINITIONS = "NDEBUG=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "--version";
+				OTHER_LDFLAGS = "--version";
+				OTHER_SWIFT_FLAGS = "--version";
+				PYTHONIOENCODING = utf8;
+				SDKROOT = iphoneos;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(PRODUCT_NAME).h";
+				SWIFT_VERSION = 5.0;
+				TULSI_BWRS = "${TULSI_WR}/tulsi-workspace";
+				TULSI_PROJECT = XcodeReleases2;
+				TULSI_VERSION = 0.20190710.88;
+				TULSI_WR = "${SRCROOT}/../..";
+			};
+			name = __TulsiTestRunner_Release;
+		};
+		A302E9A65EE81BFA00000001 /* __TulsiTestRunner_Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Stub Launch Image";
+				BAZEL_TARGET = "//:XcodeReleasesKit";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_PREPROCESSOR_DEFINITIONS = "NDEBUG=1";
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = "${PROJECT_FILE_PATH}/.tulsi/Resources/StubInfoPlist.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "--version";
+				OTHER_LDFLAGS = "--version";
+				OTHER_SWIFT_FLAGS = "--version";
+				PRODUCT_NAME = "-XcodeReleasesKit";
+				SDKROOT = iphoneos;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(PRODUCT_NAME).h";
+				TULSI_BUILD_PATH = "";
+				TULSI_XCODE_VERSION = 10.2.1.10E1001;
+			};
+			name = __TulsiTestRunner_Release;
+		};
+		A302E9A65EE81BFA00000002 /* __TulsiTestRunner_Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Stub Launch Image";
+				BAZEL_TARGET = "//:XcodeReleasesLib";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_PREPROCESSOR_DEFINITIONS = "NDEBUG=1";
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = "${PROJECT_FILE_PATH}/.tulsi/Resources/StubInfoPlist.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "--version";
+				OTHER_LDFLAGS = "--version";
+				OTHER_SWIFT_FLAGS = "--version";
+				PRODUCT_NAME = "-XcodeReleasesLib";
+				SDKROOT = iphoneos;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(PRODUCT_NAME).h";
+				TULSI_BUILD_PATH = "";
+				TULSI_XCODE_VERSION = 10.2.1.10E1001;
+			};
+			name = __TulsiTestRunner_Release;
+		};
+		A302E9A65EE81BFA00000003 /* __TulsiTestRunner_Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Stub Launch Image";
+				BAZEL_TARGET = "//:XcodeReleases";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_PREPROCESSOR_DEFINITIONS = "NDEBUG=1";
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = "${PROJECT_FILE_PATH}/.tulsi/Resources/StubInfoPlist.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "--version";
+				OTHER_LDFLAGS = "--version";
+				OTHER_SWIFT_FLAGS = "--version";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jefflett.XcodeReleases;
+				PRODUCT_NAME = XcodeReleases;
+				SDKROOT = iphoneos;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(PRODUCT_NAME).h";
+				TULSI_BUILD_PATH = "";
+				TULSI_XCODE_VERSION = 10.2.1.10E1001;
+			};
+			name = __TulsiTestRunner_Release;
+		};
+		A302E9A665EB159900000000 /* __TulsiTestRunner_Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGN_IDENTITY = "";
+				DONT_RUN_SWIFT_STDLIB_TOOL = YES;
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "--version";
+				OTHER_LDFLAGS = "--version";
+				OTHER_SWIFT_FLAGS = "--version";
+				PYTHONIOENCODING = utf8;
+				SDKROOT = iphoneos;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(PRODUCT_NAME).h";
+				SWIFT_VERSION = 5.0;
+				TULSI_BWRS = "${TULSI_WR}/tulsi-workspace";
+				TULSI_PROJECT = XcodeReleases2;
+				TULSI_VERSION = 0.20190710.88;
+				TULSI_WR = "${SRCROOT}/../..";
+			};
+			name = __TulsiTestRunner_Debug;
+		};
+		A302E9A665EB159900000001 /* __TulsiTestRunner_Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Stub Launch Image";
+				BAZEL_TARGET = "//:XcodeReleasesKit";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = "${PROJECT_FILE_PATH}/.tulsi/Resources/StubInfoPlist.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "--version";
+				OTHER_LDFLAGS = "--version";
+				OTHER_SWIFT_FLAGS = "--version";
+				PRODUCT_NAME = "-XcodeReleasesKit";
+				SDKROOT = iphoneos;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(PRODUCT_NAME).h";
+				TULSI_BUILD_PATH = "";
+				TULSI_XCODE_VERSION = 10.2.1.10E1001;
+			};
+			name = __TulsiTestRunner_Debug;
+		};
+		A302E9A665EB159900000002 /* __TulsiTestRunner_Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Stub Launch Image";
+				BAZEL_TARGET = "//:XcodeReleasesLib";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = "${PROJECT_FILE_PATH}/.tulsi/Resources/StubInfoPlist.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "--version";
+				OTHER_LDFLAGS = "--version";
+				OTHER_SWIFT_FLAGS = "--version";
+				PRODUCT_NAME = "-XcodeReleasesLib";
+				SDKROOT = iphoneos;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(PRODUCT_NAME).h";
+				TULSI_BUILD_PATH = "";
+				TULSI_XCODE_VERSION = 10.2.1.10E1001;
+			};
+			name = __TulsiTestRunner_Debug;
+		};
+		A302E9A665EB159900000003 /* __TulsiTestRunner_Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Stub Launch Image";
+				BAZEL_TARGET = "//:XcodeReleases";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = "${PROJECT_FILE_PATH}/.tulsi/Resources/StubInfoPlist.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "--version";
+				OTHER_LDFLAGS = "--version";
+				OTHER_SWIFT_FLAGS = "--version";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jefflett.XcodeReleases;
+				PRODUCT_NAME = XcodeReleases;
+				SDKROOT = iphoneos;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(PRODUCT_NAME).h";
+				TULSI_BUILD_PATH = "";
+				TULSI_XCODE_VERSION = 10.2.1.10E1001;
+			};
+			name = __TulsiTestRunner_Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		46B6D729178E1F6100000000 /* Build configuration list for PBXNativeTarget "_idx_XcodeReleasesKit_54967911_ios_min12.2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A302E9A6553C383500000005 /* Debug */,
+				A302E9A6350F061B00000005 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		46B6D7292469925B00000000 /* Build configuration list for PBXNativeTarget "_idx_XcodeReleasesLib_6125840A_ios_min12.2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A302E9A6553C383500000007 /* Debug */,
+				A302E9A6350F061B00000007 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		46B6D7293A47887800000000 /* Build configuration list for PBXNativeTarget "_idx_XcodeReleasesLib_6125840A_ios_min12.0" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A302E9A6553C383500000006 /* Debug */,
+				A302E9A6350F061B00000006 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		46B6D72962CD885900000000 /* Build configuration list for PBXNativeTarget "-XcodeReleasesKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A302E9A6553C383500000001 /* Debug */,
+				A302E9A6350F061B00000001 /* Release */,
+				A302E9A665EB159900000001 /* __TulsiTestRunner_Debug */,
+				A302E9A65EE81BFA00000001 /* __TulsiTestRunner_Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		46B6D7298F88AB5F00000000 /* Build configuration list for PBXLegacyTarget "_bazel_clean_" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		46B6D729CEE25D6200000000 /* Build configuration list for PBXNativeTarget "-XcodeReleasesLib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A302E9A6553C383500000002 /* Debug */,
+				A302E9A6350F061B00000002 /* Release */,
+				A302E9A665EB159900000002 /* __TulsiTestRunner_Debug */,
+				A302E9A65EE81BFA00000002 /* __TulsiTestRunner_Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		46B6D729D95D4E9D00000000 /* Build configuration list for PBXProject "XcodeReleases2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A302E9A6553C383500000000 /* Debug */,
+				A302E9A6350F061B00000000 /* Release */,
+				A302E9A665EB159900000000 /* __TulsiTestRunner_Debug */,
+				A302E9A65EE81BFA00000000 /* __TulsiTestRunner_Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		46B6D729E67AEF1D00000000 /* Build configuration list for PBXNativeTarget "XcodeReleases" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A302E9A6553C383500000003 /* Debug */,
+				A302E9A6350F061B00000003 /* Release */,
+				A302E9A665EB159900000003 /* __TulsiTestRunner_Debug */,
+				A302E9A65EE81BFA00000003 /* __TulsiTestRunner_Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		46B6D729F228530900000000 /* Build configuration list for PBXNativeTarget "_idx_XcodeReleasesKit_54967911_ios_min12.0" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A302E9A6553C383500000004 /* Debug */,
+				A302E9A6350F061B00000004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D0020737713F36D900000000 /* Project object */;
+}

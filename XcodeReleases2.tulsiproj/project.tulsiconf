@@ -1,0 +1,14 @@
+{
+  "configDefaults" : {
+    "optionSet" : {
+      "ProjectPrioritizesSwift" : {
+        "p" : "YES"
+      }
+    }
+  },
+  "packages" : [
+    ""
+  ],
+  "projectName" : "XcodeReleases2",
+  "workspaceRoot" : ".."
+}

@@ -1,0 +1,76 @@
+{
+  "additionalFilePaths" : [
+    "/BUILD"
+  ],
+  "buildTargets" : [
+    "//:XcodeReleases",
+    "//:XcodeReleasesKit",
+    "//:XcodeReleasesLib"
+  ],
+  "optionSet" : {
+    "BazelBuildOptionsDebug" : {
+      "p" : ""
+    },
+    "BazelBuildOptionsRelease" : {
+      "p" : ""
+    },
+    "BazelBuildStartupOptionsDebug" : {
+      "p" : ""
+    },
+    "BazelBuildStartupOptionsRelease" : {
+      "p" : ""
+    },
+    "BuildActionPostActionScript" : {
+      "p" : ""
+    },
+    "BuildActionPreActionScript" : {
+      "p" : ""
+    },
+    "CommandlineArguments" : {
+      "p" : ""
+    },
+    "EnvironmentVariables" : {
+      "p" : ""
+    },
+    "LaunchActionPostActionScript" : {
+      "p" : ""
+    },
+    "LaunchActionPreActionScript" : {
+      "p" : ""
+    },
+    "ProjectGenerationBazelStartupOptions" : {
+      "p" : ""
+    },
+    "ProjectPrioritizesSwift" : {
+      "p" : "YES"
+    },
+    "TestActionPostActionScript" : {
+      "p" : ""
+    },
+    "TestActionPreActionScript" : {
+      "p" : ""
+    }
+  },
+  "projectName" : "XcodeReleases2",
+  "sourceFilters" : [
+    "XcodeReleases",
+    "XcodeReleases/XcodeReleases",
+    "XcodeReleases/XcodeReleases/Extensions",
+    "XcodeReleases/XcodeReleases/Launch",
+    "XcodeReleases/XcodeReleases/Notifications",
+    "XcodeReleases/XcodeReleases/Persistence",
+    "XcodeReleases/XcodeReleases/Preview Content",
+    "XcodeReleases/XcodeReleases/Resources",
+    "XcodeReleases/XcodeReleases/Service",
+    "XcodeReleases/XcodeReleases/State",
+    "XcodeReleases/XcodeReleases/View",
+    "XcodeReleases/XcodeReleases/View/Settings",
+    "XcodeReleases/XcodeReleases/View/Settings/Notification",
+    "XcodeReleases/XcodeReleases/View/Webviews",
+    "XcodeReleases/XcodeReleases/View/XcodeReleaseDetail",
+    "XcodeReleases/XcodeReleases/View/XcodeReleaseList",
+    "XcodeReleasesKit",
+    "XcodeReleasesKit/Sources",
+    "XcodeReleasesKit/Sources/XcodeReleasesKit"
+  ]
+}

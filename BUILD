@@ -8,16 +8,26 @@ ios_application(
         "iphone",
         "ipad",
     ],
-    minimum_os_version = "13.0",
-    infoplists = [":XcodeReleases/XcodeReleases/Info.plist"],
+    minimum_os_version = "12.0",
+    infoplists = ["XcodeReleases/XcodeReleases/Resources/Info.plist"],
     visibility = ["//visibility:public"],
-    deps = ["//:XcodeReleasesKit"],
+    deps = [":XcodeReleasesLib"],
+)
+
+swift_library(
+    name = "XcodeReleasesLib",
+    srcs = glob([
+      "XcodeReleases/XcodeReleases/**/*.swift"
+    ]),
+    visibility = [],
+    deps = [":XcodeReleasesKit"]
 )
 
 swift_library(
     name = "XcodeReleasesKit",
-    srcs = glob([
-        "XcodeReleasesKit/Sources/XcodeReleasesKit/*.swift",
+        srcs = glob([
+        "XcodeReleasesKit/Sources/**/*.swift",
     ]),
+    visibility = [],
     deps = [],
 )
