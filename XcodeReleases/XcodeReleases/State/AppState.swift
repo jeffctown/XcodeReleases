@@ -11,24 +11,24 @@ import Foundation
 import SwiftUI
 import XcodeReleasesKit
 
-class AppState: BindableObject {
-    let didChange = PassthroughSubject<AppState, Never>()
+class AppState: ObservableObject {
+    let objectWillChange = ObservableObjectPublisher()
     
     @Published var notificationsEnabled: Bool = false {
         didSet {
-            didChange.send(self)
+            objectWillChange.send()
         }
     }
     
     @Published var releases: [XcodeRelease] = [] {
         didSet {
-            didChange.send(self)
+            objectWillChange.send()
         }
     }
     
     @Published var pushToken: String? = nil {
         didSet {
-            didChange.send(self)
+            objectWillChange.send()
         }
     }
     

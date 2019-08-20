@@ -23,7 +23,7 @@ struct NotificationTokenRow: View {
                     self.showingAlert = true
                 }) {
                     Text("Token: \(pushToken!)").lineLimit(3)
-                }.presentation($showingAlert) {
+                }.alert(isPresented: $showingAlert) {
                     Alert(title: Text("Token Copied!"))
                 }
             } else {

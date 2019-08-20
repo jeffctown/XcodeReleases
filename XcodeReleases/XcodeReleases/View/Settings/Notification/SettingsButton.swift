@@ -17,11 +17,11 @@ struct SettingsButton: View {
             self.showingAlert = true
         }) {
             Text(title)
-        }.presentation($showingAlert) {
+        }.alert(isPresented: $showingAlert, content: {
             Alert(
                 title: Text("Change This?"),
                 message: Text("You need to change this in Settings.  Do you want to go to Settings now?"),
-                primaryButton: Alert.Button.default(Text("OK"), onTrigger: {
+                primaryButton: Alert.Button.default(Text("OK"), action: {
                     self.showingAlert = true
                     UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
                 }),
@@ -29,6 +29,6 @@ struct SettingsButton: View {
                     self.showingAlert = false
                 })
             )
-        }
+        })
     }
 }
