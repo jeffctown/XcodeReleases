@@ -601,7 +601,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = XcodeReleases/XcodeReleasesDebug.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_ASSET_PATHS = "XcodeReleases/Preview\\ Content";
 				DEVELOPMENT_TEAM = NTX63W5EU6;
 				ENABLE_PREVIEWS = YES;
@@ -612,6 +613,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jefflett.XcodeReleases;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "XcodeReleases Development";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -621,7 +623,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_ASSET_PATHS = "XcodeReleases/Preview\\ Content";
 				DEVELOPMENT_TEAM = NTX63W5EU6;
 				ENABLE_PREVIEWS = YES;
@@ -632,6 +635,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jefflett.XcodeReleases;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Xcode Releases Distribution";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
