@@ -33,6 +33,8 @@
 		1F6A985D22D03BAF005785EA /* XcodeReleasesApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6A985C22D03BAF005785EA /* XcodeReleasesApi.swift */; };
 		1FB14CD022CCD80F000D7552 /* XcodeReleasesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB14CCF22CCD80F000D7552 /* XcodeReleasesService.swift */; };
 		1FB14CD522CCE680000D7552 /* XcodeReleaseDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB14CD422CCE680000D7552 /* XcodeReleaseDetail.swift */; };
+		1FD1AAA2238A15590096DA87 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD1AAA1238A15590096DA87 /* RootView.swift */; };
+		1FD1AAA4238A93FB0096DA87 /* WebViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD1AAA3238A93FB0096DA87 /* WebViewButton.swift */; };
 		1FE2ACBE22CD82C300A8B239 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE2ACBD22CD82C300A8B239 /* UserDefault.swift */; };
 		1FE2ACC322CD847100A8B239 /* UserNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE2ACC222CD847100A8B239 /* UserNotifications.swift */; };
 		1FEFFCD922CCEF800060DA61 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEFFCD822CCEF7F0060DA61 /* AppState.swift */; };
@@ -84,6 +86,8 @@
 		1F8C5B6A22CE82FE00ABF882 /* XcodeReleasesKit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = XcodeReleasesKit; path = ../../XcodeReleasesKit; sourceTree = "<group>"; };
 		1FB14CCF22CCD80F000D7552 /* XcodeReleasesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeReleasesService.swift; sourceTree = "<group>"; };
 		1FB14CD422CCE680000D7552 /* XcodeReleaseDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeReleaseDetail.swift; sourceTree = "<group>"; };
+		1FD1AAA1238A15590096DA87 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		1FD1AAA3238A93FB0096DA87 /* WebViewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewButton.swift; sourceTree = "<group>"; };
 		1FE2ACBD22CD82C300A8B239 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		1FE2ACC222CD847100A8B239 /* UserNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotifications.swift; sourceTree = "<group>"; };
 		1FEFFCD822CCEF7F0060DA61 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
@@ -117,6 +121,7 @@
 			children = (
 				1FF7622622CD477C0091EAC3 /* SafariView.swift */,
 				1FF7622422CD42FA0091EAC3 /* WebView.swift */,
+				1FD1AAA3238A93FB0096DA87 /* WebViewButton.swift */,
 			);
 			path = Webviews;
 			sourceTree = "<group>";
@@ -220,6 +225,7 @@
 		1F5827D422CCFA0200FAA665 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1FD1AAA0238A15490096DA87 /* Root */,
 				1F174B2222CD5FB5004E2089 /* Webviews */,
 				1F174B2322CD5FBE004E2089 /* XcodeReleaseDetail */,
 				1F2B370D22CD6DCE009118FE /* XcodeReleaseList */,
@@ -242,6 +248,14 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1FD1AAA0238A15490096DA87 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				1FD1AAA1238A15590096DA87 /* RootView.swift */,
+			);
+			path = Root;
 			sourceTree = "<group>";
 		};
 		1FE2ACBB22CD7E2A00A8B239 /* Settings */ = {
@@ -406,9 +420,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F6A985D22D03BAF005785EA /* XcodeReleasesApi.swift in Sources */,
+				1FD1AAA4238A93FB0096DA87 /* WebViewButton.swift in Sources */,
 				1F130E8922D22F0B00A525CE /* SettingsButton.swift in Sources */,
 				1FE2ACBE22CD82C300A8B239 /* UserDefault.swift in Sources */,
 				1F34989D22D0E4960000E4E8 /* NotificationSection.swift in Sources */,
+				1FD1AAA2238A15590096DA87 /* RootView.swift in Sources */,
 				1F5827D722CCFCCE00FAA665 /* XcodeReleaseRow.swift in Sources */,
 				1F174B2122CD5F4B004E2089 /* LinksSection.swift in Sources */,
 				1F21433122CD875300464412 /* SettingsView.swift in Sources */,

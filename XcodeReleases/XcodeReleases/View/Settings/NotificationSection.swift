@@ -19,7 +19,9 @@ struct NotificationSection : View {
     var body: some View {
         Section(header: Text("Notifications")) {
             NotificationToggleRow(notificationsEnabled: $notificationsEnabled)
+            #if DEBUG
             NotificationTokenRow(pushToken: pushToken, authorizationStatus: $authorizationStatus, showingAlert: $showingAlert)
+            #endif
         }
     }
 }

@@ -13,6 +13,8 @@ import XcodeReleasesKit
 struct XcodeReleaseList : View {
     @EnvironmentObject private var appState: AppState
     
+    @State private var showSettings = false
+    
     var service: XcodeReleasesService {
         XcodeReleasesService(releases: $appState.releases)
     }
@@ -24,15 +26,6 @@ struct XcodeReleaseList : View {
                     XcodeReleaseRow(release: release)
                 }
             }.navigationBarTitle("Xcode Releases")
-                .navigationBarItems(trailing:
-                        NavigationLink(
-                            destination: SettingsView()
-                                .environmentObject(appState), label: {
-                        Image(systemName: "gear")
-                            .imageScale(.large)
-                            .font(.headline)
-                    })
-            ).padding()
         }.onAppear() {
             self.service.refresh()
             print("onAppear #file")

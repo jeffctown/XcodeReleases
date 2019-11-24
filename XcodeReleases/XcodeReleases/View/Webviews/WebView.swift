@@ -10,16 +10,15 @@ import SwiftUI
 import SafariServices
 import WebKit
 
-
 struct WebView : UIViewRepresentable {
     
     let request: URLRequest
     
-    func makeUIView(context: UIViewRepresentableContext<WebView>) -> WKWebView {
-        return WKWebView()
+    func makeUIView(context: Context) -> WKWebView {
+        WKWebView()
     }
     
-    func updateUIView(_ uiView: WKWebView, context: UIViewRepresentableContext<WebView>) {
+    func updateUIView(_ uiView: WKWebView, context: Context) {
         uiView.load(request)
     }
 }

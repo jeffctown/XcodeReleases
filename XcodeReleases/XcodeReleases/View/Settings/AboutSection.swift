@@ -15,11 +15,9 @@ struct AboutSection : View {
     var body: some View {
         Section(header: Text("About"),
                 footer: Text("Version: v\(version) (\(build))").font(.caption)) {
-            NavigationLink("Suggestions", destination: SafariView(url: URL(string: "http://http://freesuggestionbox.com")!))
-            NavigationLink("Github", destination: SafariView(url: URL(string: "http://github.com/jeffctown")!))
-            NavigationLink("Privacy Policy", destination: SafariView(url: URL(string: "http://secrets.com")!)
-            )
-            NavigationLink("Terms of Service", destination: SafariView(url: URL(string: "http://terms.com")!))
+            WebViewButton(text: "Suggestions", url: URL(string: "http://google.com")!)
+            WebViewButton(text: "Githhub", url: URL(string: "http://google.com")!)
+            WebViewButton(text: "Privacy Policy", url: URL(string: "http://google.com")!)
         }
     }
 }
