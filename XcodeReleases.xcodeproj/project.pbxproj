@@ -23,7 +23,6 @@
 		1F30766F22CCC7B6006A49C3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F30766E22CCC7B6006A49C3 /* Preview Assets.xcassets */; };
 		1F30767222CCC7B6006A49C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F30767022CCC7B6006A49C3 /* LaunchScreen.storyboard */; };
 		1F30767D22CCC7B6006A49C3 /* XcodeReleasesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F30767C22CCC7B6006A49C3 /* XcodeReleasesTests.swift */; };
-		1F309A9422CF7AAF009B8A62 /* XcodeReleasesKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1F309A9322CF7AAF009B8A62 /* XcodeReleasesKit */; };
 		1F34989D22D0E4960000E4E8 /* NotificationSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F34989C22D0E4960000E4E8 /* NotificationSection.swift */; };
 		1F34989F22D0F9290000E4E8 /* AboutSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F34989E22D0F9290000E4E8 /* AboutSection.swift */; };
 		1F3498A122D0FA400000E4E8 /* InfoPList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3498A022D0FA400000E4E8 /* InfoPList.swift */; };
@@ -35,7 +34,7 @@
 		1FB14CD522CCE680000D7552 /* XcodeReleaseDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB14CD422CCE680000D7552 /* XcodeReleaseDetail.swift */; };
 		1FD1AAA2238A15590096DA87 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD1AAA1238A15590096DA87 /* RootView.swift */; };
 		1FD1AAA4238A93FB0096DA87 /* WebViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD1AAA3238A93FB0096DA87 /* WebViewButton.swift */; };
-		1FD1AAA7238AAE210096DA87 /* XcodeReleasesKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1FD1AAA6238AAE210096DA87 /* XcodeReleasesKit */; };
+		1FD1AAAA238AB4310096DA87 /* XcodeReleasesKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1FD1AAA9238AB4310096DA87 /* XcodeReleasesKit */; };
 		1FE2ACBE22CD82C300A8B239 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE2ACBD22CD82C300A8B239 /* UserDefault.swift */; };
 		1FE2ACC322CD847100A8B239 /* UserNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE2ACC222CD847100A8B239 /* UserNotifications.swift */; };
 		1FEFFCD922CCEF800060DA61 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEFFCD822CCEF7F0060DA61 /* AppState.swift */; };
@@ -102,8 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F309A9422CF7AAF009B8A62 /* XcodeReleasesKit in Frameworks */,
-				1FD1AAA7238AAE210096DA87 /* XcodeReleasesKit in Frameworks */,
+				1FD1AAAA238AB4310096DA87 /* XcodeReleasesKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,8 +329,7 @@
 			);
 			name = XcodeReleases;
 			packageProductDependencies = (
-				1F309A9322CF7AAF009B8A62 /* XcodeReleasesKit */,
-				1FD1AAA6238AAE210096DA87 /* XcodeReleasesKit */,
+				1FD1AAA9238AB4310096DA87 /* XcodeReleasesKit */,
 			);
 			productName = XcodeReleases;
 			productReference = 1F30765F22CCC7B4006A49C3 /* XcodeReleases.app */;
@@ -385,7 +382,7 @@
 			);
 			mainGroup = 1F30765622CCC7B4006A49C3;
 			packageReferences = (
-				1FD1AAA5238AAE210096DA87 /* XCRemoteSwiftPackageReference "XcodeReleasesKit" */,
+				1FD1AAA8238AB4310096DA87 /* XCRemoteSwiftPackageReference "XcodeReleasesKit" */,
 			);
 			productRefGroup = 1F30766022CCC7B4006A49C3 /* Products */;
 			projectDirPath = "";
@@ -715,7 +712,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		1FD1AAA5238AAE210096DA87 /* XCRemoteSwiftPackageReference "XcodeReleasesKit" */ = {
+		1FD1AAA8238AB4310096DA87 /* XCRemoteSwiftPackageReference "XcodeReleasesKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jeffctown/XcodeReleasesKit.git";
 			requirement = {
@@ -726,13 +723,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		1F309A9322CF7AAF009B8A62 /* XcodeReleasesKit */ = {
+		1FD1AAA9238AB4310096DA87 /* XcodeReleasesKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = XcodeReleasesKit;
-		};
-		1FD1AAA6238AAE210096DA87 /* XcodeReleasesKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1FD1AAA5238AAE210096DA87 /* XCRemoteSwiftPackageReference "XcodeReleasesKit" */;
+			package = 1FD1AAA8238AB4310096DA87 /* XCRemoteSwiftPackageReference "XcodeReleasesKit" */;
 			productName = XcodeReleasesKit;
 		};
 /* End XCSwiftPackageProductDependency section */
