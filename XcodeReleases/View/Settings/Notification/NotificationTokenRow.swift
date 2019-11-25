@@ -17,7 +17,6 @@ struct NotificationTokenRow: View {
     var body: some View {
         Group {
             if authorizationStatus == .authorized && pushToken != nil {
-//                SettingsButton(showingAlert: $showingAlert, title: "Notifications Enabled")
                 Button(action: {
                     UIPasteboard.general.string = self.pushToken
                     self.showingAlert = true

@@ -16,7 +16,7 @@ struct LinksSection : View {
         Group {
             if release.links?.notes?.url != nil {
                 Section(header: Text("Links")) {
-                    NavigationLink("Release Notes", destination: SafariView(url: URL(string: release.links!.notes!.url)!))
+                    WebViewButton(text: "Release Notes", url: URL(string: release.links!.notes!.url)!)
                 }
             } else {
                 EmptyView()

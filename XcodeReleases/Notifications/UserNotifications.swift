@@ -74,7 +74,12 @@ class UserNotifications: NSObject {
     
     func registeredWithToken(token: String) {
         print("\(#function) token: \(token)")
-        let device = Device(type: UIDevice.current.name, token: token)
+        #if DEBUG
+        let type = "Jeff's \(UIDevice.modelName))"
+        #else
+        let type = UIDevice.modelName
+        #endif
+        let device = Device(type: type, token: token)
         if let pushIdentifier = pushIdentifier {
             device.id = pushIdentifier
             register()
@@ -125,7 +130,6 @@ extension UserNotifications: UNUserNotificationCenterDelegate {
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-//        launchNotification.se
         launchNotification = response.notification.request.content.userInfo
         print(response.notification.request.content.userInfo)
         completionHandler()
