@@ -39,7 +39,7 @@ struct XcodeReleasesApi {
     }
     
     func postDevice(device: Device, completion: @escaping (Result<Device, Swift.Error>) -> Void) {
-        let urlString = "https://xcodereleases.jefflett.com/device"
+        let urlString = "\(XcodeReleasesApi.urlString)/device"
         let url = URL(string: urlString)!
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "POST"
