@@ -76,10 +76,12 @@ class UserNotifications: NSObject {
         print("\(#function) token: \(token)")
         #if DEBUG
         let type = "Jeff's \(UIDevice.modelName))"
+        let environment = Device.Environment.debug
         #else
         let type = UIDevice.modelName
+        let environment = Device.Environment.production
         #endif
-        let device = Device(type: type, token: token)
+        let device = Device(type: type, token: token, environment: environment)
         if let pushIdentifier = pushIdentifier {
             device.id = pushIdentifier
             register()
