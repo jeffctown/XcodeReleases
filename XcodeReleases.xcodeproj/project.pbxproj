@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F01355B23929F1300C9EEA8 /* SwiftUIPullToRefresh in Frameworks */ = {isa = PBXBuildFile; productRef = 1F01355A23929F1300C9EEA8 /* SwiftUIPullToRefresh */; };
 		1F130C4F22D21EB200A525CE /* Device+Debugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F130C4E22D21EB200A525CE /* Device+Debugging.swift */; };
 		1F174B1922CD5ACB004E2089 /* ReleaseInfoSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F174B1822CD5ACB004E2089 /* ReleaseInfoSection.swift */; };
 		1F174B1B22CD5BC2004E2089 /* MockReleases.json in Resources */ = {isa = PBXBuildFile; fileRef = 1F174B1A22CD5BC2004E2089 /* MockReleases.json */; };
@@ -96,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F01355B23929F1300C9EEA8 /* SwiftUIPullToRefresh in Frameworks */,
 				1FD1AAAA238AB4310096DA87 /* XcodeReleasesKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -323,6 +325,7 @@
 			name = XcodeReleases;
 			packageProductDependencies = (
 				1FD1AAA9238AB4310096DA87 /* XcodeReleasesKit */,
+				1F01355A23929F1300C9EEA8 /* SwiftUIPullToRefresh */,
 			);
 			productName = XcodeReleases;
 			productReference = 1F30765F22CCC7B4006A49C3 /* XcodeReleases.app */;
@@ -376,6 +379,7 @@
 			mainGroup = 1F30765622CCC7B4006A49C3;
 			packageReferences = (
 				1FD1AAA8238AB4310096DA87 /* XCRemoteSwiftPackageReference "XcodeReleasesKit" */,
+				1F01355923929F1300C9EEA8 /* XCRemoteSwiftPackageReference "SwiftUI-PullToRefresh" */,
 			);
 			productRefGroup = 1F30766022CCC7B4006A49C3 /* Products */;
 			projectDirPath = "";
@@ -707,6 +711,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		1F01355923929F1300C9EEA8 /* XCRemoteSwiftPackageReference "SwiftUI-PullToRefresh" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppPear/SwiftUI-PullToRefresh";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		1FD1AAA8238AB4310096DA87 /* XCRemoteSwiftPackageReference "XcodeReleasesKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jeffctown/XcodeReleasesKit.git";
@@ -718,6 +730,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1F01355A23929F1300C9EEA8 /* SwiftUIPullToRefresh */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1F01355923929F1300C9EEA8 /* XCRemoteSwiftPackageReference "SwiftUI-PullToRefresh" */;
+			productName = SwiftUIPullToRefresh;
+		};
 		1FD1AAA9238AB4310096DA87 /* XcodeReleasesKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1FD1AAA8238AB4310096DA87 /* XCRemoteSwiftPackageReference "XcodeReleasesKit" */;
