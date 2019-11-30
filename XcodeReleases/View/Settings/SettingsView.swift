@@ -11,8 +11,18 @@ import SwiftUI
 
 struct SettingsView : View {
     @EnvironmentObject private var appState: AppState
+    
+    @State var showingDisableAlert = false
+    @State var showingEnableAlert = false
     @State var showingAlert = false
     @State var authorizationStatus: UNAuthorizationStatus = .notDetermined
+    
+    private static let title = "Settings"
+    private static let goToEnableTitle = "Enable In Settings"
+    private static let goToDisableTitle = "Disable In Settings"
+    private static let goToSettingsMessage = "Would you like to go to the Settings app now to change your notification settings?"
+    private static let goToSettingsButtonTitle = "Take Me To Settings!"
+    private static let goNowhereTitle = "Dismiss"
     
     var body: some View {
         NavigationView {
@@ -25,18 +35,11 @@ struct SettingsView : View {
                 ).onReceive(appState.throttledNotificationSetting) { enabled in
                     print("Notifications - enabled: \(enabled) auth: \(self.authorizationStatus.rawValue)")
                     if enabled && (self.authorizationStatus == .notDetermined || self.authorizationStatus == .provisional) {
-                        print("Register")
                         self.appDelegate.userNotifications.register()
                     } else if !enabled && self.authorizationStatus == .authorized {
-                        print("Go To Settings to Disable")
-//                        Alert(title: Text("Disable In Settings"), message: Text("Would you like to go to the Settings app now to change your notification settings?"), primaryButton: Alert.Button.default(Text("Go To Settings"), onTrigger: {
-                            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
-    //                    }), secondaryButton: Alert.Button.cancel())
+                        self.showingDisableAlert = true
                     } else if enabled && self.authorizationStatus == .denied {
-                        print("Go To Settings To Enable")
-    //                    Alert(title: Text("Enable In Settings"), message: Text("Would you like to go to the Settings app now to change your notification settings?"), primaryButton: Alert.Button.default(Text("Go To Settings"), onTrigger: {
-                            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
-    //                    }), secondaryButton: Alert.Button.cancel())
+                        self.showingEnableAlert = true
                     }
                 }
                 AboutSection(version: InfoPList.version, build: InfoPList.build)
@@ -49,7 +52,17 @@ struct SettingsView : View {
                 }
             }).onAppear() {
                 self.appDelegate.userNotifications.checkAuthorizationStatus()
-            }.navigationBarTitle("Settings")
+            }.navigationBarTitle(SettingsView.title)
+                .alert(isPresented: self.$showingEnableAlert) {
+                    Alert(title: Text(SettingsView.goToDisableTitle), message: Text(SettingsView.goToSettingsMessage), primaryButton: .default(Text(SettingsView.goToSettingsButtonTitle)) {
+                        UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                        }, secondaryButton: .destructive(Text(SettingsView.goNowhereTitle)))
+                }
+                .alert(isPresented: self.$showingDisableAlert) {
+                    Alert(title: Text(SettingsView.goToEnableTitle), message: Text(SettingsView.goToSettingsMessage), primaryButton: .default(Text(SettingsView.goToSettingsButtonTitle)) {
+                        UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                        }, secondaryButton: .destructive(Text(SettingsView.goNowhereTitle)))
+                }
         }
     }
 }
@@ -63,3 +76,4 @@ struct SettingsView_Previews : PreviewProvider {
     }
 }
 #endif
+

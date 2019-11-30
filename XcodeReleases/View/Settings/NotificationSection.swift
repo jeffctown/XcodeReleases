@@ -33,7 +33,7 @@ struct NotificationSection_Previews : PreviewProvider {
             NotificationSection(
                 pushToken: .constant("1234"),
                 authorizationStatus: .constant(.notDetermined),
-                showingAlert: .constant(true),
+                showingAlert: .constant(false),
                 notificationsEnabled: .constant(true)
             )
         }
