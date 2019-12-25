@@ -11,16 +11,14 @@ import SwiftUI
 import UserNotifications
 
 struct NotificationSection : View {
-    @Binding var pushToken: String?
-    @Binding var authorizationStatus: UNAuthorizationStatus
-    @Binding var showingAlert: Bool
     @Binding var notificationsEnabled: Bool
+    var notificationState: NotificationState
     
     var body: some View {
         Section(header: Text("Notifications")) {
             NotificationToggleRow(notificationsEnabled: $notificationsEnabled)
             #if DEBUG
-            NotificationTokenRow(pushToken: pushToken, authorizationStatus: $authorizationStatus, showingAlert: $showingAlert)
+            NotificationTokenRow(notificationState: notificationState)
             #endif
         }
     }
@@ -31,10 +29,8 @@ struct NotificationSection_Previews : PreviewProvider {
     static var previews: some View {
         List {
             NotificationSection(
-                pushToken: .constant("1234"),
-                authorizationStatus: .constant(.notDetermined),
-                showingAlert: .constant(false),
-                notificationsEnabled: .constant(true)
+                notificationsEnabled: .constant(true),
+                notificationState: .authorized("8176token19827")
             )
         }
     }

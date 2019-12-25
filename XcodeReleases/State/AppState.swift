@@ -11,32 +11,52 @@ import Foundation
 import SwiftUI
 import XcodeReleasesKit
 
+enum NotificationState {
+    case notDetermined
+    case provisional(String)
+    case authorizing
+    case authorized(String)
+    case authorizedButDisabled(String)
+    case denied
+    case deniedButEnabled
+}
+
 class AppState: ObservableObject {
-    let objectWillChange = ObservableObjectPublisher()
     
-    @Published var notificationsEnabled: Bool = false {
-        didSet {
-            objectWillChange.send()
-        }
-    }
+    @Published var releases: [XcodeRelease] = []
+    @Published var pushToken: String? = nil
+    @Published var authorizationStatus: UNAuthorizationStatus = .notDetermined
+    @Published var notificationsEnabled: Bool = false
     
-    @Published var releases: [XcodeRelease] = [] {
-        didSet {
-            objectWillChange.send()
-        }
-    }
-    
-    @Published var pushToken: String? = nil {
-        didSet {
-            objectWillChange.send()
-        }
-    }
-    
-    var throttledNotificationSetting: AnyPublisher<Bool, Never> {
-        return $notificationsEnabled
-            .debounce(for: 0.5, scheduler: RunLoop.main)
-            .removeDuplicates()
-            .eraseToAnyPublisher()
+    var notificationSetting: AnyPublisher<NotificationState, Never> {
+        $notificationsEnabled
+            .combineLatest($authorizationStatus, $pushToken)
+            .map { (enabled, status, token) -> NotificationState in
+                switch status {
+                case .authorized:
+                    if enabled {
+                        return .authorized(token ?? "-1")
+                    } else {
+                        return .authorizedButDisabled(token ?? "-1")
+                    }
+                case .denied:
+                    if enabled {
+                        return .deniedButEnabled
+                    } else {
+                        return .denied
+                    }
+                case .notDetermined:
+                    if enabled {
+                        return .authorizing
+                    } else {
+                        return .notDetermined
+                    }
+                case .provisional:
+                    return .provisional(token ?? "-1")
+                @unknown default:
+                    return .notDetermined
+                }
+        }.eraseToAnyPublisher()
     }
 
 }

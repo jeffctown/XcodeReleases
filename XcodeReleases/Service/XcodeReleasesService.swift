@@ -12,12 +12,13 @@ import XcodeReleasesKit
 
 struct XcodeReleasesService {
     @Binding var releases: [XcodeRelease]
-    let loader = try! XcodeReleasesLoader(url: "https://xcodereleases.jefflett.com/release")
+    let loader = XcodeReleasesApi().xcodeReleasesLoader
     
     func refresh() {
         loader.releases { (result) in
             switch result {
             case .success(let releases):
+                print("Successfully Loaded \(releases.count) Releases.")
                 DispatchQueue.main.async {
                     self.releases = releases
                 }

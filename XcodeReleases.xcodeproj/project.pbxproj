@@ -28,6 +28,7 @@
 		1F3498A122D0FA400000E4E8 /* InfoPList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3498A022D0FA400000E4E8 /* InfoPList.swift */; };
 		1F3A225822D206D0006B778D /* NotificationTokenRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3A225722D206D0006B778D /* NotificationTokenRow.swift */; };
 		1F3A225A22D20719006B778D /* NotificationToggleRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3A225922D20719006B778D /* NotificationToggleRow.swift */; };
+		1F4E6E8723B371A3000666FC /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4E6E8623B371A3000666FC /* Environment.swift */; };
 		1F5827D722CCFCCE00FAA665 /* XcodeReleaseRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5827D622CCFCCE00FAA665 /* XcodeReleaseRow.swift */; };
 		1F6A985D22D03BAF005785EA /* XcodeReleasesApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6A985C22D03BAF005785EA /* XcodeReleasesApi.swift */; };
 		1FB14CD022CCD80F000D7552 /* XcodeReleasesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB14CCF22CCD80F000D7552 /* XcodeReleasesService.swift */; };
@@ -79,6 +80,7 @@
 		1F3498A022D0FA400000E4E8 /* InfoPList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPList.swift; sourceTree = "<group>"; };
 		1F3A225722D206D0006B778D /* NotificationTokenRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTokenRow.swift; sourceTree = "<group>"; };
 		1F3A225922D20719006B778D /* NotificationToggleRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationToggleRow.swift; sourceTree = "<group>"; };
+		1F4E6E8623B371A3000666FC /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		1F5827D622CCFCCE00FAA665 /* XcodeReleaseRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeReleaseRow.swift; sourceTree = "<group>"; };
 		1F6A985C22D03BAF005785EA /* XcodeReleasesApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeReleasesApi.swift; sourceTree = "<group>"; };
 		1FB14CCF22CCD80F000D7552 /* XcodeReleasesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeReleasesService.swift; sourceTree = "<group>"; };
@@ -233,8 +235,9 @@
 		1F5827D522CCFA0A00FAA665 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				1FB14CCF22CCD80F000D7552 /* XcodeReleasesService.swift */,
+				1F4E6E8623B371A3000666FC /* Environment.swift */,
 				1F6A985C22D03BAF005785EA /* XcodeReleasesApi.swift */,
+				1FB14CCF22CCD80F000D7552 /* XcodeReleasesService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -439,6 +442,7 @@
 				1F3A225A22D20719006B778D /* NotificationToggleRow.swift in Sources */,
 				1F174B1F22CD5E52004E2089 /* SDKSection.swift in Sources */,
 				1F30766A22CCC7B4006A49C3 /* XcodeReleaseList.swift in Sources */,
+				1F4E6E8723B371A3000666FC /* Environment.swift in Sources */,
 				1F174B1922CD5ACB004E2089 /* ReleaseInfoSection.swift in Sources */,
 				1F34989F22D0F9290000E4E8 /* AboutSection.swift in Sources */,
 				1F30766522CCC7B4006A49C3 /* SceneDelegate.swift in Sources */,

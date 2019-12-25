@@ -15,15 +15,16 @@ import XcodeReleasesKit
 class UserNotifications: NSObject {
     
     let appState: AppState
-    var authorizationStatus = CurrentValueSubject<UNAuthorizationStatus, Never>(.notDetermined)
     private let api = XcodeReleasesApi()
     
-    @UserDefault("pushIdentifier", defaultValue: nil)
-    var pushIdentifier: Int?
+    @UserDefault("serverPushIdentifier", defaultValue: nil)
+    var serverPushIdentifier: Int?
     
     var launchNotification: [AnyHashable: Any]? = nil {
         didSet {
-            print("Notification Received! \(launchNotification.debugDescription)")
+            if let _ = launchNotification {
+                print("Notification Received! \(launchNotification.debugDescription)")
+            }
             self.handle()
         }
     }
@@ -44,13 +45,13 @@ class UserNotifications: NSObject {
         UNUserNotificationCenter.current().getNotificationSettings { settings in
             print("Authorization Status: \(settings.authorizationStatus.rawValue)")
             DispatchQueue.main.async {
-                self.authorizationStatus.send(settings.authorizationStatus)
+                self.appState.authorizationStatus = settings.authorizationStatus
             }
         }
     }
     
     func register() {
-        print("NON Provisionally Registering For Push Notifications.")
+        print("Registering For Push Notifications.")
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
             print("UNUserNotificationCenter Authorized: \(granted)")
             if let error = error {
@@ -61,7 +62,7 @@ class UserNotifications: NSObject {
     }
     
     func registerProvisionally() {
-        print("Provisionally Registering For Push Notifications.")
+        print("*** Provisionally *** Registering For Push Notifications.")
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound, .provisional]) { (granted, error) in
             print("UNUserNotificationCenter Authorized: \(granted)")
             if let error = error {
@@ -74,15 +75,16 @@ class UserNotifications: NSObject {
     
     func registeredWithToken(token: String) {
         print("\(#function) token: \(token)")
+        let type = UIDevice.modelName
         #if DEBUG
-        let type = "Jeff's \(UIDevice.modelName))"
         let environment = Device.Environment.debug
         #else
-        let type = UIDevice.modelName
         let environment = Device.Environment.production
         #endif
         let device = Device(type: type, token: token, environment: environment)
-        if let pushIdentifier = pushIdentifier {
+        if let pushIdentifier = serverPushIdentifier {
+            //Set the Device id that it updates the back end instead of creating a new row.
+            //TODO: Consider moving this to the server
             device.id = pushIdentifier
             register()
         } else {
@@ -92,7 +94,7 @@ class UserNotifications: NSObject {
             switch(result) {
             case let .success(device):
                 print("Posted Device To Server. \(device.debugDescription)")
-                self.pushIdentifier = device.id
+                self.serverPushIdentifier = device.id
             case let .failure(error):
                 print("Failed To Post Device: \(error)")
             }
@@ -104,12 +106,17 @@ class UserNotifications: NSObject {
     }
     
     func handle() {
-        guard let extra = launchNotification?["extra"] as? [AnyHashable: Any] else {
-            print("No Extra Found In Push UserInfo.")
+        guard let launchNotification = launchNotification else {
+            print("Normal Launch (not from a notification).")
+            return
+        }
+        
+        guard let extra = launchNotification["extra"] as? [AnyHashable: Any] else {
+            print("Notification found, but missing Extra in UserInfo.")
             return
         }
         guard let releaseNotesUrl = extra["notes"] as? String else {
-            print("No Release Notes URL Found In Push Notification.")
+            print("Notification Extra found, but no release notes URL found in UserInfo.")
             return
         }
 

@@ -9,60 +9,71 @@
 import Combine
 import SwiftUI
 
+extension View {
+    
+    public func alertForSettings(isPresented: Binding<Bool>, title: String, message :String) -> some View {
+        let goToSettingsButtonTitle = "Settings"
+        let goNowhereTitle = "Close"
+        
+        return alert(isPresented: isPresented) { () -> Alert in
+            Alert(
+                title: Text(title),
+                message: Text(message),
+                primaryButton: .default(Text(goToSettingsButtonTitle)) {
+                UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                },
+                secondaryButton: .destructive(Text(goNowhereTitle))
+            )
+        }
+    }
+}
+
 struct SettingsView : View {
+    
     @EnvironmentObject private var appState: AppState
     
-    @State var showingDisableAlert = false
-    @State var showingEnableAlert = false
-    @State var showingAlert = false
-    @State var authorizationStatus: UNAuthorizationStatus = .notDetermined
+    @State private var showingDisableAlert = false
+    @State private var showingEnableAlert = false
+    @State private var notificationState: NotificationState = .notDetermined
+        
+    private struct Strings {
+        static let title = "Settings"
+        static let goToEnableTitle = "Enable In Settings"
+        static let goToDisableTitle = "Disable In Settings"
+        static let goToSettingsMessage = "Would you like to go to Settings to change your notifications?"
+        static let goToSettingsButtonTitle = "Settings"
+        static let goNowhereTitle = "Close"
+    }
     
-    private static let title = "Settings"
-    private static let goToEnableTitle = "Enable In Settings"
-    private static let goToDisableTitle = "Disable In Settings"
-    private static let goToSettingsMessage = "Would you like to go to the Settings app now to change your notification settings?"
-    private static let goToSettingsButtonTitle = "Take Me To Settings!"
-    private static let goNowhereTitle = "Dismiss"
+    private func updated(setting: NotificationState) {
+        print("New Notification State: \(setting)")
+        self.notificationState = setting
+        switch setting {
+        case .authorizedButDisabled:
+            self.showingDisableAlert = true
+        case .deniedButEnabled:
+            self.showingEnableAlert = true
+        case .authorizing:
+            self.appDelegate.userNotifications.register()
+        default:
+            break
+        }
+    }
     
     var body: some View {
         NavigationView {
             List {
-                NotificationSection(
-                    pushToken: $appState.pushToken,
-                    authorizationStatus: $authorizationStatus,
-                    showingAlert: $showingAlert,
-                    notificationsEnabled: $appState.notificationsEnabled
-                ).onReceive(appState.throttledNotificationSetting) { enabled in
-                    print("Notifications - enabled: \(enabled) auth: \(self.authorizationStatus.rawValue)")
-                    if enabled && (self.authorizationStatus == .notDetermined || self.authorizationStatus == .provisional) {
-                        self.appDelegate.userNotifications.register()
-                    } else if !enabled && self.authorizationStatus == .authorized {
-                        self.showingDisableAlert = true
-                    } else if enabled && self.authorizationStatus == .denied {
-                        self.showingEnableAlert = true
-                    }
-                }
+                NotificationSection(notificationsEnabled: $appState.notificationsEnabled,
+                                    notificationState: notificationState)
+                    .alertForSettings(isPresented: self.$showingEnableAlert,
+                        title: Strings.goToEnableTitle,
+                        message: Strings.goToSettingsMessage)
                 AboutSection(version: InfoPList.version, build: InfoPList.build)
-            }.onReceive(appDelegate.userNotifications.authorizationStatus, perform: { status in
-                self.authorizationStatus = status
-                if status == .denied || status == .provisional || status == .notDetermined {
-                    self.appState.notificationsEnabled = false
-                } else {
-                    self.appState.notificationsEnabled = true
-                }
-            }).onAppear() {
+            }.onReceive(appState.notificationSetting, perform: updated(setting:))
+                .onAppear() {
                 self.appDelegate.userNotifications.checkAuthorizationStatus()
-            }.navigationBarTitle(SettingsView.title)
-                .alert(isPresented: self.$showingEnableAlert) {
-                    Alert(title: Text(SettingsView.goToDisableTitle), message: Text(SettingsView.goToSettingsMessage), primaryButton: .default(Text(SettingsView.goToSettingsButtonTitle)) {
-                        UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
-                        }, secondaryButton: .destructive(Text(SettingsView.goNowhereTitle)))
-                }
-                .alert(isPresented: self.$showingDisableAlert) {
-                    Alert(title: Text(SettingsView.goToEnableTitle), message: Text(SettingsView.goToSettingsMessage), primaryButton: .default(Text(SettingsView.goToSettingsButtonTitle)) {
-                        UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
-                        }, secondaryButton: .destructive(Text(SettingsView.goNowhereTitle)))
-                }
+            }.alertForSettings(isPresented: self.$showingDisableAlert, title: Strings.goToDisableTitle, message: Strings.goToSettingsMessage
+            ).navigationBarTitle(Strings.title)
         }
     }
 }

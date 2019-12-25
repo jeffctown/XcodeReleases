@@ -9,11 +9,25 @@
 import Foundation
 import XcodeReleasesKit
 
-struct XcodeReleasesApi {
+protocol NeedsEnvironment {
+    func environment() -> XcodeReleasesEnvironment
+}
+
+extension NeedsEnvironment {
+    static func environment() -> XcodeReleasesEnvironment {
+        XcodeReleasesEnvironment(apiUrl: "https://xcodereleases.jefflett.com")
+//        XcodeReleasesEnvironment(apiUrl: "http://localhost:8080")
+    }
+    
+    func environment() -> XcodeReleasesEnvironment {
+        Self.environment()
+    }
+}
+
+struct XcodeReleasesApi: NeedsEnvironment {
     
     static let log = false
     static let session = URLSession(configuration: URLSessionConfiguration.default)
-    static let urlString = "https://xcodereleases.jefflett.com"
     
     public enum Error: Swift.Error, LocalizedError {
         case invalidURL(String)
@@ -38,16 +52,38 @@ struct XcodeReleasesApi {
         }
     }
     
+    var xcodeReleasesLoader: XcodeReleasesLoader = try! XcodeReleasesLoader(url: "\(Self.environment().apiUrl)/release")
+    
+    private enum ApiCommand {
+        case postDevice
+        case getDevice(String)
+        case deleteDevice(String)
+    }
+    
+    private enum HttpMethod: String {
+        case post = "POST"
+        case delete = "DELETE"
+    }
+    
+    private func url(command: ApiCommand) -> String {
+        switch command {
+        case .getDevice(let id), .deleteDevice(let id):
+            return "\(Self.environment().apiUrl)/device/\(id)"
+        case .postDevice:
+            return "\(Self.environment().apiUrl)/device"
+        }
+    }
+    
     func postDevice(device: Device, completion: @escaping (Result<Device, Swift.Error>) -> Void) {
-        let urlString = "\(XcodeReleasesApi.urlString)/device"
+        let urlString = url(command: .postDevice)
         let url = URL(string: urlString)!
         var urlRequest = URLRequest(url: url)
-        urlRequest.httpMethod = "POST"
+        urlRequest.httpMethod = HttpMethod.post.rawValue
         let encoder = JSONEncoder()
         do {
             let data = try encoder.encode(device)
             let requestString = String(data: data, encoding: String.Encoding.utf8) ?? "Data could not be printed"
-            print("Request Data: \(requestString)")
+            print("POST Device Request Data: \(requestString)")
             urlRequest.httpBody = data
             urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
             Self.session.dataTask(with: urlRequest) { (data, response, error) in
@@ -64,7 +100,7 @@ struct XcodeReleasesApi {
     }
     
     func getDevice(id: String, completion: @escaping (Result<Device, Swift.Error>) -> Void) {
-        let urlString = "https://xcodereleases.jefflett.com/device/\(id)"
+        let urlString = url(command: .getDevice(id))
         let url = URL(string: urlString)!
         Self.session.dataTask(with: url) { (data, response, error) in
             do {
@@ -77,10 +113,10 @@ struct XcodeReleasesApi {
     }
     
     func deleteDevice(id: String, completion: @escaping (Result<(),Swift.Error>) -> Void) {
-        let urlString = "https://xcodereleases.jefflett.com/device/\(id)"
+        let urlString = url(command: .deleteDevice(id))
         let url = URL(string: urlString)!
         var urlRequest = URLRequest(url: url)
-        urlRequest.httpMethod = "DELETE"
+        urlRequest.httpMethod = HttpMethod.delete.rawValue
         Self.session.dataTask(with: urlRequest) { (data, response, error) in
             self.handleResponse(data: data, response: response, error: error, completion: completion)
         }.resume()
