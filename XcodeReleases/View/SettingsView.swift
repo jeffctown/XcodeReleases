@@ -32,48 +32,33 @@ struct SettingsView : View {
     
     @EnvironmentObject private var appState: AppState
     
-    @State private var showingDisableAlert = false
     @State private var showingEnableAlert = false
     @State private var notificationState: NotificationState = .notDetermined
+    @State private var isSaving: Bool = false
         
     private struct Strings {
         static let title = "Settings"
         static let goToEnableTitle = "Enable In Settings"
-        static let goToDisableTitle = "Disable In Settings"
-        static let goToSettingsMessage = "Would you like to go to Settings to change your notifications?"
+        static let goToSettingsMessage = "Would you like to go to Settings to enable your notifications?"
         static let goToSettingsButtonTitle = "Settings"
         static let goNowhereTitle = "Close"
-    }
-    
-    private func updated(setting: NotificationState) {
-        print("New Notification State: \(setting)")
-        self.notificationState = setting
-        switch setting {
-        case .authorizedButDisabled:
-            self.showingDisableAlert = true
-        case .deniedButEnabled:
-            self.showingEnableAlert = true
-        case .authorizing:
-            self.appDelegate.userNotifications.register()
-        default:
-            break
-        }
     }
     
     var body: some View {
         NavigationView {
             List {
-                NotificationSection(notificationsEnabled: $appState.notificationsEnabled,
-                                    notificationState: notificationState)
+                NotificationSection(notificationState: notificationState, isSaving: $isSaving)
                     .alertForSettings(isPresented: self.$showingEnableAlert,
-                        title: Strings.goToEnableTitle,
-                        message: Strings.goToSettingsMessage)
+                                   title: Strings.goToEnableTitle,
+                                   message: Strings.goToSettingsMessage)
                 AboutSection(version: InfoPList.version, build: InfoPList.build)
-            }.onReceive(appState.notificationSetting, perform: updated(setting:))
-                .onAppear() {
+            }.onReceive(appState.notificationSetting) { setting in
+                self.notificationState = setting
+            }.onReceive(appState.isSavingNotificationStateToServer) { isSaving in
+                self.isSaving = isSaving
+            }.onAppear() {
                 self.appDelegate.userNotifications.checkAuthorizationStatus()
-            }.alertForSettings(isPresented: self.$showingDisableAlert, title: Strings.goToDisableTitle, message: Strings.goToSettingsMessage
-            ).navigationBarTitle(Strings.title)
+            }.navigationBarTitle(Strings.title)
         }
     }
 }

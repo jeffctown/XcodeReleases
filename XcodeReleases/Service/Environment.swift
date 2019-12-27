@@ -11,3 +11,18 @@ import Foundation
 struct XcodeReleasesEnvironment {
     let apiUrl: String
 }
+
+protocol NeedsEnvironment {
+    func environment() -> XcodeReleasesEnvironment
+}
+
+extension NeedsEnvironment {
+    static func environment() -> XcodeReleasesEnvironment {
+        XcodeReleasesEnvironment(apiUrl: "https://xcodereleases.jefflett.com")
+//        XcodeReleasesEnvironment(apiUrl: "http://localhost:8080")
+    }
+    
+    func environment() -> XcodeReleasesEnvironment {
+        Self.environment()
+    }
+}

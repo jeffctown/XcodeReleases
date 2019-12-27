@@ -8,27 +8,22 @@
 
 import Combine
 import SwiftUI
-import SwiftUIPullToRefresh
 import XcodeReleasesKit
 
 struct XcodeReleaseList : View {
     @EnvironmentObject private var appState: AppState
-    
-    @State private var showSettings = false
     
     var service: XcodeReleasesService {
         XcodeReleasesService(releases: $appState.releases)
     }
 
     var body: some View {
-        RefreshableNavigationView(title: "XcodeReleases", action: {
-            self.service.refresh()
-        }) {
-            ForEach(self.service.releases, id: \.id) { release in
+        NavigationView {
+            List(appState.releases) { release in
                 NavigationLink(destination: XcodeReleaseDetail(release: release)) {
                     XcodeReleaseRow(release: release)
                 }
-            }
+            }.navigationBarTitle("Xcode Releases")
         }.onAppear() {
             self.service.refresh()
         }

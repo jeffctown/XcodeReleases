@@ -10,14 +10,15 @@ import Foundation
 import SwiftUI
 
 struct NotificationTokenRow: View {
-    var notificationState: NotificationState
+    
+    @State var notificationState: NotificationState
     @State private var showingAlert: Bool = false
     
     var body: some View {
+        #if DEBUG
         switch notificationState {
-        case .authorized(let token):
-            return AnyView {
-                Button(action: {
+        case .authorized(let token), .provisional(let token):
+            return AnyView(Button(action: {
                     UIPasteboard.general.string = token
                     self.showingAlert = true
                 }) {
@@ -25,12 +26,13 @@ struct NotificationTokenRow: View {
                 }.alert(isPresented: self.$showingAlert) {
                     Alert(title: Text("Token Copied!"))
                 }
-            }
+            )
         default:
-            return AnyView {
-                EmptyView()
-            }
+            return AnyView(EmptyView())
         }
+        #else
+        return AnyView(EmptyView())
+        #endif
     }
     
 }

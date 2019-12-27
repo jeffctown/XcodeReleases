@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1F01355B23929F1300C9EEA8 /* SwiftUIPullToRefresh in Frameworks */ = {isa = PBXBuildFile; productRef = 1F01355A23929F1300C9EEA8 /* SwiftUIPullToRefresh */; };
 		1F130C4F22D21EB200A525CE /* Device+Debugging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F130C4E22D21EB200A525CE /* Device+Debugging.swift */; };
 		1F174B1922CD5ACB004E2089 /* ReleaseInfoSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F174B1822CD5ACB004E2089 /* ReleaseInfoSection.swift */; };
 		1F174B1B22CD5BC2004E2089 /* MockReleases.json in Resources */ = {isa = PBXBuildFile; fileRef = 1F174B1A22CD5BC2004E2089 /* MockReleases.json */; };
@@ -16,6 +15,7 @@
 		1F174B2122CD5F4B004E2089 /* LinksSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F174B2022CD5F4B004E2089 /* LinksSection.swift */; };
 		1F174B2622CD6D19004E2089 /* XcodeRelease+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F174B2522CD6D19004E2089 /* XcodeRelease+Identifiable.swift */; };
 		1F21433122CD875300464412 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F21433022CD875300464412 /* SettingsView.swift */; };
+		1F223E9623B506BE00480A0D /* NotificationsDeniedRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F223E9523B506BE00480A0D /* NotificationsDeniedRow.swift */; };
 		1F30766322CCC7B4006A49C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F30766222CCC7B4006A49C3 /* AppDelegate.swift */; };
 		1F30766522CCC7B4006A49C3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F30766422CCC7B4006A49C3 /* SceneDelegate.swift */; };
 		1F30766A22CCC7B4006A49C3 /* XcodeReleaseList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F30766922CCC7B4006A49C3 /* XcodeReleaseList.swift */; };
@@ -27,12 +27,15 @@
 		1F34989F22D0F9290000E4E8 /* AboutSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F34989E22D0F9290000E4E8 /* AboutSection.swift */; };
 		1F3498A122D0FA400000E4E8 /* InfoPList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3498A022D0FA400000E4E8 /* InfoPList.swift */; };
 		1F3A225822D206D0006B778D /* NotificationTokenRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3A225722D206D0006B778D /* NotificationTokenRow.swift */; };
-		1F3A225A22D20719006B778D /* NotificationToggleRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3A225922D20719006B778D /* NotificationToggleRow.swift */; };
+		1F3A225A22D20719006B778D /* NotificationsEnabledRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3A225922D20719006B778D /* NotificationsEnabledRow.swift */; };
 		1F4E6E8723B371A3000666FC /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4E6E8623B371A3000666FC /* Environment.swift */; };
 		1F5827D722CCFCCE00FAA665 /* XcodeReleaseRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5827D622CCFCCE00FAA665 /* XcodeReleaseRow.swift */; };
 		1F6A985D22D03BAF005785EA /* XcodeReleasesApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6A985C22D03BAF005785EA /* XcodeReleasesApi.swift */; };
+		1F9DF85A23B3EB3400C28F30 /* NotificationsFailedRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9DF85923B3EB3400C28F30 /* NotificationsFailedRow.swift */; };
+		1F9DF85C23B4104C00C28F30 /* NotificationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9DF85B23B4104C00C28F30 /* NotificationState.swift */; };
 		1FB14CD022CCD80F000D7552 /* XcodeReleasesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB14CCF22CCD80F000D7552 /* XcodeReleasesService.swift */; };
 		1FB14CD522CCE680000D7552 /* XcodeReleaseDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB14CD422CCE680000D7552 /* XcodeReleaseDetail.swift */; };
+		1FCE4BF123B50B0400FB6586 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCE4BF023B50B0400FB6586 /* ActivityIndicator.swift */; };
 		1FD1AAA2238A15590096DA87 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD1AAA1238A15590096DA87 /* RootView.swift */; };
 		1FD1AAA4238A93FB0096DA87 /* WebViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD1AAA3238A93FB0096DA87 /* WebViewButton.swift */; };
 		1FD1AAAA238AB4310096DA87 /* XcodeReleasesKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1FD1AAA9238AB4310096DA87 /* XcodeReleasesKit */; };
@@ -64,6 +67,7 @@
 		1F174B2522CD6D19004E2089 /* XcodeRelease+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XcodeRelease+Identifiable.swift"; sourceTree = "<group>"; };
 		1F21432F22CD861E00464412 /* XcodeReleasesDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = XcodeReleasesDebug.entitlements; sourceTree = "<group>"; };
 		1F21433022CD875300464412 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		1F223E9523B506BE00480A0D /* NotificationsDeniedRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsDeniedRow.swift; sourceTree = "<group>"; };
 		1F30765F22CCC7B4006A49C3 /* XcodeReleases.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XcodeReleases.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F30766222CCC7B4006A49C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F30766422CCC7B4006A49C3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,12 +83,15 @@
 		1F34989E22D0F9290000E4E8 /* AboutSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutSection.swift; sourceTree = "<group>"; };
 		1F3498A022D0FA400000E4E8 /* InfoPList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPList.swift; sourceTree = "<group>"; };
 		1F3A225722D206D0006B778D /* NotificationTokenRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTokenRow.swift; sourceTree = "<group>"; };
-		1F3A225922D20719006B778D /* NotificationToggleRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationToggleRow.swift; sourceTree = "<group>"; };
+		1F3A225922D20719006B778D /* NotificationsEnabledRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsEnabledRow.swift; sourceTree = "<group>"; };
 		1F4E6E8623B371A3000666FC /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		1F5827D622CCFCCE00FAA665 /* XcodeReleaseRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeReleaseRow.swift; sourceTree = "<group>"; };
 		1F6A985C22D03BAF005785EA /* XcodeReleasesApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeReleasesApi.swift; sourceTree = "<group>"; };
+		1F9DF85923B3EB3400C28F30 /* NotificationsFailedRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsFailedRow.swift; sourceTree = "<group>"; };
+		1F9DF85B23B4104C00C28F30 /* NotificationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationState.swift; sourceTree = "<group>"; };
 		1FB14CCF22CCD80F000D7552 /* XcodeReleasesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeReleasesService.swift; sourceTree = "<group>"; };
 		1FB14CD422CCE680000D7552 /* XcodeReleaseDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeReleaseDetail.swift; sourceTree = "<group>"; };
+		1FCE4BF023B50B0400FB6586 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		1FD1AAA1238A15590096DA87 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		1FD1AAA3238A93FB0096DA87 /* WebViewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewButton.swift; sourceTree = "<group>"; };
 		1FE2ACBD22CD82C300A8B239 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
@@ -99,7 +106,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F01355B23929F1300C9EEA8 /* SwiftUIPullToRefresh in Frameworks */,
 				1FD1AAAA238AB4310096DA87 /* XcodeReleasesKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -228,6 +234,8 @@
 				1F174B2322CD5FBE004E2089 /* XcodeReleaseDetail */,
 				1F2B370D22CD6DCE009118FE /* XcodeReleaseList */,
 				1FE2ACBB22CD7E2A00A8B239 /* Settings */,
+				1FCE4BF023B50B0400FB6586 /* ActivityIndicator.swift */,
+				1F21433022CD875300464412 /* SettingsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -263,7 +271,6 @@
 				1F34989E22D0F9290000E4E8 /* AboutSection.swift */,
 				1FF9F09522D2094B00DBD6D3 /* Notification */,
 				1F34989C22D0E4960000E4E8 /* NotificationSection.swift */,
-				1F21433022CD875300464412 /* SettingsView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -297,6 +304,7 @@
 			isa = PBXGroup;
 			children = (
 				1FEFFCD822CCEF7F0060DA61 /* AppState.swift */,
+				1F9DF85B23B4104C00C28F30 /* NotificationState.swift */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -304,8 +312,10 @@
 		1FF9F09522D2094B00DBD6D3 /* Notification */ = {
 			isa = PBXGroup;
 			children = (
-				1F3A225922D20719006B778D /* NotificationToggleRow.swift */,
+				1F3A225922D20719006B778D /* NotificationsEnabledRow.swift */,
+				1F223E9523B506BE00480A0D /* NotificationsDeniedRow.swift */,
 				1F3A225722D206D0006B778D /* NotificationTokenRow.swift */,
+				1F9DF85923B3EB3400C28F30 /* NotificationsFailedRow.swift */,
 			);
 			path = Notification;
 			sourceTree = "<group>";
@@ -328,7 +338,6 @@
 			name = XcodeReleases;
 			packageProductDependencies = (
 				1FD1AAA9238AB4310096DA87 /* XcodeReleasesKit */,
-				1F01355A23929F1300C9EEA8 /* SwiftUIPullToRefresh */,
 			);
 			productName = XcodeReleases;
 			productReference = 1F30765F22CCC7B4006A49C3 /* XcodeReleases.app */;
@@ -382,7 +391,6 @@
 			mainGroup = 1F30765622CCC7B4006A49C3;
 			packageReferences = (
 				1FD1AAA8238AB4310096DA87 /* XCRemoteSwiftPackageReference "XcodeReleasesKit" */,
-				1F01355923929F1300C9EEA8 /* XCRemoteSwiftPackageReference "SwiftUI-PullToRefresh" */,
 			);
 			productRefGroup = 1F30766022CCC7B4006A49C3 /* Products */;
 			projectDirPath = "";
@@ -430,17 +438,21 @@
 				1F21433122CD875300464412 /* SettingsView.swift in Sources */,
 				1F130C4F22D21EB200A525CE /* Device+Debugging.swift in Sources */,
 				1F174B1D22CD5BD6004E2089 /* MockReleases.swift in Sources */,
+				1F223E9623B506BE00480A0D /* NotificationsDeniedRow.swift in Sources */,
 				1FF7622522CD42FA0091EAC3 /* WebView.swift in Sources */,
 				1FB14CD022CCD80F000D7552 /* XcodeReleasesService.swift in Sources */,
+				1F9DF85C23B4104C00C28F30 /* NotificationState.swift in Sources */,
 				1FB14CD522CCE680000D7552 /* XcodeReleaseDetail.swift in Sources */,
 				1FF7622722CD477D0091EAC3 /* SafariView.swift in Sources */,
+				1F9DF85A23B3EB3400C28F30 /* NotificationsFailedRow.swift in Sources */,
 				1FEFFCD922CCEF800060DA61 /* AppState.swift in Sources */,
 				1F3498A122D0FA400000E4E8 /* InfoPList.swift in Sources */,
 				1F174B2622CD6D19004E2089 /* XcodeRelease+Identifiable.swift in Sources */,
 				1F3A225822D206D0006B778D /* NotificationTokenRow.swift in Sources */,
 				1F30766322CCC7B4006A49C3 /* AppDelegate.swift in Sources */,
-				1F3A225A22D20719006B778D /* NotificationToggleRow.swift in Sources */,
+				1F3A225A22D20719006B778D /* NotificationsEnabledRow.swift in Sources */,
 				1F174B1F22CD5E52004E2089 /* SDKSection.swift in Sources */,
+				1FCE4BF123B50B0400FB6586 /* ActivityIndicator.swift in Sources */,
 				1F30766A22CCC7B4006A49C3 /* XcodeReleaseList.swift in Sources */,
 				1F4E6E8723B371A3000666FC /* Environment.swift in Sources */,
 				1F174B1922CD5ACB004E2089 /* ReleaseInfoSection.swift in Sources */,
@@ -715,14 +727,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		1F01355923929F1300C9EEA8 /* XCRemoteSwiftPackageReference "SwiftUI-PullToRefresh" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/AppPear/SwiftUI-PullToRefresh";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
 		1FD1AAA8238AB4310096DA87 /* XCRemoteSwiftPackageReference "XcodeReleasesKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jeffctown/XcodeReleasesKit.git";
@@ -734,11 +738,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		1F01355A23929F1300C9EEA8 /* SwiftUIPullToRefresh */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1F01355923929F1300C9EEA8 /* XCRemoteSwiftPackageReference "SwiftUI-PullToRefresh" */;
-			productName = SwiftUIPullToRefresh;
-		};
 		1FD1AAA9238AB4310096DA87 /* XcodeReleasesKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1FD1AAA8238AB4310096DA87 /* XCRemoteSwiftPackageReference "XcodeReleasesKit" */;

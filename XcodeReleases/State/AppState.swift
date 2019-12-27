@@ -11,52 +11,45 @@ import Foundation
 import SwiftUI
 import XcodeReleasesKit
 
-enum NotificationState {
-    case notDetermined
-    case provisional(String)
-    case authorizing
-    case authorized(String)
-    case authorizedButDisabled(String)
-    case denied
-    case deniedButEnabled
-}
-
 class AppState: ObservableObject {
     
     @Published var releases: [XcodeRelease] = []
     @Published var pushToken: String? = nil
     @Published var authorizationStatus: UNAuthorizationStatus = .notDetermined
-    @Published var notificationsEnabled: Bool = false
+    @Published var isSavingNotificationSettings: Bool = false
     
     var notificationSetting: AnyPublisher<NotificationState, Never> {
-        $notificationsEnabled
-            .combineLatest($authorizationStatus, $pushToken)
-            .map { (enabled, status, token) -> NotificationState in
+        $authorizationStatus
+            .combineLatest($pushToken)
+            .map { (status, token) -> NotificationState in
+                var notificationState: NotificationState = .notDetermined
+                guard let token = token else {
+                    self.debugPrint(status: status, token: nil, state: .noToken)
+                    return .noToken
+                }
                 switch status {
                 case .authorized:
-                    if enabled {
-                        return .authorized(token ?? "-1")
-                    } else {
-                        return .authorizedButDisabled(token ?? "-1")
-                    }
+                    notificationState = .authorized(token)
                 case .denied:
-                    if enabled {
-                        return .deniedButEnabled
-                    } else {
-                        return .denied
-                    }
+                    notificationState = .denied
                 case .notDetermined:
-                    if enabled {
-                        return .authorizing
-                    } else {
-                        return .notDetermined
-                    }
+                    notificationState = .notDetermined
                 case .provisional:
-                    return .provisional(token ?? "-1")
+                    notificationState = .provisional(token)
                 @unknown default:
-                    return .notDetermined
+                    notificationState = .notDetermined
                 }
+                self.debugPrint(status: status, token: token, state: notificationState)
+                return notificationState
         }.eraseToAnyPublisher()
+    }
+    
+    var isSavingNotificationStateToServer: AnyPublisher<Bool, Never> {
+        $isSavingNotificationSettings.eraseToAnyPublisher()
+    }
+    
+    func debugPrint(status: UNAuthorizationStatus, token: String?, state: NotificationState) {
+        print("   *** \(state) - Status: \(status.rawValue) Token: \(token ?? "nil")")
     }
 
 }

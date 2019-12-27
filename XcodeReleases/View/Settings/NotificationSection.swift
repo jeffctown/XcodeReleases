@@ -11,15 +11,16 @@ import SwiftUI
 import UserNotifications
 
 struct NotificationSection : View {
-    @Binding var notificationsEnabled: Bool
+    
     var notificationState: NotificationState
+    @Binding var isSaving: Bool
     
     var body: some View {
         Section(header: Text("Notifications")) {
-            NotificationToggleRow(notificationsEnabled: $notificationsEnabled)
-            #if DEBUG
+            NotificationsEnabledRow(notificationState: notificationState, isSavingToServer: $isSaving)
+            NotificationsDeniedRow(notificationState: notificationState, isSavingToServer: $isSaving)
+            NotificationsFailedRow(notificationState: notificationState)
             NotificationTokenRow(notificationState: notificationState)
-            #endif
         }
     }
 }
@@ -27,11 +28,55 @@ struct NotificationSection : View {
 #if DEBUG
 struct NotificationSection_Previews : PreviewProvider {
     static var previews: some View {
-        List {
-            NotificationSection(
-                notificationsEnabled: .constant(true),
-                notificationState: .authorized("8176token19827")
-            )
+        Group {
+            NavigationView {
+                List {
+                    NotificationSection(
+                        notificationState: .authorized("push token"),
+                        isSaving: .constant(true)
+                    )
+                    NotificationSection(
+                        notificationState: .provisional("provisional token"),
+                        isSaving: .constant(true)
+                    )
+                    NotificationSection(
+                        notificationState: .notDetermined,
+                        isSaving: .constant(true)
+                    )
+                    NotificationSection(
+                        notificationState: .noToken,
+                        isSaving: .constant(true)
+                    )
+                    NotificationSection(
+                        notificationState: .denied,
+                        isSaving: .constant(true)
+                    )
+                }.navigationBarTitle("Settings")
+            }.environmentObject(AppState())
+            NavigationView {
+                List {
+                    NotificationSection(
+                        notificationState: .authorized("push token"),
+                        isSaving: .constant(true)
+                    )
+                    NotificationSection(
+                        notificationState: .provisional("provisional token"),
+                        isSaving: .constant(true)
+                    )
+                    NotificationSection(
+                        notificationState: .notDetermined,
+                        isSaving: .constant(true)
+                    )
+                    NotificationSection(
+                        notificationState: .noToken,
+                        isSaving: .constant(true)
+                    )
+                    NotificationSection(
+                        notificationState: .denied,
+                        isSaving: .constant(true)
+                    )
+                }.navigationBarTitle("Settings")
+                }.colorScheme(.dark).environmentObject(AppState())
         }
     }
 }

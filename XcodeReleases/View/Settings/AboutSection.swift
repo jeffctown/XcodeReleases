@@ -16,7 +16,7 @@ struct AboutSection : View {
         Section(header: Text("About"),
                 footer: Text("Version: v\(version) (\(build))").font(.caption)) {
             WebViewButton(text: "Suggestions", url: URL(string: "http://google.com")!)
-            WebViewButton(text: "Githhub", url: URL(string: "http://google.com")!)
+            WebViewButton(text: "Github", url: URL(string: "http://google.com")!)
             WebViewButton(text: "Privacy Policy", url: URL(string: "http://google.com")!)
         }
     }
