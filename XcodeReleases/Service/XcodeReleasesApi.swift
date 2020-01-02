@@ -6,33 +6,40 @@
 //  Copyright © 2019 Jeff Lett. All rights reserved.
 //
 
+import APNS
+import Combine
 import Foundation
 import XcodeReleasesKit
 
-
-
 struct XcodeReleasesApi: NeedsEnvironment {
     
-    static let log = false
-    static let session = URLSession(configuration: URLSessionConfiguration.default)
+    let log = false
+    let session: URLSession
     
-    public enum Error: Swift.Error, LocalizedError {
+    init(session: URLSession = URLSession(configuration: URLSessionConfiguration.default)) {
+        self.session = session
+    }
+    
+    public enum ApiError: Error, LocalizedError {
         case invalidURL(String)
-        case networkingError(Swift.Error)
+        case encode(EncodingError)
+        case request(URLError)
+        case decode(DecodingError)
         case serverError(Int)
-        case parsingError(Swift.Error)
         case unknown
         
         public var errorDescription: String? {
             switch self {
             case .invalidURL(let u):
                 return "URL Creation Error: \(u)"
-            case .networkingError(let e):
-                return "Networking Error: \(e)"
+            case .request(let e):
+                return "Request Error: \(e)"
             case .serverError(let statusCode):
                 return "Server Error: \(statusCode)"
-            case .parsingError(let e):
-                return "Parsing Error: \(e)"
+            case .encode(let e):
+                return "Encoding Error: \(e)"
+            case .decode(let e):
+                return "Decoding Error: \(e)"
             case .unknown:
                 return "Unknown Error"
             }
@@ -40,6 +47,36 @@ struct XcodeReleasesApi: NeedsEnvironment {
     }
     
     var xcodeReleasesLoader: XcodeReleasesLoader = try! XcodeReleasesLoader(url: "\(Self.environment().apiUrl)/release")
+    
+    func postDevice(device: Device) -> AnyPublisher<Device, XcodeReleasesApi.ApiError> {
+        Just(device)
+            .encode(encoder: JSONEncoder())
+            .mapError { self.processErrors($0) }
+            .tryMap { try self.mapToPostURLRequest(data: $0, url: self.url(command: .postDevice)) }
+            .mapError { self.processErrors($0) }
+            .flatMap {
+                self.session.dataTaskPublisher(for: $0)
+                    .mapError { self.processErrors($0) }
+                    .map(\.data)
+                    .decode(type: Device.self, decoder: JSONDecoder())
+                    .mapError { self.processErrors($0) }
+            }.eraseToAnyPublisher()
+    }
+        
+    
+    func deleteDevice(id: String) -> AnyPublisher<Bool, XcodeReleasesApi.ApiError> {
+        Just(id)
+            .tryMap { try self.mapToDeleteURLRequest(url: self.url(command: .deleteDevice($0))) }
+            .mapError { self.processErrors($0) }
+            .flatMap {
+                self.session.dataTaskPublisher(for: $0)
+                    .mapError(XcodeReleasesApi.ApiError.request)
+                    .map(\.response)
+                    .map { response -> Bool in (response as? HTTPURLResponse)?.statusCode == 200 }
+        }.eraseToAnyPublisher()
+    }
+    
+    // MARK: - Private
     
     private enum ApiCommand {
         case postDevice
@@ -52,6 +89,8 @@ struct XcodeReleasesApi: NeedsEnvironment {
         case delete = "DELETE"
     }
     
+    // MARK: - Private Methods
+    
     private func url(command: ApiCommand) -> String {
         switch command {
         case .getDevice(let id), .deleteDevice(let id):
@@ -60,112 +99,57 @@ struct XcodeReleasesApi: NeedsEnvironment {
             return "\(Self.environment().apiUrl)/device"
         }
     }
+ 
+    private func processErrors(_ error: Swift.Error) -> XcodeReleasesApi.ApiError {
+        if let decodingError = error as? DecodingError {
+            return .decode(decodingError)
+        } else if let encodingError = error as? EncodingError {
+            return .encode(encodingError)
+        } else if let urlError = error as? URLError {
+            return .request(urlError)
+        } else if let apiError = error as? XcodeReleasesApi.ApiError {
+            return apiError
+        } else {
+            return .unknown
+        }
+    }
     
-    func postDevice(device: Device, completion: @escaping (Result<Device, Swift.Error>) -> Void) {
-        let urlString = url(command: .postDevice)
-        let url = URL(string: urlString)!
+    private func mapToPostURLRequest(data: Data, url urlString: String) throws -> URLRequest {
+        guard let url = URL(string: urlString) else {
+            throw XcodeReleasesApi.ApiError.invalidURL(urlString)
+        }
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = HttpMethod.post.rawValue
-        let encoder = JSONEncoder()
-        do {
-            let data = try encoder.encode(device)
-            let requestString = String(data: data, encoding: String.Encoding.utf8) ?? "Data could not be printed"
-            print("POST Device Request Data: \(requestString)")
-            urlRequest.httpBody = data
-            urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            Self.session.dataTask(with: urlRequest) { (data, response, error) in
-                do {
-                    let device = try self.parseAndHandleResponse(data: data, response: response, error: error, type: Device.self)
-                    completion(.success(device))
-                } catch {
-                    completion(.failure(error))
-                }
-            }.resume()
-        } catch {
-            completion(.failure(error))
+        urlRequest.httpBody = data
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        return urlRequest
+    }
+    
+    private func mapToDeleteURLRequest(url urlString: String) throws -> URLRequest {
+        guard let url = URL(string: urlString) else {
+            throw XcodeReleasesApi.ApiError.invalidURL(urlString)
         }
-    }
-    
-    func getDevice(id: String, completion: @escaping (Result<Device, Swift.Error>) -> Void) {
-        let urlString = url(command: .getDevice(id))
-        let url = URL(string: urlString)!
-        Self.session.dataTask(with: url) { (data, response, error) in
-            do {
-                let device = try self.parseAndHandleResponse(data: data, response: response, error: error, type: Device.self)
-                completion(.success(device))
-            } catch {
-                completion(.failure(error))
-            }
-        }.resume()
-    }
-    
-    func deleteDevice(id: String, completion: @escaping (Result<(),Swift.Error>) -> Void) {
-        let urlString = url(command: .deleteDevice(id))
-        let url = URL(string: urlString)!
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = HttpMethod.delete.rawValue
-        Self.session.dataTask(with: urlRequest) { (data, response, error) in
-            self.handleResponse(data: data, response: response, error: error, completion: completion)
-        }.resume()
+        return urlRequest
     }
-    
-    // MARK: - Private
-    
-    private func parseAndHandleResponse<T>(data: Data?, response: URLResponse?, error: Swift.Error?, type: T.Type) throws -> T where T: Decodable {
-        log(data: data, response: response, error: error)
-        if let error = error {
-            print("Error: \(error)")
-            throw error
-        } else if let response = response,
-            let urlResponse = response as? HTTPURLResponse,
-            urlResponse.statusCode != 200 {
-            throw XcodeReleasesApi.Error.serverError(urlResponse.statusCode)
-        } else if let data = data {
-            print(data)
-            do {
-                let decoder = JSONDecoder()
-                let decoded: T = try decoder.decode(type, from: data)
-                return decoded
-            } catch {
-                let responseString = String(data: data, encoding: String.Encoding.utf8) ?? "Data could not be printed"
-                print("Error Parsing Response: \(error)")
-                print("Response Data: \(responseString)")
-                throw error
-            }
-        } else {
-            throw XcodeReleasesApi.Error.unknown
-        }
-    }
-    
-    private func handleResponse(data: Data?, response: URLResponse?, error: Swift.Error?, completion: @escaping (Result<(), Swift.Error>) -> Void) {
-        log(data: data, response: response, error: error)
-        if let error = error {
-            print("Error: \(error)")
-            completion(.failure(error))
-        } else if let response = response,
-            let urlResponse = response as? HTTPURLResponse,
-            urlResponse.statusCode == 200 {
-            completion(.success(()))
-        } else {
-            completion(.failure(XcodeReleasesApi.Error.unknown))
-        }
-        
-    }
-    
-    private func log(data: Data?, response: URLResponse?, error: Swift.Error?) {
-        guard Self.log else {
-            return
-        }
-        
-        if let data = data {
-            print(data)
-        }
-        if let response = response {
-            print(response)
-        }
-        if let error = error {
-            print(error)
-        }
-    }
-    
 }
+//
+//extension Publisher {
+//    // public func mapError<E>(_ transform: @escaping (Self.Failure) -> E) -> Publishers.MapError<Self, E> where E : Error
+//    func mapErr(_ error: Failure) -> Publishers.MapError<Self, XcodeReleasesApi.ApiError> {
+//        mapError { error -> XcodeReleasesApi.ApiError in
+//            if let decodingError = error as? DecodingError {
+//                return .decode(decodingError)
+//            } else if let encodingError = error as? EncodingError {
+//                return .encode(encodingError)
+//            } else if let urlError = error as? URLError {
+//                return .request(urlError)
+//            } else if let apiError = error as? XcodeReleasesApi.ApiError {
+//                return apiError
+//            } else {
+//                return .unknown
+//            }
+//        }
+//    }
+//}

@@ -15,9 +15,26 @@ struct NotificationsFailedRow: View {
     var body: some View {
         switch self.notificationState {
         case .noToken:
-            return AnyView(Text("Notification Registration Failed.  If you're on a simulator, this is expected. ").font(.footnote))
+            return AnyView(
+                Group {
+                    HStack {
+                        Text("Push Notifications:")
+                        Spacer()
+                        Text("Disabled ❗️")
+                    }
+                    Text(
+                        "Notification Registration Failed.  If you're on a simulator, this is expected. "
+                    ).font(.footnote)
+                }
+            )
         case .notDetermined:
-            return  AnyView(Text("Notification Status Not Determined.").font(.footnote))
+            return  AnyView(
+                HStack {
+                    Text("Push Notifications:")
+                    Spacer()
+                    Text("Not Determined ❓")
+                }
+            )
         default:
             return AnyView(EmptyView())
         }

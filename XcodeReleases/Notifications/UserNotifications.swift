@@ -6,20 +6,24 @@
 //  Copyright © 2019 Jeff Lett. All rights reserved.
 //
 
+import APNS
 import Combine
 import SwiftUI
 import UIKit
 import UserNotifications
 import XcodeReleasesKit
 
-class UserNotifications: NSObject {
+class UserNotifications: NSObject, ObservableObject {
     
-    let appState: AppState
     private let api = XcodeReleasesApi()
     private var cancellables = Set<AnyCancellable>()
+    private var notificationRequestCancellable: AnyCancellable?
     
+    @Published var pushToken: String? = nil
+    @Published var authorizationStatus: UNAuthorizationStatus = .notDetermined
+    @Published var isSavingNotificationState: Bool = false
     @UserDefault("serverPushIdentifier", defaultValue: NSNotFound)
-    static var serverPushIdentifier: Int
+    var serverPushIdentifier: Int
     
     var launchNotification: [AnyHashable: Any]? = nil {
         didSet {
@@ -30,9 +34,22 @@ class UserNotifications: NSObject {
         }
     }
     
-    init(appState: AppState) {
-        self.appState = appState
-        super.init()
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        print("Launch Options: \(launchOptions ?? [:])")
+        registerForAppLifecycle()
+        launchNotification = launchOptions?[.remoteNotification] as? [AnyHashable: Any]
+        application.registerForRemoteNotifications()
+        return true
+    }
+
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let token = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
+        pushToken = token
+        saveDevice()
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("\(#function) \(error)")
     }
     
     func registerForAppLifecycle() {
@@ -47,7 +64,7 @@ class UserNotifications: NSObject {
         UNUserNotificationCenter.current().getNotificationSettings { settings in
             print("Authorization Status: \(settings.authorizationStatus.rawValue)")
             DispatchQueue.main.async {
-                self.appState.authorizationStatus = settings.authorizationStatus
+                self.authorizationStatus = settings.authorizationStatus
             }
             
             switch settings.authorizationStatus {
@@ -88,21 +105,22 @@ class UserNotifications: NSObject {
     // MARK: - App Delegate Callbacks
     
     func saveDevice() {
-        guard let token = self.appState.pushToken else {
+        guard let token = self.pushToken else {
             print("No Token To Save Device. Skipping.")
             return
         }
-        
-        guard Self.serverPushIdentifier == NSNotFound else {
+
+        guard self.serverPushIdentifier == NSNotFound else {
             print("Device already saved.  Skipping.")
             return
         }
-        
-        guard !self.appState.isSavingNotificationSettings else {
+
+        guard !self.isSavingNotificationState else {
             print("Saving notification settings already.  Skipping.")
             return
         }
-        
+        print("Not Saving Now.  Continuing to Save.")
+
         print("\(#function) token: \(token)")
         let type = UIDevice.modelName
         #if DEBUG
@@ -111,60 +129,51 @@ class UserNotifications: NSObject {
         let environment = Device.Environment.production
         #endif
         let device = Device(type: type, token: token, environment: environment)
-        if Self.serverPushIdentifier != NSNotFound {
-            //Set the Device id that it updates the back end instead of creating a new row.
-            //TODO: Consider moving this to the server
-            device.id = Self.serverPushIdentifier
-            register()
-        } else {
-            registerProvisionally()
-        }
-        
         DispatchQueue.main.async {
-            self.appState.isSavingNotificationSettings = true
+            print("Setting Save to true inside post.")
+            self.isSavingNotificationState = true
         }
-        api.postDevice(device: device) { result in
-            DispatchQueue.main.async {
-                self.appState.isSavingNotificationSettings = false
+        self.registerProvisionally()
+        notificationRequestCancellable = api.postDevice(device: device).sink(receiveCompletion: { error in
+            print("Failed To Post Device: \(error)")
+            DispatchQueue.main.async { self.isSavingNotificationState = false }
+        }) { (device) in
+            print("Posted Device To Server. \(device.debugDescription)")
+            if let id = device.id {
+                print("Saving Server Push Identifier")
+                self.serverPushIdentifier = id
             }
-            switch(result) {
-            case let .success(device):
-                print("Posted Device To Server. \(device.debugDescription)")
-                if let id = device.id {
-                    print("Saving Server Push Identifier")
-                    Self.serverPushIdentifier = id
-                }
-            case let .failure(error):
-                print("Failed To Post Device: \(error)")
-            }
+            DispatchQueue.main.async { self.isSavingNotificationState = false }
         }
     }
     
-    
     func deleteDeviceIfNeeded() {
-        guard Self.serverPushIdentifier != NSNotFound else {
+        guard self.serverPushIdentifier != NSNotFound else {
             print("No Server Push Identifier Found, not deleting device.")
             return
         }
+        guard !self.isSavingNotificationState else {
+            print("Already Deleting Device.  Skipping.")
+            return
+        }
+        print("Not Deleting Now.  Continuing to Delete.")
+
         DispatchQueue.main.async {
-            self.appState.isSavingNotificationSettings = false
+            print("Setting Save to true inside delete.")
+            self.isSavingNotificationState = true
         }
-        api.deleteDevice(id: "\(Self.serverPushIdentifier)") { result in
-            DispatchQueue.main.async {
-                self.appState.isSavingNotificationSettings = false
-            }
-            switch result {
-            case .success(_):
+        notificationRequestCancellable = api.deleteDevice(id: "\(self.serverPushIdentifier)").sink(receiveCompletion: { error in
+            DispatchQueue.main.async { self.isSavingNotificationState = false }
+            print("Failed To Delete Device: \(error)")
+        }, receiveValue: { (success) in
+            DispatchQueue.main.async { self.isSavingNotificationState = false }
+            if success {
                 print("Deleted Device From Server.")
-                Self.serverPushIdentifier = NSNotFound
-            case .failure(let error):
-                print("Failed To Delete Device: \(error)")
+                self.serverPushIdentifier = NSNotFound
+            } else {
+                print("Failed To Delete Device!")
             }
-        }
-    }
-    
-    func failedToRegister(error: Error) {
-        print("\(#function) \(error)")
+        })
     }
     
     func handle() {

@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum NotificationState {
+enum NotificationState: Equatable {
     ///❓
     case notDetermined
     ///provisional (new to 12 i think) notifications don't prompt the user
@@ -17,6 +17,6 @@ enum NotificationState {
     case authorized(String)
     ///denied
     case denied
-    ///need to enable in settings
+    ///must be a sim
     case noToken
 }

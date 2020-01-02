@@ -12,20 +12,19 @@ import XcodeReleasesKit
 
 struct XcodeReleaseList : View {
     @EnvironmentObject private var appState: AppState
+    @State var releases: [XcodeRelease] = []
     
-    var service: XcodeReleasesService {
-        XcodeReleasesService(releases: $appState.releases)
-    }
-
     var body: some View {
         NavigationView {
-            List(appState.releases) { release in
+            List(releases) { release in
                 NavigationLink(destination: XcodeReleaseDetail(release: release)) {
                     XcodeReleaseRow(release: release)
                 }
             }.navigationBarTitle("Xcode Releases")
         }.onAppear() {
-            self.service.refresh()
+            self.appState.releasesService.refresh()
+        }.onReceive(appState.releasesService.$releases) { releases in
+            self.releases = releases
         }
     }
 }
@@ -34,7 +33,7 @@ struct XcodeReleaseList : View {
 struct XcodeReleaseList_Previews : PreviewProvider {
     static var previews: some View {
         let state = AppState()
-        state.releases = Array(mockReleases[0..<10])
+        state.releasesService.releases = Array(mockReleases[0..<10])
         return XcodeReleaseList().environmentObject(state)
     }
 }

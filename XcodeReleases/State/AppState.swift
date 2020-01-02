@@ -13,18 +13,25 @@ import XcodeReleasesKit
 
 class AppState: ObservableObject {
     
-    @Published var releases: [XcodeRelease] = []
-    @Published var pushToken: String? = nil
-    @Published var authorizationStatus: UNAuthorizationStatus = .notDetermined
-    @Published var isSavingNotificationSettings: Bool = false
+    init(userNotifications: UserNotifications = UserNotifications(), releasesService: XcodeReleasesService = XcodeReleasesService()) {
+        self.userNotifications = userNotifications
+        self.releasesService = releasesService
+    }
     
-    var notificationSetting: AnyPublisher<NotificationState, Never> {
-        $authorizationStatus
-            .combineLatest($pushToken)
+    //MARK: - UI Data
+    
+    ///Xcode Releases
+    var releasesService: XcodeReleasesService
+    
+    //MARK: - Notifications
+    
+    var userNotifications: UserNotifications
+    
+    var notificationState: AnyPublisher<NotificationState, Never> {
+        userNotifications.$authorizationStatus.combineLatest(userNotifications.$pushToken)
             .map { (status, token) -> NotificationState in
                 var notificationState: NotificationState = .notDetermined
                 guard let token = token else {
-                    self.debugPrint(status: status, token: nil, state: .noToken)
                     return .noToken
                 }
                 switch status {
@@ -39,17 +46,7 @@ class AppState: ObservableObject {
                 @unknown default:
                     notificationState = .notDetermined
                 }
-                self.debugPrint(status: status, token: token, state: notificationState)
                 return notificationState
-        }.eraseToAnyPublisher()
+        }.removeDuplicates().eraseToAnyPublisher()
     }
-    
-    var isSavingNotificationStateToServer: AnyPublisher<Bool, Never> {
-        $isSavingNotificationSettings.eraseToAnyPublisher()
-    }
-    
-    func debugPrint(status: UNAuthorizationStatus, token: String?, state: NotificationState) {
-        print("   *** \(state) - Status: \(status.rawValue) Token: \(token ?? "nil")")
-    }
-
 }

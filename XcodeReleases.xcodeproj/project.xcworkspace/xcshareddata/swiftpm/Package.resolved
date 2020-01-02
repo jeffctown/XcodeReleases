@@ -2,12 +2,21 @@
   "object": {
     "pins": [
       {
+        "package": "APNS",
+        "repositoryURL": "https://github.com/jeffctown/APNS.git",
+        "state": {
+          "branch": "master",
+          "revision": "430f2519f223e7c74f024ab3c51c2899ed2d0ad8",
+          "version": null
+        }
+      },
+      {
         "package": "XcodeReleasesKit",
         "repositoryURL": "https://github.com/jeffctown/XcodeReleasesKit.git",
         "state": {
-          "branch": null,
-          "revision": "dadcabd6e75f2f22c237053fd7d5f5c4dd25ad90",
-          "version": "0.1.2"
+          "branch": "master",
+          "revision": "2daa5953af0c5e0ad69f2950297260cf6801b675",
+          "version": null
         }
       }
     ]

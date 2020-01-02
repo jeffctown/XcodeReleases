@@ -76,7 +76,7 @@ struct NotificationSection_Previews : PreviewProvider {
                         isSaving: .constant(true)
                     )
                 }.navigationBarTitle("Settings")
-                }.colorScheme(.dark).environmentObject(AppState())
+            }.colorScheme(.dark).environmentObject(AppState())
         }
     }
 }

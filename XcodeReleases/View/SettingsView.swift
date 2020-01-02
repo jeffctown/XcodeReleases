@@ -52,12 +52,12 @@ struct SettingsView : View {
                                    title: Strings.goToEnableTitle,
                                    message: Strings.goToSettingsMessage)
                 AboutSection(version: InfoPList.version, build: InfoPList.build)
-            }.onReceive(appState.notificationSetting) { setting in
+            }.onReceive(appState.notificationState) { setting in
                 self.notificationState = setting
-            }.onReceive(appState.isSavingNotificationStateToServer) { isSaving in
+            }.onReceive(appState.userNotifications.$isSavingNotificationState) { isSaving in
                 self.isSaving = isSaving
             }.onAppear() {
-                self.appDelegate.userNotifications.checkAuthorizationStatus()
+                self.appState.userNotifications.checkAuthorizationStatus()
             }.navigationBarTitle(Strings.title)
         }
     }
@@ -67,7 +67,7 @@ struct SettingsView : View {
 struct SettingsView_Previews : PreviewProvider {
     static var previews: some View {
         NavigationView {
-            SettingsView().environmentObject(AppState())
+            return SettingsView().environmentObject(AppState())
         }
     }
 }

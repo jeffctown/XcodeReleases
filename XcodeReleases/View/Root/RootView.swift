@@ -9,9 +9,9 @@
 import SwiftUI
 
 struct RootView: View {
-   @EnvironmentObject private var appState: AppState
+    @EnvironmentObject private var appState: AppState
 
-   var body: some View {
+    var body: some View {
        TabView {
            XcodeReleaseList().tabItem {
                Image(systemName: "list.dash")
@@ -22,7 +22,7 @@ struct RootView: View {
                Text("Settings")
            }.environmentObject(appState)
        }
-   }
+    }
 }
 
 struct RootView_Previews: PreviewProvider {
@@ -30,3 +30,4 @@ struct RootView_Previews: PreviewProvider {
         RootView()
     }
 }
+

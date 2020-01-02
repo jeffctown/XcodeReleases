@@ -6,25 +6,22 @@
 //  Copyright © 2019 Jeff Lett. All rights reserved.
 //
 
+import Combine
 import Foundation
 import SwiftUI
 import XcodeReleasesKit
 
-struct XcodeReleasesService {
-    @Binding var releases: [XcodeRelease]
+class XcodeReleasesService: NSObject, ObservableObject {
+    
+    @Published var releases: [XcodeRelease] = []
     let loader = XcodeReleasesApi().xcodeReleasesLoader
+    var cancellable: AnyCancellable? = nil
     
     func refresh() {
-        loader.releases { (result) in
-            switch result {
-            case .success(let releases):
-                print("Successfully Loaded \(releases.count) Releases.")
-                DispatchQueue.main.async {
-                    self.releases = releases
-                }
-            case .failure(let error):
-                print("Error Loading Releases: \((error as Error).localizedDescription)")
-            }
+        cancellable = loader.releases.sink(receiveCompletion: { _ in
+        }) { releases in
+            print("Successfully Loaded \(releases.count) Releases.")
+            DispatchQueue.main.async { self.releases = releases }
         }
     }
     

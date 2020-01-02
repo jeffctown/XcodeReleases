@@ -11,7 +11,7 @@ import SwiftUI
 
 struct NotificationTokenRow: View {
     
-    @State var notificationState: NotificationState
+    var notificationState: NotificationState
     @State private var showingAlert: Bool = false
     
     var body: some View {

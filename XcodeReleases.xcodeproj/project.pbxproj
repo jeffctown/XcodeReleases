@@ -36,6 +36,7 @@
 		1FB14CD022CCD80F000D7552 /* XcodeReleasesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB14CCF22CCD80F000D7552 /* XcodeReleasesService.swift */; };
 		1FB14CD522CCE680000D7552 /* XcodeReleaseDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB14CD422CCE680000D7552 /* XcodeReleaseDetail.swift */; };
 		1FCE4BF123B50B0400FB6586 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCE4BF023B50B0400FB6586 /* ActivityIndicator.swift */; };
+		1FCF56C723BB670B00BF828A /* APNS in Frameworks */ = {isa = PBXBuildFile; productRef = 1FCF56C623BB670B00BF828A /* APNS */; };
 		1FD1AAA2238A15590096DA87 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD1AAA1238A15590096DA87 /* RootView.swift */; };
 		1FD1AAA4238A93FB0096DA87 /* WebViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD1AAA3238A93FB0096DA87 /* WebViewButton.swift */; };
 		1FD1AAAA238AB4310096DA87 /* XcodeReleasesKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1FD1AAA9238AB4310096DA87 /* XcodeReleasesKit */; };
@@ -94,6 +95,7 @@
 		1FCE4BF023B50B0400FB6586 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		1FD1AAA1238A15590096DA87 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		1FD1AAA3238A93FB0096DA87 /* WebViewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewButton.swift; sourceTree = "<group>"; };
+		1FD9E3A423BD38AA00E83F8F /* XcodeReleasesKit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = XcodeReleasesKit; path = ../XcodeReleasesKit; sourceTree = "<group>"; };
 		1FE2ACBD22CD82C300A8B239 /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		1FE2ACC222CD847100A8B239 /* UserNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotifications.swift; sourceTree = "<group>"; };
 		1FEFFCD822CCEF7F0060DA61 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FCF56C723BB670B00BF828A /* APNS in Frameworks */,
 				1FD1AAAA238AB4310096DA87 /* XcodeReleasesKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -163,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				1F30766122CCC7B4006A49C3 /* XcodeReleases */,
+				1FD9E3A423BD38AA00E83F8F /* XcodeReleasesKit */,
 				1F30767B22CCC7B6006A49C3 /* XcodeReleasesTests */,
 				1F30766022CCC7B4006A49C3 /* Products */,
 				1FB14CD122CCDA35000D7552 /* Frameworks */,
@@ -338,6 +342,7 @@
 			name = XcodeReleases;
 			packageProductDependencies = (
 				1FD1AAA9238AB4310096DA87 /* XcodeReleasesKit */,
+				1FCF56C623BB670B00BF828A /* APNS */,
 			);
 			productName = XcodeReleases;
 			productReference = 1F30765F22CCC7B4006A49C3 /* XcodeReleases.app */;
@@ -391,6 +396,7 @@
 			mainGroup = 1F30765622CCC7B4006A49C3;
 			packageReferences = (
 				1FD1AAA8238AB4310096DA87 /* XCRemoteSwiftPackageReference "XcodeReleasesKit" */,
+				1FCF56C523BB670B00BF828A /* XCRemoteSwiftPackageReference "APNS" */,
 			);
 			productRefGroup = 1F30766022CCC7B4006A49C3 /* Products */;
 			projectDirPath = "";
@@ -727,17 +733,30 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		1FCF56C523BB670B00BF828A /* XCRemoteSwiftPackageReference "APNS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jeffctown/APNS.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		1FD1AAA8238AB4310096DA87 /* XCRemoteSwiftPackageReference "XcodeReleasesKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jeffctown/XcodeReleasesKit.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.0;
+				branch = master;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1FCF56C623BB670B00BF828A /* APNS */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1FCF56C523BB670B00BF828A /* XCRemoteSwiftPackageReference "APNS" */;
+			productName = APNS;
+		};
 		1FD1AAA9238AB4310096DA87 /* XcodeReleasesKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1FD1AAA8238AB4310096DA87 /* XCRemoteSwiftPackageReference "XcodeReleasesKit" */;

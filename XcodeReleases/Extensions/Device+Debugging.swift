@@ -6,12 +6,13 @@
 //  Copyright © 2019 Jeff Lett. All rights reserved.
 //
 
+import APNS
 import UIKit
 import XcodeReleasesKit
 
 extension Device: CustomDebugStringConvertible {
     public var debugDescription: String {
-        return "Device \(self.id ?? -1): \(self.type) \(self.token)"
+        return "Device #️⃣\(self.id ?? -1): \(self.type) \(self.token)"
     }
 }
 
