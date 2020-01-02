@@ -18,7 +18,7 @@ struct RootView: View {
                Text("Releases")
            }.environmentObject(appState)
            SettingsView().tabItem {
-               Image(systemName: "square.and.pencil")
+               Image(systemName: "gear")
                Text("Settings")
            }.environmentObject(appState)
        }
