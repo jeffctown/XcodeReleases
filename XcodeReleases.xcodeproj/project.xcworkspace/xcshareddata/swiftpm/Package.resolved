@@ -9,6 +9,15 @@
           "revision": "430f2519f223e7c74f024ab3c51c2899ed2d0ad8",
           "version": null
         }
+      },
+      {
+        "package": "XcodeReleasesKit",
+        "repositoryURL": "https://github.com/jeffctown/XcodeReleasesKit.git",
+        "state": {
+          "branch": "master",
+          "revision": "5214b2c35ea5a0622760d260c381f186d19a7245",
+          "version": null
+        }
       }
     ]
   },
