@@ -115,10 +115,7 @@ struct XcodeReleasesApi: NeedsEnvironment {
     }
     
     private func mapToPostURLRequest(data: Data, url urlString: String) throws -> URLRequest {
-        guard let url = URL(string: urlString) else {
-            throw XcodeReleasesApi.ApiError.invalidURL(urlString)
-        }
-        var urlRequest = URLRequest(url: url)
+        var urlRequest = try self.urlRequest(url: urlString)
         urlRequest.httpMethod = HttpMethod.post.rawValue
         urlRequest.httpBody = data
         urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -126,30 +123,15 @@ struct XcodeReleasesApi: NeedsEnvironment {
     }
     
     private func mapToDeleteURLRequest(url urlString: String) throws -> URLRequest {
-        guard let url = URL(string: urlString) else {
-            throw XcodeReleasesApi.ApiError.invalidURL(urlString)
-        }
-        var urlRequest = URLRequest(url: url)
+        var urlRequest = try self.urlRequest(url: urlString)
         urlRequest.httpMethod = HttpMethod.delete.rawValue
         return urlRequest
     }
+    
+    private func urlRequest(url urlString: String) throws -> URLRequest {
+        guard let url = URL(string: urlString) else {
+            throw XcodeReleasesApi.ApiError.invalidURL(urlString)
+        }
+        return URLRequest(url: url)
+    }
 }
-//
-//extension Publisher {
-//    // public func mapError<E>(_ transform: @escaping (Self.Failure) -> E) -> Publishers.MapError<Self, E> where E : Error
-//    func mapErr(_ error: Failure) -> Publishers.MapError<Self, XcodeReleasesApi.ApiError> {
-//        mapError { error -> XcodeReleasesApi.ApiError in
-//            if let decodingError = error as? DecodingError {
-//                return .decode(decodingError)
-//            } else if let encodingError = error as? EncodingError {
-//                return .encode(encodingError)
-//            } else if let urlError = error as? URLError {
-//                return .request(urlError)
-//            } else if let apiError = error as? XcodeReleasesApi.ApiError {
-//                return apiError
-//            } else {
-//                return .unknown
-//            }
-//        }
-//    }
-//}
