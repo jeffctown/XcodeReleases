@@ -194,7 +194,6 @@
 				1F5827D522CCFA0A00FAA665 /* Service */,
 				1FEFFCDB22CCF9D70060DA61 /* State */,
 				1F5827D422CCFA0200FAA665 /* View */,
-				1F3498A022D0FA400000E4E8 /* InfoPList.swift */,
 			);
 			path = XcodeReleases;
 			sourceTree = "<group>";
@@ -231,13 +230,13 @@
 		1F5827D422CCFA0200FAA665 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1FCE4BF023B50B0400FB6586 /* ActivityIndicator.swift */,
+				1F3498A022D0FA400000E4E8 /* InfoPList.swift */,
 				1FD1AAA0238A15490096DA87 /* Root */,
+				1FE2ACBB22CD7E2A00A8B239 /* Settings */,
 				1F174B2222CD5FB5004E2089 /* Webviews */,
 				1F174B2322CD5FBE004E2089 /* XcodeReleaseDetail */,
 				1F2B370D22CD6DCE009118FE /* XcodeReleaseList */,
-				1FE2ACBB22CD7E2A00A8B239 /* Settings */,
-				1FCE4BF023B50B0400FB6586 /* ActivityIndicator.swift */,
-				1F21433022CD875300464412 /* SettingsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -273,6 +272,7 @@
 				1F34989E22D0F9290000E4E8 /* AboutSection.swift */,
 				1FF9F09522D2094B00DBD6D3 /* Notification */,
 				1F34989C22D0E4960000E4E8 /* NotificationSection.swift */,
+				1F21433022CD875300464412 /* SettingsView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";

@@ -59,7 +59,7 @@ struct SettingsView : View {
             }.onAppear() {
                 self.appState.userNotifications.checkAuthorizationStatus()
             }.navigationBarTitle(Strings.title)
-        }
+        }.navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
