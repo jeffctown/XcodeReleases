@@ -5,18 +5,18 @@
         "package": "APNS",
         "repositoryURL": "https://github.com/jeffctown/APNS.git",
         "state": {
-          "branch": "master",
-          "revision": "d6e0fb44b930d888b698a07e99aee2928c284be1",
-          "version": null
+          "branch": null,
+          "revision": "a9a12a3eed6b654175fee080f055a1c19e4ce354",
+          "version": "1.0.0"
         }
       },
       {
         "package": "XcodeReleasesKit",
         "repositoryURL": "https://github.com/jeffctown/XcodeReleasesKit.git",
         "state": {
-          "branch": "master",
-          "revision": "c1885a3939bc55702d927d2a6676afa9ad87d222",
-          "version": null
+          "branch": null,
+          "revision": "a5805f1553b77c049b563cb465b87c1dfd5ab237",
+          "version": "1.0.0"
         }
       }
     ]
