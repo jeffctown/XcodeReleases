@@ -111,7 +111,7 @@ class UserNotifications: NSObject, ObservableObject {
         print("\(#function) token: \(token)")
         let type = UIDevice.modelName
         #if DEBUG
-        let environment = APNS.Environment.sandbox
+        let environment = APNS.Environment.development
         #else
         let environment = APNS.Environment.release
         #endif

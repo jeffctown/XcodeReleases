@@ -21,6 +21,11 @@ struct XcodeReleaseList : View {
                     XcodeReleaseRow(release: release)
                 }
             }.navigationBarTitle("Xcode Releases")
+            if releases.count > 0 {
+                XcodeReleaseDetail(release: releases.first!)
+            } else {
+                EmptyView()
+            }
         }.onAppear() {
             self.appState.releasesService.refresh()
         }.onReceive(appState.releasesService.$releases) { releases in
