@@ -17,7 +17,9 @@ struct XcodeReleaseDetail : View {
         Form {
             ReleaseInfoSection(release: release)
             SDKSection(release: release)
+            #if !os(watchOS) // NO Webview in watchOS
             LinksSection(release: release)
+            #endif
         }.navigationBarTitle("\(release.name) \(release.version.number ?? "") \(release.version.release.description)")
     }
 }
@@ -26,12 +28,8 @@ struct XcodeReleaseDetail : View {
 struct XcodeReleaseDetail_Previews : PreviewProvider {
     static var previews: some View {
         Group {
-            NavigationView {
-                XcodeReleaseDetail(release: mockReleases[0])
-            }
-            NavigationView {
-                XcodeReleaseDetail(release: mockReleases[1])
-            }.colorScheme(.dark)
+            XcodeReleaseDetail(release: mockReleases[0])
+            XcodeReleaseDetail(release: mockReleases[1]).colorScheme(.dark)
         }
     }
 }
