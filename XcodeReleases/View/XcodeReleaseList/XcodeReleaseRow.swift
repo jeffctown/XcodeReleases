@@ -22,8 +22,10 @@ struct XcodeReleaseRow : View {
                 .padding(EdgeInsets(top: 10.0, leading: 0.0, bottom: 10.0, trailing: 10.0))
             VStack(alignment: .leading) {
                 Text("\(release.name) \(release.version.number ?? "??") \(release.version.release.description)").font(.headline)
+                #if os(iOS)
                 Text("Released: \(release.date.description)").font(.subheadline)
                 Text("Requires: MacOS \(release.requires)+").font(.subheadline)
+                #endif
             }
         }
     }
@@ -33,16 +35,12 @@ struct XcodeReleaseRow : View {
 struct XcodeReleaseRow_Previews : PreviewProvider {
     static var previews: some View {
         Group {
-            NavigationView {
-                List(mockReleases) { release in
-                    XcodeReleaseRow(release: release)
-                }.navigationBarTitle("Light Mode")
-            }
-            NavigationView {
-                List(mockReleases) { release in
-                    XcodeReleaseRow(release: release)
-                }.navigationBarTitle("Dark Mode")
-            }.colorScheme(.dark)
+            List(mockReleases) { release in
+                XcodeReleaseRow(release: release)
+            }.navigationBarTitle("Light Mode")
+            List(mockReleases) { release in
+                XcodeReleaseRow(release: release)
+            }.navigationBarTitle("Dark Mode").colorScheme(.dark)
         }
     }
 }

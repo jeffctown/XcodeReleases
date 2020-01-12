@@ -30,11 +30,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: Push Notifications
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        appState.userNotifications.application(application, didRegisterForRemoteNotificationsWithDeviceToken: deviceToken)
+        appState.userNotifications.application(didRegisterForRemoteNotificationsWithDeviceToken: deviceToken)
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        appState.userNotifications.application(application, didFailToRegisterForRemoteNotificationsWithError: error)
+        appState.userNotifications.didFailToRegisterForRemoteNotificationsWithError(error)
     }
     
 }

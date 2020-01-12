@@ -14,18 +14,34 @@ struct XcodeReleaseList : View {
     @EnvironmentObject private var appState: AppState
     @State var releases: [XcodeRelease] = []
     
+    
+    #if !os(watchOS)
     var body: some View {
         NavigationView {
+            self.innerBody
+        }
+    }
+    #else // watchOS doesn't have NavigationView (yet?).
+    var body: some View {
+        self.innerBody
+    }
+    #endif
+    
+    var innerBody: some View {
+        Group {
             List(releases) { release in
                 NavigationLink(destination: XcodeReleaseDetail(release: release)) {
                     XcodeReleaseRow(release: release)
                 }
             }.navigationBarTitle("Xcode Releases")
+            #if !os(watchOS) // This shows both on watchOS, but not on iOS.
+            // this is needed for iPad, so it shows something in the detail view in its master detail thing.
             if releases.count > 0 {
                 XcodeReleaseDetail(release: releases.first!)
             } else {
                 EmptyView()
             }
+            #endif
         }.onAppear() {
             self.appState.releasesService.refresh()
         }.onReceive(appState.releasesService.$releases) { releases in

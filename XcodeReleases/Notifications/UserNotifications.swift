@@ -9,14 +9,13 @@
 import APNS
 import Combine
 import SwiftUI
-import UIKit
 import UserNotifications
 import XcodeReleasesKit
 
 class UserNotifications: NSObject, ObservableObject {
     
     private let api = XcodeReleasesApi()
-    private var cancellables = Set<AnyCancellable>()
+    var cancellables = Set<AnyCancellable>()
     private var notificationRequestCancellable: AnyCancellable?
     
     @Published var pushToken: String? = nil
@@ -34,32 +33,16 @@ class UserNotifications: NSObject, ObservableObject {
         }
     }
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        print("Launch Options: \(launchOptions ?? [:])")
-        registerForAppLifecycle()
-        launchNotification = launchOptions?[.remoteNotification] as? [AnyHashable: Any]
-        application.registerForRemoteNotifications()
-        return true
-    }
-
-    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+    func application(didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let token = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
         pushToken = token
         saveDevice()
     }
-    
-    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+          
+    func didFailToRegisterForRemoteNotificationsWithError(_ error: Error) {
         print("\(#function) \(error)")
     }
-    
-    func registerForAppLifecycle() {
-        UNUserNotificationCenter.current().delegate = self
-        NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification).sink { _ in
-            print("App foregrounded, checking authorization status")
-            self.checkAuthorizationStatus()
-        }.store(in: &cancellables)
-    }
-    
+              
     func checkAuthorizationStatus() {
         UNUserNotificationCenter.current().getNotificationSettings { settings in
             print("Authorization Status: \(settings.authorizationStatus.rawValue)")
@@ -109,7 +92,8 @@ class UserNotifications: NSObject, ObservableObject {
         print("Continuing to Save.")
 
         print("\(#function) token: \(token)")
-        let type = UIDevice.modelName
+        let type = self.model
+        
         #if DEBUG
         let environment = APNS.Environment.development
         #else
@@ -125,7 +109,7 @@ class UserNotifications: NSObject, ObservableObject {
             print("Finished Posting Device: \(error)")
             DispatchQueue.main.async { self.isSavingNotificationState = false }
         }) { (device) in
-            print("Posted Device To Server. \(device.debugDescription)")
+            print("Posted Device To Server. \(device)")
             if let id = device.id {
                 print("Saving Server Push Identifier")
                 self.serverPushIdentifier = id
@@ -175,19 +159,12 @@ class UserNotifications: NSObject, ObservableObject {
             print("Notification Extra found, but no release notes URL found in UserInfo.")
             return
         }
-
-        self.handle(urlString: releaseNotesUrl)
-    }
-    
-    private func handle(urlString: String) {
-        print(urlString)
-        guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate else {
-            print("Error: No Scene Delegate Found.")
-            return
-        }
         
-        sceneDelegate.deeplink(urlString: urlString)
-        self.launchNotification = nil
+        #if os(iOS)
+        self.handle(urlString: releaseNotesUrl)
+        #else
+        print("NOT HANDLING URL: \(releaseNotesUrl)")
+        #endif
     }
     
 }

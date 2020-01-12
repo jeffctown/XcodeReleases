@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct RootView: View {
+struct TabbedRootView: View {
     @EnvironmentObject private var appState: AppState
 
     var body: some View {
@@ -27,7 +27,7 @@ struct RootView: View {
 
 struct RootView_Previews: PreviewProvider {
     static var previews: some View {
-        RootView()
+        TabbedRootView()
     }
 }
 
