@@ -32,10 +32,6 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         handler(template(for: complication.family))
     }
     
-    var simpleTinyTitleProvider: CLKSimpleTextProvider {
-        CLKSimpleTextProvider(text: "Xcode 11.3", shortText: "11.3")
-    }
-    
     var simpleTinyBodyProvider: CLKSimpleTextProvider {
         CLKSimpleTextProvider(text: "GM Seed 1", shortText: "GM 1")
     }
