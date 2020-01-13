@@ -17,6 +17,10 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
     }
     
     func applicationDidBecomeActive() {
+        let complicationServer = CLKComplicationServer.sharedInstance()
+        for complication in complicationServer.activeComplications ?? [] {
+            complicationServer.reloadTimeline(for: complication)
+        }
         appState.userNotifications.applicationDidBecomeActive()
         appState.releasesService.refresh()
     }
