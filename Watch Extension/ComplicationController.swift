@@ -53,59 +53,77 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     }
     
     
+    //beta #
+    //gm seed #
+    //gm
+    //GM1
+    //GM
     var simpleTextProvider: CLKSimpleTextProvider {
-        CLKSimpleTextProvider(text: "11.3")
+        CLKSimpleTextProvider(text: "Xcode: 11.3 GM Seed 1", shortText: "11.3 GM1")
     }
     
-    var simpleGaugeProvider: CLKSimpleGaugeProvider {
-        CLKSimpleGaugeProvider(style: .ring, gaugeColor: .red, fillFraction: 0.75)
+    var simpleAppNameProvider: CLKSimpleTextProvider {
+        CLKSimpleTextProvider(text: "Xcode Releases", shortText: "Xcode")
     }
     
+    var simpleSingleTextProvider: CLKSimpleTextProvider {
+        CLKSimpleTextProvider(text: "Xcode: 11.3 GM Seed 1", shortText: "11.3 GM1")
+    }
     
+    var simpleReleaseDateProvider: CLKSimpleTextProvider {
+        CLKSimpleTextProvider(text: "Released: 12/19/19", shortText: "12/19/19")
+    }
+    
+    var logoImageProvider: CLKFullColorImageProvider {
+        CLKFullColorImageProvider(fullColorImage: UIImage(named: "Xcode")!)
+    }
+    
+      
     func template(for family: CLKComplicationFamily) -> CLKComplicationTemplate {
         switch family {
-        case .circularSmall:
-            let template = CLKComplicationTemplateCircularSmallSimpleText()
-            template.textProvider = simpleTextProvider
+        case .circularSmall: //good
+            let template = CLKComplicationTemplateCircularSmallStackText()
+            template.line1TextProvider = simpleAppNameProvider
+            template.line2TextProvider = simpleTextProvider
             return template
         case .extraLarge:
-            let template = CLKComplicationTemplateExtraLargeSimpleText()
-            template.textProvider = simpleTextProvider
+            let template = CLKComplicationTemplateExtraLargeStackText()
+            template.line1TextProvider = simpleAppNameProvider
+            template.line2TextProvider = simpleTextProvider
             return template
         case .graphicBezel:
             let template = CLKComplicationTemplateGraphicBezelCircularText()
-            template.textProvider = simpleTextProvider
+            template.textProvider = simpleSingleTextProvider
             template.circularTemplate = self.template(for: .graphicCircular) as! CLKComplicationTemplateGraphicCircular
             return template
         case .graphicCircular:
-            let template = CLKComplicationTemplateGraphicCircularClosedGaugeText()
-            template.centerTextProvider = simpleTextProvider
-            template.gaugeProvider = simpleGaugeProvider
+            let template = CLKComplicationTemplateGraphicCircularImage()
+            template.imageProvider = logoImageProvider
             return template
         case .graphicCorner:
-            let template = CLKComplicationTemplateGraphicCornerGaugeText()
-            template.leadingTextProvider = simpleTextProvider
-            template.outerTextProvider = simpleTextProvider
-            template.gaugeProvider = simpleGaugeProvider
+            let template = CLKComplicationTemplateGraphicCornerCircularImage()
+            template.imageProvider = logoImageProvider
             return template
         case .graphicRectangular:
-            let template = CLKComplicationTemplateGraphicRectangularTextGauge()
-            template.headerTextProvider = simpleTextProvider
+            let template = CLKComplicationTemplateGraphicRectangularStandardBody()
+            template.headerTextProvider = simpleAppNameProvider
             template.body1TextProvider = simpleTextProvider
-            template.gaugeProvider = simpleGaugeProvider
+            template.body2TextProvider = simpleReleaseDateProvider
             return template
         case .modularLarge:
-            let template = CLKComplicationTemplateModularLargeTallBody()
-            template.headerTextProvider = simpleTextProvider
-            template.bodyTextProvider = simpleTextProvider
+            let template = CLKComplicationTemplateModularLargeStandardBody()
+            template.headerTextProvider = simpleAppNameProvider
+            template.body1TextProvider = simpleTextProvider
+            template.body2TextProvider = simpleReleaseDateProvider
             return template
         case .modularSmall:
-            let template = CLKComplicationTemplateModularSmallSimpleText()
-            template.textProvider = simpleTextProvider
+            let template = CLKComplicationTemplateModularSmallStackText()
+            template.line1TextProvider = simpleAppNameProvider
+            template.line2TextProvider = simpleTextProvider
             return template
         case .utilitarianLarge:
             let template = CLKComplicationTemplateUtilitarianLargeFlat()
-            template.textProvider = simpleTextProvider
+            template.textProvider = simpleSingleTextProvider
             return template
         case .utilitarianSmall:
             let template = CLKComplicationTemplateUtilitarianSmallRingText()
