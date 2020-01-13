@@ -17,20 +17,13 @@ extension UserNotifications {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         print("Launch Options: \(launchOptions ?? [:])")
-        registerForAppLifecycle()
+        UNUserNotificationCenter.current().delegate = self
         launchNotification = launchOptions?[.remoteNotification] as? [AnyHashable: Any]
         application.registerForRemoteNotifications()
+        registerProvisionally()
         return true
     }
 
-    func registerForAppLifecycle() {
-        UNUserNotificationCenter.current().delegate = self
-        NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification).sink { _ in
-            print("App foregrounded, checking authorization status")
-            self.checkAuthorizationStatus()
-        }.store(in: &cancellables)
-    }
-    
     func handle(urlString: String) {
         print(urlString)
         guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate else {

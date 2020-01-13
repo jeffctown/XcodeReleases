@@ -15,7 +15,6 @@ import XcodeReleasesKit
 class UserNotifications: NSObject, ObservableObject {
     
     private let api = XcodeReleasesApi()
-    var cancellables = Set<AnyCancellable>()
     private var notificationRequestCancellable: AnyCancellable?
     
     @Published var pushToken: String? = nil
@@ -35,6 +34,7 @@ class UserNotifications: NSObject, ObservableObject {
     
     func application(didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let token = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
+        print("Did Register For Remote Notifications With Token: \(token)")
         pushToken = token
         saveDevice()
     }
@@ -74,6 +74,25 @@ class UserNotifications: NSObject, ObservableObject {
         }
     }
     
+    private var environment: APNS.Environment {
+        #if DEBUG
+        return APNS.Environment.development
+        #else
+        return APNS.Environment.release
+        #endif
+    }
+    
+    private func device(token: String) -> Device {
+        let type = self.model
+        #if os(watchOS)
+        /*InfoPList.bundleIdentifier*/
+        //thanks 🍎
+        return Device(type: type, token: token, bundleIdentifier: "com.jefflett.XcodeReleases.watchkitapp", environment: environment)
+        #else
+        return Device(type: type, token: token, bundleIdentifier: InfoPList.bundleIdentifier, environment: environment)
+        #endif
+    }
+    
     // MARK: - App Delegate Callbacks
     
     func saveDevice() {
@@ -90,22 +109,12 @@ class UserNotifications: NSObject, ObservableObject {
         }
         
         print("Continuing to Save.")
-
         print("\(#function) token: \(token)")
-        let type = self.model
-        
-        #if DEBUG
-        let environment = APNS.Environment.development
-        #else
-        let environment = APNS.Environment.release
-        #endif
-        let device = Device(type: type, token: token, environment: environment)
         DispatchQueue.main.async {
             print("Setting Save to true inside post.")
             self.isSavingNotificationState = true
         }
-        self.registerProvisionally()
-        notificationRequestCancellable = api.postDevice(device: device).sink(receiveCompletion: { error in
+        notificationRequestCancellable = api.postDevice(device: device(token: token)).sink(receiveCompletion: { error in
             print("Finished Posting Device: \(error)")
             DispatchQueue.main.async { self.isSavingNotificationState = false }
         }) { (device) in

@@ -11,10 +11,14 @@ import Foundation
 struct InfoPList {
     
     static var version: String {
-        return Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
+        Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
     }
     
     static var build: String {
-        return Bundle.main.infoDictionary!["CFBundleVersion"] as! String
+        Bundle.main.infoDictionary!["CFBundleVersion"] as! String
+    }
+    
+    static var bundleIdentifier: String {
+        Bundle.main.bundleIdentifier!
     }
 }

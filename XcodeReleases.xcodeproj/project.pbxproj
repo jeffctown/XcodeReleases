@@ -58,6 +58,7 @@
 		1F4E6E8723B371A3000666FC /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4E6E8623B371A3000666FC /* Environment.swift */; };
 		1F5827D722CCFCCE00FAA665 /* XcodeReleaseRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5827D622CCFCCE00FAA665 /* XcodeReleaseRow.swift */; };
 		1F6A985D22D03BAF005785EA /* XcodeReleasesApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6A985C22D03BAF005785EA /* XcodeReleasesApi.swift */; };
+		1F77446D23CBDD0100699E60 /* InfoPList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3498A022D0FA400000E4E8 /* InfoPList.swift */; };
 		1F9DF85A23B3EB3400C28F30 /* NotificationsFailedRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9DF85923B3EB3400C28F30 /* NotificationsFailedRow.swift */; };
 		1F9DF85C23B4104C00C28F30 /* NotificationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9DF85B23B4104C00C28F30 /* NotificationState.swift */; };
 		1FB14CD022CCD80F000D7552 /* XcodeReleasesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB14CCF22CCD80F000D7552 /* XcodeReleasesService.swift */; };
@@ -333,6 +334,7 @@
 			children = (
 				1F30766B22CCC7B6006A49C3 /* Assets.xcassets */,
 				1F30767322CCC7B6006A49C3 /* Info.plist */,
+				1F3498A022D0FA400000E4E8 /* InfoPList.swift */,
 				1F30767022CCC7B6006A49C3 /* LaunchScreen.storyboard */,
 			);
 			path = Resources;
@@ -342,7 +344,6 @@
 			isa = PBXGroup;
 			children = (
 				1FCE4BF023B50B0400FB6586 /* ActivityIndicator.swift */,
-				1F3498A022D0FA400000E4E8 /* InfoPList.swift */,
 				1FD1AAA0238A15490096DA87 /* Root */,
 				1FE2ACBB22CD7E2A00A8B239 /* Settings */,
 				1F174B2222CD5FB5004E2089 /* Webviews */,
@@ -634,6 +635,7 @@
 				1F45A6C223CA27EF003B0301 /* ReleaseInfoSection.swift in Sources */,
 				1F45A6B823CA2705003B0301 /* XcodeReleaseDetail.swift in Sources */,
 				1F45A6CC23CA3097003B0301 /* NotificationState.swift in Sources */,
+				1F77446D23CBDD0100699E60 /* InfoPList.swift in Sources */,
 				1F45A6C923CA2DF3003B0301 /* UserNotifications.swift in Sources */,
 				1F45A6BF23CA27AC003B0301 /* XcodeRelease+Identifiable.swift in Sources */,
 				1F45A6C423CA27F4003B0301 /* SDKSection.swift in Sources */,

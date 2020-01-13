@@ -20,6 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         return appState.userNotifications.application(application, didFinishLaunchingWithOptions: launchOptions)
     }
+    
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        appState.userNotifications.checkAuthorizationStatus()
+        appState.releasesService.refresh()
+    }
 
     // MARK: UISceneSession Lifecycle
 

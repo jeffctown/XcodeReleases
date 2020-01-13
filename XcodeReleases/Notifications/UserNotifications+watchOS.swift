@@ -8,6 +8,7 @@
 
 #if os(watchOS)
 import WatchKit
+import UserNotifications
 
 extension UserNotifications {
     var model: String {
@@ -15,9 +16,15 @@ extension UserNotifications {
     }
     
     func applicationDidFinishLaunching() {
+        print("watchOS: Registering for Remote Notifications.")
         WKExtension.shared().registerForRemoteNotifications()
+        UNUserNotificationCenter.current().delegate = self
+        registerProvisionally()
     }
     
+    func applicationDidBecomeActive() {
+        checkAuthorizationStatus()
+    }
     
 }
 #endif

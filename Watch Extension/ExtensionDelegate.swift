@@ -16,6 +16,11 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
         appState.userNotifications.applicationDidFinishLaunching()
     }
     
+    func applicationDidBecomeActive() {
+        appState.userNotifications.applicationDidBecomeActive()
+        appState.releasesService.refresh()
+    }
+    
     func didRegisterForRemoteNotifications(withDeviceToken deviceToken: Data) {
         appState.userNotifications.application(didRegisterForRemoteNotificationsWithDeviceToken: deviceToken)
     }
