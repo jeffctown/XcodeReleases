@@ -68,7 +68,10 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     }
     
     var simpleReleaseDateProvider: CLKSimpleTextProvider {
-        CLKSimpleTextProvider(text: "Released: 12/19/19", shortText: "12/19/19")
+        let dateFormatter = DateFormatter()
+        dateFormatter.setLocalizedDateFormatFromTemplate("M/d/yy, H:mm")
+        let dateString = dateFormatter.string(from: Date())
+        return CLKSimpleTextProvider(text: "Released: \(dateString)", shortText: "\(dateString)")
     }
     
     var logoImageProvider: CLKFullColorImageProvider {
