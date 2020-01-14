@@ -50,7 +50,6 @@
 		1F45A6C523CA2866003B0301 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE2ACBD22CD82C300A8B239 /* UserDefault.swift */; };
 		1F45A6C823CA2D6E003B0301 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F30766B22CCC7B6006A49C3 /* Assets.xcassets */; };
 		1F45A6C923CA2DF3003B0301 /* UserNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE2ACC222CD847100A8B239 /* UserNotifications.swift */; };
-		1F45A6CB23CA2E63003B0301 /* APNS in Frameworks */ = {isa = PBXBuildFile; productRef = 1F45A6CA23CA2E63003B0301 /* APNS */; };
 		1F45A6CC23CA3097003B0301 /* NotificationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9DF85B23B4104C00C28F30 /* NotificationState.swift */; };
 		1F45A6CE23CB51BE003B0301 /* MockReleases.json in Resources */ = {isa = PBXBuildFile; fileRef = 1F174B1A22CD5BC2004E2089 /* MockReleases.json */; };
 		1F45A6D023CB56EC003B0301 /* UserNotifications+iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F45A6CF23CB56EC003B0301 /* UserNotifications+iOS.swift */; };
@@ -60,6 +59,8 @@
 		1F63B85723CDDF29005CD757 /* PKPushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F63B85523CDDEB3005CD757 /* PKPushNotifications.swift */; };
 		1F6A985D22D03BAF005785EA /* XcodeReleasesApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6A985C22D03BAF005785EA /* XcodeReleasesApi.swift */; };
 		1F77446D23CBDD0100699E60 /* InfoPList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3498A022D0FA400000E4E8 /* InfoPList.swift */; };
+		1F97B9BB23CDF9670047AD6A /* APNS in Frameworks */ = {isa = PBXBuildFile; productRef = 1F97B9BA23CDF9670047AD6A /* APNS */; };
+		1F97B9BD23CDF9930047AD6A /* APNS in Frameworks */ = {isa = PBXBuildFile; productRef = 1F97B9BC23CDF9930047AD6A /* APNS */; };
 		1F9DF85A23B3EB3400C28F30 /* NotificationsFailedRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9DF85923B3EB3400C28F30 /* NotificationsFailedRow.swift */; };
 		1F9DF85C23B4104C00C28F30 /* NotificationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9DF85B23B4104C00C28F30 /* NotificationState.swift */; };
 		1FB14CD022CCD80F000D7552 /* XcodeReleasesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB14CCF22CCD80F000D7552 /* XcodeReleasesService.swift */; };
@@ -67,7 +68,6 @@
 		1FB6B99923CCB9EC0014E78F /* PushNotificationPayload.apns in Resources */ = {isa = PBXBuildFile; fileRef = 1FB6B95D23CCB9AF0014E78F /* PushNotificationPayload.apns */; };
 		1FB6B99C23CCECED0014E78F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FB6B99B23CCECED0014E78F /* Assets.xcassets */; };
 		1FCE4BF123B50B0400FB6586 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCE4BF023B50B0400FB6586 /* ActivityIndicator.swift */; };
-		1FCF56C723BB670B00BF828A /* APNS in Frameworks */ = {isa = PBXBuildFile; productRef = 1FCF56C623BB670B00BF828A /* APNS */; };
 		1FD1AAA2238A15590096DA87 /* TabbedRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD1AAA1238A15590096DA87 /* TabbedRootView.swift */; };
 		1FD1AAA4238A93FB0096DA87 /* WebViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD1AAA3238A93FB0096DA87 /* WebViewButton.swift */; };
 		1FD1AAAA238AB4310096DA87 /* XcodeReleasesKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1FD1AAA9238AB4310096DA87 /* XcodeReleasesKit */; };
@@ -164,7 +164,6 @@
 		1F45A6D623CB5FB1003B0301 /* WatchDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WatchDebug.entitlements; sourceTree = "<group>"; };
 		1F4E6E8623B371A3000666FC /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		1F5827D622CCFCCE00FAA665 /* XcodeReleaseRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeReleaseRow.swift; sourceTree = "<group>"; };
-		1F63B85423CDDA41005CD757 /* APNS */ = {isa = PBXFileReference; lastKnownFileType = folder; name = APNS; path = ../APNS; sourceTree = "<group>"; };
 		1F63B85523CDDEB3005CD757 /* PKPushNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PKPushNotifications.swift; sourceTree = "<group>"; };
 		1F6A985C22D03BAF005785EA /* XcodeReleasesApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeReleasesApi.swift; sourceTree = "<group>"; };
 		1F9DF85923B3EB3400C28F30 /* NotificationsFailedRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsFailedRow.swift; sourceTree = "<group>"; };
@@ -188,8 +187,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FCF56C723BB670B00BF828A /* APNS in Frameworks */,
 				1FD1AAAA238AB4310096DA87 /* XcodeReleasesKit in Frameworks */,
+				1F97B9BB23CDF9670047AD6A /* APNS in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,7 +196,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F45A6CB23CA2E63003B0301 /* APNS in Frameworks */,
+				1F97B9BD23CDF9930047AD6A /* APNS in Frameworks */,
 				1F45A6B523CA26E6003B0301 /* XcodeReleasesKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -252,7 +251,6 @@
 				1F45A68D23CA26DB003B0301 /* Watch */,
 				1F45A69C23CA26DD003B0301 /* Watch Extension */,
 				1F30766022CCC7B4006A49C3 /* Products */,
-				1F63B85423CDDA41005CD757 /* APNS */,
 				1FB14CD122CCDA35000D7552 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -467,7 +465,7 @@
 			name = "Xcode Releases";
 			packageProductDependencies = (
 				1FD1AAA9238AB4310096DA87 /* XcodeReleasesKit */,
-				1FCF56C623BB670B00BF828A /* APNS */,
+				1F97B9BA23CDF9670047AD6A /* APNS */,
 			);
 			productName = XcodeReleases;
 			productReference = 1F30765F22CCC7B4006A49C3 /* Xcode Releases.app */;
@@ -505,7 +503,7 @@
 			name = "Watch Extension";
 			packageProductDependencies = (
 				1F45A6B423CA26E6003B0301 /* XcodeReleasesKit */,
-				1F45A6CA23CA2E63003B0301 /* APNS */,
+				1F97B9BC23CDF9930047AD6A /* APNS */,
 			);
 			productName = "Watch Extension";
 			productReference = 1F45A69823CA26DD003B0301 /* Watch Extension.appex */;
@@ -543,7 +541,7 @@
 			mainGroup = 1F30765622CCC7B4006A49C3;
 			packageReferences = (
 				1FD1AAA8238AB4310096DA87 /* XCRemoteSwiftPackageReference "XcodeReleasesKit" */,
-				1FCF56C523BB670B00BF828A /* XCRemoteSwiftPackageReference "APNS" */,
+				1F97B9B523CDF9670047AD6A /* XCRemoteSwiftPackageReference "APNS" */,
 			);
 			productRefGroup = 1F30766022CCC7B4006A49C3 /* Products */;
 			projectDirPath = "";
@@ -992,12 +990,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		1FCF56C523BB670B00BF828A /* XCRemoteSwiftPackageReference "APNS" */ = {
+		1F97B9B523CDF9670047AD6A /* XCRemoteSwiftPackageReference "APNS" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jeffctown/APNS.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				minimumVersion = 1.2.0;
 			};
 		};
 		1FD1AAA8238AB4310096DA87 /* XCRemoteSwiftPackageReference "XcodeReleasesKit" */ = {
@@ -1016,14 +1014,14 @@
 			package = 1FD1AAA8238AB4310096DA87 /* XCRemoteSwiftPackageReference "XcodeReleasesKit" */;
 			productName = XcodeReleasesKit;
 		};
-		1F45A6CA23CA2E63003B0301 /* APNS */ = {
+		1F97B9BA23CDF9670047AD6A /* APNS */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1FCF56C523BB670B00BF828A /* XCRemoteSwiftPackageReference "APNS" */;
+			package = 1F97B9B523CDF9670047AD6A /* XCRemoteSwiftPackageReference "APNS" */;
 			productName = APNS;
 		};
-		1FCF56C623BB670B00BF828A /* APNS */ = {
+		1F97B9BC23CDF9930047AD6A /* APNS */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1FCF56C523BB670B00BF828A /* XCRemoteSwiftPackageReference "APNS" */;
+			package = 1F97B9B523CDF9670047AD6A /* XCRemoteSwiftPackageReference "APNS" */;
 			productName = APNS;
 		};
 		1FD1AAA9238AB4310096DA87 /* XcodeReleasesKit */ = {
