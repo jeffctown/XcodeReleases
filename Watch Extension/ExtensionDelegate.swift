@@ -8,49 +8,17 @@
 
 import WatchKit
 
-import PushKit
-
-
-class PushRegistryDelegate: NSObject, PKPushRegistryDelegate {
-    
-    func registerForComplicationPushed() {
-        print("registerForComplicationPushed")
-        let pushRegistry = PKPushRegistry(queue: .main)
-        pushRegistry.delegate = self
-        pushRegistry.desiredPushTypes = [.complication]
-    }
-    
-    func pushRegistry(_ registry: PKPushRegistry, didUpdate pushCredentials: PKPushCredentials, for type: PKPushType) {
-        let token = pushCredentials.token.map { String(format: "%02.2hhx", $0) }.joined()
-        print("registry didUpdate pushCredentials \(pushCredentials.type.rawValue) \(token)")
-    }
-    
-    func pushRegistry(_ registry: PKPushRegistry, didInvalidatePushTokenFor type: PKPushType) {
-        print("registry didInvalidatePushTokenFor")
-    }
-    
-    func pushRegistry(_ registry: PKPushRegistry, didReceiveIncomingPushWith payload: PKPushPayload, for type: PKPushType, completion: @escaping () -> Void) {
-        print("registry didReceiveIncomingPushWith \(payload.dictionaryPayload)")
-        completion()
-    }
-    
-}
-
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
     
     var appState = AppState()
-    let pushRegistryDelegate = PushRegistryDelegate()
-
+    
     func applicationDidFinishLaunching() {
         appState.userNotifications.applicationDidFinishLaunching()
-        pushRegistryDelegate.registerForComplicationPushed()
+        appState.pkPushNotifications.applicationDidFinishLaunching(delegate: appState.userNotifications)
     }
     
     func applicationDidBecomeActive() {
-        let complicationServer = CLKComplicationServer.sharedInstance()
-        for complication in complicationServer.activeComplications ?? [] {
-            complicationServer.reloadTimeline(for: complication)
-        }
+        ComplicationController.reloadAll()
         appState.userNotifications.applicationDidBecomeActive()
         appState.releasesService.refresh()
     }
@@ -65,6 +33,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
     
     func didReceiveRemoteNotification(_ userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (WKBackgroundFetchResult) -> Void) {
         print("didReceiveRemoteNotification")
+        ComplicationController.reloadAll()
         completionHandler(.newData)
     }
     
@@ -84,6 +53,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
                 connectivityTask.setTaskCompletedWithSnapshot(false)
             case let urlSessionTask as WKURLSessionRefreshBackgroundTask:
                 // Be sure to complete the URL session task once you’re done.
+                ComplicationController.reloadAll()
                 urlSessionTask.setTaskCompletedWithSnapshot(false)
             case let relevantShortcutTask as WKRelevantShortcutRefreshBackgroundTask:
                 // Be sure to complete the relevant-shortcut task once you're done.
@@ -97,5 +67,5 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
             }
         }
     }
-
+    
 }

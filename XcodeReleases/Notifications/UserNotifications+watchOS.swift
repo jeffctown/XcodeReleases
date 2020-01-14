@@ -27,4 +27,18 @@ extension UserNotifications {
     }
     
 }
+
+extension UserNotifications: PKPushNotificationsDelegate {
+    func didInvalidateComplicationToken() {
+        guard self.serverPKPushIdentifier != NSNotFound else {
+            return
+        }
+        deleteDevice(identifier: "\(self.serverPKPushIdentifier)", pushType: .complication)
+    }
+    
+    func didUpdateWithComplicationToken(token: String) {
+        savePushRegistryToken(token: token)
+    }
+}
+
 #endif

@@ -14,11 +14,26 @@ import XcodeReleasesKit
 class XcodeReleasesService: NSObject, ObservableObject {
     
     @Published var releases: [XcodeRelease] = []
-    let loader = XcodeReleasesApi().xcodeReleasesLoader
+    
+    let loader: XcodeReleasesLoader
     var cancellable: AnyCancellable? = nil
     
+    public init(loader: XcodeReleasesLoader) {
+        self.loader = loader
+    }
+    
     func refresh() {
-        cancellable = loader.releases.sink(receiveCompletion: { _ in
+        guard cancellable == nil else {
+            print("Already Laoding Releases.")
+            return
+        }
+        cancellable = loader.releases.sink(receiveCompletion: { completion in
+            switch completion {
+            case .failure(let error):
+                print("Error Loading Releases: \(error)")
+            case .finished:
+                self.cancellable = nil
+            }
         }) { releases in
             print("Successfully Loaded \(releases.count) Releases.")
             DispatchQueue.main.async { self.releases = releases }

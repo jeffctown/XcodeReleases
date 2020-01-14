@@ -11,6 +11,13 @@ import WatchKit
 
 class ComplicationController: NSObject, CLKComplicationDataSource {
     
+    static func reloadAll() {
+        let complicationServer = CLKComplicationServer.sharedInstance()
+        for complication in complicationServer.activeComplications ?? [] {
+            complicationServer.reloadTimeline(for: complication)
+        }
+    }
+    
     func getSupportedTimeTravelDirections(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTimeTravelDirections) -> Void) {
         handler([])
     }

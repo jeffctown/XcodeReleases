@@ -57,6 +57,7 @@
 		1F45A6D323CB58AB003B0301 /* UserNotifications+watchOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F45A6D123CB56F7003B0301 /* UserNotifications+watchOS.swift */; };
 		1F4E6E8723B371A3000666FC /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4E6E8623B371A3000666FC /* Environment.swift */; };
 		1F5827D722CCFCCE00FAA665 /* XcodeReleaseRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5827D622CCFCCE00FAA665 /* XcodeReleaseRow.swift */; };
+		1F63B85723CDDF29005CD757 /* PKPushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F63B85523CDDEB3005CD757 /* PKPushNotifications.swift */; };
 		1F6A985D22D03BAF005785EA /* XcodeReleasesApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6A985C22D03BAF005785EA /* XcodeReleasesApi.swift */; };
 		1F77446D23CBDD0100699E60 /* InfoPList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3498A022D0FA400000E4E8 /* InfoPList.swift */; };
 		1F9DF85A23B3EB3400C28F30 /* NotificationsFailedRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9DF85923B3EB3400C28F30 /* NotificationsFailedRow.swift */; };
@@ -163,6 +164,8 @@
 		1F45A6D623CB5FB1003B0301 /* WatchDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WatchDebug.entitlements; sourceTree = "<group>"; };
 		1F4E6E8623B371A3000666FC /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		1F5827D622CCFCCE00FAA665 /* XcodeReleaseRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeReleaseRow.swift; sourceTree = "<group>"; };
+		1F63B85423CDDA41005CD757 /* APNS */ = {isa = PBXFileReference; lastKnownFileType = folder; name = APNS; path = ../APNS; sourceTree = "<group>"; };
+		1F63B85523CDDEB3005CD757 /* PKPushNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PKPushNotifications.swift; sourceTree = "<group>"; };
 		1F6A985C22D03BAF005785EA /* XcodeReleasesApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeReleasesApi.swift; sourceTree = "<group>"; };
 		1F9DF85923B3EB3400C28F30 /* NotificationsFailedRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsFailedRow.swift; sourceTree = "<group>"; };
 		1F9DF85B23B4104C00C28F30 /* NotificationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationState.swift; sourceTree = "<group>"; };
@@ -249,6 +252,7 @@
 				1F45A68D23CA26DB003B0301 /* Watch */,
 				1F45A69C23CA26DD003B0301 /* Watch Extension */,
 				1F30766022CCC7B4006A49C3 /* Products */,
+				1F63B85423CDDA41005CD757 /* APNS */,
 				1FB14CD122CCDA35000D7552 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -409,6 +413,7 @@
 				1FE2ACC222CD847100A8B239 /* UserNotifications.swift */,
 				1F45A6D123CB56F7003B0301 /* UserNotifications+watchOS.swift */,
 				1F45A6CF23CB56EC003B0301 /* UserNotifications+iOS.swift */,
+				1F63B85523CDDEB3005CD757 /* PKPushNotifications.swift */,
 			);
 			path = Notifications;
 			sourceTree = "<group>";
@@ -635,6 +640,7 @@
 				1F45A6B723CA2700003B0301 /* XcodeReleaseRow.swift in Sources */,
 				1F45A6A023CA26DD003B0301 /* HostingController.swift in Sources */,
 				1F45A6BA23CA2730003B0301 /* AppState.swift in Sources */,
+				1F63B85723CDDF29005CD757 /* PKPushNotifications.swift in Sources */,
 				1F45A6A223CA26DD003B0301 /* ExtensionDelegate.swift in Sources */,
 				1F45A6D323CB58AB003B0301 /* UserNotifications+watchOS.swift in Sources */,
 				1F43011623CCA55000B6FBFC /* ComplicationController.swift in Sources */,

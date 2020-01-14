@@ -14,14 +14,17 @@ import XcodeReleasesKit
 
 class UserNotifications: NSObject, ObservableObject {
     
-    private let api = XcodeReleasesApi()
-    private var notificationRequestCancellable: AnyCancellable?
+    let api = XcodeReleasesApi()
+    private var userNotificationRequestCancellable: AnyCancellable?
+    private var pkPushNotificationRequestCancellable: AnyCancellable?
     
     @Published var pushToken: String? = nil
     @Published var authorizationStatus: UNAuthorizationStatus = .notDetermined
     @Published var isSavingNotificationState: Bool = false
-    @UserDefault("serverPushIdentifier", defaultValue: NSNotFound)
-    var serverPushIdentifier: Int
+    @UserDefault("serverUserPushIdentifier", defaultValue: NSNotFound)
+    var serverUserPushIdentifier: Int
+    @UserDefault("serverPKPushIdentifier", defaultValue: NSNotFound)
+    var serverPKPushIdentifier: Int
     
     var launchNotification: [AnyHashable: Any]? = nil {
         didSet {
@@ -36,7 +39,7 @@ class UserNotifications: NSObject, ObservableObject {
         let token = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
         print("Did Register For Remote Notifications With Token: \(token)")
         pushToken = token
-        saveDevice()
+        saveDeviceIfNeeded()
     }
           
     func didFailToRegisterForRemoteNotificationsWithError(_ error: Error) {
@@ -46,17 +49,15 @@ class UserNotifications: NSObject, ObservableObject {
     func checkAuthorizationStatus() {
         UNUserNotificationCenter.current().getNotificationSettings { settings in
             print("Authorization Status: \(settings.authorizationStatus.rawValue)")
-            DispatchQueue.main.async {
-                self.authorizationStatus = settings.authorizationStatus
-            }
+            DispatchQueue.main.async { self.authorizationStatus = settings.authorizationStatus }
             
             switch settings.authorizationStatus {
             case .denied:
                 self.deleteDeviceIfNeeded()
             case .authorized:
-                self.saveDevice()
+                self.saveDeviceIfNeeded()
             case .provisional:
-                self.saveDevice()
+                self.saveDeviceIfNeeded()
             default:
                 break
             }
@@ -82,8 +83,19 @@ class UserNotifications: NSObject, ObservableObject {
         #endif
     }
     
-    private func device(token: String) -> Device {
+    private func device(token: String, pushType: APNS.PushType) -> Device {
         let type = self.model
+        switch pushType {
+        case .alert:
+            return Device(type: type, token: token, bundleIdentifier: InfoPList.bundleIdentifier, environment: environment, pushType: .alert)
+        case .complication:
+            return Device(type: type, token: token, bundleIdentifier: InfoPList.bundleIdentifier + ".complication", environment: environment, pushType: .complication)
+        default:
+            assertionFailure("WTF")
+        }
+        if pushType == .alert {
+                
+        }
         #if os(watchOS)
         /*InfoPList.bundleIdentifier*/
         //thanks 🍎
@@ -95,12 +107,42 @@ class UserNotifications: NSObject, ObservableObject {
     
     // MARK: - App Delegate Callbacks
     
-    func saveDevice() {
+    func savePushRegistryToken(token: String) {
+        let device = Device(type: self.model, token: token, bundleIdentifier: "com.jefflett.XcodeReleases.watchkitapp.complication", environment: environment, pushType: .background)
+        pkPushNotificationRequestCancellable = saveDevice(device: device) {
+            print("Finished Posting PkPush Device.")
+        }
+    }
+    
+    func saveDevice(device: Device, completionHandler: @escaping () -> Void) -> AnyCancellable {
+        print("Saving Device: \(device)")
+        return api.postDevice(device: device).sink(receiveCompletion: { completion in
+            switch completion {
+            case .finished:
+                completionHandler()
+            case .failure(let error):
+                print("Error Posting Device: \(error)")
+            }
+        }) { (device) in
+            print("Posted Device To Server. \(device)")
+            let id = device.id ?? NSNotFound
+            switch device.pushType {
+            case .alert:
+                self.serverUserPushIdentifier = id
+            case .complication:
+                self.serverPKPushIdentifier = id
+            default:
+                assertionFailure("Error: Unsupported Push Type Found!")
+            }
+        }
+    }
+    
+    func saveDeviceIfNeeded() {
         guard let token = self.pushToken else {
             return print("No Token To Save Device. Skipping.")
         }
 
-        guard self.serverPushIdentifier == NSNotFound else {
+        guard self.serverUserPushIdentifier == NSNotFound else {
             return print("Device already saved.  Skipping.")
         }
 
@@ -108,26 +150,44 @@ class UserNotifications: NSObject, ObservableObject {
             return print("Saving notification settings already.  Skipping.")
         }
         
-        print("Continuing to Save.")
-        print("\(#function) token: \(token)")
-        DispatchQueue.main.async {
-            print("Setting Save to true inside post.")
-            self.isSavingNotificationState = true
-        }
-        notificationRequestCancellable = api.postDevice(device: device(token: token)).sink(receiveCompletion: { error in
-            print("Finished Posting Device: \(error)")
+        let device = self.device(token: token, pushType: .alert)
+        DispatchQueue.main.async { self.isSavingNotificationState = true }
+        userNotificationRequestCancellable = saveDevice(device: device) {
             DispatchQueue.main.async { self.isSavingNotificationState = false }
-        }) { (device) in
-            print("Posted Device To Server. \(device)")
-            if let id = device.id {
-                print("Saving Server Push Identifier")
-                self.serverPushIdentifier = id
-            }
         }
     }
     
+    func deleteDevice(identifier: String, pushType: APNS.PushType) {
+        DispatchQueue.main.async { self.isSavingNotificationState = true }
+        userNotificationRequestCancellable = api.deleteDevice(id: identifier).sink(receiveCompletion: { completion in
+            DispatchQueue.main.async { self.isSavingNotificationState = false }
+            switch completion {
+            case .finished:
+                print("Finished Deleting Device.")
+            case .failure(let error):
+                print("Error Deleting Device: \(error)")
+            }
+        }, receiveValue: { (success) in
+            if success {
+                switch pushType {
+                case .alert:
+                    self.serverUserPushIdentifier = NSNotFound
+                    print("Deleted UN Device From Server.")
+                case .complication:
+                    self.serverPKPushIdentifier = NSNotFound
+                    print("Deleted PK Device From Server.")
+                default:
+                    assertionFailure("Unhandled Push Type.")
+                }
+                
+            } else {
+                print("Failed To Delete Device!")
+            }
+        })
+    }
+    
     func deleteDeviceIfNeeded() {
-        guard self.serverPushIdentifier != NSNotFound else {
+        guard self.serverUserPushIdentifier != NSNotFound else {
             print("No Server Push Identifier Found, not deleting device.")
             return
         }
@@ -137,21 +197,7 @@ class UserNotifications: NSObject, ObservableObject {
         }
         print("Not Deleting Now.  Continuing to Delete.")
 
-        DispatchQueue.main.async {
-            print("Setting Save to true inside delete.")
-            self.isSavingNotificationState = true
-        }
-        notificationRequestCancellable = api.deleteDevice(id: "\(self.serverPushIdentifier)").sink(receiveCompletion: { error in
-            DispatchQueue.main.async { self.isSavingNotificationState = false }
-            print("Finished Deleting Device: \(error)")
-        }, receiveValue: { (success) in
-            if success {
-                print("Deleted Device From Server.")
-                self.serverPushIdentifier = NSNotFound
-            } else {
-                print("Failed To Delete Device!")
-            }
-        })
+        deleteDevice(identifier: "\(self.serverUserPushIdentifier)", pushType: .alert)
     }
     
     func handle() {

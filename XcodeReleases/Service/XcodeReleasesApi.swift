@@ -11,14 +11,29 @@ import Combine
 import Foundation
 import XcodeReleasesKit
 
-struct XcodeReleasesApi: NeedsEnvironment {
+class XcodeReleasesApi: NSObject, NeedsEnvironment, URLSessionDelegate {
+    
+    func urlSessionDidFinishEvents(forBackgroundURLSession session: URLSession) {
+        
+    }
     
     let log = false
-    let session: URLSession
+    var session: URLSession?
+    let operationQueue = OperationQueue()
     
+    #if os(watchOS)
+    init(session: URLSession? = nil) {
+        super.init()
+        let configuration = URLSessionConfiguration.background(withIdentifier: "com.jefflett.XcodeReleases")
+        configuration.sessionSendsLaunchEvents = true
+        self.session = session ?? URLSession(configuration: configuration, delegate: self, delegateQueue: operationQueue)
+    }
+    #else
     init(session: URLSession = URLSession(configuration: URLSessionConfiguration.default)) {
+        super.init()
         self.session = session
     }
+    #endif
     
     public enum ApiError: Error, LocalizedError {
         case invalidURL(String)
@@ -46,7 +61,7 @@ struct XcodeReleasesApi: NeedsEnvironment {
         }
     }
     
-    var xcodeReleasesLoader: XcodeReleasesLoader = try! XcodeReleasesLoader(url: "\(Self.environment().apiUrl)/release")
+    var xcodeReleasesLoader: XcodeReleasesLoader = try! XcodeReleasesLoader(url: "\(XcodeReleasesApi.environment().apiUrl)/release")
     
     func postDevice(device: Device) -> AnyPublisher<Device, XcodeReleasesApi.ApiError> {
         Just(device)
@@ -55,7 +70,7 @@ struct XcodeReleasesApi: NeedsEnvironment {
             .tryMap { try self.mapToPostURLRequest(data: $0, url: self.url(command: .postDevice)) }
             .mapError { self.processErrors($0) }
             .flatMap {
-                self.session.dataTaskPublisher(for: $0)
+                self.session!.dataTaskPublisher(for: $0)
                     .mapError { self.processErrors($0) }
                     .map(\.data)
                     .decode(type: Device.self, decoder: JSONDecoder())
@@ -69,7 +84,7 @@ struct XcodeReleasesApi: NeedsEnvironment {
             .tryMap { try self.mapToDeleteURLRequest(url: self.url(command: .deleteDevice($0))) }
             .mapError { self.processErrors($0) }
             .flatMap {
-                self.session.dataTaskPublisher(for: $0)
+                self.session!.dataTaskPublisher(for: $0)
                     .mapError(XcodeReleasesApi.ApiError.request)
                     .map(\.response)
                     .map { response -> Bool in (response as? HTTPURLResponse)?.statusCode == 200 }

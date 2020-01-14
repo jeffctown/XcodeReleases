@@ -13,9 +13,9 @@ import XcodeReleasesKit
 
 class AppState: ObservableObject {
     
-    init(userNotifications: UserNotifications = UserNotifications(), releasesService: XcodeReleasesService = XcodeReleasesService()) {
+    init(userNotifications: UserNotifications = UserNotifications(), releasesService: XcodeReleasesService? = nil) {
         self.userNotifications = userNotifications
-        self.releasesService = releasesService
+        self.releasesService = releasesService ?? XcodeReleasesService(loader: userNotifications.api.xcodeReleasesLoader)
     }
     
     //MARK: - UI Data
@@ -26,6 +26,10 @@ class AppState: ObservableObject {
     //MARK: - Notifications
     
     var userNotifications: UserNotifications
+    
+    #if os(watchOS)
+    var pkPushNotifications: PKPushNotifications = PKPushNotifications()
+    #endif
     
     var notificationState: AnyPublisher<NotificationState, Never> {
         userNotifications.$authorizationStatus.combineLatest(userNotifications.$pushToken)
