@@ -11,29 +11,27 @@ import Combine
 import Foundation
 import XcodeReleasesKit
 
-class XcodeReleasesApi: NSObject, NeedsEnvironment, URLSessionDelegate {
+struct XcodeReleasesApi: NeedsEnvironment {
     
-    func urlSessionDidFinishEvents(forBackgroundURLSession session: URLSession) {
-        
-    }
+//    func urlSessionDidFinishEvents(forBackgroundURLSession session: URLSession) {
+//
+//    }
     
     let log = false
     var session: URLSession?
     let operationQueue = OperationQueue()
     
-    #if os(watchOS)
-    init(session: URLSession? = nil) {
-        super.init()
-        let configuration = URLSessionConfiguration.background(withIdentifier: "com.jefflett.XcodeReleases")
-        configuration.sessionSendsLaunchEvents = true
-        self.session = session ?? URLSession(configuration: configuration, delegate: self, delegateQueue: operationQueue)
-    }
-    #else
+//    #if os(watchOS)
+//    init(session: URLSession? = nil) {
+//        super.init()
+//        let configuration = URLSessionConfiguration.background(withIdentifier: "com.jefflett.XcodeReleases")
+//        configuration.sessionSendsLaunchEvents = true
+//        self.session = session ?? URLSession(configuration: configuration, delegate: self, delegateQueue: operationQueue)
+//    }
+//    #else
     init(session: URLSession = URLSession(configuration: URLSessionConfiguration.default)) {
-        super.init()
         self.session = session
     }
-    #endif
     
     public enum ApiError: Error, LocalizedError {
         case invalidURL(String)

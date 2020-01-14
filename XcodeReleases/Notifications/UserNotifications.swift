@@ -87,28 +87,21 @@ class UserNotifications: NSObject, ObservableObject {
         let type = self.model
         switch pushType {
         case .alert:
-            return Device(type: type, token: token, bundleIdentifier: InfoPList.bundleIdentifier, environment: environment, pushType: .alert)
+            #if os(watchOS)
+            return Device(type: type, token: token, bundleIdentifier: "com.jefflett.XcodeReleases.watchkitapp", environment: environment, pushType: .alert)
+            #endif
         case .complication:
             return Device(type: type, token: token, bundleIdentifier: InfoPList.bundleIdentifier + ".complication", environment: environment, pushType: .complication)
         default:
             assertionFailure("WTF")
         }
-        if pushType == .alert {
-                
-        }
-        #if os(watchOS)
-        /*InfoPList.bundleIdentifier*/
-        //thanks 🍎
-        return Device(type: type, token: token, bundleIdentifier: "com.jefflett.XcodeReleases.watchkitapp", environment: environment)
-        #else
-        return Device(type: type, token: token, bundleIdentifier: InfoPList.bundleIdentifier, environment: environment)
-        #endif
+        return Device(type: type, token: token, bundleIdentifier: InfoPList.bundleIdentifier, environment: environment, pushType: .alert)
     }
     
     // MARK: - App Delegate Callbacks
     
     func savePushRegistryToken(token: String) {
-        let device = Device(type: self.model, token: token, bundleIdentifier: "com.jefflett.XcodeReleases.watchkitapp.complication", environment: environment, pushType: .background)
+        let device = Device(type: self.model, token: token, bundleIdentifier: "com.jefflett.XcodeReleases.watchkitapp.complication", environment: environment, pushType: .complication)
         pkPushNotificationRequestCancellable = saveDevice(device: device) {
             print("Finished Posting PkPush Device.")
         }
