@@ -32,6 +32,18 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         handler(template(for: complication.family))
     }
     
+    var major: Int {
+        Int.random(in: 0 ..< 100)
+    }
+    
+    var minor: Int {
+        Int.random(in: 0 ..< 10)
+    }
+    
+    var version: String {
+        "\(major).\(minor)"
+    }
+    
     var simpleTinyBodyProvider: CLKSimpleTextProvider {
         CLKSimpleTextProvider(text: "GM Seed 1", shortText: "GM 1")
     }
@@ -41,7 +53,11 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     }
     
     var simpleSingleTextProvider: CLKSimpleTextProvider {
-        CLKSimpleTextProvider(text: "Xcode: 11.3 GM Seed 1", shortText: "11.3 GM1")
+        CLKSimpleTextProvider(text: "Xcode: \(version) GM Seed 1", shortText: "\(version) GM1")
+    }
+    
+    var simpleVersionTextProvider: CLKSimpleTextProvider {
+        CLKSimpleTextProvider(text: "\(version) GM Seed 1", shortText: "\(version) GM1")
     }
     
     var simpleReleaseDateProvider: CLKSimpleTextProvider {
@@ -49,7 +65,11 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     }
     
     var logoImageProvider: CLKFullColorImageProvider {
-        CLKFullColorImageProvider(fullColorImage: UIImage(named: "Xcode")!)
+        CLKFullColorImageProvider(fullColorImage: UIImage(named: "Xcode-Square")!)
+    }
+    
+    var logoMediumImageProvider: CLKFullColorImageProvider {
+        CLKFullColorImageProvider(fullColorImage: UIImage(named: "Xcode-Medium")!)
     }
     
     var logoSmallImageProvider: CLKFullColorImageProvider {
@@ -85,20 +105,20 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
             return template
         case .graphicCorner:
             let template = CLKComplicationTemplateGraphicCornerCircularImage()
-            template.imageProvider = logoCircularImageProvider
+            template.imageProvider = logoMediumImageProvider
             return template
         case .graphicRectangular:
             let template = CLKComplicationTemplateGraphicRectangularStandardBody()
             template.headerImageProvider = logoSmallImageProvider
             template.headerTextProvider = simpleAppNameProvider
-            template.body1TextProvider = simpleSingleTextProvider
+            template.body1TextProvider = simpleVersionTextProvider
             template.body2TextProvider = simpleReleaseDateProvider
             return template
         case .modularLarge:
             let template = CLKComplicationTemplateModularLargeStandardBody()
             template.headerImageProvider = logoFlatImageProvider
             template.headerTextProvider = simpleAppNameProvider
-            template.body1TextProvider = simpleSingleTextProvider
+            template.body1TextProvider = simpleVersionTextProvider
             template.body2TextProvider = simpleReleaseDateProvider
             return template
         case .modularSmall:
@@ -117,7 +137,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         case .utilitarianSmallFlat:
             let template = CLKComplicationTemplateUtilitarianSmallFlat()
             template.imageProvider = logoFlatImageProvider
-            template.textProvider = simpleTinyBodyProvider
+            template.textProvider = simpleSingleTextProvider
             return template
         @unknown default:
             assertionFailure("WTH")

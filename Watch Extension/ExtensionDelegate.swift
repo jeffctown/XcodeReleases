@@ -8,12 +8,42 @@
 
 import WatchKit
 
+import PushKit
+
+
+class PushRegistryDelegate: NSObject, PKPushRegistryDelegate {
+    
+    func registerForComplicationPushed() {
+        print("registerForComplicationPushed")
+        let pushRegistry = PKPushRegistry(queue: .main)
+        pushRegistry.delegate = self
+        pushRegistry.desiredPushTypes = [.complication]
+    }
+    
+    func pushRegistry(_ registry: PKPushRegistry, didUpdate pushCredentials: PKPushCredentials, for type: PKPushType) {
+        let token = pushCredentials.token.map { String(format: "%02.2hhx", $0) }.joined()
+        print("registry didUpdate pushCredentials \(pushCredentials.type.rawValue) \(token)")
+    }
+    
+    func pushRegistry(_ registry: PKPushRegistry, didInvalidatePushTokenFor type: PKPushType) {
+        print("registry didInvalidatePushTokenFor")
+    }
+    
+    func pushRegistry(_ registry: PKPushRegistry, didReceiveIncomingPushWith payload: PKPushPayload, for type: PKPushType, completion: @escaping () -> Void) {
+        print("registry didReceiveIncomingPushWith \(payload.dictionaryPayload)")
+        completion()
+    }
+    
+}
+
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
     
     var appState = AppState()
+    let pushRegistryDelegate = PushRegistryDelegate()
 
     func applicationDidFinishLaunching() {
         appState.userNotifications.applicationDidFinishLaunching()
+        pushRegistryDelegate.registerForComplicationPushed()
     }
     
     func applicationDidBecomeActive() {
@@ -32,7 +62,12 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
     func didFailToRegisterForRemoteNotificationsWithError(_ error: Error) {
         appState.userNotifications.didFailToRegisterForRemoteNotificationsWithError(error)
     }
-
+    
+    func didReceiveRemoteNotification(_ userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (WKBackgroundFetchResult) -> Void) {
+        print("didReceiveRemoteNotification")
+        completionHandler(.newData)
+    }
+    
     func handle(_ backgroundTasks: Set<WKRefreshBackgroundTask>) {
         // Sent when the system needs to launch the application in the background to process tasks. Tasks arrive in a set, so loop through and process each one.
         for task in backgroundTasks {
