@@ -30,10 +30,10 @@ extension UserNotifications {
 
 extension UserNotifications: PKPushNotificationsDelegate {
     func didInvalidateComplicationToken() {
-        guard self.serverPKPushIdentifier != NSNotFound else {
+        guard let token = self.serverPKPushIdentifier else {
             return
         }
-        deleteDevice(identifier: "\(self.serverPKPushIdentifier)", pushType: .complication)
+        deleteDevice(identifier: token, pushType: .complication)
     }
     
     func didUpdateWithComplicationToken(token: String) {

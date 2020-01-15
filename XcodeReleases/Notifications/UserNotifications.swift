@@ -21,10 +21,10 @@ class UserNotifications: NSObject, ObservableObject {
     @Published var pushToken: String? = nil
     @Published var authorizationStatus: UNAuthorizationStatus = .notDetermined
     @Published var isSavingNotificationState: Bool = false
-    @UserDefault("serverUserPushIdentifier", defaultValue: NSNotFound)
-    var serverUserPushIdentifier: Int
-    @UserDefault("serverPKPushIdentifier", defaultValue: NSNotFound)
-    var serverPKPushIdentifier: Int
+    @UserDefault("serverUserPushIdentifier", defaultValue: nil)
+    var serverUserPushIdentifier: String?
+    @UserDefault("serverPKPushIdentifier", defaultValue: nil)
+    var serverPKPushIdentifier: String?
     
     var launchNotification: [AnyHashable: Any]? = nil {
         didSet {
@@ -88,27 +88,27 @@ class UserNotifications: NSObject, ObservableObject {
         switch pushType {
         case .alert:
             #if os(watchOS)
-            return Device(type: type, token: token, bundleIdentifier: "com.jefflett.XcodeReleases.watchkitapp", environment: environment, pushType: .alert)
+            return Device(id: token, type: type, bundleIdentifier: "com.jefflett.XcodeReleases.watchkitapp", environment: environment, pushType: .alert)
             #endif
         case .complication:
-            return Device(type: type, token: token, bundleIdentifier: InfoPList.bundleIdentifier + ".complication", environment: environment, pushType: .complication)
+            return Device(id: token, type: type, bundleIdentifier: InfoPList.bundleIdentifier + ".complication", environment: environment, pushType: .complication)
         default:
             assertionFailure("WTF")
         }
-        return Device(type: type, token: token, bundleIdentifier: InfoPList.bundleIdentifier, environment: environment, pushType: .alert)
+        return Device(id: token, type: type, bundleIdentifier: InfoPList.bundleIdentifier, environment: environment, pushType: .alert)
     }
     
     // MARK: - App Delegate Callbacks
     
     func savePushRegistryToken(token: String) {
-        let device = Device(type: self.model, token: token, bundleIdentifier: "com.jefflett.XcodeReleases.watchkitapp.complication", environment: environment, pushType: .complication)
+        let device = Device(id: token, type: self.model, bundleIdentifier: "com.jefflett.XcodeReleases.watchkitapp.complication", environment: environment, pushType: .complication)
         pkPushNotificationRequestCancellable = saveDevice(device: device) {
             print("Finished Posting PkPush Device.")
         }
     }
     
     func saveDevice(device: Device, completionHandler: @escaping () -> Void) -> AnyCancellable {
-        print("Saving Device: \(device)")
+        print("Saving Device: \(device.debugDescription)")
         return api.postDevice(device: device).sink(receiveCompletion: { completion in
             switch completion {
             case .finished:
@@ -117,15 +117,15 @@ class UserNotifications: NSObject, ObservableObject {
                 print("Error Posting Device: \(error)")
             }
         }) { (device) in
-            print("Posted Device To Server. \(device)")
-            let id = device.id ?? NSNotFound
+            print("Posted Device To Server. \(device.debugDescription)")
             switch device.pushType {
             case .alert:
-                self.serverUserPushIdentifier = id
+                self.serverUserPushIdentifier = device.id
             case .complication:
-                self.serverPKPushIdentifier = id
+                self.serverPKPushIdentifier = device.id
             default:
-                assertionFailure("Error: Unsupported Push Type Found!")
+                print("Error: Unsupported Push Type Found!")
+                break
             }
         }
     }
@@ -164,13 +164,14 @@ class UserNotifications: NSObject, ObservableObject {
             if success {
                 switch pushType {
                 case .alert:
-                    self.serverUserPushIdentifier = NSNotFound
+                    self.serverUserPushIdentifier = nil
                     print("Deleted UN Device From Server.")
                 case .complication:
-                    self.serverPKPushIdentifier = NSNotFound
+                    self.serverPKPushIdentifier = nil
                     print("Deleted PK Device From Server.")
                 default:
-                    assertionFailure("Unhandled Push Type.")
+                    print("Unhandled Push Type.")
+                    break
                 }
                 
             } else {
@@ -180,7 +181,7 @@ class UserNotifications: NSObject, ObservableObject {
     }
     
     func deleteDeviceIfNeeded() {
-        guard self.serverUserPushIdentifier != NSNotFound else {
+        guard let token = self.serverUserPushIdentifier else {
             print("No Server Push Identifier Found, not deleting device.")
             return
         }
@@ -190,7 +191,7 @@ class UserNotifications: NSObject, ObservableObject {
         }
         print("Not Deleting Now.  Continuing to Delete.")
 
-        deleteDevice(identifier: "\(self.serverUserPushIdentifier)", pushType: .alert)
+        deleteDevice(identifier: token, pushType: .alert)
     }
     
     func handle() {
