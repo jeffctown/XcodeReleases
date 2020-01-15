@@ -19,7 +19,7 @@ extension UserNotifications {
         print("watchOS: Registering for Remote Notifications.")
         WKExtension.shared().registerForRemoteNotifications()
         UNUserNotificationCenter.current().delegate = self
-        registerProvisionally()
+        registerForUserNotifications()
     }
     
     func applicationDidBecomeActive() {

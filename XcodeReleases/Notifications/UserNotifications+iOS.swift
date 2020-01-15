@@ -20,7 +20,7 @@ extension UserNotifications {
         UNUserNotificationCenter.current().delegate = self
         launchNotification = launchOptions?[.remoteNotification] as? [AnyHashable: Any]
         application.registerForRemoteNotifications()
-        registerProvisionally()
+        registerForUserNotifications()
         return true
     }
 
