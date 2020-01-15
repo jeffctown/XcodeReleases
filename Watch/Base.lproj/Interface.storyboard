@@ -1,17 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="15702" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3mp-fW-waa">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="15705" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3mp-fW-waa">
     <device id="watch38"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="15501"/>
     </dependencies>
     <scenes>
-        <!--Hosting Controller-->
+        <!--Releases Hosting Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <hostingController id="3mp-fW-waa" customClass="HostingController" customModule="Watch" customModuleProvider="target"/>
+                <hostingController id="3mp-fW-waa" customClass="ReleasesHostingController" customModule="Watch_Extension">
+                    <connections>
+                        <segue destination="bP0-6C-4qh" kind="relationship" relationship="nextPage" id="ZBo-2W-X3h"/>
+                    </connections>
+                </hostingController>
             </objects>
             <point key="canvasLocation" x="32" y="80"/>
+        </scene>
+        <!--Settings Hosting Controller-->
+        <scene sceneID="VhR-rd-hHL">
+            <objects>
+                <hostingController id="bP0-6C-4qh" customClass="SettingsHostingController" customModule="Watch_Extension"/>
+            </objects>
+            <point key="canvasLocation" x="277" y="80"/>
         </scene>
     </scenes>
 </document>

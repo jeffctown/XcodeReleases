@@ -23,7 +23,9 @@ struct NotificationsDeniedRow: View {
                     HStack {
                         Text("Push Notifications:")
                         Spacer()
+                        #if os(iOS)
                         ActivityIndicator(shouldAnimate: $isSavingToServer, color: .gray).frame(width: 40, height: 40)
+                        #endif
                         Text("Disabled 🚫")
                     }
                 }

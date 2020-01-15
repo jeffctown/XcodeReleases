@@ -19,7 +19,9 @@ struct NotificationTokenRow: View {
         switch notificationState {
         case .authorized(let token), .provisional(let token):
             return AnyView(Button(action: {
+                #if os(iOS)
                     UIPasteboard.general.string = token
+                #endif
                     self.showingAlert = true
                 }) {
                     Text("Token: \(token)").lineLimit(3)

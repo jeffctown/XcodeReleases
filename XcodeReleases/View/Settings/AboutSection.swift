@@ -15,9 +15,13 @@ struct AboutSection : View {
     var body: some View {
         Section(header: Text("About"),
                 footer: Text("Version: v\(version) (\(build))").font(.caption)) {
-            WebViewButton(text: "Suggestions", url: URL(string: "https://github.com/jeffctown/XcodeReleasesApp/issues")!)
-            WebViewButton(text: "Github", url: URL(string: "https://github.com/jeffctown/XcodeReleasesApp")!)
-            WebViewButton(text: "Privacy Policy", url: URL(string: "https://xcodereleases.jefflett.com/privacy/")!)
+                    #if os(iOS)
+                    WebViewButton(text: "Suggestions", url: URL(string: "https://github.com/jeffctown/XcodeReleases/issues")!)
+                    WebViewButton(text: "Github", url: URL(string: "https://github.com/jeffctown/XcodeReleases")!)
+                    WebViewButton(text: "Privacy Policy", url: URL(string: "https://xcodereleases.jefflett.com/privacy/")!)
+                    #else
+                    Text("https://github.com/jeffctown/XcodeReleases").font(.caption).padding()
+                    #endif
         }
     }
 }

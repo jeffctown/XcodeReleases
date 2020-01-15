@@ -29,7 +29,7 @@ struct NotificationSection : View {
 struct NotificationSection_Previews : PreviewProvider {
     static var previews: some View {
         Group {
-            NavigationView {
+            Group {
                 List {
                     NotificationSection(
                         notificationState: .authorized("push token"),
@@ -53,7 +53,7 @@ struct NotificationSection_Previews : PreviewProvider {
                     )
                 }.navigationBarTitle("Settings")
             }.environmentObject(AppState())
-            NavigationView {
+            Group {
                 List {
                     NotificationSection(
                         notificationState: .authorized("push token"),

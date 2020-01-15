@@ -23,7 +23,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
         appState.releasesService.refresh()
     }
     
-    func didRegisterForRemoteNotifications(withDeviceToken deviceToken: Data) {
+    func didRegisterForRemoteNotifications(withDeviceToken deviceToken: Data) { 
         appState.userNotifications.application(didRegisterForRemoteNotificationsWithDeviceToken: deviceToken)
     }
 
@@ -40,6 +40,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
     func handle(_ backgroundTasks: Set<WKRefreshBackgroundTask>) {
         // Sent when the system needs to launch the application in the background to process tasks. Tasks arrive in a set, so loop through and process each one.
         for task in backgroundTasks {
+            print("Handling Background Task \(task)")
             // Use a switch statement to check the task type
             switch task {
             case let backgroundTask as WKApplicationRefreshBackgroundTask:

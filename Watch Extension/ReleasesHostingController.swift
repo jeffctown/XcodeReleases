@@ -10,9 +10,11 @@ import WatchKit
 import Foundation
 import SwiftUI
 
-class HostingController: WKHostingController<AnyView> {
-    
+extension WKHostingController {
     var appState: AppState { (WKExtension.shared().delegate as! ExtensionDelegate).appState }
+}
+
+class ReleasesHostingController: WKHostingController<AnyView> {
     
     override var body: AnyView {
         return AnyView(XcodeReleaseList().environmentObject(appState))

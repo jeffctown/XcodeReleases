@@ -20,7 +20,9 @@ extension View {
                 title: Text(title),
                 message: Text(message),
                 primaryButton: .default(Text(goToSettingsButtonTitle)) {
+                    #if os(iOS)
                 UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                    #endif
                 },
                 secondaryButton: .destructive(Text(goNowhereTitle))
             )
@@ -44,8 +46,20 @@ struct SettingsView : View {
         static let goNowhereTitle = "Close"
     }
     
+    #if os(watchOS)
+    var body: some View {
+        self.innerBody
+    }
+    #else
     var body: some View {
         NavigationView {
+            self.innerBody
+        }.navigationViewStyle(StackNavigationViewStyle())
+    }
+    #endif
+    
+    var innerBody: some View {
+        Group {
             List {
                 NotificationSection(notificationState: notificationState, isSaving: $isSaving)
                     .alertForSettings(isPresented: self.$showingEnableAlert,
@@ -59,16 +73,14 @@ struct SettingsView : View {
             }.onAppear() {
                 self.appState.userNotifications.checkAuthorizationStatus()
             }.navigationBarTitle(Strings.title)
-        }.navigationViewStyle(StackNavigationViewStyle())
+        }
     }
 }
 
 #if DEBUG
 struct SettingsView_Previews : PreviewProvider {
     static var previews: some View {
-        NavigationView {
-            return SettingsView().environmentObject(AppState())
-        }
+        SettingsView().environmentObject(AppState())
     }
 }
 #endif
