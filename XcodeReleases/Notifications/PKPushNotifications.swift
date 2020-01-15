@@ -8,14 +8,14 @@
 
 import PushKit
 
-protocol PKPushNotificationsDelegate {
+protocol PKPushNotificationsDelegate: class {
     func didUpdateWithComplicationToken(token: String)
     func didInvalidateComplicationToken()
 }
 
 class PKPushNotifications: NSObject, PKPushRegistryDelegate {
     
-    public var delegate: PKPushNotificationsDelegate?
+    public weak var delegate: PKPushNotificationsDelegate?
     
     func applicationDidFinishLaunching(delegate: PKPushNotificationsDelegate) {
         print("*** Registering for complication notifications ***")
