@@ -64,9 +64,9 @@ class UserNotifications: NSObject, ObservableObject {
         }
     }
     
-    func registerProvisionally() {
+    func registerForUserNotifications() {
         print("*** Provisionally *** Registering For Push Notifications.")
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound, .provisional]) { (granted, error) in
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
             print("UNUserNotificationCenter Authorized: \(granted)")
             if let error = error {
                 print("UNUserNotificationCenter Error: \(error)")
