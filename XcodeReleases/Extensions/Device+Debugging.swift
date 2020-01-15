@@ -12,10 +12,11 @@ import XcodeReleasesKit
 
 extension Device: CustomDebugStringConvertible {
     public var debugDescription: String {
-        return "Device #️⃣\(self.id ?? -1): \(self.type) \(self.token)"
+        return "Device #️⃣\(self.id ?? "nil"): \(self.type)"
     }
 }
 
+#if os(iOS)
 public extension UIDevice {
 
     static let modelName: String = {
@@ -94,3 +95,4 @@ public extension UIDevice {
     }()
 
 }
+#endif
