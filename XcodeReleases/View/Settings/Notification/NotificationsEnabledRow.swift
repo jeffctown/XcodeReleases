@@ -18,8 +18,6 @@ struct NotificationsEnabledRow: View {
         case .authorized(_):
             return AnyView(
                 HStack {
-                    Text("Push Notifications:")
-                    Spacer()
                     #if os(iOS)
                     ActivityIndicator(shouldAnimate: $isSavingToServer, color: .gray).frame(width: 40, height: 40)
                     #endif
@@ -29,8 +27,6 @@ struct NotificationsEnabledRow: View {
         case .provisional(_):
             return AnyView(
                 HStack {
-                    Text("Push Notifications:")
-                    Spacer()
                     #if os(iOS)
                     ActivityIndicator(shouldAnimate: $isSavingToServer, color: .gray).frame(width: 40, height: 40)
                     #endif

@@ -13,7 +13,9 @@ import XcodeReleasesKit
 struct XcodeReleaseList : View {
     @EnvironmentObject private var appState: AppState
     @State var releases: [XcodeRelease] = []
-    
+    @State var isLoading: Bool = false
+    @State var hasError: Bool = false
+    @State var loadingError: XcodeReleasesKit.XcodeReleasesLoader.Error? = nil
     
     #if !os(watchOS)
     var body: some View {
@@ -27,25 +29,62 @@ struct XcodeReleaseList : View {
     }
     #endif
     
-    var innerBody: some View {
+    var loadingView: some View {
         Group {
-            List(releases) { release in
-                NavigationLink(destination: XcodeReleaseDetail(release: release)) {
-                    XcodeReleaseRow(release: release)
+            Text("Loading Releases...").font(.caption)
+        }
+    }
+    
+    var emptyView: some View {
+        Group {
+            VStack {
+                Text("No Releases Loaded.").font(.callout).padding()
+                Button(action: {
+                    self.appState.releasesService.refresh()
+                }) {
+                    Text("Refresh")
                 }
-            }.navigationBarTitle("Xcode Releases")
-            #if !os(watchOS) // This shows both on watchOS, but not on iOS.
-            // this is needed for iPad, so it shows something in the detail view in its master detail thing.
+            }
+        }
+    }
+    
+    // this is needed for iPad, so it shows something in the detail view in its master detail thing.
+    var detailView: some View {
+        Group {
             if releases.count > 0 {
                 XcodeReleaseDetail(release: releases.first!)
-            } else {
-                EmptyView()
             }
+        }
+    }
+    
+    var innerBody: some View {
+        Group {
+            if self.releases.count > 0 {
+                List(releases) { release in
+                    NavigationLink(destination: XcodeReleaseDetail(release: release)) {
+                        XcodeReleaseRow(release: release)
+                    }
+                }
+            } else if self.isLoading {
+                self.loadingView
+            } else {
+                self.emptyView
+            }
+            #if !os(watchOS)  // This displays and looks bad on watchOS.
+            self.detailView
             #endif
-        }.onAppear() {
-            self.appState.releasesService.refresh()
-        }.onReceive(appState.releasesService.$releases) { releases in
-            self.releases = releases
+        }.onReceive(appState.releasesService.$isLoading) { isLoading in
+            self.isLoading = isLoading
+        }.onReceive(appState.releasesService.$loadingError) { loadingError in
+            self.loadingError = loadingError
+            self.hasError = loadingError != nil
+        }.navigationBarTitle("Xcode Releases")
+            .alert(isPresented: self.$hasError) { () -> Alert in
+                return Alert(title: Text("\(loadingError!.localizedDescription)"), dismissButton: Alert.Button.default(Text("OK"), action: {
+                    print("*** Clearing Error")
+                    self.hasError = false
+                    self.loadingError = nil
+                }))
         }
     }
 }

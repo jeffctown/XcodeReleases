@@ -18,7 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: UIApplicationDelegate Lifecycle
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        return appState.userNotifications.application(application, didFinishLaunchingWithOptions: launchOptions)
+        let returnable = appState.userNotifications.application(application, didFinishLaunchingWithOptions: launchOptions)
+        appState.releasesService.refresh()
+        return returnable
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {

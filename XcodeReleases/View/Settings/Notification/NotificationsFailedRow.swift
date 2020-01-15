@@ -18,20 +18,18 @@ struct NotificationsFailedRow: View {
             return AnyView(
                 Group {
                     HStack {
-                        Text("Push Notifications:")
-                        Spacer()
                         Text("Disabled ❗️")
                     }
+                    #if targetEnvironment(simulator)
                     Text(
-                        "Notification Registration Failed.  If you're on a simulator, this is expected. "
+                        "Notification Registration Failed.  You're on a simulator, so this is expected. "
                     ).font(.footnote)
+                    #endif
                 }
             )
         case .notDetermined:
             return  AnyView(
                 HStack {
-                    Text("Push Notifications:")
-                    Spacer()
                     Text("Not Determined ❓")
                 }
             )
