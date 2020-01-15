@@ -69,7 +69,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     
     var simpleReleaseDateProvider: CLKSimpleTextProvider {
         let dateFormatter = DateFormatter()
-        dateFormatter.setLocalizedDateFormatFromTemplate("M/d/yy, H:mm")
+        dateFormatter.setLocalizedDateFormatFromTemplate("M/d/yy, h:mm a")
         let dateString = dateFormatter.string(from: Date())
         return CLKSimpleTextProvider(text: "Released: \(dateString)", shortText: "\(dateString)")
     }
@@ -114,8 +114,9 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
             template.imageProvider = logoCircularImageProvider
             return template
         case .graphicCorner:
-            let template = CLKComplicationTemplateGraphicCornerCircularImage()
+            let template = CLKComplicationTemplateGraphicCornerTextImage()
             template.imageProvider = logoMediumImageProvider
+            template.textProvider = simpleSingleTextProvider
             return template
         case .graphicRectangular:
             let template = CLKComplicationTemplateGraphicRectangularStandardBody()
