@@ -78,6 +78,8 @@ struct XcodeReleaseList : View {
         }.onReceive(appState.releasesService.$loadingError) { loadingError in
             self.loadingError = loadingError
             self.hasError = loadingError != nil
+        }.onReceive(appState.releasesService.$releases) { releases in
+            self.releases = releases
         }.navigationBarTitle("Xcode Releases")
             .alert(isPresented: self.$hasError) { () -> Alert in
                 return Alert(title: Text("\(loadingError!.localizedDescription)"), dismissButton: Alert.Button.default(Text("OK"), action: {
