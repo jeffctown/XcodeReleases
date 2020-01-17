@@ -40,6 +40,21 @@ class PKPushNotifications: NSObject, PKPushRegistryDelegate {
     
     func pushRegistry(_ registry: PKPushRegistry, didReceiveIncomingPushWith payload: PKPushPayload, for type: PKPushType, completion: @escaping () -> Void) {
         print("registry didReceiveIncomingPushWith \(payload.dictionaryPayload)")
+        if case .complication = type {
+            print("Complication Push Received: \(payload)")
+            let extra = payload.dictionaryPayload["extra"] as? [AnyHashable: String]
+            let releaseJson = extra?["release"]
+            if let releaseData = releaseJson?.data(using: .utf8) {
+                do {
+                    let release = try JSONDecoder().decode(XcodeRelease.self, from: releaseData)
+                    print("Release: \(release)")
+                } catch {
+                    print("Error Decoding: \(error)")
+                }
+            }
+            ComplicationController.reloadAll()
+        }
+        
         completion()
     }
 }
