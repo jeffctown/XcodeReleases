@@ -85,27 +85,45 @@ class UserNotifications: NSObject, ObservableObject {
     
     private func device(token: String, pushType: APNS.PushType) -> Device {
         let type = self.model
+        let watchAppBundleIdentifier = "com.jefflett.XcodeReleases.watchkitapp"
         switch pushType {
         case .alert:
             #if os(watchOS)
-            return Device(id: token, type: type, bundleIdentifier: "com.jefflett.XcodeReleases.watchkitapp", environment: environment, pushType: .alert)
+            return Device(id: token, type: type, bundleIdentifier: watchAppBundleIdentifier, environment: environment, pushType: .alert)
             #endif
         case .complication:
-            return Device(id: token, type: type, bundleIdentifier: InfoPList.bundleIdentifier + ".complication", environment: environment, pushType: .complication)
+            return Device(id: token, type: type, bundleIdentifier: watchAppBundleIdentifier + ".complication", environment: environment, pushType: .complication)
         default:
             assertionFailure("WTF")
         }
         return Device(id: token, type: type, bundleIdentifier: InfoPList.bundleIdentifier, environment: environment, pushType: .alert)
     }
     
-    // MARK: - App Delegate Callbacks
+    // MARK: - Saving Devices
     
     func savePushRegistryToken(token: String) {
-        let device = Device(id: token, type: self.model, bundleIdentifier: "com.jefflett.XcodeReleases.watchkitapp.complication", environment: environment, pushType: .complication)
+        let device = self.device(token: token, pushType: .complication)
         pkPushNotificationRequestCancellable = saveDevice(device: device) {
             print("Finished Posting PkPush Device.")
         }
     }
+    
+    func saveDeviceIfNeeded() {
+           guard let token = self.pushToken else {
+               return print("No Token To Save Device. Skipping.")
+           }
+    
+           guard self.serverUserPushIdentifier == nil || self.serverUserPushIdentifier != token else {
+               return print("Device push token has already been saved and it hasn't changed.  Before: \(serverUserPushIdentifier ?? "nil") Now: \(token) Skipping.")
+           }
+           
+           let device = self.device(token: token, pushType: .alert)
+           DispatchQueue.main.async { self.isSavingNotificationState = true }
+           userNotificationRequestCancellable = saveDevice(device: device) {
+               DispatchQueue.main.async { self.isSavingNotificationState = false }
+               
+           }
+       }
     
     func saveDevice(device: Device, completionHandler: @escaping () -> Void) -> AnyCancellable {
         print("Saving Device: \(device.debugDescription)")
@@ -131,21 +149,15 @@ class UserNotifications: NSObject, ObservableObject {
         }
     }
     
-    func saveDeviceIfNeeded() {
-        guard let token = self.pushToken else {
-            return print("No Token To Save Device. Skipping.")
-        }
- 
-        guard self.serverUserPushIdentifier == nil || self.serverUserPushIdentifier != token else {
-            return print("Device push token has already been saved and it hasn't changed.  Before: \(serverUserPushIdentifier ?? "nil") Now: \(token) Skipping.")
+    //MARK: - Deleting Devices
+    
+    func deleteDeviceIfNeeded() {
+        guard let token = self.serverUserPushIdentifier else {
+            print("No Server Push Identifier Found, not deleting device.")
+            return
         }
         
-        let device = self.device(token: token, pushType: .alert)
-        DispatchQueue.main.async { self.isSavingNotificationState = true }
-        userNotificationRequestCancellable = saveDevice(device: device) {
-            DispatchQueue.main.async { self.isSavingNotificationState = false }
-            
-        }
+        deleteDevice(identifier: token, pushType: .alert)
     }
     
     func deleteDevice(identifier: String, pushType: APNS.PushType) {
@@ -178,14 +190,7 @@ class UserNotifications: NSObject, ObservableObject {
         })
     }
     
-    func deleteDeviceIfNeeded() {
-        guard let token = self.serverUserPushIdentifier else {
-            print("No Server Push Identifier Found, not deleting device.")
-            return
-        }
-        
-        deleteDevice(identifier: token, pushType: .alert)
-    }
+    //MARK: - Deep Linking
     
     func handle() {
         guard let launchNotification = launchNotification else {
@@ -209,16 +214,4 @@ class UserNotifications: NSObject, ObservableObject {
         #endif
     }
     
-}
-
-extension UserNotifications: UNUserNotificationCenterDelegate {
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        completionHandler(.alert)
-    }
-    
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        launchNotification = response.notification.request.content.userInfo
-        print(response.notification.request.content.userInfo)
-        completionHandler()
-    }
 }
