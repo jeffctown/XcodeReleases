@@ -18,19 +18,19 @@ struct NotificationsEnabledRow: View {
         case .authorized(_):
             return AnyView(
                 HStack {
+                    Text("Enabled ✅")
                     #if os(iOS)
                     ActivityIndicator(shouldAnimate: $isSavingToServer, color: .gray).frame(width: 40, height: 40)
                     #endif
-                    Text("Enabled ✅")
                 }
             )
         case .provisional(_):
             return AnyView(
                 HStack {
+                    Text("Provisional ✅")
                     #if os(iOS)
                     ActivityIndicator(shouldAnimate: $isSavingToServer, color: .gray).frame(width: 40, height: 40)
                     #endif
-                    Text("Provisional ✅")
                 }
             )
         default:

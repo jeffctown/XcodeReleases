@@ -21,10 +21,10 @@ struct NotificationsDeniedRow: View {
                     print("Changing Settings.")
                 }) {
                     HStack {
+                        Text("Disabled 🚫")
                         #if os(iOS)
                         ActivityIndicator(shouldAnimate: $isSavingToServer, color: .gray).frame(width: 40, height: 40)
                         #endif
-                        Text("Disabled 🚫")
                     }
                 }
             )
