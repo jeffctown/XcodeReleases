@@ -11,7 +11,7 @@ import UIKit
 import XcodeReleasesKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
+    
     var window: UIWindow?
     var appState: AppState { (UIApplication.shared.delegate as! AppDelegate).appState }
     
@@ -23,6 +23,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             self.window = window
             window.makeKeyAndVisible()
         }
+    }
+    
+    func sceneDidBecomeActive(_ scene: UIScene) {
+        appState.userNotifications.checkAuthorizationStatus()
+        appState.releasesService.refresh()
     }
 
     func deeplink(urlString: String) {

@@ -18,20 +18,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: UIApplicationDelegate Lifecycle
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let returnable = appState.userNotifications.application(application, didFinishLaunchingWithOptions: launchOptions)
-        appState.releasesService.refresh()
-        return returnable
+        appState.userNotifications.application(application, didFinishLaunchingWithOptions: launchOptions)
     }
     
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        appState.userNotifications.checkAuthorizationStatus()
-        appState.releasesService.refresh()
-    }
-
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-        return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
+        UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
 
     // MARK: Push Notifications
