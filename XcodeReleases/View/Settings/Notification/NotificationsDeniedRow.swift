@@ -24,7 +24,14 @@ struct NotificationsDeniedRow: View {
                         Text("Disabled 🚫")
                         #if os(iOS)
                         ActivityIndicator(shouldAnimate: $isSavingToServer, color: .gray).frame(width: 40, height: 40)
+                        Spacer()
+                        Button(action: {
+                            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                        }, label: {
+                            Text("Change")
+                        })
                         #endif
+                        
                     }
                 }
             )

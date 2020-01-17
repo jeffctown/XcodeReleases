@@ -23,7 +23,21 @@ struct UserDefault<T> {
             return UserDefaults.standard.object(forKey: key) as? T ?? defaultValue
         }
         set {
-            UserDefaults.standard.set(newValue, forKey: key)
+            if let value = newValue as? OptionalProtocol, value.isNil() {
+                UserDefaults.standard.removeObject(forKey: key)
+            } else {
+                UserDefaults.standard.set(newValue, forKey: key)
+            }
         }
+    }
+}
+
+fileprivate protocol OptionalProtocol {
+    func isNil() -> Bool
+}
+
+extension Optional : OptionalProtocol {
+    func isNil() -> Bool {
+        return self == nil
     }
 }
