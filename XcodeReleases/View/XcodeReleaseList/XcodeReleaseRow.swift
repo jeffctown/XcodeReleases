@@ -13,7 +13,6 @@ struct XcodeReleaseRow : View {
     
     let release: XcodeRelease
     
-    
     var imageDiameter: CGFloat {
         #if os(watchOS)
         return 30

@@ -8,10 +8,15 @@
 
 import Combine
 import SwiftUI
+import XcodeReleasesKit
 
 struct SettingsView : View {
     
     @EnvironmentObject private var appState: AppState
+    @State var links: [Link] = []
+    @State var isLoadingLinks: Bool = false
+    @State var hasLinksError: Bool = false
+    @State var linksLoadingError: XcodeReleasesApi.ApiError? = nil
     
     @State private var notificationState: NotificationState = .notDetermined
     @State private var isSaving: Bool = false
@@ -32,11 +37,13 @@ struct SettingsView : View {
         Group {
             List {
                 NotificationSection(notificationState: notificationState, isSaving: $isSaving)
-                AboutSection(version: InfoPList.version, build: InfoPList.build)
+                AboutSection(version: InfoPList.version, build: InfoPList.build, links: self.links)
             }.onReceive(appState.notificationState) { setting in
                 self.notificationState = setting
             }.onReceive(appState.userNotifications.$isSavingNotificationState) { isSaving in
                 self.isSaving = isSaving
+            }.onReceive(appState.linksService.$links) { links in
+                self.links = links
             }.onAppear() {
                 self.appState.userNotifications.checkAuthorizationStatus()
             }.navigationBarTitle("Settings")
