@@ -65,7 +65,7 @@ class UserNotifications: NSObject, ObservableObject {
     }
     
     func registerForUserNotifications() {
-        print("*** Provisionally *** Registering For Push Notifications.")
+        print("*** Registering For Push Notifications.")
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
             print("UNUserNotificationCenter Authorized: \(granted)")
             if let error = error {
@@ -112,10 +112,11 @@ class UserNotifications: NSObject, ObservableObject {
         return api.postDevice(device: device).sink(receiveCompletion: { completion in
             switch completion {
             case .finished:
-                completionHandler()
+                print("Finished Posting Device.")
             case .failure(let error):
                 print("Error Posting Device: \(error)")
             }
+            completionHandler()
         }) { (device) in
             print("Posted Device To Server. \(device.debugDescription)")
             switch device.pushType {
@@ -134,19 +135,16 @@ class UserNotifications: NSObject, ObservableObject {
         guard let token = self.pushToken else {
             return print("No Token To Save Device. Skipping.")
         }
-
-        guard self.serverUserPushIdentifier == NSNotFound else {
-            return print("Device already saved.  Skipping.")
-        }
-
-        guard !self.isSavingNotificationState else {
-            return print("Saving notification settings already.  Skipping.")
+ 
+        guard self.serverUserPushIdentifier == nil || self.serverUserPushIdentifier != token else {
+            return print("Device push token has already been saved and it hasn't changed.  Before: \(serverUserPushIdentifier ?? "nil") Now: \(token) Skipping.")
         }
         
         let device = self.device(token: token, pushType: .alert)
         DispatchQueue.main.async { self.isSavingNotificationState = true }
         userNotificationRequestCancellable = saveDevice(device: device) {
             DispatchQueue.main.async { self.isSavingNotificationState = false }
+            
         }
     }
     
@@ -185,12 +183,7 @@ class UserNotifications: NSObject, ObservableObject {
             print("No Server Push Identifier Found, not deleting device.")
             return
         }
-        guard !self.isSavingNotificationState else {
-            print("Already Deleting Device.  Skipping.")
-            return
-        }
-        print("Not Deleting Now.  Continuing to Delete.")
-
+        
         deleteDevice(identifier: token, pushType: .alert)
     }
     
