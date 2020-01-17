@@ -26,9 +26,10 @@ class XcodeReleasesService: NSObject, ObservableObject {
     
     func refresh() {
         guard cancellable == nil else {
-            print("Already Laoding Releases.")
+            print("Already Loading Releases.")
             return
         }
+        print("Refreshing Releases...")
         DispatchQueue.main.async { self.isLoading = true }
         cancellable = loader.releases.sink(receiveCompletion: { completion in
             self.cancellable = nil
