@@ -28,6 +28,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneDidBecomeActive(_ scene: UIScene) {
         appState.userNotifications.checkAuthorizationStatus()
         appState.releasesService.refresh()
+        appState.linksService.refresh()
     }
 
     func deeplink(urlString: String) {

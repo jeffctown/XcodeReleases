@@ -56,6 +56,8 @@
 		1F45A6D323CB58AB003B0301 /* UserNotifications+watchOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F45A6D123CB56F7003B0301 /* UserNotifications+watchOS.swift */; };
 		1F4B954523D24D750054C36F /* UserNotifications+UNUserNotificationCenterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4B954423D24D750054C36F /* UserNotifications+UNUserNotificationCenterDelegate.swift */; };
 		1F4B954623D24DA00054C36F /* UserNotifications+UNUserNotificationCenterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4B954423D24D750054C36F /* UserNotifications+UNUserNotificationCenterDelegate.swift */; };
+		1F4BA19323D265050054C36F /* LinksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4BA19223D265050054C36F /* LinksService.swift */; };
+		1F4BA19423D265050054C36F /* LinksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4BA19223D265050054C36F /* LinksService.swift */; };
 		1F4E6E8723B371A3000666FC /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4E6E8623B371A3000666FC /* Environment.swift */; };
 		1F5827D722CCFCCE00FAA665 /* XcodeReleaseRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5827D622CCFCCE00FAA665 /* XcodeReleaseRow.swift */; };
 		1F63B85723CDDF29005CD757 /* PKPushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F63B85523CDDEB3005CD757 /* PKPushNotifications.swift */; };
@@ -174,6 +176,7 @@
 		1F45A6D523CB5F1B003B0301 /* Watch ExtensionRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Watch ExtensionRelease.entitlements"; sourceTree = "<group>"; };
 		1F45A6D623CB5FB1003B0301 /* WatchDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WatchDebug.entitlements; sourceTree = "<group>"; };
 		1F4B954423D24D750054C36F /* UserNotifications+UNUserNotificationCenterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserNotifications+UNUserNotificationCenterDelegate.swift"; sourceTree = "<group>"; };
+		1F4BA19223D265050054C36F /* LinksService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksService.swift; sourceTree = "<group>"; };
 		1F4E6E8623B371A3000666FC /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		1F5827D622CCFCCE00FAA665 /* XcodeReleaseRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeReleaseRow.swift; sourceTree = "<group>"; };
 		1F63B85523CDDEB3005CD757 /* PKPushNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PKPushNotifications.swift; sourceTree = "<group>"; };
@@ -241,8 +244,8 @@
 		1F174B2422CD6CFD004E2089 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				1F174B2522CD6D19004E2089 /* XcodeRelease+Identifiable.swift */,
 				1F130C4E22D21EB200A525CE /* Device+Debugging.swift */,
+				1F174B2522CD6D19004E2089 /* XcodeRelease+Identifiable.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 			isa = PBXGroup;
 			children = (
 				1F4E6E8623B371A3000666FC /* Environment.swift */,
+				1F4BA19223D265050054C36F /* LinksService.swift */,
 				1F6A985C22D03BAF005785EA /* XcodeReleasesApi.swift */,
 				1FB14CCF22CCD80F000D7552 /* XcodeReleasesService.swift */,
 			);
@@ -616,6 +620,7 @@
 				1FD1AAA2238A15590096DA87 /* TabbedRootView.swift in Sources */,
 				1F45A6D023CB56EC003B0301 /* UserNotifications+iOS.swift in Sources */,
 				1F5827D722CCFCCE00FAA665 /* XcodeReleaseRow.swift in Sources */,
+				1F4BA19323D265050054C36F /* LinksService.swift in Sources */,
 				1F4B954523D24D750054C36F /* UserNotifications+UNUserNotificationCenterDelegate.swift in Sources */,
 				1F174B2122CD5F4B004E2089 /* LinksSection.swift in Sources */,
 				1F21433122CD875300464412 /* SettingsView.swift in Sources */,
@@ -679,6 +684,7 @@
 				1F45A6B623CA26FD003B0301 /* XcodeReleaseList.swift in Sources */,
 				1FBD27DA23CF1DD20090BABD /* NotificationsDeniedRow.swift in Sources */,
 				1F45A6BD23CA2758003B0301 /* Environment.swift in Sources */,
+				1F4BA19423D265050054C36F /* LinksService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -204,8 +204,8 @@
         "repositoryURL": "https://github.com/jeffctown/XcodeReleasesKit.git",
         "state": {
           "branch": null,
-          "revision": "8bc0aabec02ff949aae2018a1f53e969cbae8a39",
-          "version": "1.0.1"
+          "revision": "cdec058110b7eb95aa02bc023f3ec69202efc292",
+          "version": "1.0.3"
         }
       }
     ]

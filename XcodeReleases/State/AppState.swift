@@ -16,12 +16,17 @@ class AppState: ObservableObject {
     init(userNotifications: UserNotifications = UserNotifications(), releasesService: XcodeReleasesService? = nil) {
         self.userNotifications = userNotifications
         self.releasesService = releasesService ?? XcodeReleasesService(loader: userNotifications.api.xcodeReleasesLoader)
+        self.linksService = LinksService(api: userNotifications.api)
     }
     
     //MARK: - UI Data
     
     ///Xcode Releases
     var releasesService: XcodeReleasesService
+    
+    //MARK: - Links
+    
+    var linksService: LinksService
     
     //MARK: - Notifications
     

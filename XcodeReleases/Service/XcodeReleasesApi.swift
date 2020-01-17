@@ -12,23 +12,11 @@ import Foundation
 import XcodeReleasesKit
 
 struct XcodeReleasesApi: NeedsEnvironment {
-    
-//    func urlSessionDidFinishEvents(forBackgroundURLSession session: URLSession) {
-//
-//    }
-    
+        
     let log = false
     var session: URLSession?
     let operationQueue = OperationQueue()
     
-//    #if os(watchOS)
-//    init(session: URLSession? = nil) {
-//        super.init()
-//        let configuration = URLSessionConfiguration.background(withIdentifier: "com.jefflett.XcodeReleases")
-//        configuration.sessionSendsLaunchEvents = true
-//        self.session = session ?? URLSession(configuration: configuration, delegate: self, delegateQueue: operationQueue)
-//    }
-//    #else
     init(session: URLSession = URLSession(configuration: URLSessionConfiguration.default)) {
         self.session = session
     }
@@ -61,6 +49,8 @@ struct XcodeReleasesApi: NeedsEnvironment {
     
     var xcodeReleasesLoader: XcodeReleasesLoader = try! XcodeReleasesLoader(url: "\(XcodeReleasesApi.environment().apiUrl)/release")
     
+    // MARK: - Devices
+    
     func postDevice(device: Device) -> AnyPublisher<Device, XcodeReleasesApi.ApiError> {
         Just(device)
             .encode(encoder: JSONEncoder())
@@ -89,12 +79,25 @@ struct XcodeReleasesApi: NeedsEnvironment {
         }.eraseToAnyPublisher()
     }
     
+    
+    // MARK: - Links
+    
+    func getLinks() -> AnyPublisher<[Link], XcodeReleasesApi.ApiError> {
+        return self.session!.dataTaskPublisher(for: try! urlRequest(url: url(command: .getLinks)))
+            .mapError(XcodeReleasesApi.ApiError.request)
+            .map(\.data)
+            .decode(type: [Link].self, decoder: JSONDecoder())
+            .mapError { self.processErrors($0) }
+            .eraseToAnyPublisher()
+    }
+    
     // MARK: - Private
     
     private enum ApiCommand {
         case postDevice
         case getDevice(String)
         case deleteDevice(String)
+        case getLinks
     }
     
     private enum HttpMethod: String {
@@ -110,6 +113,8 @@ struct XcodeReleasesApi: NeedsEnvironment {
             return "\(Self.environment().apiUrl)/device/\(id)"
         case .postDevice:
             return "\(Self.environment().apiUrl)/device"
+        case .getLinks:
+            return "\(Self.environment().apiUrl)/link"
         }
     }
  
