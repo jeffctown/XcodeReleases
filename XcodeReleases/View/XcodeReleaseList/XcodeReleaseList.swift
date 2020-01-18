@@ -31,7 +31,7 @@ struct XcodeReleaseList : View {
     
     var loadingView: some View {
         Group {
-            Text("Loading Releases...").font(.caption)
+            Text("Loading Releases...").font(.subheadline)
         }
     }
     
@@ -60,9 +60,14 @@ struct XcodeReleaseList : View {
     var innerBody: some View {
         Group {
             if self.releases.count > 0 {
-                List(releases) { release in
-                    NavigationLink(destination: XcodeReleaseDetail(release: release)) {
-                        XcodeReleaseRow(release: release)
+                List {
+                    if self.isLoading {
+                        self.loadingView
+                    }
+                    ForEach(releases) { release in
+                        NavigationLink(destination: XcodeReleaseDetail(release: release)) {
+                            XcodeReleaseRow(release: release)
+                        }
                     }
                 }
             } else if self.isLoading {
@@ -70,7 +75,7 @@ struct XcodeReleaseList : View {
             } else {
                 self.emptyView
             }
-            #if !os(watchOS)  // This displays and looks bad on watchOS.
+            #if !os(watchOS) // This displays and looks bad on watchOS.
             self.detailView
             #endif
         }.onReceive(appState.releasesService.$isLoading) { isLoading in
