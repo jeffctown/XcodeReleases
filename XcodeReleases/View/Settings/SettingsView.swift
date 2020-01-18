@@ -46,8 +46,6 @@ struct SettingsView : View {
                 self.links = links
             }.onReceive(appState.linksService.$isLoading) { isLoading in
                 self.isLoadingLinks = isLoading
-            }.onAppear() {
-                self.appState.userNotifications.checkAuthorizationStatus()
             }.navigationBarTitle("Settings")
         }
     }

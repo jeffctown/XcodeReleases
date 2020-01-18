@@ -18,10 +18,12 @@ class XcodeReleasesService: NSObject, ObservableObject {
     @Published var loadingError: XcodeReleasesKit.XcodeReleasesLoader.Error? = nil
     
     let loader: XcodeReleasesLoader
+    var persistence: Persistence
     var cancellable: AnyCancellable? = nil
     
-    public init(loader: XcodeReleasesLoader) {
+    public init(loader: XcodeReleasesLoader, persistence: Persistence = Persistence()) {
         self.loader = loader
+        self.persistence = persistence
     }
     
     func refresh() {
@@ -49,7 +51,10 @@ class XcodeReleasesService: NSObject, ObservableObject {
             }
         }) { releases in
             print("Loaded \(releases.count) Releases.")
-            DispatchQueue.main.async { self.releases = releases }
+            DispatchQueue.main.async {
+                self.releases = releases
+                self.persistence.latestRelease = releases.first
+            }
         }
     }
     

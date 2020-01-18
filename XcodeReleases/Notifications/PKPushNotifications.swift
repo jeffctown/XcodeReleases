@@ -17,6 +17,8 @@ protocol PKPushNotificationsDelegate: class {
 
 class PKPushNotifications: NSObject, PKPushRegistryDelegate {
     
+    private var persistence = Persistence()
+    
     public weak var delegate: PKPushNotificationsDelegate?
     
     func applicationDidFinishLaunching(delegate: PKPushNotificationsDelegate) {
@@ -43,13 +45,9 @@ class PKPushNotifications: NSObject, PKPushRegistryDelegate {
         if case .complication = type {
             print("Complication Push Received: \(payload)")
             let extra = payload.dictionaryPayload["extra"] as? [AnyHashable: String]
-            let releaseJson = extra?["release"]
-            if let releaseData = releaseJson?.data(using: .utf8) {
-                do {
-                    let release = try JSONDecoder().decode(XcodeRelease.self, from: releaseData)
-                    print("Release: \(release)")
-                } catch {
-                    print("Error Decoding: \(error)")
+            if let releaseJson = extra?["release"] {
+                if let release = releaseJson.toRelease() {
+                    persistence.latestRelease = release
                 }
             }
             ComplicationController.reloadAll()

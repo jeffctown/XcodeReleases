@@ -11,6 +11,8 @@ import WatchKit
 
 class ComplicationController: NSObject, CLKComplicationDataSource {
     
+    let persistence = Persistence()
+    
     static func reloadAll() {
         let complicationServer = CLKComplicationServer.sharedInstance()
         for complication in complicationServer.activeComplications ?? [] {
@@ -35,24 +37,32 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     // MARK: - Placeholder Templates
     
     func getLocalizableSampleTemplate(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTemplate?) -> Void) {
-        // This method will be called once per supported complication, and the results will be cached
         handler(template(for: complication.family))
     }
     
-    var major: Int {
-        Int.random(in: 0 ..< 100)
-    }
-    
-    var minor: Int {
-        Int.random(in: 0 ..< 10)
-    }
-    
     var version: String {
-        "\(major).\(minor)"
+        guard let release = persistence.latestRelease,
+            let number = release.version.number else {
+            return "xx.x.x"
+        }
+        
+        return "\(number)"
     }
     
     var simpleTinyBodyProvider: CLKSimpleTextProvider {
-        CLKSimpleTextProvider(text: "GM Seed 1", shortText: "GM 1")
+        guard let release = persistence.latestRelease else {
+            return CLKSimpleTextProvider(text: "xx")
+        }
+        
+        let releaseType = release.version.release
+        switch releaseType {
+        case .beta(let betaVersion):
+            return CLKSimpleTextProvider(text: "Beta \(betaVersion)", shortText: "β\(betaVersion)")
+        case .gmSeed(let seedVersion):
+            return CLKSimpleTextProvider(text: "GM Seed \(seedVersion)", shortText: " GM \(seedVersion)")
+        case .gm:
+            return CLKSimpleTextProvider(text: "GM")
+        }
     }
     
     var simpleAppNameProvider: CLKSimpleTextProvider {
@@ -60,11 +70,11 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     }
     
     var simpleSingleTextProvider: CLKSimpleTextProvider {
-        CLKSimpleTextProvider(text: "Xcode: \(version) GM Seed 1", shortText: "\(version) GM1")
+        CLKSimpleTextProvider(text: "Xcode: \(version) \(simpleTinyBodyProvider.text)", shortText: "\(version) \(simpleTinyBodyProvider.shortText ?? "xx")")
     }
     
     var simpleVersionTextProvider: CLKSimpleTextProvider {
-        CLKSimpleTextProvider(text: "\(version) GM Seed 1", shortText: "\(version) GM1")
+        CLKSimpleTextProvider(text: "\(version) \(simpleTinyBodyProvider.text)", shortText: "\(version) \(simpleTinyBodyProvider.shortText ?? "xx")")
     }
     
     var simpleReleaseDateProvider: CLKSimpleTextProvider {
