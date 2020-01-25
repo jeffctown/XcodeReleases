@@ -31,14 +31,14 @@ struct XcodeReleaseList : View {
     
     var loadingView: some View {
         Group {
-            Text("Loading Releases...").font(.subheadline)
+            Text("Loading...").font(.subheadline)
         }
     }
     
     var emptyView: some View {
         Group {
             VStack {
-                Text("No Releases Loaded.").font(.callout).padding()
+                Text("No Releases Found.").font(.callout).padding()
                 Button(action: {
                     self.appState.releasesService.refresh()
                 }) {
