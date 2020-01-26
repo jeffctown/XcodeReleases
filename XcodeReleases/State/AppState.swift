@@ -11,7 +11,7 @@ import Foundation
 import SwiftUI
 import XcodeReleasesKit
 
-class AppState: ObservableObject {
+class AppState: NSObject, ObservableObject {
     
     init(userNotifications: UserNotifications = UserNotifications(), releasesService: XcodeReleasesService? = nil) {
         self.userNotifications = userNotifications
