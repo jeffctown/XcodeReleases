@@ -84,7 +84,11 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         dateFormatter.setLocalizedDateFormatFromTemplate("M/d/yy")
         
         let defaultProvider: () -> CLKSimpleTextProvider = {
+            #if DEBUG
             dateFormatter.setLocalizedDateFormatFromTemplate("M/d/yy, h:mm a")
+            #else
+            dateFormatter.setLocalizedDateFormatFromTemplate("M/d/yy")
+            #endif
             let dateString = dateFormatter.string(from: Date())
             return CLKSimpleTextProvider(text: "Released: \(dateString)", shortText: "\(dateString)")
         }
