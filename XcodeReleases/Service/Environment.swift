@@ -18,7 +18,7 @@ protocol NeedsEnvironment {
 
 extension NeedsEnvironment {
     static func environment() -> XcodeReleasesEnvironment {
-        #if DEBUG
+        #if DEBUG && targetEnvironment(simulator)
         return XcodeReleasesEnvironment(apiUrl: "http://localhost:8080")
         #else
         return XcodeReleasesEnvironment(apiUrl: "https://xcodereleases.jefflett.com")
