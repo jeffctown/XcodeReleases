@@ -33,13 +33,13 @@ struct XcodeReleasesApi: NeedsEnvironment {
             case .invalidURL(let u):
                 return "URL Creation Error: \(u)"
             case .request(let e):
-                return "Request Error: \(e)"
+                return "Network Error: \(e.localizedDescription)"
             case .serverError(let statusCode):
                 return "Server Error: \(statusCode)"
             case .encode(let e):
-                return "Encoding Error: \(e)"
+                return "Encoding Error: \(e.localizedDescription)"
             case .decode(let e):
-                return "Decoding Error: \(e)"
+                return "Decoding Error: \(e.localizedDescription)"
             case .unknown:
                 return "Unknown Error"
             }
