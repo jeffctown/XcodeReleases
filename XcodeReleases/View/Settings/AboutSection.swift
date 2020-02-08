@@ -22,9 +22,6 @@ struct AboutSection : View {
                 WebViewButton(text: $0.name ?? "Link", url: $0.url)
             }
             #else
-            ForEach(links, id: \.url) { link in
-                Text(link.name ?? "Link").font(.footnote).padding()
-            }
             #endif
         }
     }

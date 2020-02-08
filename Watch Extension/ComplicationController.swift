@@ -68,7 +68,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     }
     
     var simpleAppNameProvider: CLKSimpleTextProvider {
-        CLKSimpleTextProvider(text: "Xcode Releases", shortText: "Xcode")
+        CLKSimpleTextProvider(text: "Xcodes")
     }
     
     var simpleSingleTextProvider: CLKSimpleTextProvider {

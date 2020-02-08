@@ -29,8 +29,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1F30765E22CCC7B4006A49C3"
-               BuildableName = "Xcode Releases.app"
-               BlueprintName = "Xcode Releases"
+               BuildableName = "Xcodes.app"
+               BlueprintName = "Xcodes"
                ReferencedContainer = "container:XcodeReleases.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
