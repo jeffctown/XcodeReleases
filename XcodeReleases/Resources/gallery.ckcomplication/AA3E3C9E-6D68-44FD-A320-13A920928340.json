@@ -1,0 +1,27 @@
+{
+  "headerImageProvider" : {
+    "onePieceImage" : {
+      "file name" : "C3C142B4-BF1E-48E7-A999-ACE22C273608.png",
+      "scale" : 2
+    }
+  },
+  "sensitivity" : 0,
+  "headerTextProvider" : {
+    "shortText" : "Xcode",
+    "class" : "CLKSimpleTextProvider",
+    "text" : "Xcode Releases"
+  },
+  "body1TextProvider" : {
+    "shortText" : "11.4 β1",
+    "class" : "CLKSimpleTextProvider",
+    "text" : "11.4 Beta 1"
+  },
+  "class" : "CLKComplicationTemplateModularLargeStandardBody",
+  "body2TextProvider" : {
+    "shortText" : "2\/5\/20",
+    "class" : "CLKSimpleTextProvider",
+    "text" : "Released: 2\/5\/20"
+  },
+  "version" : 30000,
+  "linkedOnOrAfterGrace" : false
+}

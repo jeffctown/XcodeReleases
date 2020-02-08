@@ -7,10 +7,10 @@
 //
 
 import SwiftUI
-import XcodeReleasesKit
+import XCModel
 
 struct SDKSection : View {
-    let release: XcodeRelease
+    let release: Xcode
     
     var body: some View {
         Group {

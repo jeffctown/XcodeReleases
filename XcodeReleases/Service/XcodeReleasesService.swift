@@ -9,20 +9,20 @@
 import Combine
 import Foundation
 import SwiftUI
-import XcodeReleasesKit
+import XCModel
 
 class XcodeReleasesService: NSObject, ObservableObject {
     
-    @Published var releases: [XcodeRelease] = []
+    @Published var releases: [Xcode] = []
     @Published var isLoading: Bool = false
-    @Published var loadingError: XcodeReleasesKit.XcodeReleasesLoader.Error? = nil
+    @Published var loadingError: XcodeReleasesApi.ApiError? = nil
     
-    let loader: XcodeReleasesLoader
+    let api: XcodeReleasesApi
     var persistence: Persistence
     var cancellable: AnyCancellable? = nil
     
-    public init(loader: XcodeReleasesLoader, persistence: Persistence = Persistence()) {
-        self.loader = loader
+    public init(api: XcodeReleasesApi, persistence: Persistence = Persistence()) {
+        self.api = api
         self.persistence = persistence
     }
     
@@ -33,7 +33,7 @@ class XcodeReleasesService: NSObject, ObservableObject {
         }
         print("Refreshing Releases...")
         DispatchQueue.main.async { self.isLoading = true }
-        cancellable = loader.releases.sink(receiveCompletion: { completion in
+        cancellable = api.getXcodes().sink(receiveCompletion: { completion in
             self.cancellable = nil
             switch completion {
             case .failure(let error):

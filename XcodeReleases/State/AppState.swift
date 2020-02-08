@@ -9,13 +9,12 @@
 import Combine
 import Foundation
 import SwiftUI
-import XcodeReleasesKit
 
 class AppState: NSObject, ObservableObject {
     
     init(userNotifications: UserNotifications = UserNotifications(), releasesService: XcodeReleasesService? = nil) {
         self.userNotifications = userNotifications
-        self.releasesService = releasesService ?? XcodeReleasesService(loader: userNotifications.api.xcodeReleasesLoader)
+        self.releasesService = releasesService ?? XcodeReleasesService(api: userNotifications.api)
         self.linksService = LinksService(api: userNotifications.api)
     }
     

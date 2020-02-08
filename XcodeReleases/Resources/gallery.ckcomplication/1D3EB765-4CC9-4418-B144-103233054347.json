@@ -1,0 +1,20 @@
+{
+  "class" : "CLKComplicationTemplateGraphicCornerTextImage",
+  "linkedOnOrAfterGrace" : false,
+  "sensitivity" : 0,
+  "textProvider" : {
+    "shortText" : "11.4 β1",
+    "class" : "CLKSimpleTextProvider",
+    "text" : "Xcode: 11.4 Beta 1"
+  },
+  "imageProvider" : {
+    "applyScalingAndCircularMask" : true,
+    "prefersFilterOverTransition" : false,
+    "fullColorImage" : {
+      "file name" : "4314018C-643E-4F86-9635-6820B03F1BB5.png",
+      "scale" : 2
+    },
+    "monochromeFilterType" : 0
+  },
+  "version" : 30000
+}

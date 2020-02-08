@@ -13,7 +13,9 @@
 		1F174B1D22CD5BD6004E2089 /* MockReleases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F174B1C22CD5BD6004E2089 /* MockReleases.swift */; };
 		1F174B1F22CD5E52004E2089 /* SDKSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F174B1E22CD5E52004E2089 /* SDKSection.swift */; };
 		1F174B2122CD5F4B004E2089 /* LinksSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F174B2022CD5F4B004E2089 /* LinksSection.swift */; };
-		1F174B2622CD6D19004E2089 /* XcodeRelease+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F174B2522CD6D19004E2089 /* XcodeRelease+Identifiable.swift */; };
+		1F1FBEE923EF020F0081F967 /* XCModel in Frameworks */ = {isa = PBXBuildFile; productRef = 1F1FBEE823EF020F0081F967 /* XCModel */; };
+		1F1FBEEB23EF02160081F967 /* XCModel in Frameworks */ = {isa = PBXBuildFile; productRef = 1F1FBEEA23EF02160081F967 /* XCModel */; };
+		1F1FBEF323EF05700081F967 /* gallery.ckcomplication in Resources */ = {isa = PBXBuildFile; fileRef = 1F1FBEF223EF05700081F967 /* gallery.ckcomplication */; };
 		1F21433122CD875300464412 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F21433022CD875300464412 /* SettingsView.swift */; };
 		1F223E9623B506BE00480A0D /* NotificationsDeniedRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F223E9523B506BE00480A0D /* NotificationsDeniedRow.swift */; };
 		1F30766322CCC7B4006A49C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F30766222CCC7B4006A49C3 /* AppDelegate.swift */; };
@@ -35,7 +37,6 @@
 		1F45A6A223CA26DD003B0301 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F45A6A123CA26DD003B0301 /* ExtensionDelegate.swift */; };
 		1F45A6A723CA26DE003B0301 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F45A6A623CA26DE003B0301 /* Preview Assets.xcassets */; };
 		1F45A6AB23CA26DE003B0301 /* Watch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 1F45A68C23CA26DB003B0301 /* Watch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		1F45A6B523CA26E6003B0301 /* XcodeReleasesKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1F45A6B423CA26E6003B0301 /* XcodeReleasesKit */; };
 		1F45A6B623CA26FD003B0301 /* XcodeReleaseList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F30766922CCC7B4006A49C3 /* XcodeReleaseList.swift */; };
 		1F45A6B723CA2700003B0301 /* XcodeReleaseRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5827D622CCFCCE00FAA665 /* XcodeReleaseRow.swift */; };
 		1F45A6B823CA2705003B0301 /* XcodeReleaseDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB14CD422CCE680000D7552 /* XcodeReleaseDetail.swift */; };
@@ -44,7 +45,6 @@
 		1F45A6BB23CA2743003B0301 /* XcodeReleasesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB14CCF22CCD80F000D7552 /* XcodeReleasesService.swift */; };
 		1F45A6BC23CA2749003B0301 /* XcodeReleasesApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6A985C22D03BAF005785EA /* XcodeReleasesApi.swift */; };
 		1F45A6BD23CA2758003B0301 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4E6E8623B371A3000666FC /* Environment.swift */; };
-		1F45A6BF23CA27AC003B0301 /* XcodeRelease+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F174B2522CD6D19004E2089 /* XcodeRelease+Identifiable.swift */; };
 		1F45A6C223CA27EF003B0301 /* ReleaseInfoSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F174B1822CD5ACB004E2089 /* ReleaseInfoSection.swift */; };
 		1F45A6C423CA27F4003B0301 /* SDKSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F174B1E22CD5E52004E2089 /* SDKSection.swift */; };
 		1F45A6C523CA2866003B0301 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE2ACBD22CD82C300A8B239 /* UserDefault.swift */; };
@@ -85,7 +85,6 @@
 		1FCE4BF123B50B0400FB6586 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCE4BF023B50B0400FB6586 /* ActivityIndicator.swift */; };
 		1FD1AAA2238A15590096DA87 /* TabbedRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD1AAA1238A15590096DA87 /* TabbedRootView.swift */; };
 		1FD1AAA4238A93FB0096DA87 /* WebViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD1AAA3238A93FB0096DA87 /* WebViewButton.swift */; };
-		1FD1AAAA238AB4310096DA87 /* XcodeReleasesKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1FD1AAA9238AB4310096DA87 /* XcodeReleasesKit */; };
 		1FE2ACBE22CD82C300A8B239 /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE2ACBD22CD82C300A8B239 /* UserDefault.swift */; };
 		1FE2ACC322CD847100A8B239 /* UserNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE2ACC222CD847100A8B239 /* UserNotifications.swift */; };
 		1FEFFCD922CCEF800060DA61 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEFFCD822CCEF7F0060DA61 /* AppState.swift */; };
@@ -143,7 +142,7 @@
 		1F174B1C22CD5BD6004E2089 /* MockReleases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockReleases.swift; sourceTree = "<group>"; };
 		1F174B1E22CD5E52004E2089 /* SDKSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDKSection.swift; sourceTree = "<group>"; };
 		1F174B2022CD5F4B004E2089 /* LinksSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksSection.swift; sourceTree = "<group>"; };
-		1F174B2522CD6D19004E2089 /* XcodeRelease+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XcodeRelease+Identifiable.swift"; sourceTree = "<group>"; };
+		1F1FBEF223EF05700081F967 /* gallery.ckcomplication */ = {isa = PBXFileReference; lastKnownFileType = folder; path = gallery.ckcomplication; sourceTree = "<group>"; };
 		1F21432F22CD861E00464412 /* XcodeReleasesDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = XcodeReleasesDebug.entitlements; sourceTree = "<group>"; };
 		1F21433022CD875300464412 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		1F223E9523B506BE00480A0D /* NotificationsDeniedRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsDeniedRow.swift; sourceTree = "<group>"; };
@@ -206,8 +205,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1FD1AAAA238AB4310096DA87 /* XcodeReleasesKit in Frameworks */,
 				1F97B9BB23CDF9670047AD6A /* APNS in Frameworks */,
+				1F1FBEE923EF020F0081F967 /* XCModel in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,7 +215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F97B9BD23CDF9930047AD6A /* APNS in Frameworks */,
-				1F45A6B523CA26E6003B0301 /* XcodeReleasesKit in Frameworks */,
+				1F1FBEEB23EF02160081F967 /* XCModel in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,7 +247,6 @@
 			isa = PBXGroup;
 			children = (
 				1F130C4E22D21EB200A525CE /* Device+Debugging.swift */,
-				1F174B2522CD6D19004E2089 /* XcodeRelease+Identifiable.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -361,6 +359,7 @@
 			isa = PBXGroup;
 			children = (
 				1F30766B22CCC7B6006A49C3 /* Assets.xcassets */,
+				1F1FBEF223EF05700081F967 /* gallery.ckcomplication */,
 				1F30767322CCC7B6006A49C3 /* Info.plist */,
 				1F3498A022D0FA400000E4E8 /* InfoPList.swift */,
 				1F30767022CCC7B6006A49C3 /* LaunchScreen.storyboard */,
@@ -487,8 +486,8 @@
 			);
 			name = "Xcode Releases";
 			packageProductDependencies = (
-				1FD1AAA9238AB4310096DA87 /* XcodeReleasesKit */,
 				1F97B9BA23CDF9670047AD6A /* APNS */,
+				1F1FBEE823EF020F0081F967 /* XCModel */,
 			);
 			productName = XcodeReleases;
 			productReference = 1F30765F22CCC7B4006A49C3 /* Xcode Releases.app */;
@@ -525,8 +524,8 @@
 			);
 			name = "Watch Extension";
 			packageProductDependencies = (
-				1F45A6B423CA26E6003B0301 /* XcodeReleasesKit */,
 				1F97B9BC23CDF9930047AD6A /* APNS */,
+				1F1FBEEA23EF02160081F967 /* XCModel */,
 			);
 			productName = "Watch Extension";
 			productReference = 1F45A69823CA26DD003B0301 /* Watch Extension.appex */;
@@ -563,8 +562,8 @@
 			);
 			mainGroup = 1F30765622CCC7B4006A49C3;
 			packageReferences = (
-				1FD1AAA8238AB4310096DA87 /* XCRemoteSwiftPackageReference "XcodeReleasesKit" */,
 				1F97B9B523CDF9670047AD6A /* XCRemoteSwiftPackageReference "APNS" */,
+				1F1FBEE723EF020F0081F967 /* XCRemoteSwiftPackageReference "XcodeReleasesData" */,
 			);
 			productRefGroup = 1F30766022CCC7B4006A49C3 /* Products */;
 			projectDirPath = "";
@@ -586,6 +585,7 @@
 				1F174B1B22CD5BC2004E2089 /* MockReleases.json in Resources */,
 				1F30766F22CCC7B6006A49C3 /* Preview Assets.xcassets in Resources */,
 				1F30766C22CCC7B6006A49C3 /* Assets.xcassets in Resources */,
+				1F1FBEF323EF05700081F967 /* gallery.ckcomplication in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -639,7 +639,6 @@
 				1F9DF85A23B3EB3400C28F30 /* NotificationsFailedRow.swift in Sources */,
 				1FEFFCD922CCEF800060DA61 /* AppState.swift in Sources */,
 				1F3498A122D0FA400000E4E8 /* InfoPList.swift in Sources */,
-				1F174B2622CD6D19004E2089 /* XcodeRelease+Identifiable.swift in Sources */,
 				1F3A225822D206D0006B778D /* NotificationTokenRow.swift in Sources */,
 				1F4BA19923D2A04B0054C36F /* Persistence.swift in Sources */,
 				1F30766322CCC7B4006A49C3 /* AppDelegate.swift in Sources */,
@@ -684,7 +683,6 @@
 				1F45A6C923CA2DF3003B0301 /* UserNotifications.swift in Sources */,
 				1F4B954623D24DA00054C36F /* UserNotifications+UNUserNotificationCenterDelegate.swift in Sources */,
 				1FBD27DB23CF1DD50090BABD /* NotificationTokenRow.swift in Sources */,
-				1F45A6BF23CA27AC003B0301 /* XcodeRelease+Identifiable.swift in Sources */,
 				1F45A6C423CA27F4003B0301 /* SDKSection.swift in Sources */,
 				1FBD27D523CF1B9D0090BABD /* SettingsHostingController.swift in Sources */,
 				1F45A6B623CA26FD003B0301 /* XcodeReleaseList.swift in Sources */,
@@ -1030,6 +1028,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		1F1FBEE723EF020F0081F967 /* XCRemoteSwiftPackageReference "XcodeReleasesData" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jeffctown/XcodeReleasesData.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		1F97B9B523CDF9670047AD6A /* XCRemoteSwiftPackageReference "APNS" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jeffctown/APNS.git";
@@ -1038,21 +1044,18 @@
 				minimumVersion = 1.2.0;
 			};
 		};
-		1FD1AAA8238AB4310096DA87 /* XCRemoteSwiftPackageReference "XcodeReleasesKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/jeffctown/XcodeReleasesKit.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		1F45A6B423CA26E6003B0301 /* XcodeReleasesKit */ = {
+		1F1FBEE823EF020F0081F967 /* XCModel */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1FD1AAA8238AB4310096DA87 /* XCRemoteSwiftPackageReference "XcodeReleasesKit" */;
-			productName = XcodeReleasesKit;
+			package = 1F1FBEE723EF020F0081F967 /* XCRemoteSwiftPackageReference "XcodeReleasesData" */;
+			productName = XCModel;
+		};
+		1F1FBEEA23EF02160081F967 /* XCModel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1F1FBEE723EF020F0081F967 /* XCRemoteSwiftPackageReference "XcodeReleasesData" */;
+			productName = XCModel;
 		};
 		1F97B9BA23CDF9670047AD6A /* APNS */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -1063,11 +1066,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1F97B9B523CDF9670047AD6A /* XCRemoteSwiftPackageReference "APNS" */;
 			productName = APNS;
-		};
-		1FD1AAA9238AB4310096DA87 /* XcodeReleasesKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1FD1AAA8238AB4310096DA87 /* XCRemoteSwiftPackageReference "XcodeReleasesKit" */;
-			productName = XcodeReleasesKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -10,7 +10,6 @@ import APNS
 import Combine
 import SwiftUI
 import UserNotifications
-import XcodeReleasesKit
 
 class UserNotifications: NSObject, ObservableObject {
     

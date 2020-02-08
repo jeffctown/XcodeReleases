@@ -8,7 +8,6 @@
 
 import APNS
 import PushKit
-import XcodeReleasesKit
 
 protocol PKPushNotificationsDelegate: class {
     func didUpdateWithComplicationToken(token: String)

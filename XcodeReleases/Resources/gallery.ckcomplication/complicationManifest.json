@@ -1,0 +1,16 @@
+{
+  "supported complication families" : {
+    "7" : "65A020C3-563A-4C45-858B-E923B4D40B75.json",
+    "3" : "93E0A53D-4094-433D-8B58-1D300F5BFB5C.json",
+    "8" : "1D3EB765-4CC9-4418-B144-103233054347.json",
+    "11" : "03332170-A56D-412A-8576-B17BBCD20BE6.json",
+    "0" : "35EC494A-528B-4A1A-8A2B-60B568E4660B.json",
+    "4" : "813F6A9C-198F-4F97-AAA0-59A11E7C297B.json",
+    "9" : "2757E1B8-205D-4CBD-90BD-E91C46CCD753.json",
+    "1" : "AA3E3C9E-6D68-44FD-A320-13A920928340.json",
+    "6" : "1F55D437-A919-4072-BD08-F0EB96B13956.json",
+    "10" : "CFE7E962-3FC0-4B6C-BCFC-6FE5CFFF5F2A.json",
+    "2" : "9D1FC892-345D-4A5C-B491-4FF9C8A3F545.json"
+  },
+  "client ID" : "com.jefflett.XcodeReleases.watchkitapp.watchkitextension"
+}

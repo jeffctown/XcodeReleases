@@ -8,14 +8,14 @@
 
 import Combine
 import SwiftUI
-import XcodeReleasesKit
+import XCModel
 
 struct XcodeReleaseList : View {
     @EnvironmentObject private var appState: AppState
-    @State var releases: [XcodeRelease] = []
+    @State var releases: [Xcode] = []
     @State var isLoading: Bool = false
     @State var hasError: Bool = false
-    @State var loadingError: XcodeReleasesKit.XcodeReleasesLoader.Error? = nil
+    @State var loadingError: XcodeReleasesApi.ApiError? = nil
     
     #if !os(watchOS)
     var body: some View {

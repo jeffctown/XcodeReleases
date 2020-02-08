@@ -1,0 +1,12 @@
+{
+  "class" : "CLKComplicationTemplateUtilitarianSmallSquare",
+  "sensitivity" : 0,
+  "imageProvider" : {
+    "onePieceImage" : {
+      "file name" : "641D1B85-D78D-4B87-9281-D84D2F6D8EDE.png",
+      "scale" : 2
+    }
+  },
+  "version" : 30000,
+  "linkedOnOrAfterGrace" : false
+}

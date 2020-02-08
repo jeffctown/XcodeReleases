@@ -7,11 +7,11 @@
 //
 
 import SwiftUI
-import XcodeReleasesKit
+import XCModel
 
 struct XcodeReleaseRow : View {
     
-    let release: XcodeRelease
+    let release: Xcode
     
     var imageDiameter: CGFloat {
         #if os(watchOS)

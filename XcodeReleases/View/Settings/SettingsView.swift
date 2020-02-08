@@ -8,7 +8,7 @@
 
 import Combine
 import SwiftUI
-import XcodeReleasesKit
+import XCModel
 
 struct SettingsView : View {
     

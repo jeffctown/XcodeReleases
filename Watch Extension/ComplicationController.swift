@@ -56,6 +56,8 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         
         let releaseType = release.version.release
         switch releaseType {
+        case .dp(let dpVersion):
+            return CLKSimpleTextProvider(text: "Dev Pre \(dpVersion)", shortText: "DP \(dpVersion)")
         case .beta(let betaVersion):
             return CLKSimpleTextProvider(text: "Beta \(betaVersion)", shortText: "β\(betaVersion)")
         case .gmSeed(let seedVersion):
@@ -79,9 +81,25 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     
     var simpleReleaseDateProvider: CLKSimpleTextProvider {
         let dateFormatter = DateFormatter()
-        dateFormatter.setLocalizedDateFormatFromTemplate("M/d/yy, h:mm a")
-        let dateString = dateFormatter.string(from: Date())
+        dateFormatter.setLocalizedDateFormatFromTemplate("M/d/yy")
+        
+        let defaultProvider: () -> CLKSimpleTextProvider = {
+            dateFormatter.setLocalizedDateFormatFromTemplate("M/d/yy, h:mm a")
+            let dateString = dateFormatter.string(from: Date())
+            return CLKSimpleTextProvider(text: "Released: \(dateString)", shortText: "\(dateString)")
+        }
+        
+        #if DEBUG
+        // show the current time so its easier to know when this was updated
+        return defaultProvider()
+        #else
+        guard let release = persistence.latestRelease,
+            let date = release.date.components.date else {
+            return defaultProvider()
+        }
+        let dateString = dateFormatter.string(from: date)
         return CLKSimpleTextProvider(text: "Released: \(dateString)", shortText: "\(dateString)")
+        #endif
     }
     
     var logoImageProvider: CLKFullColorImageProvider {

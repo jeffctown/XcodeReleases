@@ -200,12 +200,12 @@
         }
       },
       {
-        "package": "XcodeReleasesKit",
-        "repositoryURL": "https://github.com/jeffctown/XcodeReleasesKit.git",
+        "package": "XcodeReleases",
+        "repositoryURL": "https://github.com/jeffctown/XcodeReleasesData.git",
         "state": {
           "branch": null,
-          "revision": "cdec058110b7eb95aa02bc023f3ec69202efc292",
-          "version": "1.0.3"
+          "revision": "e30f4fbf84122c6ca4d875c0e0725cdc4ea6bc5d",
+          "version": "1.0.0"
         }
       }
     ]

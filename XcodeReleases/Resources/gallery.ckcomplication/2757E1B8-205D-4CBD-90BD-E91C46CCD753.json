@@ -1,0 +1,27 @@
+{
+  "sensitivity" : 0,
+  "BezelCircularClassName" : "CLKComplicationTemplateGraphicCircularImage",
+  "textProvider" : {
+    "shortText" : "11.4 β1",
+    "class" : "CLKSimpleTextProvider",
+    "text" : "Xcode: 11.4 Beta 1"
+  },
+  "class" : "CLKComplicationTemplateGraphicBezelCircularText",
+  "version" : 30000,
+  "circularTemplate" : {
+    "class" : "CLKComplicationTemplateGraphicCircularImage",
+    "linkedOnOrAfterGrace" : false,
+    "sensitivity" : 0,
+    "imageProvider" : {
+      "applyScalingAndCircularMask" : true,
+      "prefersFilterOverTransition" : false,
+      "fullColorImage" : {
+        "file name" : "227CDDF6-B68B-4A03-ABF5-9F983BADF13F.png",
+        "scale" : 2
+      },
+      "monochromeFilterType" : 0
+    },
+    "version" : 30000
+  },
+  "linkedOnOrAfterGrace" : false
+}

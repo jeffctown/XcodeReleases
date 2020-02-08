@@ -8,7 +8,6 @@
 
 import APNS
 import UIKit
-import XcodeReleasesKit
 
 extension Device: CustomDebugStringConvertible {
     public var debugDescription: String {

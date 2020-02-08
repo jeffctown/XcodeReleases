@@ -9,7 +9,7 @@
 import Combine
 import Foundation
 import SwiftUI
-import XcodeReleasesKit
+import XCModel
 
 class LinksService: NSObject, ObservableObject {
     

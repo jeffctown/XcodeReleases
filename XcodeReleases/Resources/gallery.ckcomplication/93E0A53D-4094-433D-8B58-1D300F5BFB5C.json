@@ -1,0 +1,17 @@
+{
+  "class" : "CLKComplicationTemplateUtilitarianLargeFlat",
+  "sensitivity" : 0,
+  "imageProvider" : {
+    "onePieceImage" : {
+      "file name" : "11A110A4-6759-4FAC-9928-A594B42A543D.png",
+      "scale" : 2
+    }
+  },
+  "textProvider" : {
+    "shortText" : "11.4 β1",
+    "class" : "CLKSimpleTextProvider",
+    "text" : "Xcode: 11.4 Beta 1"
+  },
+  "version" : 30000,
+  "linkedOnOrAfterGrace" : false
+}

@@ -7,16 +7,16 @@
 //
 
 import SwiftUI
-import XcodeReleasesKit
+import XCModel
 
 struct LinksSection : View {
-    let release: XcodeRelease
+    let release: Xcode
     
     var body: some View {
         Group {
             if release.links?.notes?.url != nil {
                 Section(header: Text("Links")) {
-                    WebViewButton(text: "Release Notes", url: URL(string: release.links!.notes!.url)!)
+                    WebViewButton(text: "Release Notes", url: release.links!.notes!.url)
                 }
             } else {
                 EmptyView()

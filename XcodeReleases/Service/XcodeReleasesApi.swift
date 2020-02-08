@@ -9,13 +9,12 @@
 import APNS
 import Combine
 import Foundation
-import XcodeReleasesKit
+import XCModel
 
 struct XcodeReleasesApi: NeedsEnvironment {
         
     let log = false
     var session: URLSession?
-    let operationQueue = OperationQueue()
     
     init(session: URLSession = URLSession(configuration: URLSessionConfiguration.default)) {
         self.session = session
@@ -46,8 +45,6 @@ struct XcodeReleasesApi: NeedsEnvironment {
             }
         }
     }
-    
-    var xcodeReleasesLoader: XcodeReleasesLoader = try! XcodeReleasesLoader(url: "\(XcodeReleasesApi.environment().apiUrl)/release")
     
     // MARK: - Devices
     
@@ -91,6 +88,17 @@ struct XcodeReleasesApi: NeedsEnvironment {
             .eraseToAnyPublisher()
     }
     
+    // MARK: - Xcodes
+    
+    func getXcodes() -> AnyPublisher<[Xcode], XcodeReleasesApi.ApiError> {
+        return self.session!.dataTaskPublisher(for: try! urlRequest(url: url(command: .getXcodes)))
+            .mapError(XcodeReleasesApi.ApiError.request)
+            .map(\.data)
+            .decode(type: [Xcode].self, decoder: JSONDecoder())
+            .mapError { self.processErrors($0) }
+            .eraseToAnyPublisher()
+    }
+    
     // MARK: - Private
     
     private enum ApiCommand {
@@ -98,6 +106,7 @@ struct XcodeReleasesApi: NeedsEnvironment {
         case getDevice(String)
         case deleteDevice(String)
         case getLinks
+        case getXcodes
     }
     
     private enum HttpMethod: String {
@@ -115,6 +124,8 @@ struct XcodeReleasesApi: NeedsEnvironment {
             return "\(Self.environment().apiUrl)/device"
         case .getLinks:
             return "\(Self.environment().apiUrl)/link"
+        case .getXcodes:
+            return "\(Self.environment().apiUrl)/release"
         }
     }
  

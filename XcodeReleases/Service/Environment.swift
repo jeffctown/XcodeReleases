@@ -18,8 +18,11 @@ protocol NeedsEnvironment {
 
 extension NeedsEnvironment {
     static func environment() -> XcodeReleasesEnvironment {
-        XcodeReleasesEnvironment(apiUrl: "https://xcodereleases.jefflett.com")
-//        XcodeReleasesEnvironment(apiUrl: "http://Jeffs-2018-MBP.local:8080")
+        #if DEBUG
+        return XcodeReleasesEnvironment(apiUrl: "http://localhost:8080")
+        #else
+        return XcodeReleasesEnvironment(apiUrl: "https://xcodereleases.jefflett.com")
+        #endif
     }
     
     func environment() -> XcodeReleasesEnvironment {

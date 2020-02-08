@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-import XcodeReleasesKit
+import XCModel
 
 struct AboutSection : View {
     let version: String
@@ -17,15 +17,15 @@ struct AboutSection : View {
     var body: some View {
         Section(header: Text("About"),
                 footer: Text("Version: v\(version) (\(build))").font(.caption)) {
-                    #if os(iOS)
-                    ForEach(links, id: \.url) {
-                        WebViewButton(text: $0.name, url: URL(string: $0.url)!)
-                    }
-                    #else
-                    ForEach(links, id: \.url) {
-                        Text($0.url).font(.footnote).padding()
-                    }
-                    #endif
+            #if os(iOS)
+            ForEach(self.links, id: \.url.absoluteString) {
+                WebViewButton(text: $0.name ?? "Link", url: $0.url)
+            }
+            #else
+            ForEach(links, id: \.url) { link in
+                Text(link.name ?? "Link").font(.footnote).padding()
+            }
+            #endif
         }
     }
 }

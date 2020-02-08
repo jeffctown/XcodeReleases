@@ -7,11 +7,11 @@
 //
 
 import SwiftUI
-import XcodeReleasesKit
+import XCModel
 
 struct XcodeReleaseDetail : View {
     
-    let release: XcodeRelease
+    let release: Xcode
     
     var body: some View {
         Form {

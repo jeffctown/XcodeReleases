@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import XcodeReleasesKit
+import XCModel
 
 struct Persistence {
     @UserDefault("serverUserPushIdentifier", defaultValue: nil)
@@ -16,7 +16,7 @@ struct Persistence {
     var serverPKPushIdentifier: String?
     @UserDefault("latestReleaseJson", defaultValue: nil)
     var latestReleaseJson: String?
-    var latestRelease: XcodeRelease? {
+    var latestRelease: Xcode? {
         get {   
             guard let latestReleaseJson = self.latestReleaseJson else {
                 print("No Latest Release Json Found.")
@@ -36,13 +36,13 @@ struct Persistence {
 }
 
 extension String {
-    func toRelease() -> XcodeRelease? {
+    func toRelease() -> Xcode? {
         do {
             guard let releaseData = self.data(using: .utf8) else {
                 print("Error Converting Release JSON To Data.")
                 return nil
             }
-            return try JSONDecoder().decode(XcodeRelease.self, from: releaseData)
+            return try JSONDecoder().decode(Xcode.self, from: releaseData)
         } catch {
             print("Error Decoding into Release.")
             return nil
@@ -50,7 +50,7 @@ extension String {
     }
 }
 
-extension XcodeRelease {
+extension Xcode {
     func toJsonString() -> String? {
         do {
             let data = try JSONEncoder().encode(self)

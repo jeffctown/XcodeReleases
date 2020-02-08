@@ -7,10 +7,10 @@
 //
 
 import Foundation
-import XcodeReleasesKit
+import XCModel
 
 #if DEBUG
-let mockReleases: [XcodeRelease] = load("MockReleases.json")
+let mockReleases: [Xcode] = load("MockReleases.json")
 
 func load<T: Decodable>(_ filename: String, as type: T.Type = T.self) -> T {
     let data: Data

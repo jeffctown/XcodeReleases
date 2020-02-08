@@ -1,0 +1,15 @@
+{
+  "class" : "CLKComplicationTemplateGraphicCircularImage",
+  "linkedOnOrAfterGrace" : false,
+  "sensitivity" : 0,
+  "imageProvider" : {
+    "applyScalingAndCircularMask" : true,
+    "prefersFilterOverTransition" : false,
+    "fullColorImage" : {
+      "file name" : "81F8F5A4-F724-457E-8A99-B02E3087D2B5.png",
+      "scale" : 2
+    },
+    "monochromeFilterType" : 0
+  },
+  "version" : 30000
+}
