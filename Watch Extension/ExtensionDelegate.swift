@@ -24,6 +24,10 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
         appState.linksService.refresh()
     }
     
+    func applicationWillResignActive() {
+        ComplicationController.reloadAll()
+    }
+    
     func didRegisterForRemoteNotifications(withDeviceToken deviceToken: Data) { 
         appState.userNotifications.application(didRegisterForRemoteNotificationsWithDeviceToken: deviceToken)
     }
