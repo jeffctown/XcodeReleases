@@ -85,7 +85,7 @@ struct XcodeReleaseList : View {
             self.hasError = loadingError != nil
         }.onReceive(appState.releasesService.$releases) { releases in
             self.releases = releases
-        }.navigationBarTitle("Xcodes")
+        }.navigationBarTitle("Xcode Releases")
             .alert(isPresented: self.$hasError) { () -> Alert in
                 return Alert(title: Text(loadingError!.localizedDescription), dismissButton: Alert.Button.default(Text("OK"), action: {
                     print("*** Clearing Error")

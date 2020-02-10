@@ -146,7 +146,7 @@
 		1F21432F22CD861E00464412 /* XcodeReleasesDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = XcodeReleasesDebug.entitlements; sourceTree = "<group>"; };
 		1F21433022CD875300464412 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		1F223E9523B506BE00480A0D /* NotificationsDeniedRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsDeniedRow.swift; sourceTree = "<group>"; };
-		1F30765F22CCC7B4006A49C3 /* Xcodes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Xcodes.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F30765F22CCC7B4006A49C3 /* Xcode Releases.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Xcode Releases.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F30766222CCC7B4006A49C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F30766422CCC7B4006A49C3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		1F30766922CCC7B4006A49C3 /* XcodeReleaseList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeReleaseList.swift; sourceTree = "<group>"; };
@@ -275,7 +275,7 @@
 		1F30766022CCC7B4006A49C3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1F30765F22CCC7B4006A49C3 /* Xcodes.app */,
+				1F30765F22CCC7B4006A49C3 /* Xcode Releases.app */,
 				1F45A68C23CA26DB003B0301 /* Watch.app */,
 				1F45A69823CA26DD003B0301 /* Watch Extension.appex */,
 			);
@@ -470,9 +470,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1F30765E22CCC7B4006A49C3 /* Xcodes */ = {
+		1F30765E22CCC7B4006A49C3 /* Xcode Releases */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1F30768122CCC7B6006A49C3 /* Build configuration list for PBXNativeTarget "Xcodes" */;
+			buildConfigurationList = 1F30768122CCC7B6006A49C3 /* Build configuration list for PBXNativeTarget "Xcode Releases" */;
 			buildPhases = (
 				1F30765B22CCC7B4006A49C3 /* Sources */,
 				1F30765C22CCC7B4006A49C3 /* Frameworks */,
@@ -484,13 +484,13 @@
 			dependencies = (
 				1F45A6AA23CA26DE003B0301 /* PBXTargetDependency */,
 			);
-			name = Xcodes;
+			name = "Xcode Releases";
 			packageProductDependencies = (
 				1F97B9BA23CDF9670047AD6A /* APNS */,
 				1F1FBEE823EF020F0081F967 /* XCModel */,
 			);
 			productName = XcodeReleases;
-			productReference = 1F30765F22CCC7B4006A49C3 /* Xcodes.app */;
+			productReference = 1F30765F22CCC7B4006A49C3 /* Xcode Releases.app */;
 			productType = "com.apple.product-type.application";
 		};
 		1F45A68B23CA26DB003B0301 /* Watch */ = {
@@ -569,7 +569,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1F30765E22CCC7B4006A49C3 /* Xcodes */,
+				1F30765E22CCC7B4006A49C3 /* Xcode Releases */,
 				1F45A68B23CA26DB003B0301 /* Watch */,
 				1F45A69723CA26DD003B0301 /* Watch Extension */,
 			);
@@ -998,7 +998,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1F30768122CCC7B6006A49C3 /* Build configuration list for PBXNativeTarget "Xcodes" */ = {
+		1F30768122CCC7B6006A49C3 /* Build configuration list for PBXNativeTarget "Xcode Releases" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1F30768222CCC7B6006A49C3 /* Debug */,
