@@ -13,4 +13,4 @@ jobs:
     - uses: actions/checkout@v2
     - name: Xcode Build
       run: |
-        xcodebuild build -project GAMLS.xcodeproj -scheme 'GAMLS' CODE_SIGNING_ALLOWED=NO
+        xcodebuild build -project XcodeReleases.xcodeproj -scheme 'XcodeReleases' CODE_SIGNING_ALLOWED=NO
