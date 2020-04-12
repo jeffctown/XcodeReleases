@@ -15,7 +15,7 @@ extension WKHostingController {
 }
 
 class ReleasesHostingController: WKHostingController<AnyView> {
-    
+
     override var body: AnyView {
         return AnyView(XcodeReleaseList().environmentObject(appState))
     }

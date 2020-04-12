@@ -12,18 +12,18 @@ import SwiftUI
 import XCModel
 
 class LinksService: NSObject, ObservableObject {
-    
+
     @Published var links: [Link] = []
     @Published var isLoading: Bool = false
-    @Published var loadingError: XcodeReleasesApi.ApiError? = nil
-    
+    @Published var loadingError: XcodeReleasesApi.ApiError?
+
     let api: XcodeReleasesApi
-    var cancellable: AnyCancellable? = nil
-    
+    var cancellable: AnyCancellable?
+
     public init(api: XcodeReleasesApi) {
         self.api = api
     }
-    
+
     func refresh() {
         guard cancellable == nil else {
             print("Already Loading Links.")
@@ -52,6 +52,5 @@ class LinksService: NSObject, ObservableObject {
             DispatchQueue.main.async { self.links = links }
         }
     }
-    
-}
 
+}

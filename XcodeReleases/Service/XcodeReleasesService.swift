@@ -12,20 +12,20 @@ import SwiftUI
 import XCModel
 
 class XcodeReleasesService: NSObject, ObservableObject {
-    
+
     @Published var releases: [Xcode] = []
     @Published var isLoading: Bool = false
-    @Published var loadingError: XcodeReleasesApi.ApiError? = nil
-    
+    @Published var loadingError: XcodeReleasesApi.ApiError?
+
     let api: XcodeReleasesApi
     var persistence: Persistence
-    var cancellable: AnyCancellable? = nil
-    
+    var cancellable: AnyCancellable?
+
     public init(api: XcodeReleasesApi, persistence: Persistence = Persistence()) {
         self.api = api
         self.persistence = persistence
     }
-    
+
     func refresh() {
         guard cancellable == nil else {
             print("Already Loading Releases.")
@@ -57,5 +57,5 @@ class XcodeReleasesService: NSObject, ObservableObject {
             }
         }
     }
-    
+
 }

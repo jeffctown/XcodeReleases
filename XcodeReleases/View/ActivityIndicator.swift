@@ -1,4 +1,3 @@
-
 //
 //  ActivityIndicator.swift
 //  XcodeReleases
@@ -12,7 +11,7 @@ import SwiftUI
 struct ActivityIndicator: UIViewRepresentable {
     @Binding var shouldAnimate: Bool
     var color: UIColor = .black
-    
+
     func makeUIView(context: Context) -> UIActivityIndicatorView {
         let view = UIActivityIndicatorView()
         view.color = color

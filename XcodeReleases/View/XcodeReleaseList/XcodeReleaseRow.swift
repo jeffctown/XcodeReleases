@@ -9,10 +9,10 @@
 import SwiftUI
 import XCModel
 
-struct XcodeReleaseRow : View {
-    
+struct XcodeReleaseRow: View {
+
     let release: Xcode
-    
+
     var imageDiameter: CGFloat {
         #if os(watchOS)
         return 30
@@ -20,7 +20,7 @@ struct XcodeReleaseRow : View {
         return 50
         #endif
     }
-    
+
     var body: some View {
         HStack {
             VStack {
@@ -40,7 +40,7 @@ struct XcodeReleaseRow : View {
 }
 
 #if DEBUG
-struct XcodeReleaseRow_Previews : PreviewProvider {
+struct XcodeReleaseRow_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             List(mockReleases) { release in
@@ -53,5 +53,3 @@ struct XcodeReleaseRow_Previews : PreviewProvider {
     }
 }
 #endif
-
-

@@ -9,10 +9,10 @@
 import SwiftUI
 
 struct NotificationsDeniedRow: View {
-    
+
     var notificationState: NotificationState
     @Binding var isSavingToServer: Bool
-    
+
     var body: some View {
         switch notificationState {
         case .denied:
@@ -31,7 +31,7 @@ struct NotificationsDeniedRow: View {
                             Text("Change")
                         })
                         #endif
-                        
+
                     }
                 }
             )

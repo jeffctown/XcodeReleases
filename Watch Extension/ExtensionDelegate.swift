@@ -9,39 +9,39 @@
 import WatchKit
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
-    
+
     var appState = AppState()
-    
+
     func applicationDidFinishLaunching() {
         appState.userNotifications.applicationDidFinishLaunching()
         appState.pkPushNotifications.applicationDidFinishLaunching(delegate: appState.userNotifications)
     }
-    
+
     func applicationDidBecomeActive() {
         ComplicationController.reloadAll()
         appState.userNotifications.applicationDidBecomeActive()
         appState.releasesService.refresh()
         appState.linksService.refresh()
     }
-    
+
     func applicationWillResignActive() {
         ComplicationController.reloadAll()
     }
-    
-    func didRegisterForRemoteNotifications(withDeviceToken deviceToken: Data) { 
+
+    func didRegisterForRemoteNotifications(withDeviceToken deviceToken: Data) {
         appState.userNotifications.application(didRegisterForRemoteNotificationsWithDeviceToken: deviceToken)
     }
 
     func didFailToRegisterForRemoteNotificationsWithError(_ error: Error) {
         appState.userNotifications.didFailToRegisterForRemoteNotificationsWithError(error)
     }
-    
-    func didReceiveRemoteNotification(_ userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (WKBackgroundFetchResult) -> Void) {
+
+    func didReceiveRemoteNotification(_ userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (WKBackgroundFetchResult) -> Void) {
         print("didReceiveRemoteNotification")
         ComplicationController.reloadAll()
         completionHandler(.newData)
     }
-    
+
     func handle(_ backgroundTasks: Set<WKRefreshBackgroundTask>) {
         // Sent when the system needs to launch the application in the background to process tasks. Tasks arrive in a set, so loop through and process each one.
         for task in backgroundTasks {
@@ -73,5 +73,5 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
             }
         }
     }
-    
+
 }

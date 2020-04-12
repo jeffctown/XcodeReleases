@@ -9,11 +9,11 @@
 import SwiftUI
 
 struct WebViewButton: View {
-    
+
     @State private var showModal = false
     let text: String
     let url: URL
-    
+
     var body: some View {
         Button(self.text) {
             self.showModal.toggle()

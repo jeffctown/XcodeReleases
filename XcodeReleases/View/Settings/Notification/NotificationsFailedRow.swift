@@ -9,9 +9,9 @@
 import SwiftUI
 
 struct NotificationsFailedRow: View {
-    
+
     var notificationState: NotificationState
-    
+
     var body: some View {
         switch self.notificationState {
         case .noToken:

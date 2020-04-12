@@ -10,15 +10,15 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
+
     var appState = AppState()
-    
+
     // MARK: UIApplicationDelegate Lifecycle
-    
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         appState.userNotifications.application(application, didFinishLaunchingWithOptions: launchOptions)
     }
-    
+
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
@@ -26,13 +26,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     // MARK: Push Notifications
-    
+
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         appState.userNotifications.application(didRegisterForRemoteNotificationsWithDeviceToken: deviceToken)
     }
-    
+
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         appState.userNotifications.didFailToRegisterForRemoteNotificationsWithError(error)
     }
-    
+
 }

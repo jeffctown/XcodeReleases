@@ -9,13 +9,13 @@
 import SwiftUI
 
 struct NotificationsEnabledRow: View {
-    
+
     var notificationState: NotificationState
     @Binding var isSavingToServer: Bool
-    
+
     var body: some View {
         switch notificationState {
-        case .authorized(_):
+        case .authorized:
             return AnyView(
                 HStack {
                     Text("Enabled ✅")
@@ -24,7 +24,7 @@ struct NotificationsEnabledRow: View {
                     #endif
                 }
             )
-        case .provisional(_):
+        case .provisional:
             return AnyView(
                 HStack {
                     Text("Provisional ✅")
@@ -39,7 +39,7 @@ struct NotificationsEnabledRow: View {
     }
 }
 
-struct NotificationsEnabledRow_Previews : PreviewProvider {
+struct NotificationsEnabledRow_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             List {

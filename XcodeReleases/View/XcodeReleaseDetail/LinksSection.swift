@@ -9,9 +9,9 @@
 import SwiftUI
 import XCModel
 
-struct LinksSection : View {
+struct LinksSection: View {
     let release: Xcode
-    
+
     var body: some View {
         Group {
             if release.links?.notes?.url != nil {
@@ -26,7 +26,7 @@ struct LinksSection : View {
 }
 
 #if DEBUG
-struct LinksSection_Previews : PreviewProvider {
+struct LinksSection_Previews: PreviewProvider {
     static var previews: some View {
         List(0..<5) { index in
             LinksSection(release: mockReleases[index])
