@@ -17,6 +17,7 @@ jobs:
   swiftlint:
     using: docker
     image: norionomura/swiftlint:latest
+
     steps:
     - uses: actions/checkout@v2
     - name: SwiftLint
