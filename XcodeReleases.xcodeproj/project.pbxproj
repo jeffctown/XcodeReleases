@@ -859,7 +859,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jefflett.XcodeReleases;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "XcodeReleases Development";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development com.jefflett.XcodeReleases";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -883,7 +883,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jefflett.XcodeReleases;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Xcode Releases Distribution";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.jefflett.XcodeReleases";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -902,7 +902,7 @@
 				INFOPLIST_FILE = Watch/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jefflett.XcodeReleases.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Xcode Releases Watch Development";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development com.jefflett.XcodeReleases.watchkitapp";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -923,7 +923,7 @@
 				INFOPLIST_FILE = Watch/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jefflett.XcodeReleases.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Xcode Releases Watch Distribution";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.jefflett.XcodeReleases.watchkitapp";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -950,7 +950,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jefflett.XcodeReleases.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
-				PROVISIONING_PROFILE_SPECIFIER = "Xcode Releases Watch Extension Development";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development com.jefflett.XcodeReleases.watchkitapp.watchkitextension";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -977,7 +977,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jefflett.XcodeReleases.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
-				PROVISIONING_PROFILE_SPECIFIER = "Xcode Releases Watch Extension Distribution";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.jefflett.XcodeReleases.watchkitapp.watchkitextension";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
