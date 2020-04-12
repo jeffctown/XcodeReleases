@@ -1,6 +1,6 @@
 git_url("https://github.com/jeffctown/match.git")
 storage_mode("git")
-type("development") # The default type, can be: appstore, adhoc, enterprise or development
+type("appstore")
 app_identifier(["com.jefflett.XcodeReleases", "com.jefflett.XcodeReleases.watchkitapp", "com.jefflett.XcodeReleases.watchkitapp.watchkitextension"])
 username("jeffctown@gmail.com") # Your Apple Developer Portal username
 
