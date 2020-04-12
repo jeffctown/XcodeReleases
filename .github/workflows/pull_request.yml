@@ -15,9 +15,12 @@ jobs:
       run: xcodebuild build -project XcodeReleases.xcodeproj -scheme 'XcodeReleases' CODE_SIGNING_ALLOWED=NO
 
   swiftlint:
-    runs-on: macos-latest
-    
+    name: swift_lint
+    runs-on: ubuntu-18.04
+    timeout-minutes: 45
+    container:
+      image: norionomura/swiftlint:0.33.0_swift-5.0
     steps:
-    - uses: actions/checkout@v2
-    - uses: docker://norionomura/swiftlint:latest
-#        run: swiftlint lint --reporter github-actions-logging
+      - uses: actions/checkout@v1
+      - name: 'Run SwiftLint'
+        run: swiftlint lint --strict
