@@ -15,10 +15,7 @@ jobs:
       run: xcodebuild build -project XcodeReleases.xcodeproj -scheme 'XcodeReleases' CODE_SIGNING_ALLOWED=NO
 
   swiftlint:
-    using: docker
-    image: norionomura/swiftlint:latest
-
     steps:
     - uses: actions/checkout@v2
-    - name: SwiftLint
-      run: swiftlint lint --reporter github-actions-logging
+    - uses: docker://norionomura/swiftlint:latest
+#        run: swiftlint lint --reporter github-actions-logging
