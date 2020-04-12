@@ -12,14 +12,14 @@ import Foundation
 import XCModel
 
 struct XcodeReleasesApi: NeedsEnvironment {
-        
+
     let log = false
     var session: URLSession?
-    
+
     init(session: URLSession = URLSession(configuration: URLSessionConfiguration.default)) {
         self.session = session
     }
-    
+
     public enum ApiError: Error, LocalizedError {
         case invalidURL(String)
         case encode(EncodingError)
@@ -27,27 +27,27 @@ struct XcodeReleasesApi: NeedsEnvironment {
         case decode(DecodingError)
         case serverError(Int)
         case unknown
-        
+
         public var errorDescription: String? {
             switch self {
-            case .invalidURL(let u):
-                return "URL Creation Error: \(u)"
-            case .request(let e):
-                return "Network Error: \(e.localizedDescription)"
+            case .invalidURL(let url):
+                return "URL Creation Error: \(url)"
+            case .request(let error):
+                return "Network Error: \(error.localizedDescription)"
             case .serverError(let statusCode):
                 return "Server Error: \(statusCode)"
-            case .encode(let e):
-                return "Encoding Error: \(e.localizedDescription)"
-            case .decode(let e):
-                return "Decoding Error: \(e.localizedDescription)"
+            case .encode(let error):
+                return "Encoding Error: \(error.localizedDescription)"
+            case .decode(let error):
+                return "Decoding Error: \(error.localizedDescription)"
             case .unknown:
                 return "Unknown Error"
             }
         }
     }
-    
+
     // MARK: - Devices
-    
+
     func postDevice(device: Device) -> AnyPublisher<Device, XcodeReleasesApi.ApiError> {
         Just(device)
             .encode(encoder: JSONEncoder())
@@ -62,8 +62,7 @@ struct XcodeReleasesApi: NeedsEnvironment {
                     .mapError { self.processErrors($0) }
             }.eraseToAnyPublisher()
     }
-        
-    
+
     func deleteDevice(id: String) -> AnyPublisher<Bool, XcodeReleasesApi.ApiError> {
         Just(id)
             .tryMap { try self.mapToDeleteURLRequest(url: self.url(command: .deleteDevice($0))) }
@@ -75,11 +74,11 @@ struct XcodeReleasesApi: NeedsEnvironment {
                     .map { response -> Bool in (response as? HTTPURLResponse)?.statusCode == 200 }
         }.eraseToAnyPublisher()
     }
-    
-    
+
     // MARK: - Links
-    
+
     func getLinks() -> AnyPublisher<[Link], XcodeReleasesApi.ApiError> {
+        //swiftlint:disable:next force_try
         return self.session!.dataTaskPublisher(for: try! urlRequest(url: url(command: .getLinks)))
             .mapError(XcodeReleasesApi.ApiError.request)
             .map(\.data)
@@ -87,10 +86,11 @@ struct XcodeReleasesApi: NeedsEnvironment {
             .mapError { self.processErrors($0) }
             .eraseToAnyPublisher()
     }
-    
+
     // MARK: - Xcodes
-    
+
     func getXcodes() -> AnyPublisher<[Xcode], XcodeReleasesApi.ApiError> {
+        //swiftlint:disable:next force_try
         return self.session!.dataTaskPublisher(for: try! urlRequest(url: url(command: .getXcodes)))
             .mapError(XcodeReleasesApi.ApiError.request)
             .map(\.data)
@@ -98,9 +98,9 @@ struct XcodeReleasesApi: NeedsEnvironment {
             .mapError { self.processErrors($0) }
             .eraseToAnyPublisher()
     }
-    
+
     // MARK: - Private
-    
+
     private enum ApiCommand {
         case postDevice
         case getDevice(String)
@@ -108,18 +108,18 @@ struct XcodeReleasesApi: NeedsEnvironment {
         case getLinks
         case getXcodes
     }
-    
+
     private enum HttpMethod: String {
         case post = "POST"
         case delete = "DELETE"
     }
-    
+
     // MARK: - Private Methods
-    
+
     private func url(command: ApiCommand) -> String {
         switch command {
-        case .getDevice(let id), .deleteDevice(let id):
-            return "\(Self.environment().apiUrl)/device/\(id)"
+        case .getDevice(let identifier), .deleteDevice(let identifier):
+            return "\(Self.environment().apiUrl)/device/\(identifier)"
         case .postDevice:
             return "\(Self.environment().apiUrl)/device"
         case .getLinks:
@@ -128,7 +128,7 @@ struct XcodeReleasesApi: NeedsEnvironment {
             return "\(Self.environment().apiUrl)/release"
         }
     }
- 
+
     private func processErrors(_ error: Swift.Error) -> XcodeReleasesApi.ApiError {
         if let decodingError = error as? DecodingError {
             return .decode(decodingError)
@@ -142,7 +142,7 @@ struct XcodeReleasesApi: NeedsEnvironment {
             return .unknown
         }
     }
-    
+
     private func mapToPostURLRequest(data: Data, url urlString: String) throws -> URLRequest {
         var urlRequest = try self.urlRequest(url: urlString)
         urlRequest.httpMethod = HttpMethod.post.rawValue
@@ -150,13 +150,13 @@ struct XcodeReleasesApi: NeedsEnvironment {
         urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         return urlRequest
     }
-    
+
     private func mapToDeleteURLRequest(url urlString: String) throws -> URLRequest {
         var urlRequest = try self.urlRequest(url: urlString)
         urlRequest.httpMethod = HttpMethod.delete.rawValue
         return urlRequest
     }
-    
+
     private func urlRequest(url urlString: String) throws -> URLRequest {
         guard let url = URL(string: urlString) else {
             throw XcodeReleasesApi.ApiError.invalidURL(urlString)

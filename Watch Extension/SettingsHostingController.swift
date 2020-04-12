@@ -11,7 +11,7 @@ import SwiftUI
 import WatchKit
 
 class SettingsHostingController: WKHostingController<AnyView> {
-    
+
     override var body: AnyView {
         return AnyView(SettingsView().environmentObject(appState))
     }

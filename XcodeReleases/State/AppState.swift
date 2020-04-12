@@ -11,30 +11,30 @@ import Foundation
 import SwiftUI
 
 class AppState: NSObject, ObservableObject {
-    
+
     init(userNotifications: UserNotifications = UserNotifications(), releasesService: XcodeReleasesService? = nil) {
         self.userNotifications = userNotifications
         self.releasesService = releasesService ?? XcodeReleasesService(api: userNotifications.api)
         self.linksService = LinksService(api: userNotifications.api)
     }
-    
-    //MARK: - UI Data
-    
+
+    // MARK: - UI Data
+
     ///Xcode Releases
     var releasesService: XcodeReleasesService
-    
-    //MARK: - Links
-    
+
+    // MARK: - Links
+
     var linksService: LinksService
-    
-    //MARK: - Notifications
-    
+
+    // MARK: - Notifications
+
     var userNotifications: UserNotifications
-    
+
     #if os(watchOS)
     var pkPushNotifications: PKPushNotifications = PKPushNotifications()
     #endif
-    
+
     var notificationState: AnyPublisher<NotificationState, Never> {
         userNotifications.$authorizationStatus.combineLatest(userNotifications.$pushToken)
             .map { (status, token) -> NotificationState in

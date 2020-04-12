@@ -12,12 +12,16 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Xcode Build
-      run: xcodebuild build -project XcodeReleases.xcodeproj -scheme 'XcodeReleases' CODE_SIGNING_ALLOWED=NO
+      run: |
+        set -o pipefail
+        xcodebuild build -project XcodeReleases.xcodeproj -scheme 'XcodeReleases' CODE_SIGNING_ALLOWED=NO | xcpretty
 
   swiftlint:
-    using: docker
-    image: norionomura/swiftlint:latest
+    name: swift_lint
+    runs-on: ubuntu-18.04
+    container:
+      image: norionomura/swiftlint:latest
     steps:
-    - uses: actions/checkout@v2
-    - name: SwiftLint
-      run: swiftlint lint --reporter github-actions-logging
+      - uses: actions/checkout@v1
+      - name: Run SwiftLint
+        run: swiftlint lint #--strict

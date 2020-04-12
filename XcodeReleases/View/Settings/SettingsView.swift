@@ -10,17 +10,17 @@ import Combine
 import SwiftUI
 import XCModel
 
-struct SettingsView : View {
-    
+struct SettingsView: View {
+
     @EnvironmentObject private var appState: AppState
     @State var links: [Link] = []
     @State var isLoadingLinks: Bool = false
     @State var hasLinksError: Bool = false
-    @State var linksLoadingError: XcodeReleasesApi.ApiError? = nil
-    
+    @State var linksLoadingError: XcodeReleasesApi.ApiError?
+
     @State private var notificationState: NotificationState = .notDetermined
     @State private var isSaving: Bool = false
-    
+
     #if os(watchOS)
     var body: some View {
         self.innerBody
@@ -32,7 +32,7 @@ struct SettingsView : View {
         }.navigationViewStyle(StackNavigationViewStyle())
     }
     #endif
-    
+
     var innerBody: some View {
         Group {
             List {
@@ -52,10 +52,9 @@ struct SettingsView : View {
 }
 
 #if DEBUG
-struct SettingsView_Previews : PreviewProvider {
+struct SettingsViewPreviews: PreviewProvider {
     static var previews: some View {
         SettingsView().environmentObject(AppState())
     }
 }
 #endif
-

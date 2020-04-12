@@ -24,7 +24,7 @@ extension NeedsEnvironment {
         return XcodeReleasesEnvironment(apiUrl: "https://xcodereleases.jefflett.com")
         #endif
     }
-    
+
     func environment() -> XcodeReleasesEnvironment {
         Self.environment()
     }

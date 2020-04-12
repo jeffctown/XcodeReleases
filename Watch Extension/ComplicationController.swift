@@ -10,50 +10,50 @@ import ClockKit
 import WatchKit
 
 class ComplicationController: NSObject, CLKComplicationDataSource {
-    
+
     let persistence = Persistence()
-    
+
     static func reloadAll() {
         let complicationServer = CLKComplicationServer.sharedInstance()
         for complication in complicationServer.activeComplications ?? [] {
             complicationServer.reloadTimeline(for: complication)
         }
     }
-    
+
     func getSupportedTimeTravelDirections(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTimeTravelDirections) -> Void) {
         handler([])
     }
-    
+
     func getCurrentTimelineEntry(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTimelineEntry?) -> Void) {
         handler(CLKComplicationTimelineEntry(date: Date(), complicationTemplate: template(for: complication.family)))
     }
-    
+
     // MARK: - Timeline Configuration
-    
+
     func getPrivacyBehavior(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationPrivacyBehavior) -> Void) {
         handler(.showOnLockScreen)
     }
-    
+
     // MARK: - Placeholder Templates
-    
+
     func getLocalizableSampleTemplate(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTemplate?) -> Void) {
         handler(template(for: complication.family))
     }
-    
+
     var version: String {
         guard let release = persistence.latestRelease,
             let number = release.version.number else {
             return "xx.x.x"
         }
-        
+
         return "\(number)"
     }
-    
+
     var simpleTinyBodyProvider: CLKSimpleTextProvider {
         guard let release = persistence.latestRelease else {
             return CLKSimpleTextProvider(text: "xx")
         }
-        
+
         let releaseType = release.version.release
         switch releaseType {
         case .dp(let dpVersion):
@@ -66,23 +66,23 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
             return CLKSimpleTextProvider(text: "GM")
         }
     }
-    
+
     var simpleAppNameProvider: CLKSimpleTextProvider {
         CLKSimpleTextProvider(text: "Xcode Releases", shortText: "Xcode")
     }
-    
+
     var simpleSingleTextProvider: CLKSimpleTextProvider {
         CLKSimpleTextProvider(text: "Xcode: \(version) \(simpleTinyBodyProvider.text)", shortText: "\(version) \(simpleTinyBodyProvider.shortText ?? "xx")")
     }
-    
+
     var simpleVersionTextProvider: CLKSimpleTextProvider {
         CLKSimpleTextProvider(text: "\(version) \(simpleTinyBodyProvider.text)", shortText: "\(version) \(simpleTinyBodyProvider.shortText ?? "xx")")
     }
-    
+
     var simpleReleaseDateProvider: CLKSimpleTextProvider {
         let dateFormatter = DateFormatter()
         dateFormatter.setLocalizedDateFormatFromTemplate("M/d/yy")
-        
+
         let defaultProvider: () -> CLKSimpleTextProvider = {
             #if DEBUG
             dateFormatter.setLocalizedDateFormatFromTemplate("M/d/yy, h:mm a")
@@ -92,7 +92,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
             let dateString = dateFormatter.string(from: Date())
             return CLKSimpleTextProvider(text: "Released: \(dateString)", shortText: "\(dateString)")
         }
-        
+
         #if DEBUG
         // show the current time so its easier to know when this was updated
         return defaultProvider()
@@ -105,27 +105,27 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         return CLKSimpleTextProvider(text: "Released: \(dateString)", shortText: "\(dateString)")
         #endif
     }
-    
+
     var logoImageProvider: CLKFullColorImageProvider {
         CLKFullColorImageProvider(fullColorImage: UIImage(named: "Xcode-Square")!)
     }
-    
+
     var logoMediumImageProvider: CLKFullColorImageProvider {
         CLKFullColorImageProvider(fullColorImage: UIImage(named: "Xcode-Medium")!)
     }
-    
+
     var logoSmallImageProvider: CLKFullColorImageProvider {
-        CLKFullColorImageProvider(fullColorImage: UIImage(named:"Xcode-Small")!)
+        CLKFullColorImageProvider(fullColorImage: UIImage(named: "Xcode-Small")!)
     }
-    
+
     var logoFlatImageProvider: CLKImageProvider {
         CLKImageProvider(onePieceImage: UIImage(named: "Xcode-Flat")!)
     }
-    
+
     var logoCircularImageProvider: CLKFullColorImageProvider {
         CLKFullColorImageProvider(fullColorImage: UIImage(named: "Xcode-Circular")!)
     }
-    
+
     func template(for family: CLKComplicationFamily) -> CLKComplicationTemplate {
         switch family {
         case .circularSmall:
@@ -139,6 +139,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         case .graphicBezel:
             let template = CLKComplicationTemplateGraphicBezelCircularText()
             template.textProvider = simpleSingleTextProvider
+            //swiftlint:disable:next force_cast
             template.circularTemplate = self.template(for: .graphicCircular) as! CLKComplicationTemplateGraphicCircular
             return template
         case .graphicCircular:
@@ -189,7 +190,5 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
             return template
         }
     }
-    
+
 }
-
-

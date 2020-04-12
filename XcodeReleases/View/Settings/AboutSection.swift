@@ -9,11 +9,11 @@
 import SwiftUI
 import XCModel
 
-struct AboutSection : View {
+struct AboutSection: View {
     let version: String
     let build: String
     let links: [Link]
-    
+
     var body: some View {
         Section(header: Text("About"),
                 footer: Text("Version: v\(version) (\(build))").font(.caption)) {
@@ -31,7 +31,7 @@ struct AboutSection : View {
 }
 
 #if DEBUG
-struct AboutSection_Previews : PreviewProvider {
+struct AboutSectionPreviews: PreviewProvider {
     static var previews: some View {
         List {
             AboutSection(version: "1.0", build: "1", links: [])

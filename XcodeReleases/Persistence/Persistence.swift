@@ -17,7 +17,7 @@ struct Persistence {
     @UserDefault("latestReleaseJson", defaultValue: nil)
     var latestReleaseJson: String?
     var latestRelease: Xcode? {
-        get {   
+        get {
             guard let latestReleaseJson = self.latestReleaseJson else {
                 print("No Latest Release Json Found.")
                 return nil
@@ -31,7 +31,7 @@ struct Persistence {
             }
             self.latestReleaseJson = json
         }
-        
+
     }
 }
 

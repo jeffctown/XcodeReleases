@@ -10,10 +10,10 @@ import Foundation
 import SwiftUI
 
 struct NotificationTokenRow: View {
-    
+
     var notificationState: NotificationState
     @State private var showingAlert: Bool = false
-    
+
     var body: some View {
         #if DEBUG
         switch notificationState {
@@ -36,5 +36,5 @@ struct NotificationTokenRow: View {
         return AnyView(EmptyView())
         #endif
     }
-    
+
 }

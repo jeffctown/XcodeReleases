@@ -10,11 +10,11 @@ import Combine
 import SwiftUI
 import UserNotifications
 
-struct NotificationSection : View {
-    
+struct NotificationSection: View {
+
     var notificationState: NotificationState
     @Binding var isSaving: Bool
-    
+
     var body: some View {
         Section(header: Text("Notifications")) {
             NotificationsEnabledRow(notificationState: notificationState, isSavingToServer: $isSaving)
@@ -26,7 +26,7 @@ struct NotificationSection : View {
 }
 
 #if DEBUG
-struct NotificationSection_Previews : PreviewProvider {
+struct NotificationSectionPreviews: PreviewProvider {
     static var previews: some View {
         Group {
             Group {
@@ -81,11 +81,3 @@ struct NotificationSection_Previews : PreviewProvider {
     }
 }
 #endif
-
-
-
-
-
-
-
-

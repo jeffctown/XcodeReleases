@@ -9,10 +9,10 @@
 import SwiftUI
 import XCModel
 
-struct XcodeReleaseDetail : View {
-    
+struct XcodeReleaseDetail: View {
+
     let release: Xcode
-    
+
     var body: some View {
         Form {
             ReleaseInfoSection(release: release)
@@ -25,7 +25,7 @@ struct XcodeReleaseDetail : View {
 }
 
 #if DEBUG
-struct XcodeReleaseDetail_Previews : PreviewProvider {
+struct XcodeReleaseDetailPreviews: PreviewProvider {
     static var previews: some View {
         Group {
             XcodeReleaseDetail(release: mockReleases[0])

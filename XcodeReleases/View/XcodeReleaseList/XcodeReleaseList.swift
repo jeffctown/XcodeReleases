@@ -10,13 +10,13 @@ import Combine
 import SwiftUI
 import XCModel
 
-struct XcodeReleaseList : View {
+struct XcodeReleaseList: View {
     @EnvironmentObject private var appState: AppState
     @State var releases: [Xcode] = []
     @State var isLoading: Bool = false
     @State var hasError: Bool = false
-    @State var loadingError: XcodeReleasesApi.ApiError? = nil
-    
+    @State var loadingError: XcodeReleasesApi.ApiError?
+
     #if !os(watchOS)
     var body: some View {
         NavigationView {
@@ -28,13 +28,13 @@ struct XcodeReleaseList : View {
         self.innerBody
     }
     #endif
-    
+
     var loadingView: some View {
         Group {
             Text("Loading...").font(.subheadline)
         }
     }
-    
+
     var emptyView: some View {
         Group {
             VStack {
@@ -47,7 +47,7 @@ struct XcodeReleaseList : View {
             }
         }
     }
-    
+
     // this is needed for iPad, so it shows something in the detail view in its master detail thing.
     var detailView: some View {
         Group {
@@ -56,7 +56,7 @@ struct XcodeReleaseList : View {
             }
         }
     }
-    
+
     var innerBody: some View {
         Group {
             if self.releases.count > 0 {
@@ -97,7 +97,7 @@ struct XcodeReleaseList : View {
 }
 
 #if DEBUG
-struct XcodeReleaseList_Previews : PreviewProvider {
+struct XcodeReleaseListPreviews: PreviewProvider {
     static var previews: some View {
         let state = AppState()
         state.releasesService.releases = Array(mockReleases[0..<10])

@@ -14,18 +14,18 @@ extension UserNotifications {
     var model: String {
         WKInterfaceDevice.current().model
     }
-    
+
     func applicationDidFinishLaunching() {
         print("watchOS: Registering for Remote Notifications.")
         WKExtension.shared().registerForRemoteNotifications()
         UNUserNotificationCenter.current().delegate = self
         registerForUserNotifications()
     }
-    
+
     func applicationDidBecomeActive() {
         checkAuthorizationStatus()
     }
-    
+
 }
 
 extension UserNotifications: PKPushNotificationsDelegate {
@@ -35,7 +35,7 @@ extension UserNotifications: PKPushNotificationsDelegate {
         }
         deleteDevice(identifier: token, pushType: .complication)
     }
-    
+
     func didUpdateWithComplicationToken(token: String) {
         savePushRegistryToken(token: token)
     }

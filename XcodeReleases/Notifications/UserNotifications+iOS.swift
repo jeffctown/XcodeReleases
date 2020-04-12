@@ -10,11 +10,11 @@
 import UIKit
 
 extension UserNotifications {
-    
+
     var model: String {
         UIDevice.modelName
     }
-    
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         print("Launch Options: \(launchOptions ?? [:])")
         UNUserNotificationCenter.current().delegate = self
@@ -30,7 +30,7 @@ extension UserNotifications {
             print("Error: No Scene Delegate Found.")
             return
         }
-       
+
         sceneDelegate.deeplink(urlString: urlString)
         self.launchNotification = nil
     }

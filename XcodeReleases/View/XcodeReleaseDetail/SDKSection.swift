@@ -9,9 +9,9 @@
 import SwiftUI
 import XCModel
 
-struct SDKSection : View {
+struct SDKSection: View {
     let release: Xcode
-    
+
     var body: some View {
         Group {
             if release.sdks != nil && release.sdks!.count > 0 {
@@ -45,7 +45,7 @@ struct SDKSection : View {
 }
 
 #if DEBUG
-struct SDKSection_Previews : PreviewProvider {
+struct SDKSectionPreviews: PreviewProvider {
     static var previews: some View {
         List {
             ForEach(0..<5) { index in

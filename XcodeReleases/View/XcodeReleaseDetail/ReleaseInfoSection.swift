@@ -9,9 +9,9 @@
 import SwiftUI
 import XCModel
 
-struct ReleaseInfoSection : View {
+struct ReleaseInfoSection: View {
     let release: Xcode
-    
+
     var body: some View {
         return Section(header: Text("Release Info")) {
             Text("Name: \(release.name)")
@@ -29,7 +29,7 @@ struct ReleaseInfoSection : View {
 }
 
 #if DEBUG
-struct ReleaseInfoSection_Previews : PreviewProvider {
+struct ReleaseInfoSectionPreviews: PreviewProvider {
     static var previews: some View {
         List {
             ForEach(0..<3) { index in
