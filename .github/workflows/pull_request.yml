@@ -17,10 +17,9 @@ jobs:
   swiftlint:
     name: swift_lint
     runs-on: ubuntu-18.04
-    timeout-minutes: 45
     container:
-      image: norionomura/swiftlint:0.33.0_swift-5.0
+      image: norionomura/swiftlint:latest
     steps:
       - uses: actions/checkout@v1
-      - name: 'Run SwiftLint'
+      - name: Run SwiftLint
         run: swiftlint lint --strict
