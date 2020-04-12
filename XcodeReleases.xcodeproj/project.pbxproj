@@ -848,6 +848,7 @@
 				CODE_SIGN_ENTITLEMENTS = XcodeReleases/XcodeReleasesDebug.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "XcodeReleases/Preview\\ Content";
 				DEVELOPMENT_TEAM = NTX63W5EU6;
 				ENABLE_PREVIEWS = YES;
@@ -872,6 +873,7 @@
 				CODE_SIGN_ENTITLEMENTS = XcodeReleases/XcodeReleasesRelease.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "XcodeReleases/Preview\\ Content";
 				DEVELOPMENT_TEAM = NTX63W5EU6;
 				ENABLE_PREVIEWS = YES;
