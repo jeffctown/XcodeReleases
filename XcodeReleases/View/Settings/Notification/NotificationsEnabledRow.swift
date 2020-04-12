@@ -39,7 +39,7 @@ struct NotificationsEnabledRow: View {
     }
 }
 
-struct NotificationsEnabledRow_Previews: PreviewProvider {
+struct NotificationsEnabledRowPreviews: PreviewProvider {
     static var previews: some View {
         Group {
             List {

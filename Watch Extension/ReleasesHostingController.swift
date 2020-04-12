@@ -11,7 +11,9 @@ import Foundation
 import SwiftUI
 
 extension WKHostingController {
-    var appState: AppState { (WKExtension.shared().delegate as! ExtensionDelegate).appState }
+    var appState: AppState {
+        //swiftlint:disable:next force_cast
+        (WKExtension.shared().delegate as! ExtensionDelegate).appState }
 }
 
 class ReleasesHostingController: WKHostingController<AnyView> {

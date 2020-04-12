@@ -26,7 +26,7 @@ struct NotificationSection: View {
 }
 
 #if DEBUG
-struct NotificationSection_Previews: PreviewProvider {
+struct NotificationSectionPreviews: PreviewProvider {
     static var previews: some View {
         Group {
             Group {

@@ -31,7 +31,7 @@ struct AboutSection: View {
 }
 
 #if DEBUG
-struct AboutSection_Previews: PreviewProvider {
+struct AboutSectionPreviews: PreviewProvider {
     static var previews: some View {
         List {
             AboutSection(version: "1.0", build: "1", links: [])

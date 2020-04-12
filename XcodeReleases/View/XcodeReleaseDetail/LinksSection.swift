@@ -26,7 +26,7 @@ struct LinksSection: View {
 }
 
 #if DEBUG
-struct LinksSection_Previews: PreviewProvider {
+struct LinksSectionPreviews: PreviewProvider {
     static var previews: some View {
         List(0..<5) { index in
             LinksSection(release: mockReleases[index])

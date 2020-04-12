@@ -30,16 +30,16 @@ struct XcodeReleasesApi: NeedsEnvironment {
 
         public var errorDescription: String? {
             switch self {
-            case .invalidURL(let u):
-                return "URL Creation Error: \(u)"
-            case .request(let e):
-                return "Network Error: \(e.localizedDescription)"
+            case .invalidURL(let url):
+                return "URL Creation Error: \(url)"
+            case .request(let error):
+                return "Network Error: \(error.localizedDescription)"
             case .serverError(let statusCode):
                 return "Server Error: \(statusCode)"
-            case .encode(let e):
-                return "Encoding Error: \(e.localizedDescription)"
-            case .decode(let e):
-                return "Decoding Error: \(e.localizedDescription)"
+            case .encode(let error):
+                return "Encoding Error: \(error.localizedDescription)"
+            case .decode(let error):
+                return "Decoding Error: \(error.localizedDescription)"
             case .unknown:
                 return "Unknown Error"
             }
@@ -78,6 +78,7 @@ struct XcodeReleasesApi: NeedsEnvironment {
     // MARK: - Links
 
     func getLinks() -> AnyPublisher<[Link], XcodeReleasesApi.ApiError> {
+        //swiftlint:disable:next force_try
         return self.session!.dataTaskPublisher(for: try! urlRequest(url: url(command: .getLinks)))
             .mapError(XcodeReleasesApi.ApiError.request)
             .map(\.data)
@@ -89,6 +90,7 @@ struct XcodeReleasesApi: NeedsEnvironment {
     // MARK: - Xcodes
 
     func getXcodes() -> AnyPublisher<[Xcode], XcodeReleasesApi.ApiError> {
+        //swiftlint:disable:next force_try
         return self.session!.dataTaskPublisher(for: try! urlRequest(url: url(command: .getXcodes)))
             .mapError(XcodeReleasesApi.ApiError.request)
             .map(\.data)
@@ -116,8 +118,8 @@ struct XcodeReleasesApi: NeedsEnvironment {
 
     private func url(command: ApiCommand) -> String {
         switch command {
-        case .getDevice(let id), .deleteDevice(let id):
-            return "\(Self.environment().apiUrl)/device/\(id)"
+        case .getDevice(let identifier), .deleteDevice(let identifier):
+            return "\(Self.environment().apiUrl)/device/\(identifier)"
         case .postDevice:
             return "\(Self.environment().apiUrl)/device"
         case .getLinks:

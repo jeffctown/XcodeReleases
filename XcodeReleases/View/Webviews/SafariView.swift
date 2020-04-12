@@ -22,7 +22,7 @@ struct SafariView: UIViewControllerRepresentable {
 }
 
 #if DEBUG
-struct SafariView_Previews: PreviewProvider {
+struct SafariViewPreviews: PreviewProvider {
     static var previews: some View {
         SafariView(url: URL(string: "http://www.apple.com")!)
     }

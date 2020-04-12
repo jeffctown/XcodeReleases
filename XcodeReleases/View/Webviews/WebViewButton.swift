@@ -23,7 +23,7 @@ struct WebViewButton: View {
     }
 }
 
-struct WebViewButton_Previews: PreviewProvider {
+struct WebViewButtonPreviews: PreviewProvider {
     static var previews: some View {
         WebViewButton(text: "Google", url: URL(string: "https://google.com")!)
     }

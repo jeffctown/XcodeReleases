@@ -22,4 +22,4 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Run SwiftLint
-        run: swiftlint lint --strict
+        run: swiftlint lint #--strict

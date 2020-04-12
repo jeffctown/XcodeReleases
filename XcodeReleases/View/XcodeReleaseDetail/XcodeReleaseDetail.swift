@@ -25,7 +25,7 @@ struct XcodeReleaseDetail: View {
 }
 
 #if DEBUG
-struct XcodeReleaseDetail_Previews: PreviewProvider {
+struct XcodeReleaseDetailPreviews: PreviewProvider {
     static var previews: some View {
         Group {
             XcodeReleaseDetail(release: mockReleases[0])

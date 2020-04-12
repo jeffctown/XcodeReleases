@@ -12,7 +12,9 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    var appState: AppState { (UIApplication.shared.delegate as! AppDelegate).appState }
+    var appState: AppState {
+        //swiftlint:disable:next force_cast
+        (UIApplication.shared.delegate as! AppDelegate).appState }
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         if let windowScene = scene as? UIWindowScene {

@@ -139,6 +139,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         case .graphicBezel:
             let template = CLKComplicationTemplateGraphicBezelCircularText()
             template.textProvider = simpleSingleTextProvider
+            //swiftlint:disable:next force_cast
             template.circularTemplate = self.template(for: .graphicCircular) as! CLKComplicationTemplateGraphicCircular
             return template
         case .graphicCircular:

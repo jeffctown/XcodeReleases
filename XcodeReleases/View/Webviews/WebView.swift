@@ -24,7 +24,7 @@ struct WebView: UIViewRepresentable {
 }
 
 #if DEBUG
-struct WebView_Previews: PreviewProvider {
+struct WebViewPreviews: PreviewProvider {
     static var previews: some View {
         WebView(request: URLRequest(url: URL(string: "http://www.apple.com")!))
     }

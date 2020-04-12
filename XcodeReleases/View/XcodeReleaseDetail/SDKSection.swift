@@ -45,7 +45,7 @@ struct SDKSection: View {
 }
 
 #if DEBUG
-struct SDKSection_Previews: PreviewProvider {
+struct SDKSectionPreviews: PreviewProvider {
     static var previews: some View {
         List {
             ForEach(0..<5) { index in

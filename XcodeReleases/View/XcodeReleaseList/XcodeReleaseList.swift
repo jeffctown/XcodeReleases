@@ -97,7 +97,7 @@ struct XcodeReleaseList: View {
 }
 
 #if DEBUG
-struct XcodeReleaseList_Previews: PreviewProvider {
+struct XcodeReleaseListPreviews: PreviewProvider {
     static var previews: some View {
         let state = AppState()
         state.releasesService.releases = Array(mockReleases[0..<10])

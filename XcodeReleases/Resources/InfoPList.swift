@@ -11,10 +11,12 @@ import Foundation
 struct InfoPList {
 
     static var version: String {
+        //swiftlint:disable:next force_cast
         Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
     }
 
     static var build: String {
+        //swiftlint:disable:next force_cast
         Bundle.main.infoDictionary!["CFBundleVersion"] as! String
     }
 

@@ -29,7 +29,7 @@ struct ReleaseInfoSection: View {
 }
 
 #if DEBUG
-struct ReleaseInfoSection_Previews: PreviewProvider {
+struct ReleaseInfoSectionPreviews: PreviewProvider {
     static var previews: some View {
         List {
             ForEach(0..<3) { index in

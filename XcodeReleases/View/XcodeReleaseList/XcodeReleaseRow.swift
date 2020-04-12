@@ -40,7 +40,7 @@ struct XcodeReleaseRow: View {
 }
 
 #if DEBUG
-struct XcodeReleaseRow_Previews: PreviewProvider {
+struct XcodeReleaseRowPreviews: PreviewProvider {
     static var previews: some View {
         Group {
             List(mockReleases) { release in
