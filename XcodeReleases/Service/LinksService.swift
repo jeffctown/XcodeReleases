@@ -45,7 +45,6 @@ class LinksService: NSObject, ObservableObject {
                     self.loadingError = nil
                     self.isLoading = false
                 }
-                break
             }
         }) { links in
             print("Loaded \(links.count) Links.")

@@ -41,9 +41,9 @@ struct XcodeReleaseList: View {
                 Text("No Releases Found.").font(.callout).padding()
                 Button(action: {
                     self.appState.releasesService.refresh()
-                }) {
+                },label: {
                     Text("Refresh")
-                }
+                })
             }
         }
     }

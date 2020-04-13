@@ -47,7 +47,6 @@ class XcodeReleasesService: NSObject, ObservableObject {
                     self.loadingError = nil
                     self.isLoading = false
                 }
-                break
             }
         }) { releases in
             print("Loaded \(releases.count) Releases.")

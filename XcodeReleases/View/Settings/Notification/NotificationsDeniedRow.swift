@@ -19,7 +19,7 @@ struct NotificationsDeniedRow: View {
             return AnyView(
                 Button(action: {
                     print("Changing Settings.")
-                }) {
+                }, label: {
                     HStack {
                         Text("Disabled 🚫")
                         #if os(iOS)
@@ -33,7 +33,7 @@ struct NotificationsDeniedRow: View {
                         #endif
 
                     }
-                }
+                })
             )
         default:
             return AnyView(EmptyView())

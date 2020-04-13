@@ -27,7 +27,7 @@ class UserNotifications: NSObject, ObservableObject {
 
     var launchNotification: [AnyHashable: Any]? = nil {
         didSet {
-            if let _ = launchNotification {
+            if launchNotification != nil {
                 print("Notification Received! \(launchNotification.debugDescription)")
             }
             self.handle()
