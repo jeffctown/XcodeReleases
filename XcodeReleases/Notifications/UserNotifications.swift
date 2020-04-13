@@ -88,14 +88,26 @@ class UserNotifications: NSObject, ObservableObject {
         switch pushType {
         case .alert:
             #if os(watchOS)
-            return Device(id: token, type: type, bundleIdentifier: watchAppBundleIdentifier, environment: environment, pushType: .alert)
+            return Device(id: token,
+                          type: type,
+                          bundleIdentifier: watchAppBundleIdentifier,
+                          environment: environment,
+                          pushType: .alert)
             #endif
         case .complication:
-            return Device(id: token, type: type, bundleIdentifier: watchAppBundleIdentifier + ".complication", environment: environment, pushType: .complication)
+            return Device(id: token,
+                          type: type,
+                          bundleIdentifier: watchAppBundleIdentifier + ".complication",
+                          environment: environment,
+                          pushType: .complication)
         default:
             assertionFailure("WTF")
         }
-        return Device(id: token, type: type, bundleIdentifier: InfoPList.bundleIdentifier, environment: environment, pushType: .alert)
+        return Device(id: token,
+                      type: type,
+                      bundleIdentifier: InfoPList.bundleIdentifier,
+                      environment: environment,
+                      pushType: .alert)
     }
 
     // MARK: - Saving Devices
@@ -108,21 +120,24 @@ class UserNotifications: NSObject, ObservableObject {
     }
 
     func saveDeviceIfNeeded() {
-           guard let token = self.pushToken else {
-               return print("No Token To Save Device. Skipping.")
-           }
+        guard let token = self.pushToken else {
+            return print("No Token To Save Device. Skipping.")
+        }
+        guard self.serverUserPushIdentifier == nil || self.serverUserPushIdentifier != token else {
+            let message = """
+            Device push token has already been saved and it hasn't changed.
+            Before: \(serverUserPushIdentifier ?? "nil") Now: \(token) Skipping.
+            """
+            return print(message)
+        }
 
-           guard self.serverUserPushIdentifier == nil || self.serverUserPushIdentifier != token else {
-               return print("Device push token has already been saved and it hasn't changed.  Before: \(serverUserPushIdentifier ?? "nil") Now: \(token) Skipping.")
-           }
+        let device = self.device(token: token, pushType: .alert)
+        DispatchQueue.main.async { self.isSavingNotificationState = true }
+        userNotificationRequestCancellable = saveDevice(device: device) {
+            DispatchQueue.main.async { self.isSavingNotificationState = false }
 
-           let device = self.device(token: token, pushType: .alert)
-           DispatchQueue.main.async { self.isSavingNotificationState = true }
-           userNotificationRequestCancellable = saveDevice(device: device) {
-               DispatchQueue.main.async { self.isSavingNotificationState = false }
-
-           }
-       }
+        }
+    }
 
     func saveDevice(device: Device, completionHandler: @escaping () -> Void) -> AnyCancellable {
         print("Saving Device: \(device.debugDescription)")
@@ -143,7 +158,6 @@ class UserNotifications: NSObject, ObservableObject {
                 self.serverPKPushIdentifier = device.id
             default:
                 print("Error: Unsupported Push Type Found!")
-                break
             }
         }
     }
@@ -180,7 +194,6 @@ class UserNotifications: NSObject, ObservableObject {
                     print("Deleted PK Device From Server.")
                 default:
                     print("Unhandled Push Type.")
-                    break
                 }
 
             } else {
