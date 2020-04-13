@@ -43,16 +43,24 @@ struct NotificationsEnabledRowPreviews: PreviewProvider {
     static var previews: some View {
         Group {
             List {
-                NotificationsEnabledRow(notificationState: .authorized("tokentokentokenabcd"), isSavingToServer: .constant(true))
-                NotificationsEnabledRow(notificationState: .authorized("tokentokentokenabcd"), isSavingToServer: .constant(false))
-                NotificationsEnabledRow(notificationState: .provisional("tokentokentokenabcd"), isSavingToServer: .constant(true))
-                NotificationsEnabledRow(notificationState: .provisional("tokentokentokenabcd"), isSavingToServer: .constant(false))
+                NotificationsEnabledRow(notificationState: .authorized("tokentokentokenabcd"),
+                                        isSavingToServer: .constant(true))
+                NotificationsEnabledRow(notificationState: .authorized("tokentokentokenabcd"),
+                                        isSavingToServer: .constant(false))
+                NotificationsEnabledRow(notificationState: .provisional("tokentokentokenabcd"),
+                                        isSavingToServer: .constant(true))
+                NotificationsEnabledRow(notificationState: .provisional("tokentokentokenabcd"),
+                                        isSavingToServer: .constant(false))
             }
             List {
-                NotificationsEnabledRow(notificationState: .authorized("tokentokentokenabcd"), isSavingToServer: .constant(true))
-                NotificationsEnabledRow(notificationState: .authorized("tokentokentokenabcd"), isSavingToServer: .constant(false))
-                NotificationsEnabledRow(notificationState: .provisional("tokentokentokenabcd"), isSavingToServer: .constant(true))
-                NotificationsEnabledRow(notificationState: .provisional("tokentokentokenabcd"), isSavingToServer: .constant(false))
+                NotificationsEnabledRow(notificationState: .authorized("tokentokentokenabcd"),
+                                        isSavingToServer: .constant(true))
+                NotificationsEnabledRow(notificationState: .authorized("tokentokentokenabcd"),
+                                        isSavingToServer: .constant(false))
+                NotificationsEnabledRow(notificationState: .provisional("tokentokentokenabcd"),
+                                        isSavingToServer: .constant(true))
+                NotificationsEnabledRow(notificationState: .provisional("tokentokentokenabcd"),
+                                        isSavingToServer: .constant(false))
             }.colorScheme(.dark)
         }
     }

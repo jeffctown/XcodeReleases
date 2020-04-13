@@ -29,7 +29,8 @@ struct XcodeReleaseRow: View {
             .frame(width: imageDiameter, height: imageDiameter, alignment: .center)
                 .padding(EdgeInsets(top: 10.0, leading: 0.0, bottom: 10.0, trailing: 10.0))
             VStack(alignment: .leading) {
-                Text("\(release.name) \(release.version.number ?? "??") \(release.version.release.description)").font(.headline)
+                Text("\(release.name) \(release.version.number ?? "??") \(release.version.release.description)")
+                    .font(.headline)
                 #if os(iOS)
                 Text("Released: \(release.date.description)").font(.subheadline)
                 Text("Requires: MacOS \(release.requires)+").font(.subheadline)

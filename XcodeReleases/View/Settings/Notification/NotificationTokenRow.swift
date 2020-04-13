@@ -20,15 +20,14 @@ struct NotificationTokenRow: View {
         case .authorized(let token), .provisional(let token):
             return AnyView(Button(action: {
                 #if os(iOS)
-                    UIPasteboard.general.string = token
+                UIPasteboard.general.string = token
                 #endif
-                    self.showingAlert = true
-                }) {
-                    Text("Token: \(token)").lineLimit(3)
-                }.alert(isPresented: self.$showingAlert) {
-                    Alert(title: Text("Token Copied!"))
-                }
-            )
+                self.showingAlert = true
+            }, label: {
+                Text("Token: \(token)").lineLimit(3)
+            }).alert(isPresented: self.$showingAlert) {
+                Alert(title: Text("Token Copied!"))
+            })
         default:
             return AnyView(EmptyView())
         }

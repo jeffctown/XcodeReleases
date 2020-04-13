@@ -16,7 +16,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         //swiftlint:disable:next force_cast
         (UIApplication.shared.delegate as! AppDelegate).appState }
 
-    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+    func scene(_ scene: UIScene,
+               willConnectTo session: UISceneSession,
+               options connectionOptions: UIScene.ConnectionOptions) {
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
             let rootView = TabbedRootView().environmentObject(appState)

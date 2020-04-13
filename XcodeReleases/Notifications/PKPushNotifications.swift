@@ -39,7 +39,10 @@ class PKPushNotifications: NSObject, PKPushRegistryDelegate {
         delegate?.didInvalidateComplicationToken()
     }
 
-    func pushRegistry(_ registry: PKPushRegistry, didReceiveIncomingPushWith payload: PKPushPayload, for type: PKPushType, completion: @escaping () -> Void) {
+    func pushRegistry(_ registry: PKPushRegistry,
+                      didReceiveIncomingPushWith payload: PKPushPayload,
+                      for type: PKPushType,
+                      completion: @escaping () -> Void) {
         print("registry didReceiveIncomingPushWith \(payload.dictionaryPayload)")
         if case .complication = type {
             print("Complication Push Received: \(payload)")

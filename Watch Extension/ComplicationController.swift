@@ -20,23 +20,27 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         }
     }
 
-    func getSupportedTimeTravelDirections(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTimeTravelDirections) -> Void) {
-        handler([])
+    func getSupportedTimeTravelDirections(for complication: CLKComplication,
+                                          withHandler handle: @escaping (CLKComplicationTimeTravelDirections) -> Void) {
+        handle([])
     }
 
-    func getCurrentTimelineEntry(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTimelineEntry?) -> Void) {
+    func getCurrentTimelineEntry(for complication: CLKComplication,
+                                 withHandler handler: @escaping (CLKComplicationTimelineEntry?) -> Void) {
         handler(CLKComplicationTimelineEntry(date: Date(), complicationTemplate: template(for: complication.family)))
     }
 
     // MARK: - Timeline Configuration
 
-    func getPrivacyBehavior(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationPrivacyBehavior) -> Void) {
+    func getPrivacyBehavior(for complication: CLKComplication,
+                            withHandler handler: @escaping (CLKComplicationPrivacyBehavior) -> Void) {
         handler(.showOnLockScreen)
     }
 
     // MARK: - Placeholder Templates
 
-    func getLocalizableSampleTemplate(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationTemplate?) -> Void) {
+    func getLocalizableSampleTemplate(for complication: CLKComplication,
+                                      withHandler handler: @escaping (CLKComplicationTemplate?) -> Void) {
         handler(template(for: complication.family))
     }
 
@@ -72,11 +76,13 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     }
 
     var simpleSingleTextProvider: CLKSimpleTextProvider {
-        CLKSimpleTextProvider(text: "Xcode: \(version) \(simpleTinyBodyProvider.text)", shortText: "\(version) \(simpleTinyBodyProvider.shortText ?? "xx")")
+        CLKSimpleTextProvider(text: "Xcode: \(version) \(simpleTinyBodyProvider.text)",
+            shortText: "\(version) \(simpleTinyBodyProvider.shortText ?? "xx")")
     }
 
     var simpleVersionTextProvider: CLKSimpleTextProvider {
-        CLKSimpleTextProvider(text: "\(version) \(simpleTinyBodyProvider.text)", shortText: "\(version) \(simpleTinyBodyProvider.shortText ?? "xx")")
+        CLKSimpleTextProvider(text: "\(version) \(simpleTinyBodyProvider.text)",
+            shortText: "\(version) \(simpleTinyBodyProvider.shortText ?? "xx")")
     }
 
     var simpleReleaseDateProvider: CLKSimpleTextProvider {
@@ -126,6 +132,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         CLKFullColorImageProvider(fullColorImage: UIImage(named: "Xcode-Circular")!)
     }
 
+    //swiftlint:disable:next cyclomatic_complexity function_body_length
     func template(for family: CLKComplicationFamily) -> CLKComplicationTemplate {
         switch family {
         case .circularSmall:

@@ -45,12 +45,11 @@ class LinksService: NSObject, ObservableObject {
                     self.loadingError = nil
                     self.isLoading = false
                 }
-                break
             }
-        }) { links in
+        }, receiveValue: { links in
             print("Loaded \(links.count) Links.")
             DispatchQueue.main.async { self.links = links }
-        }
+        })
     }
 
 }

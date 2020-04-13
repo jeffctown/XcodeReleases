@@ -15,7 +15,8 @@ extension UserNotifications {
         UIDevice.modelName
     }
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         print("Launch Options: \(launchOptions ?? [:])")
         UNUserNotificationCenter.current().delegate = self
         launchNotification = launchOptions?[.remoteNotification] as? [AnyHashable: Any]
