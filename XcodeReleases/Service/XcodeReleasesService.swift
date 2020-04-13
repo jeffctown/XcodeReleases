@@ -48,13 +48,13 @@ class XcodeReleasesService: NSObject, ObservableObject {
                     self.isLoading = false
                 }
             }
-        }) { releases in
+        }, receiveValue: { releases in
             print("Loaded \(releases.count) Releases.")
             DispatchQueue.main.async {
                 self.releases = releases
                 self.persistence.latestRelease = releases.first
             }
-        }
+        })
     }
 
 }

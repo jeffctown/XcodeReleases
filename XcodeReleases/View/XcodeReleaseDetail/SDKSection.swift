@@ -16,25 +16,17 @@ struct SDKSection: View {
         Group {
             if release.sdks != nil && release.sdks!.count > 0 {
                 Section(header: Text("SDKs")) {
-                    if release.sdks?.macOS?.first?.number != nil || release.sdks?.macOS?.first?.build != nil {
-                        Text("MacOS SDK: \(release.sdks!.macOS!.first!.number ?? "") (\(release.sdks!.macOS!.first!.build))")
-                    } else {
-                        EmptyView()
+                    release.sdks?.macOS?.first.map {
+                        Text("MacOS SDK: \($0.number ?? "") (\($0.build))")
                     }
-                    if release.sdks?.tvOS?.first?.number != nil || release.sdks?.tvOS?.first?.build != nil {
-                        Text("tvOS SDK: \(release.sdks!.tvOS!.first!.number ?? "") (\(release.sdks!.tvOS!.first!.build))")
-                    } else {
-                        EmptyView()
+                    release.sdks?.tvOS?.first.map {
+                        Text("tvOS SDK: \($0.number ?? "") (\($0.build))")
                     }
-                    if release.sdks?.iOS?.first?.number != nil || release.sdks?.iOS?.first?.build != nil {
-                        Text("iOS SDK: \(release.sdks!.iOS!.first!.number ?? "") (\(release.sdks!.iOS!.first!.build))")
-                    } else {
-                        EmptyView()
+                    release.sdks?.iOS?.first.map {
+                        Text("iOS SDK: \($0.number ?? "") (\($0.build))")
                     }
-                    if release.sdks?.watchOS?.first?.number != nil || release.sdks?.watchOS?.first?.build != nil {
-                        Text("watchOS SDK: \(release.sdks!.watchOS!.first!.number ?? "") (\(release.sdks!.watchOS!.first!.build))")
-                    } else {
-                        EmptyView()
+                    release.sdks?.watchOS?.first.map {
+                        Text("watchOS SDK: \($0.number ?? "") (\($0.build))")
                     }
                 }
             } else {

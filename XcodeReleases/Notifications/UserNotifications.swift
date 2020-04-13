@@ -149,7 +149,7 @@ class UserNotifications: NSObject, ObservableObject {
                 print("Error Posting Device: \(error)")
             }
             completionHandler()
-        }) { (device) in
+        }, receiveValue: { (device) in
             print("Posted Device To Server. \(device.debugDescription)")
             switch device.pushType {
             case .alert:
@@ -159,7 +159,7 @@ class UserNotifications: NSObject, ObservableObject {
             default:
                 print("Error: Unsupported Push Type Found!")
             }
-        }
+        })
     }
 
     // MARK: - Deleting Devices
